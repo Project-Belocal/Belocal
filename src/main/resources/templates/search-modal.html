@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/css/search-modal.css">
+    <title>search-modal</title>
+</head>
+<body>
+<button id="open">open modal</button>
+    <div class="search-modal hidden">
+        <div class="search-modal-overlay">
+            <div class="search-modal-content">
+            <!--============ header =====================-->
+                <header>
+                    <div class="search-area">
+                        <div class="modal-exit-area">
+                            <button id="exit">
+                            <img src="/images/modal-exit-icon.svg" alt="">
+                        </button>
+                        </div><!--modal-exit-area-->
+                        
+                        <div class="search-bar--sort-area">
+                            <div class="search-bar" type="button">
+                                <p>망원동 카페, 을지로 노포</p>
+                                <img class="search-icon" src="/images/header-search-icon.svg" alt="" type="button">                    
+                            </div><!--search-bar-->
+                            <img class="sort-icon" src="/images/sort-icon.svg" alt="" type="button">
+                        </div><!--search-bar--sort-area-->
+
+                        <div class="location-area">
+                            <div class="location-box" type="button">
+                                <img src="/images/location-icon.svg" alt="">
+                                <p>Seoul</p>
+                            </div><!--location-box-->
+                        </div><!--location-area-->
+                        <hr class="hr-solid">
+                    </div><!--search-area-->
+                </header>
+
+
+            <!--============ main =====================-->
+                <main>
+                    <div class="category">
+
+                    <!--------- box1 ------------------->
+                        <div class="category-box--text">
+                            <div class="category-box">
+                                <img class="cafe-icon" src="/images/cafe-icon.svg" alt="">
+                            </div><!--location-box-->
+                            <p>cafe</p>
+                        </div><!--location-box--text-->
+
+                    <!--------- box2 ------------------->
+                    <div class="category-box--text">
+                        <div class="category-box">
+                            <img class="restaurant-icon" src="/images/restaurant-icon.svg" alt="">
+                        </div><!--location-box-->
+                        <p>restaurant</p>
+                    </div><!--location-box--text-->
+
+                    <!--------- box3 ------------------->
+                    <div class="category-box--text">
+                        <div class="category-box">
+                            <img class="festival-icon" src="/images/festival-icon.svg" alt="">
+                        </div><!--location-box-->
+                        <p>festival</p>
+                    </div><!--location-box--text-->
+
+                    <!--------- box4 ------------------->
+                    <div class="category-box--text">
+                        <div class="category-box">
+                            <img class="festival-icon" src="/images/festival-icon.svg" alt="">
+                        </div><!--location-box-->
+                        <p>festival</p>
+                    </div><!--location-box--text-->
+
+
+
+
+
+                    </div><!--category-->
+
+                    
+                </main>
+                
+
+            <!--============ footer =====================-->
+                <footer>
+
+                </footer>
+
+            </div><!--search-modal-content-->
+        </div><!--search-modal-overlay-->
+    </div><!--search-modal-->
+
+    <script>
+        const openButton = document.getElementById("open");
+        const modal = document.querySelector(".search-modal");
+        const overlay = modal.querySelector(".search-modal-overlay");
+        const closeBtn = modal.querySelector("button");
+
+        const openModal = () => {
+            modal.classList.remove("hidden");
+        }
+        const closeModal = () => {
+            modal.classList.add("hidden");
+        }
+
+        overlay.addEventListener("click", closeModal);
+        closeBtn.addEventListener("click", closeModal);
+        openButton.addEventListener("click", openModal);
+    </script>
+</body>
+</html>

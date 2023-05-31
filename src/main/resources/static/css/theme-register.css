@@ -1,0 +1,38 @@
+/* header 영역 시작 */
+body>header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-bottom: 1px solid #484646;
+    font-size: 0;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+  
+main {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+}
+
+.header__prev-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header__prev-button img {
+    width: 12px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(292deg) brightness(104%) contrast(103%);
+}
+
+.header__title {
+    font-size: var(--font-size-large18);
+    font-weight: bold;
+}
+/* header 영역 끝 */

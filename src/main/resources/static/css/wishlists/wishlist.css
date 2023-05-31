@@ -1,0 +1,209 @@
+/* header 영역 시작 */
+body>header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-bottom: 1px solid #484646;
+    font-size: 0;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+  
+main {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+}
+
+.header__prev-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.header__prev-button img {
+    width: 12px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(292deg) brightness(104%) contrast(103%);
+}
+
+.header-contents {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.header-contents__title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-contents__edit-btn {
+    width: 20px;
+}
+/* header 영역 끝 */
+
+/* theme 영역 시작 */
+.theme {
+    border-bottom: 1px solid #484646;
+}
+
+.theme__header {
+    width: 100%;
+    padding: var(--section-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme__profile {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme__profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: black;
+    overflow: hidden;
+}
+
+.theme__profile-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.theme__profile-nickname {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.theme__header-icon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.theme__header-icon img {
+    width: 26px;
+    filter: invert(17%) sepia(52%) saturate(5907%) hue-rotate(227deg) brightness(102%) contrast(92%);
+}
+
+.theme__header-icon span {
+    font-size: 12px;
+}
+
+.location__slider {
+    position: relative;
+}
+
+.location__image {
+    display: none;
+    height: 250px;
+    filter: brightness(70%);
+}
+
+.location__slider img {
+    width: 100%;
+    height: 100%;
+}
+
+.location__nav-buttons {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    /* margin-left: 24px; */
+    /* padding-left: 24px;
+    padding-right: 24px; */
+    /* margin-right: 24px; */
+}
+
+.location__prev-button,
+.location__next-button {
+    cursor: pointer;
+    width: 12px;
+    filter: invert(23%) sepia(12%) saturate(4%) hue-rotate(324deg) brightness(103%) contrast(88%);
+}
+
+.location__nav-dots {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.location__dot {
+    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    background-color: #484646;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.location__dot.active {
+    background-color: #182CE3;
+}
+
+.theme__contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.theme__title h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.theme__description p {
+    font-size: 12px;
+    color: #484646;
+}
+
+.theme__info {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.theme__bookable-dates {
+    font-size: 10px;
+    color: #717171;
+}
+
+.theme__icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.theme__icons .share {
+    height: 18px;
+}
+
+.theme__icons .heart {
+    height: 14px;
+}
+/* theme 영역 끝 */
+
