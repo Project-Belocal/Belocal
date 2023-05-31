@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/css/search-result.css">
+    <title>search-result</title>
+</head>
+<body>
+<button id="open">open result</button><!--메인화면 검색창에 붙일부분-->
+    <div class="search__modal hidden">
+        <div class="search__modal--overlay">
+            <div class="search__modal--content">
+
+<!--================== header ========================-->
+                    <div class="search__bar">
+                        <div class="search__bar--container">
+                            <!-- <div class="search__bar" type="button"> -->
+                                <img class="search-icon" src="/images/header-search-icon.svg" alt="" type="button">                    
+                                <input type="text" id="search__input" placeholder="망원동 카페, 을지로 노포"/>
+                                <!-- <p>망원동 카페, 을지로 노포</p> -->
+                                <button id="search__reset">
+                                    <img class="search__reset--x" src="/images/search__reset--icon.svg" alt="">
+                                </button>
+                                <div class="modal__exit">
+                                    <div id="exit">취소</div>
+                                </div><!--modal-exit-area-->
+
+                              </div><!--search__bar--container-->
+
+                        </div><!--search__bar-->
+
+
+<!--==================== main ========================-->
+                        <main>
+                            <div class="search__keywords">
+                                <hr class="hr-solid">
+
+                                <div class="search__keywords--recommand">
+                                    <div class="search__keywords--title">
+                                    <p>추천 검색어</p>
+                                    </div><!--search__keywords--title-->
+                                    
+                                        <div class="search__keywords--line1">
+                                            <ipnut type="button" class="search__keywords--box1" value="을지로노포">
+                                            </button>
+                                        </div><!--search__keywords--line1-->
+                                        <div class="search__keywords--line2">
+
+                                        </div><!--search__keywords--line2-->
+
+
+                                </div><!--search__keywords--recommand-->
+                            
+
+
+                            </div><!--search__recommands-->
+                        </main>
+
+            </div><!--search__modal--content-->
+        </div><!--search__modal--overlay-->
+    </div><!--search__modal hidden-->
+
+
+
+
+<!--============ script =====================-->
+    <script>
+        const openButton = document.getElementById("open");
+        const modal = document.querySelector(".search__modal");
+        const overlay = modal.querySelector(".search__modal--overlay");
+        const closeBtn = modal.querySelector("#exit");
+
+        const openModal = () => {
+            modal.classList.remove("hidden");
+        }
+        const closeModal = () => {
+            modal.classList.add("hidden");
+        }
+
+        // overlay.addEventListener("click", closeModal);
+        closeBtn.addEventListener("click", closeModal);
+        openButton.addEventListener("click", openModal);
+    </script>
+</body>
+</html>

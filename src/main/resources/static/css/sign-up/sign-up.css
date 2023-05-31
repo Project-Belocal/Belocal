@@ -1,0 +1,228 @@
+.sign-up{
+    max-width: 390px;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.test11{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 뒤로가기 버튼 */
+.sign-up__undo{
+    display: flex;
+    width: 100%;
+    height: 42px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: var(--section-padding);
+    /* padding: var(--section-padding); */
+}
+
+.sign-up__undo img{
+    width: 22px;
+    height: 22px;
+    filter: invert(46%) sepia(6%) saturate(6%) hue-rotate(343deg) brightness(96%) contrast(92%);
+}
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+
+/* 로고 영역 */
+.sign-up__logo{
+    margin-top: -14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    height: 84px;
+    padding: var(--section-padding);
+    margin-bottom: var(--section-margin-bottom);
+}
+
+.sign-up__logo img{
+    width: 34px;
+    height: 46px;
+}
+
+.sign-up__logo span{
+    color: var(--color-point-blue);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+/* 회원가입 input */
+
+.sign-up__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+/* input창 스타일 공통 */
+
+/* input창 영역묶음 */
+.sign-up__input-wrap{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 2px;
+}
+
+/* input제목 */
+.sign-up__title{
+    font-size: var(--font-size-medium14);
+    color:var(--color-text-black);
+    font-weight: var(--font-weight-regular);
+    padding: 0 6px;
+}
+
+/* input 영역 */
+.sign-up__input{
+    width: 100%;
+    height: 40px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding: 0 8px;
+
+}
+
+.sign-up__input input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: var(--font-size-small10)
+}
+
+/* 에러 메시지 */
+.sign-up__error{
+    /* visibility: hidden; */
+    color: red;
+    padding: 0 6px;
+}
+
+
+/* 아이디 */
+
+/* 비밀번호 */
+
+/* 비밀번호 재확인 */
+
+/* 이름 */
+
+/* 닉네임 */
+
+/* 전화번호 */
+.tel-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* 국가번호 선택 */
+.sign-up__country-code{
+    width: 100%;
+    height: 40px;
+    border-radius: 12px;
+}
+
+/* 인증번호 받기 영역 */
+.sign-up__Auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    gap: 6px;
+}
+
+/* 번호입력 영역 */
+.sign-up__tel{
+    width: 70%;
+    height: 100%;
+    text-align:left;
+    border: 1px solid var(--color-text-lightgray);
+    /* box-shadow: var(--box-shadow); */
+    border-radius: var(--border-radius);
+    padding: 0px 6px;
+    outline: none;
+}
+
+/* 인증번호 받기 */
+.sign-up__tel-btn{
+    width: 30%;
+    height: 100%;
+    padding: 0 6px;
+    font-size: var(--font-size-small10);
+    color: var(--color-point-white);
+    font-weight: var(--font-weight-regular);
+    border-radius: var(--border-radius);
+    background-color: var(--color-point-blue);
+}
+
+
+
+/* 약관동의 */
+
+.sign-up__terms{
+    margin-bottom: var(--section-margin-bottom);
+}
+
+.sign-up__check-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.sign-up__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.sign-up__item span{
+    margin-top: -3px;
+    font-size: var(--font-size-medium12);
+}
+
+.sign-up__item input{
+    width: 16px;
+    height: 16px;
+}
+
+.sign-up__terms-btn{
+    margin-top: -3px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+/* 가입버튼 */
+.sign-up__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    color: var(--color-point-white);
+    border-radius: var(--border-radius);
+    background-color: var(--color-text-gray2);
+}
+
+/* 가입버튼 조건 충족시 색 변경 */
+.action{
+    background-color: var(--color-point-blue);
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/my-page/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="my-page-header">
+        <!-- 유저 이미지 -->
+        <div class="my__profile-img">
+            <img src="../images/profile-pic.jpg" alt="">
+        </div>
+        <!-- 유저 정보 내용 -->
+        <div class="my__profile-content">
+            <!-- 유저  정보 영역 -->
+            <div class="my__info-wrap">
+                <div class="my__info">
+                    <!-- 유저 이름 -->
+                    <div class="my__name">
+                        <span>userName001</span>
+                    </div>
+                    <!-- 로컬 유무 -->
+                    <div class="my__local">
+                        <img src="../images/logo-beLocal.svg" alt="">
+                        <span>local</span>
+                    </div>
+                </div>
+                <!-- 유저메일 -->
+                <div class="my__mail">
+                    <span>test@gmail.com</span>
+                </div>
+            </div>
+            <!-- 프로필 수정 및 내 게시물 -->
+            <div class="my__link">
+                <div class="my__link-btn">
+                    <a href="#">프로필 수정</a>
+                </div>
+                <div class="my__link-btn">
+                    <a href="#">내 게시물</a>
+                </div>
+            </div>
+            <!-- 게시글 등록 숫자 -->
+            <div class="my__post-tab">
+                <ul class="my__tab-list">
+                    <li class="my__tab-item">
+                        <a class="my__tab-link" href="#">
+                            <span class="my__tab-count">1</span>
+                            <span class="my__tab-menu">themes</span>
+                        </a>
+                    </li>
+                    <li class="my__tab-item">
+                        <a class="my__tab-link" href="#">
+                            <span class="my__tab-count">0</span>
+                            <span class="my__tab-menu">post</span>
+                        </a>
+                    </li>
+                    <li class="my__tab-item">
+                        <a class="my__tab-link" href="#">
+                            <span class="my__tab-count">1</span>
+                            <span class="my__tab-menu">followers</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="my-page-main">
+
+        <div class="my__register-btn ">
+            <a href="#">theme 등록하러가기</a>
+        </div>
+
+        <div class="my__register-btn ">
+            <a href="#">Post 등록하러가기</a>
+        </div>
+
+        <div class="my__register-btn active">
+            <a href="#">
+                <img src="./images/logo-beLocal.svg" alt="">
+                <h2>Be Local !</h2>
+                <span>로컬이 되어보세요</span>
+            </a>
+        </div>
+
+
+        <!-- 요청,예약,완료 버튼 -->
+        <div class="my__deal-tap">
+            <ul class="my__deal-list">
+                <li class="my__deal-item">
+                    <button type="button">
+                        <h3>요청</h3>
+                        <span>20</span>
+                        <img src="../images/icon/right-arrow.svg" alt="">
+                    </button>
+                </li>
+                <li class="my__deal-item">
+                    <button type="button">
+                        <h3>예약</h3>
+                        <span>1</span>
+                        <img src="../images/icon/right-arrow.svg" alt="">
+                    </button>
+                </li>
+                <li class="my__deal-item">
+                    <button type="button">
+                        <h3>완료</h3>
+                        <span>3</span>
+                        <img src="../images/icon/right-arrow.svg" alt="">
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        
+        <!-- 모달창 영역 -->
+        <!-- <div className="fixed inset-0 bg-black/50 z-10">
+        <div class="modaltest">
+            <div class="modla2">
+                
+            </div>
+        </div> -->
+
+
+
+    </main>
+
+        <!-- nav-bar -->
+        <section>
+            <nav class="navbar">
+              <div class="navbar__list">
+                <a href="#" type="button" class="navbar__btn">
+                  <div>
+                    <img src="../images/icon/home.svg" alt="">
+                  </div>
+                  <div class="navbar__text">홈</div>
+                </a>
+                <a href="#" type="button" class="navbar__btn">
+                  <div>
+                    <img src="../images/icon/heart.svg" alt="">
+                  </div>
+                  <div class="navbar__text">찜목록</div>
+                </a>
+                <a href="#" type="button" class="navbar__btn">
+                  <div>
+                    <img src="../images/icon/location-pin.svg" alt="">
+                  </div>
+                  <div class="navbar__text">내위치</div>
+                </a>
+                <a href="#" type="button" class="navbar__btn">
+                  <div>
+                    <img src="../images/icon/message.svg" alt="">
+                  </div>
+                  <div class="navbar__text">메시지</div>
+                </a>
+                <a href="#" type="button" class="navbar__btn">
+                  <div>
+                    <img src="../images/icon/user.svg" alt="">
+                  </div>
+                  <div class="navbar__text">내정보</div>
+                </a>
+              </div>
+            </nav>
+        </section>
+        <!-- nav-bar End-->
+    
+</body>
+</html>

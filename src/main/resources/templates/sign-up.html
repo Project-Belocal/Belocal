@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sign-up/sign-up.css">
+    <title>Document</title>
+</head>
+<!-- TODO 뒤로가기 버튼,로고 위치 전체 페이지에서 고정-->
+<!-- TODO 입력칸 너비 수정 -->
+<!-- TODO 개인정보 동의사항 구현 -->
+
+<body>
+        <!-- 뒤로가기 버튼 -->
+        <div class="test11">
+            <div class="sign-up__undo">
+                <button>
+                    <img src="./images/icon/left-arrow.svg" alt="">
+                </button>
+            </div>
+    
+            <!-- 로고 영역 -->
+            <div class="sign-up__logo">
+                <img src="./images/logo-beLocal.svg" alt="">
+                <span>BeLocal</span>
+            </div>
+        </div>
+        
+
+        <!-- 회원가입 영역 -->
+        <div class="sign-up">
+
+            <!-- input 박스 영역 -->
+            <div class="sign-up__container">
+                <!-- 아이디 -->
+                <div class="sign-up__input-wrap">
+                    <h3 class="sign-up__title ess">아이디</h3>
+                    <div class="sign-up__input">
+                        <input class="sign-up__id" type="text" placeholder="아이디를 입력해 주세요">
+                    </div>
+                    <p class="sign-up__error">이미 존재하는 아이디 입니다.</p>
+                </div>
+
+                <!-- 비밀번호 -->
+                <div class="sign-up__input-wrap">
+                    <h3 class="sign-up__title ess">비밀번호</h3>
+                    <div class="sign-up__input">
+                        <input class="sign-up__pw" type="password" placeholder="영문, 숫자, 특수문자를 조합8~16자">
+                    </div>
+                    <p class="sign-up__error">영문, 숫자, 특수문자를 조합8~16자를 입력해주세요.</p>
+                </div>
+
+                <!-- 비밀번호 재확인 -->
+                <div class="sign-up__input-wrap ess">
+                    <h3 class="sign-up__title">비밀번호 재확인</h3>
+                    <div class="sign-up__input">
+                        <input class="sign-up__reconfirm" type="password" placeholder="비밀번호를 다시 입력해 주세요">
+                    </div>
+                    <p class="sign-up__error">비밀번호가 일치하지 않습니다.</p>
+                </div>
+
+                <!-- 이름 -->
+                <div class="sign-up__input-wrap">
+                    <h3 class="sign-up__title">이름</h3>
+                    <div class="sign-up__input">
+                        <input class="sign-up__name" type="text" placeholder="이름을 입력해 주세요" >
+                    </div>
+                </div>
+
+                <!-- 닉네임 -->
+                <div class="sign-up__input-wrap">
+                    <h3 class="sign-up__title ess">닉네임</h3>
+                    <div class="sign-up__input">
+                        <input class="sign-up__nick-name" type="text" placeholder="닉네임을 입력해 주세요">
+                    </div>
+                    <p class="sign-up__error" >이미 존재하는 닉네임 입니다.</p>
+                </div>
+
+                <!-- 전화번호 -->
+                <div class="sign-up__input-wrap tel-wrap">
+                    <h3 class="sign-up__title ess">휴대폰 번호</h3>
+                    <select class="sign-up__country-code" name="" id="">
+                        <option value="대한민국">대한민국+82</option>
+                        <option value="미국">미국+1</option>
+                        <option value="일본">일본+81</option>
+                    </select>
+                    <div class="sign-up__Auth">
+                        <input class="sign-up__tel" type="tel" placeholder="전화번호를 입력해 주세요">
+                        <input class="sign-up__tel-btn" type="button" value="인증번호 받기">
+                    </div>
+                    <p class="sign-up__error">올바른 번호 11자리를 입력해 주세요</p>
+                    <div class="sign-up__input">
+                        <input type="sign-up__input-Auth" placeholder="인증번호를 입력해 주세요">
+                    </div>
+                </div>
+
+                <!-- 이용약관 동의 -->
+                <div class="sign-up__terms">
+                    <div class="sign-up__terms-box open">
+                        <div class="sign-up__check-main">
+                            <div class="sign-up__item">
+                                <input type="checkbox" name="blind">
+                                <span>[필수] 만 14세 이상이며 모두 동의합니다.</span>
+                            </div>
+                            <button class="sign-up__terms-btn" type="button">
+                                <img src="./images/icon/add.svg" alt="">
+                            </button>
+                        </div>
+                        <div class="sign-up__check-sub"></div>
+                    </div>
+                </div>
+
+                <!-- 가입 버튼 -->
+                <button type="submit" class="sign-up__btn action" href="#">가입하기</button>
+            </div>
+
+
+        </div>
+</body>
+</html>
