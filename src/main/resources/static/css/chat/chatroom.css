@@ -44,14 +44,8 @@
     cursor: pointer;
     flex-direction: column;
     justify-content: center;
-    z-index: 2;
+    z-index: 0;
 }
-
-
-
-
-
-
 
 
 .room__undo img{
@@ -77,6 +71,7 @@
 
 
 
+
 /* theme 목록부분 */
 
 .room__theme{
@@ -91,13 +86,12 @@
 }
 
 .room__theme-Img {
-    /* padding: 2px 0; */
     width: 72px;
     height: 100%;
 }
 
 .room__theme-Img img{
-    display: flex;    
+    display: flex;
     width: 100%;
     height: 100%;
 }
@@ -147,7 +141,7 @@
     justify-content: flex-start;
     padding: 12px 12px;
     width: 100%;
-    
+
 }
 /* 메시지창 end */
 
@@ -178,10 +172,12 @@
 
 
 .room__user-img{
+    display: flex;
     margin:  8px 8px 0 0;
     border-radius: 50%;
     width: 52px;
     overflow: hidden;
+    object-fit: cover;
 }
 
 .room__user-img img{
@@ -210,16 +206,19 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 72px;
-    padding: 12px 24px;
+    height: 52px;
+    padding: 12px 12px;
+    padding-top: 0;
+    background-color: #fff;
 }
 
 
 .room__input-wrap{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 40px;
+    height: 100%;
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -235,6 +234,7 @@
     outline: none;
     max-height: 150px;
     text-align: left;
+    font-size: var(--font-size-medium14);
 }
 
 
@@ -245,7 +245,7 @@
     background-color: var(--color-point-white);
     width: 42px;
     height: 42px;
-    
+
 }
 
 .room__input-btn img{
@@ -255,32 +255,37 @@
 
 
 
-/* 버튼 모달창 */
 
-.room__nav{
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 54px; /* Location of the box */
-    padding-left: 10px;
+
+/* 모달창 뒷배경 */
+
+.room__modal-bg{
+    display: none;
+    position: fixed;
+    top:0;
     left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
+
+/* 버튼 모달창 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
 
 .room__nav-wrap{
     display: flex;
+    position: absolute;
     flex-direction: column;
     justify-content: space-around;
     width: 200px;
     height: 200px;
-    /* padding: 1px 4px; */
-    margin-left: 140px;
+    top: 60px;
+    left: 160px;
     border-radius: var(--border-radius);
-    /* border: 1px solid #777; */
     background-color: var(--color-point-white);
-    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+    z-index: 2;
+    box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px;
 }
 
 
@@ -298,23 +303,126 @@
     border-bottom: 0;
 }
 
-/* .nav-btn div{
-    display: flex;
 
-    width: 100%;
-    height: 100%;
-} */
 .nav-btn a{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    
+
 }
 
 .hidden{
     display: none;
 }
 
+
+
+
+/* 신고창 모달 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+.room__report{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 300px;
+    height: 350px;
+    top: 100px;
+    left: 50px;
+    z-index: 2;
+    padding: 12px 12px;
+    gap: 12px;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    /* transform:translate(-10%,-10%) */
+}
+
+/* 신고 헤더 */
+.room__report-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--color-text-black);
+
+}
+
+.room__report-title>button{
+    width: 22px;
+    height: 22px;
+}
+.room__report-title>button>img{
+    width: 100%;
+    height: 100%;
+    filter: invert(100%) sepia(96%) saturate(23%) hue-rotate(248deg) brightness(94%) contrast(100%);
+}
+
+
+.room__report-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 신고 종류 목록 */
+.room__report-list{
+    display: flex;
+    width: 100%;
+    height: 32px;
+    padding-left: 4px;
+    border: 1px solid var(--color-text-gray2);
+    font-size: var(--font-size-small10);
+}
+
+.room__report-list:focus{
+    display: flex;
+    width: 100%;
+    padding-left: 4px;
+    height: 32px;
+    border: 1px solid var(--color-text-gray2);
+    outline: none;
+}
+
+select option[value=""][disabled] {
+    display: none;
+}
+
+/* 신고내용 영역 */
+.room__report-content{
+    width: 100%;
+    height: 210px;
+    padding: 6px;
+    resize: none;
+    border: 1px solid var(--color-text-gray2);
+    outline: none;
+    font-size: var(--font-size-medium12);
+}
+.room__report-content:focus{
+    width: 100%;
+    height: 210px;
+    padding: 6px;
+    resize: none;
+    border: 1px solid var(--color-text-gray2);
+    outline: none;
+}
+
+/* 신고버튼 */
+.room__report-send{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.room__report-send>button{
+    display: flex;
+    width: 55px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-text-gray2);
+    border-radius: 4px;
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
