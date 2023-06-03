@@ -11,160 +11,193 @@
 </head>
 <body>
 
-    
 
-    <section class="room">
-        <!-- 채팅방 이름 -->
-        <div class="room__title">
-            <button class="room__undo" type="button" value="BACK" onClick="history.go(-1)">
-                <img src="../images/icon/navigate_before.svg" alt="">
-            </button>
-            <div class="room__detail">
-                <div class="room__user-name">
-                    <span>innerJoin123</span>
-                </div>
-                <div class="room__date">
-                    <span>응답 시간 : 1시간</span>
-                </div>
+
+<section class="room">
+    <!-- 채팅방 이름 -->
+    <div class="room__title">
+        <button class="room__undo" type="button">
+            <img src="../images/icon/navigate_before.svg" alt="">
+        </button>
+        <div class="room__detail">
+            <div class="room__user-name">
+                <span>innerJoin123</span>
             </div>
-            <button class="room__menu" type="button">
-                <img src="../images/icon/more-vert.svg" alt="">
-            </button>
-            <div class="room__nav hidden">
-                <div class="room__nav-wrap">
-                    <button class="nav-btn" type="button">
-                        <a href="https://m.naver.com/">신고하기</a>
-                    </button>
-                    <button class="nav-btn" type="button"><a href="#">차단하기</a></button>
-                    <button class="nav-btn" type="button"><a href="#">나가기</a></button>
-                </div>
+            <div class="room__date">
+                <span>응답 시간 : 1시간</span>
             </div>
         </div>
-
-        <div class="room__theme">
-            <div class="room__theme-Img">
-                <img src="../images/location01.jpg">
-            </div>
-            <div class="room__theme-content">
-                <h3>theme 제목이 들어갈 공간</h3>
-                <p>theme 내용 설명이 들어갈 공간</p>
-            </div>
-            <button class="room__reservation" type="button">
-                <span>일정 잡기</span>
-            </button>
+        <button class="room__menu" type="button">
+            <img src="../images/icon/more-vert.svg" alt="">
+        </button>
+    </div>
+    <!-- 예약한 theme정보 -->
+    <div class="room__theme">
+        <div class="room__theme-Img">
+            <img src="../images/location01.jpg">
         </div>
+        <div class="room__theme-content">
+            <h3>theme 제목이 들어갈 공간</h3>
+            <p>theme 내용 설명이 들어갈 공간</p>
+        </div>
+        <button class="room__reservation" type="button">
+            <span>일정 잡기</span>
+        </button>
+    </div>
 
 
-
-        <!-- 메시지 내역 -->
-        <div class="room__chat-wrap">
-
-
-            <!-- 상대가 보낸 메세지 -->
-            <div class="room__item">
-                <button class="room__user-img" type="button">
-                    <img src="../images/profile-pic.jpg" alt="">
+    <!-- 모달창 영역 -->
+    <div class="room__modal-bg hidden">
+        <div class="room__nav hidden">
+            <div class="room__nav-wrap">
+                <button class="room__report-btn nav-btn " type="button">
+                    <span>신고하기</span>
                 </button>
-                <div class="room__content">
-                    <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                        김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                    </p>
-                    <span class="room__time" >오전 23시 59분</span>
-                </div>
-            </div>
-
-
-            <!-- 내가 보낸 메세지 -->
-            <div class="room__item my-msg">
-                <div class="room__content">
-                    <span class="room__time">오전 9시 34분</span>
-                    <p class="room__msg">하이</p>
-                </div>
-            </div>
-
-                        <!-- 상대가 보낸 메세지 -->
-                        <div class="room__item">
-                            <button class="room__user-img" type="button">
-                                <img src="../images/profile-pic.jpg" alt="">
-                            </button>
-                            <div class="room__content">
-                                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                                </p>
-                                <span class="room__time" >오전 23시 59분</span>
-                            </div>
-                        </div>
-            
-            
-                        <!-- 내가 보낸 메세지 -->
-                        <div class="room__item my-msg">
-                            <div class="room__content">
-                                <span class="room__time">오전 9시 34분</span>
-                                <p class="room__msg">하이</p>
-                            </div>
-                        </div>
-
-                                    <!-- 상대가 보낸 메세지 -->
-            <div class="room__item">
-                <button class="room__user-img" type="button">
-                    <img src="../images/profile-pic.jpg" alt="">
+                <button class="nav-btn" type="button">
+                    <span>차단하기</span>
                 </button>
-                <div class="room__content">
-                    <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                        김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                    </p>
-                    <span class="room__time" >오전 23시 59분</span>
-                </div>
-            </div>
-
-
-            <!-- 내가 보낸 메세지 -->
-            <div class="room__item my-msg">
-                <div class="room__content">
-                    <span class="room__time">오전 9시 34분</span>
-                    <p class="room__msg">하이</p>
-                </div>
-            </div>
-
-
-                        <!-- 상대가 보낸 메세지 -->
-                        <div class="room__item">
-                            <button class="room__user-img" type="button">
-                                <img src="../images/profile-pic.jpg" alt="">
-                            </button>
-                            <div class="room__content">
-                                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                                </p>
-                                <span class="room__time" >오전 23시 59분</span>
-                            </div>
-                        </div>
-            
-            
-                        <!-- 내가 보낸 메세지 -->
-                        <div class="room__item my-msg">
-                            <div class="room__content">
-                                <span class="room__time">오전 9시 34분</span>
-                                <p class="room__msg">하이</p>
-                            </div>
-                        </div>
-            
-
-
-        </div>
-
-        <!-- 메시지 전송 창 -->
-        <div class="room__input">
-            <div class="room__input-wrap">
-                <textarea class="room__text" placeholder="메시지를 입력하세요." cols="30" rows="1"></textarea>
-                <button class="room__input-btn" type="button">
-                    <img src="../images/icon/send-message.svg" alt="">
+                <button class="nav-btn" type="button">
+                    <a href="#">나가기</a>
                 </button>
             </div>
-
         </div>
 
-    </section>
+
+        <div class="room__report hidden">
+            <div class="room__report-title">
+                <h2>신고하기</h2>
+                <button class="room__report-close" type="button">
+                    <img src="../images/icon/x.svg" alt="">
+                </button>
+            </div>
+            <div class="room__report-wrap" required>
+                <select class="room__report-list" name="" id="">
+                    <option value="" disabled  selected>신고 종류 선택</option>
+                    <option value="신고내용1">신고내용1</option>
+                    <option value="신고내용1">신고내용2</option>
+                    <option value="신고내용1">신고내용3</option>
+                </select>
+                <textarea class="room__report-content" placeholder="내용입력하셈" spellcheck="false"></textarea>
+            </div>
+            <div class="room__report-send">
+                <button type="button">
+                    <p>신고하기</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+
+
+    <!-- 메시지 내역 -->
+    <div class="room__chat-wrap">
+
+
+        <!-- 상대가 보낸 메세지 -->
+        <div class="room__item">
+            <button class="room__user-img" type="button">
+                <img src="../images/profile-pic.jpg" alt="">
+            </button>
+            <div class="room__content">
+                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                </p>
+                <span class="room__time" >오전 23시 59분</span>
+            </div>
+        </div>
+
+
+        <!-- 내가 보낸 메세지 -->
+        <div class="room__item my-msg">
+            <div class="room__content">
+                <span class="room__time">오전 9시 34분</span>
+                <p class="room__msg">하이</p>
+            </div>
+        </div>
+
+        <!-- 상대가 보낸 메세지 -->
+        <div class="room__item">
+            <button class="room__user-img" type="button">
+                <img src="../images/profile-pic.jpg" alt="">
+            </button>
+            <div class="room__content">
+                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                </p>
+                <span class="room__time" >오전 23시 59분</span>
+            </div>
+        </div>
+
+
+        <!-- 내가 보낸 메세지 -->
+        <div class="room__item my-msg">
+            <div class="room__content">
+                <span class="room__time">오전 9시 34분</span>
+                <p class="room__msg">하이</p>
+            </div>
+        </div>
+
+        <!-- 상대가 보낸 메세지 -->
+        <div class="room__item">
+            <button class="room__user-img" type="button">
+                <img src="../images/profile-pic.jpg" alt="">
+            </button>
+            <div class="room__content">
+                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                </p>
+                <span class="room__time" >오전 23시 59분</span>
+            </div>
+        </div>
+
+
+        <!-- 내가 보낸 메세지 -->
+        <div class="room__item my-msg">
+            <div class="room__content">
+                <span class="room__time">오전 9시 34분</span>
+                <p class="room__msg">하이</p>
+            </div>
+        </div>
+
+
+        <!-- 상대가 보낸 메세지 -->
+        <div class="room__item">
+            <button class="room__user-img" type="button">
+                <img src="../images/profile-pic.jpg" alt="">
+            </button>
+            <div class="room__content">
+                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
+                </p>
+                <span class="room__time" >오전 23시 59분</span>
+            </div>
+        </div>
+
+
+        <!-- 내가 보낸 메세지 -->
+        <div class="room__item my-msg">
+            <div class="room__content">
+                <span class="room__time">오전 9시 34분</span>
+                <p class="room__msg">하이</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메시지 전송 창 -->
+    <div class="room__input">
+        <div class="room__input-wrap">
+            <textarea class="room__text" placeholder="메시지를 입력하세요." cols="30" rows="1"></textarea>
+            <button class="room__input-btn" type="button">
+                <img src="../images/icon/send-message.svg" alt="">
+            </button>
+        </div>
+
+    </div>
+
+</section>
 
 
 
