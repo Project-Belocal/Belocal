@@ -260,7 +260,7 @@
 /* 모달창 뒷배경 */
 
 .room__modal-bg{
-    display: none;
+    display: flex;
     position: fixed;
     top:0;
     left: 0;
@@ -313,9 +313,6 @@
 
 }
 
-.hidden{
-    display: none;
-}
 
 
 
@@ -325,7 +322,7 @@
 
 .room__report{
     position: absolute;
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 300px;
     height: 350px;
@@ -426,3 +423,6 @@ select option[value=""][disabled] {
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
+.hidden{
+    display: none;
+}

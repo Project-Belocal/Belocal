@@ -9,7 +9,7 @@
     <script src="../js/chat/chatroom.js" defer></script>
     <title>Document</title>
 </head>
-<body class="modal">
+<body>
 
 
 
@@ -47,17 +47,15 @@
 
 
     <!-- 모달창 영역 -->
-    <div class="room__modal-bg">
+    <div class="room__modal-bg hidden">
         <div class="room__nav hidden">
             <div class="room__nav-wrap">
-                <button class="nav-btn" type="button">
-                    <a class="room__report-btn" type="button">신고하기</a>
+                <button class="room__report-btn nav-btn " type="button">
+                    <span>신고하기</span>
                 </button>
-
                 <button class="nav-btn" type="button">
-                    <a href="#">차단하기</a>
+                    <span>차단하기</span>
                 </button>
-
                 <button class="nav-btn" type="button">
                     <a href="#">나가기</a>
                 </button>
@@ -65,7 +63,7 @@
         </div>
 
 
-        <div class="room__report">
+        <div class="room__report hidden">
             <div class="room__report-title">
                 <h2>신고하기</h2>
                 <button class="room__report-close" type="button">
@@ -75,10 +73,9 @@
             <div class="room__report-wrap" required>
                 <select class="room__report-list" name="" id="">
                     <option value="" disabled  selected>신고 종류 선택</option>
-                    <option value="성희롱">성희롱</option>
-                    <option value="비방 빛 욕설">비방 빛 욕설</option>
-                    <option value="약속 불이행">약속 불이행</option>
-                    <option value="기타">기타</option>
+                    <option value="신고내용1">신고내용1</option>
+                    <option value="신고내용1">신고내용2</option>
+                    <option value="신고내용1">신고내용3</option>
                 </select>
                 <textarea class="room__report-content" placeholder="내용입력하셈" spellcheck="false"></textarea>
             </div>
