@@ -11,8 +11,8 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("test")
+    @GetMapping("login/find-id")
     public String test(){
-        return "mypage/profile-edit";
+        return "find-id";
     }
 }
