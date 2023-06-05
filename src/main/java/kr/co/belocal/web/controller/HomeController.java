@@ -11,8 +11,8 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("login/find-id")
+    @GetMapping("login/find-pw")
     public String test(){
-        return "find-id";
+        return "find-pw";
     }
 }
