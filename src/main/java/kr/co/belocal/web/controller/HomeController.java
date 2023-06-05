@@ -11,8 +11,8 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("login/find-pw")
+    @GetMapping("test")
     public String test(){
-        return "find-pw";
+        return "chat/chatlist";
     }
 }
