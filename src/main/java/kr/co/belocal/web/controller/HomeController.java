@@ -13,6 +13,6 @@ public class HomeController {
 
     @GetMapping("test")
     public String test(){
-        return "chat/chatlist";
+        return "mypage/profile";
     }
 }
