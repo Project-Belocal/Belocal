@@ -11,85 +11,85 @@
 </head>
 <body>
 <button id="open">open modal</button>
-    <div class="search-modal hidden">
-        <div class="search-modal-overlay">
-            <div class="search-modal-content">
+<div class="search-modal hidden">
+    <div class="search-modal-overlay">
+        <div class="search-modal-content">
             <!--============ header =====================-->
-                <header>
-                    <div class="search">
-                        <div class="search__container ">
-                          <input class="search-bar" type="button" value="을지로 노포, 망원동 카페" />
-                            <!-- <img class="search-icon" src="/images/icon/search.svg" alt="" /> -->
-                            <span class="material-symbols-outlined">
+            <header>
+                <div class="search">
+                    <div class="search__container ">
+                        <input class="search-bar" type="button" value="을지로 노포, 망원동 카페" />
+                        <!-- <img class="search-icon" src="/images/icon/search.svg" alt="" /> -->
+                        <span class="material-symbols-outlined">
                               search
                               </span>
-                                <button id="exit">취소</button>
-                             </input><!--search-bar-->
-                        </div><!--search__container -->
+                        <button id="exit">취소</button>
+                        </input><!--search-bar-->
+                    </div><!--search__container -->
 
 
-                        <hr class="hr-solid">
-                    </div><!--search-area-->
-                </header>
+                    <!-- <hr class="hr-solid"> -->
+                </div><!--search-area-->
+            </header>
 
-  <!--============ main =====================-->
+
+            <!--============ main 키워드 부분=====================-->
             <div class="recommand__keyword">
                 <div class="recommand__keyword--title--container">
-                <h1>추천 검색어</h1>
-                </div><!--recommand__keyword--title--container-->
+                    <h1>추천 검색어</h1>
+                </div>
 
                 <div class="recommand__keywords--container">
-                <div class="recommand__keyword--container1">
-                    
-                    <button class="recommand__keyword--btn">
-                        <p>을지로 노포</p>
-                    </button><!--recommand__keyword--btn-->
+                    <div class="recommand__keyword--container1">
 
-                    <button class="recommand__keyword--btn">
-                        <p>용산 카페</p>
-                    </button><!--recommand__keyword--btn-->
+                        <button class="recommand__keyword--btn">
+                            <p>을지로 노포</p>
+                        </button>
 
-                    <button class="recommand__keyword--btn">
-                        <p>종로 맛집</p>
-                    </button><!--recommand__keyword--btn-->
+                        <button class="recommand__keyword--btn">
+                            <p>용산 카페</p>
+                        </button>
 
-                    <button class="recommand__keyword--btn">
-                        <p>강남구 축제</p>
-                    </button><!--recommand__keyword--btn-->
+                        <button class="recommand__keyword--btn">
+                            <p>종로 맛집</p>
+                        </button>
 
-                </div><!--recommand__keyword--container1-->
+                        <button class="recommand__keyword--btn">
+                            <p>강남구 축제</p>
+                        </button>
 
-
-                <div class="recommand__keyword--container2">
-                    
-                    <button class="recommand__keyword--btn">
-                        <p>신촌 대학교 축제</p>
-                    </button><!--recommand__keyword--btn-->
-
-                    <button class="recommand__keyword--btn">
-                        <p>루프탑 바</p>
-                    </button><!--recommand__keyword--btn-->
-
-                    <button class="recommand__keyword--btn">
-                        <p>성수 갈비 골목</p>
-                    </button><!--recommand__keyword--btn-->
-
-                    <button class="recommand__keyword--btn">
-                        <p>녹사평 펍</p>
-                    </button><!--recommand__keyword--btn-->
-
-                </div><!--recommand__keyword--container2-->
-            </div><!--recommand__keywords--container-->
-
-            </div><!--recommand__keyword--------------------------------->
+                    </div>
 
 
+                    <div class="recommand__keyword--container2">
 
-            <div class="hot__keyword">
+                        <button class="recommand__keyword--btn">
+                            <p>신촌 대학교 축제</p>
+                        </button>
+
+                        <button class="recommand__keyword--btn">
+                            <p>루프탑 바</p>
+                        </button>
+
+                        <button class="recommand__keyword--btn">
+                            <p>성수 갈비 골목</p>
+                        </button>
+
+                        <button class="recommand__keyword--btn">
+                            <p>녹사평 펍</p>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="hot__keyword">
                 <div class="hot__keyword--category--container">
                     <h1>인기 검색어</h1>
-                    <div id="clock">기준</div>                
-                </div><!--hot__keyword--category--container-->
+                    <div id="clock">기준</div>
+                </div>
 
                 <div class="hot__keyword--list--container">
                     <div class="hot__keyword--list">
@@ -110,63 +110,245 @@
                             <li>샤로수길</li>
                             </div>
                         </ol>
-                    </div><!--hot__keyword--list1-->
-
-                    </div><!--hot__keyword--category--container-->
-                </div><!--hot__keyword--list--container-->
-            </div><!--hot__keyword------------------------------->
+                    </div>
+                </div>
+            </div> -->
 
 
+            <!--========= 검색어 입력시(엔터전) theme 목록 ==========-->
+
+            <div class="search__dynamic--theme">
+                <section class="theme">
+                    <div class="theme__title-box">
+                    </div>
+
+                    <div class="theme__container">
+
+
+
+
+                        <!-------------- theme module start -------------->
+                        <div class="theme-box-area">
+                            <div class="theme-box-pic-area">
+                                <img src="/images/index-city.jpg" alt="">
+                            </div>
+
+                            <div class="profile-outter-box">
+                                <div class="profile-pic-id-outter">
+                                    <div class="profile-pic">
+
+                                        <img src="/images/profile-pic.jpg" alt="">
+                                    </div>
+                                    <div class="profile-id-text">
+                                        innerjoin123
+                                    </div>
+                                </div>
+
+                                <div class="profile-text-area-outter">
+                                    <div class="profile-text-title-area">
+                                        <h2>을지로 노포 싹다 투어</h2>
+                                    </div>
+
+                                    <div class="profile-text-contents-area">
+                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                        </p>
+                                    </div>
+
+
+                                    <div class="profile-status-area">
+                                <span class="material-symbols-outlined">
+                                    event_available
+                                    </span>
+
+                                        <div class="status-text">예약가능</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------- theme module end -------------->
+
+                        <!-------------- theme module start -------------->
+                        <div class="theme-box-area">
+                            <div class="theme-box-pic-area">
+                                <img src="/images/index-city.jpg" alt="">
+                            </div>
+
+                            <div class="profile-outter-box">
+                                <div class="profile-pic-id-outter">
+                                    <div class="profile-pic">
+
+                                        <img src="/images/profile-pic.jpg" alt="">
+                                    </div>
+                                    <div class="profile-id-text">
+                                        innerjoin123
+                                    </div>
+                                </div>
+
+                                <div class="profile-text-area-outter">
+                                    <div class="profile-text-title-area">
+                                        <h2>을지로 노포 싹다 투어</h2>
+                                    </div>
+
+                                    <div class="profile-text-contents-area">
+                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                        </p>
+                                    </div>
+
+
+                                    <div class="profile-status-area">
+                                <span class="material-symbols-outlined">
+                                    event_available
+                                    </span>
+                                        <div class="status-text">예약가능</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------- theme module end -------------->
+
+
+
+                        <!-------------- theme module start -------------->
+                        <div class="theme-box-area">
+                            <div class="theme-box-pic-area">
+                                <img src="/images/index-city.jpg" alt="">
+                            </div>
+
+                            <div class="profile-outter-box">
+                                <div class="profile-pic-id-outter">
+                                    <div class="profile-pic">
+
+                                        <img src="/images/profile-pic.jpg" alt="">
+                                    </div>
+                                    <div class="profile-id-text">
+                                        innerjoin123
+                                    </div>
+                                </div>
+
+                                <div class="profile-text-area-outter">
+                                    <div class="profile-text-title-area">
+                                        <h2>을지로 노포 싹다 투어</h2>
+                                    </div>
+
+                                    <div class="profile-text-contents-area">
+                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                        </p>
+                                    </div>
+
+
+                                    <div class="profile-status-area">
+                                <span class="material-symbols-outlined">
+                                    event_available
+                                    </span>
+                                        <div class="status-text">예약가능</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------- theme module end -------------->
+
+
+
+
+                    </div><!--theme-container-->
+                </section>
+                <!-- theme End -->
+            </div>
 
 
 
 
 
-              
 
 
-<!--============ footer =====================-->
-                <footer>
-
-                </footer>
-
-            </div><!--search-modal-content-->
-        </div><!--search-modal-overlay-->
-    </div><!--search-modal-->
-
-    <script>
-
-//------------- modal 창 ------------------------------------------
-        const openButton = document.getElementById("open");
-        const modal = document.querySelector(".search-modal");
-        const overlay = modal.querySelector(".search-modal-overlay");
-        const closeBtn = modal.querySelector("button");
-
-        const openModal = () => {
-            modal.classList.remove("hidden");
-        }
-        const closeModal = () => {
-            modal.classList.add("hidden");
-        }
-
-        // overlay.addEventListener("click", closeModal);
-        closeBtn.addEventListener("click", closeModal);
-        openButton.addEventListener("click", openModal);
 
 
-//------------ 시간 표시(연습해봄) -------------------------
-        function updateTime() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
 
-            var timeString = hours + ":" + minutes + ":" + seconds;
-            document.getElementById("clock").textContent = timeString;
-        }
 
-        setInterval(updateTime, 1000);
-        
-    </script>
+
+
+
+
+
+
+            <!--============ footer =====================-->
+            <footer>
+
+            </footer>
+
+        </div><!--search-modal-content-->
+    </div><!--search-modal-overlay-->
+</div><!--search-modal-->
+
+<script>
+
+    //------------- modal 창 ------------------------------------------
+    const openButton = document.getElementById("open");
+    const modal = document.querySelector(".search-modal");
+    const overlay = modal.querySelector(".search-modal-overlay");
+    const closeBtn = modal.querySelector("button");
+
+    const openModal = () => {
+        modal.classList.remove("hidden");
+    }
+    const closeModal = () => {
+        modal.classList.add("hidden");
+    }
+
+    // overlay.addEventListener("click", closeModal);
+    closeBtn.addEventListener("click", closeModal);
+    openButton.addEventListener("click", openModal);
+
+
+    //------------ 시간 표시(연습해봄) -------------------------
+    function updateTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        var timeString = hours + ":" + minutes + ":" + seconds;
+        document.getElementById("clock").textContent = timeString;
+    }
+
+    setInterval(updateTime, 1000);
+
+</script>
 </body>
 </html>
