@@ -13,6 +13,6 @@ public class HomeController {
 
     @GetMapping("test")
     public String test(){
-        return "mypage/profile-edit";
+        return "mypage/profile";
     }
 }
