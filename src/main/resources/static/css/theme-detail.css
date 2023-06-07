@@ -1,0 +1,386 @@
+.theme__title--header--section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 390px;
+    height: 400px;
+    /* background-color: aqua; */
+    margin-bottom: var(--section-margin-bottom);
+}
+
+.theme__title--header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 390px;
+    height: 28px;
+    /* background-color: lightblue; */
+    padding: var(--section-padding);
+
+}
+
+
+.theme__title--header--button--before button{
+    background: none;
+    color: var(--color-text-gray);
+}
+.theme__title--header--button--before i{
+    font-size: 20px;
+}
+
+
+.theme__title--header--button--share button{
+    background: none;
+    color: var(--color-text-gray);
+}
+.theme__title--header--button--share i{
+    font-size: 16px;
+}
+
+
+
+.theme_title--pic--container {
+    width: 100%;
+    height: 230px;
+    position: relative;
+    overflow: hidden;    
+    /* background-color: aquamarine; */
+    margin-bottom: var(--title-contents-gap);
+
+}
+.theme_title--pic--container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.theme__contents--text--container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 390px;
+    height: 130px;
+    /* background-color:aqua; */
+    padding: var(--section-padding);
+}
+.theme__contents--text--title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    /* margin-top: 10px; */
+    /* background-color: beige; */
+}
+.theme__contents--text--title h1 {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-large16);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-semibold);
+}
+
+.theme__contents--text--paragraph {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: 90px;
+    /* background-color:lightcyan; */
+}
+.theme__contents--text--paragraph p {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-gray);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+}
+
+
+.theme__cotents--text--status {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    height: 22px;
+    gap: 8px;
+    /* background-color: lightgoldenrodyellow; */
+}
+
+.theme__cotents--text--status button{
+    background: none;
+    color: var(--color-text-gray);
+}
+.theme__cotents--text--status i{
+    font-size: 22px;
+}
+.theme__cotents--text--status p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-gray);
+}
+.theme__cotents--text--status :nth-child(2) {
+    margin-right: 12px;
+}
+
+
+
+
+
+
+/*========= 갹각의 장소들 ============*/
+.theme__each-place {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 390px;
+    height: 374px;
+    /* background-color: lightblue; */
+    padding: var(--section-padding);
+    margin-bottom: var(--section-margin-bottom);
+}
+.theme__each-place--title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    /* background-color: beige; */
+    margin-bottom: var(--title-contents-gap);
+}
+.theme__each-place--title h1 {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-large16);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-semibold);
+}
+
+
+.theme__each-place--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+
+.theme__each-place--place--container {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    /* background-color: blanchedalmond; */
+}
+.theme__each-place--image--box {
+    width: 90px;
+    height: 90px;
+    /* background-color: lightgray; */
+    position:relative;
+    overflow: hidden;  
+    border-radius: 14px;
+    margin-right: 10px;
+}
+
+.theme__each-place--image--box img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.theme__each-place--text {
+    width: 200px;
+    height: 100%;
+    /* background-color: aqua; */
+}
+.theme__each-place--text :first-child {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium14);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-semibold);
+}
+.theme__each-place--text :nth-child(2) {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-regular);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+
+/*========= 호스트 정보 ============*/
+.host-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 390px;
+    height: 220px;
+    /* background-color: lightblue; */
+    padding: var(--section-padding);
+    margin-bottom: var(--section-margin-bottom);
+}
+.host-info--title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    /* background-color: beige; */
+    margin-bottom: var(--title-contents-gap);
+}
+.host-info--title h1 {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-large16);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-semibold);
+}
+
+.host-info hr {
+    width: 130px;
+    border-width: 0.8px;
+    border-style: solid;
+    /* border-color: var(--color-text-gray2); */
+    border-color: black;
+    margin-bottom: var(--title-contents-gap);
+
+}
+
+
+
+
+.host-info--pic--id {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    /* background-color:lightcoral; */
+    margin-bottom: var(--title-contents-gap);
+
+}
+.host-info--pic {
+    position:relative;
+    overflow: hidden;  
+    border-radius: 14px;
+    margin-right: 10px;
+    width: 80px;
+    height: 80px;
+    /* background-color: lightcyan; */
+    border-radius: 50%;
+}
+.host-info--pic img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.host-info--id--email {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 150px;
+    height: 100%;
+    /* background-color: aqua; */
+}
+.host-info--id--email h2 {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium14);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-semibold);
+}
+.host-info--id--email p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-regular);
+}
+.host-info--self--text {
+    width: 100%;
+    height: 70px;
+    /* background-color: blanchedalmond; */
+}
+.host-info--self--text p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium14);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-regular);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+}
+
+
+/*========= 하단 채팅 요청 ============*/
+
+.theme__detail--reservation--footer {
+    padding: var( --section-padding);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);    /* background-color: lightgray; */
+}
+.theme__detail--reservation--text--box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 180px;
+    height: 100%;
+    /* background-color: lightcoral; */
+    gap: 10px;
+    margin-left: 20px;
+
+}
+.theme__detail--reservation--text--box p {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-regular);
+}
+.theme__detail--reservation--button--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    /* background-color: aqua; */
+    margin-top: 25px;
+    margin-right: 25px;
+    border-radius: 14px;
+    box-shadow: 0px 8px 20px rgba(80, 97, 255, 0.1);
+}
+.theme__detail--reservation--button--container button {
+    display: flex;
+    background: none;
+    color: var(--color-text-gray);
+}
+.theme__detail--reservation--button--container p {
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium14);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-semibold);
+}
