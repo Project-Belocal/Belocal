@@ -5,8 +5,8 @@ body>header {
     align-items: center;
     justify-content: center;
     height: 50px;
-    border-bottom: 1px solid #484646;
     font-size: 0;
+    margin-bottom: var(--header-margin-bottom);
 }
 
 body {
@@ -36,3 +36,8 @@ main {
     font-weight: bold;
 }
 /* header 영역 끝 */
+
+/* main 영역 시작 */
+.registration-instruction__title {
+}
+/* main 영역 끝 */

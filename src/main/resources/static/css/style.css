@@ -3,7 +3,8 @@
 /* 한글 */
 @font-face{
     font-family: 'Noto Sans KR';
-    src: url("/public/Noto_Sans_KR/NotoSansKR-Medium.otf") format("opentype");
+    src: url("/Noto_Sans_KR/NotoSansKR-Medium.otf") format("opentype");
+    
     /*src: url('../public/Noto_Sans_KR/NotoSansKR-Regular.otf') format('opentype');*/
     unicode-range:U+AC00-D7A3;
 }
@@ -11,7 +12,7 @@
 /* inter */
 @font-face {
     font-family: 'Inter';
-    src: url('/public/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+    src: url('/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
     unicode-range:U+0041-005A, U+0061-007A;
 }
 
@@ -52,6 +53,7 @@
     --font-weight-light: 200;
 
     /*섹션 간격*/
+    --header-margin-bottom: 20px;
     --section-margin-bottom: 50px;
     --section-padding: 0 10px;
 
