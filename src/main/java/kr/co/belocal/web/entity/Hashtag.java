@@ -1,6 +1,6 @@
 package kr.co.belocal.web.entity;
 
 public class Hashtag {
-    private int id;
+    private Integer id;
     private String name;
 }
