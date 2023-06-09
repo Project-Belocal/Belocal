@@ -1,10 +1,21 @@
 package kr.co.belocal.web.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Date;
 import java.math.BigDecimal;
+import java.util.Arrays;
 
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
-    private int id;
+    private Integer id;
     private String userId;
     private String pw;
     private byte[] profilePic;
@@ -15,4 +26,5 @@ public class Member {
     private Date regDate;
     private BigDecimal rating;
     private Integer isWithdrawl;
+
 }

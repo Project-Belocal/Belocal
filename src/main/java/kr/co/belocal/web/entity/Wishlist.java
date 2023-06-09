@@ -1,7 +1,7 @@
 package kr.co.belocal.web.entity;
 
-public class Like {
+public class Wishlist {
     private Integer id;
     private Integer memberId;
-    private Integer postId;
+    private Integer travelThemeId;
 }
