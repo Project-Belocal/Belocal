@@ -1,10 +1,10 @@
 package kr.co.belocal.web.entity;
 
 public class Appointment {
-    private int id;
-    private int travelThemeId;
-    private int travelerId;
-    private int guideId;
+    private Integer id;
+    private Integer travelThemeId;
+    private Integer travelerId;
+    private Integer guideId;
     private Integer travelerCompletionStatus;
     private Integer guideCompletionStatus;
 }

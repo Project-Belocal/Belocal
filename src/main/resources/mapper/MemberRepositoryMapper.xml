@@ -1,0 +1,59 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kr.co.belocal.web.repository.MemberRepository">
+    <select id="findAll" resultType="kr.co.belocal.web.entity.Member">
+        SELECT * FROM member WHERE id = #{id}
+    </select>
+
+    <select id="findId" resultType="String">
+        SELECT user_id FROM member WHERE phone_num = #{phoneNum}
+    </select>
+
+    <select id="findPw" resultType="String">
+        SELECT pw FROM member WHERE user_id = #{userId} and phone_num = #{phoneNum}
+    </select>
+
+    <insert id="save" parameterType="kr.co.belocal.web.entity.Member">
+        INSERT INTO member
+        (
+            user_id,
+            pw,
+            nickname,
+            name,
+            phone_num,
+            birth_date
+        )
+        VALUES
+        (
+            #{userId},
+            #{pw},
+            #{nickName},
+            #{name},
+            #{phoneNum},
+            #{birthDate}
+        );
+    </insert>
+
+    <update id="update">
+        UPDATE member
+            <set>
+                <if test="profilePic != null">profile_pic = #{profilePic},</if>
+                <if test="pw != null">pw = #{pw},</if>
+                <if test="nickName != null">nickname = #{nickName},</if>
+                <if test="phoneNum != null">phone_num = #{phoneNum}</if>
+            </set>
+            WHERE id = #{id};
+    </update>
+
+    <update id="delete">
+        UPDATE member
+        <set>
+            is_withdrawl = #{isWithdrawl}
+        </set>
+        WHERE id = #{id};
+    </update>
+</mapper>

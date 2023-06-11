@@ -4,9 +4,9 @@ package kr.co.belocal.web.entity;
 import java.sql.Timestamp;
 
 public class Comment {
-    private int id;
-    private int postId;
-    private int parentCommandId;
+    private Integer id;
+    private Integer postId;
+    private Integer parentCommandId;
     private String content;
     private Timestamp regDate;
     private Timestamp modDate;

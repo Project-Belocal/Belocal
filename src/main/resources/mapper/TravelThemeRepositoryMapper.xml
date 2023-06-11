@@ -1,9 +1,71 @@
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.belocal.web.repository.MemberRepository">
 
-<mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
+
     <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
-        select * from travel_theme
+        SELECT *
+        FROM
+        travel_theme
+        WHERE
+        id = #{id}
     </select>
+
+
+    <select id="findByMemberId" resultType="kr.co.belocal.web.entity.TravelTheme">
+        SELECT *
+        FROM
+        travel_theme
+        WHERE
+        member_id = #{id};
+    </select>
+
+
+    <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme">
+        INSERT
+        INTO
+        travel_theme
+        (
+         id,
+         member_id,
+         title,
+         content,
+         region,
+         reg_date,
+
+        )
+        VALUES
+        (
+        #{id},
+        #{member_id}>,
+        #{title: }>,
+        #{content}>,
+        #{region}>,
+        #{reg_date: current_timestamp()}>,
+        );
+    </insert>
+
+
+    <update id="update" parameterType="kr.co.belocal.web.entity.TravelTheme">
+        UPDATE
+        travel_theme
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="region != null">region = #{region},</if>
+        </set>
+        WHERE id = #{id};
+    </update>
+
+
+    <delete id="delete" parameterType="kr.co.belocal.web.entity.TravelTheme">
+        DELETE
+        FROM
+        travel_theme
+        WHERE
+        id = #{id};
+    </delete>
+
+
 </mapper>
