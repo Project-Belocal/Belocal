@@ -20,9 +20,8 @@ public class TravelThemeController {
     @GetMapping("/theme-list")
     public String getList(Model model) {
 
-        List<TravelTheme> list = service.getList();
+//        List<TravelTheme> list = service.getList();
         model.addAttribute("model", model);
-        System.out.println(list);
         return "theme/theme_list";
     }
 }
