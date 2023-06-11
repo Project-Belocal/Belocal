@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import kr.co.belocal.web.entity.Theme;
+import kr.co.belocal.web.entity.TravelTheme;
 
 @Mapper
-public interface ThemeRepository {
+public interface TravelThemeRepository {
     
-    List<Theme> findAll();
+    List<TravelTheme> findAll();
 }

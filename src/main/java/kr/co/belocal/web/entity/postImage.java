@@ -1,6 +1,6 @@
 package kr.co.belocal.web.entity;
 
-public class postImage {
+public class PostImage {
     private int id;
     private int postId;
     private String name;

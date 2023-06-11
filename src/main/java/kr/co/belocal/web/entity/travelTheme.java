@@ -2,7 +2,12 @@ package kr.co.belocal.web.entity;
 
 import java.sql.Timestamp;
 
-public class travelTheme {
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class TravelTheme {
     private int id;
     private int memberId;
     private String title;

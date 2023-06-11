@@ -8,11 +8,12 @@
   <title>Document</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/theme-register.css">
+  <script src="js/theme-register.js" defer></script>
 </head>
 
 <body>
   <header>
-    <div class="header__prev-button">
+    <div class="header__prev-button hidden">
       <img src="/images/icon/left-arrow.svg">
     </div>
 
@@ -20,20 +21,157 @@
   </header>
 
   <main>
-    <section class="registration-instruction">
-      <h1 class="registration-instruction__title">테마를 구성하는 장소들을 등록해보세요</h1>
-      <p>멋진 사진으로 장소를 더욱 흥미롭게 만들 수 있어요!</p>
+    <section class="theme__registration-1st">
+      <section class="registration-instruction">
+        <h2>테마를 구성하는 장소들을 등록해보세요</h2>
+        <p>멋진 사진으로 장소를 더욱 흥미롭게 만들 수 있어요!</p>
+      </section>
+  
+      <section class="place__registration">
+        <ul class="place__container">
+          <!-- <li class="place__item">
+            <div class="place__images">
+              <img src="" alt="">
+            </div>
+            <div class="place__info">
+              <div class="place__location"></div>
+              <div class="place__description"></div>
+            </div>
+          </li> -->
+        </ul>
+        
+        <button href="" class="place__registration-btn">
+          <img src="/images/icon/add.svg" alt="">
+        </button>
+      </section>
+  
+      <div class="registration__next-btn">
+        <button>다음</button>
+      </div>
     </section>
 
-    <section class="place-registration">
-      <p>장소는 2개 이상 등록해주세요</p>
-      <ul>
-        <li>
-          <a href=""></a>
-        </li>
-      </ul>
+    <section class="theme__registration-2nd hidden">
+      <section class="registration-instruction">
+        <h1>테마에 대한 설명을 작성해주세요</h1>
+      </section>
+
+      <section class="theme__image-preview__container">
+        <ul class="theme__image-preview slider">
+
+        </ul>
+      </section>
+
+      <section class="theme__info">
+        <div class="theme__title">
+          <h2>제목</h2>
+          <textarea cols="50" rows="5" maxlength="100"></textarea>
+        </div>
+
+        <div class="theme__description">
+          <h2>설명</h2>
+          <textarea cols="50" rows="5" maxlength="100"></textarea>
+        </div>
+
+        <div class="theme__bookable-date">
+          <h2>예약 가능 날짜</h2>
+          <input type="date">
+        </div>
+
+        <div class="theme__preferred-time">
+          <h2>연락 선호 시간</h2>
+          <input type="time">
+        </div>
+      </section>
     </section>
   </main>
-</body>
+  <!-- 사진은 몇 장까지 등록 가능합니다 안내메시지 추가 -->
+  <!-- 등록된 사진 우측 상단에 x표시로 해당 사진 삭제할 수 있게 기능 추가 -->
+  <!-- 사진을 등록한 상태이면 사진 추가 버튼 안 나타나게 -->
+  <section class="modal">
+    <!-- Modal content -->
+    <div class="modal__content">
+      <div class="modal__header">
+        <h1>장소 등록하기</h1>
+        <a href=""  class="modal__close">
+          <img src="/images/icon/x-black.svg" alt="">
+        </a>
+      </div>
+      
+      <div class="modal__body">
+        <div class="modal__place-img">
+          <h2>사진</h2>
+          <div class="modal__image-preview__container">
+            <ul class="modal__image-preview slider"></ul>
+  
+            <button class="modal__delete-btn hidden">
+              <img src="/images/icon/delete.svg" alt="">
+            </button>
+          </div>
+  
+          <input type="file" class="modal__upload-btn" accept="image/*" required multiple style="display: none;">
+          <div class="modal__image-upload">
+            <img src="/images/icon/add.svg" alt="">
+          </div>
+        </div>
 
+        <div class="modal__place-category">
+          <h2>카테고리</h2>
+          <select name="category">
+            <option value="">------------</option>
+            <option>식당</option>
+            <option>술집</option>
+            <option>카페</option>
+            <option>전시</option>
+            <option>쇼핑</option>
+            <option>문화예술</option>
+            <option>액티비티</option>
+            <option>축제</option>
+            <option>종교</option>
+            <option>자연</option>
+          </select>
+        </div>
+
+        <div class="modal__place-location">
+          <h2>위치</h2>
+          <select name="location">
+            <option value="">------------</option>
+            <option>강남구</option>
+            <option>강동구</option>
+            <option>강서구</option>
+            <option>관악구</option>
+            <option>광진구</option>
+            <option>금천구</option>
+            <option>노원구</option>
+            <option>도봉구</option>
+            <option>동작구</option>
+            <option>마포구</option>
+            <option>서대문구</option>
+            <option>성동구</option>
+            <option>성북구</option>
+            <option>송파구</option>
+            <option>영등포구</option>
+            <option>용산구</option>
+            <option>은평구</option>
+            <option>중구</option>
+            <option>중랑구</option>
+          </select>
+        </div>
+
+        <div class="modal__place-description">
+          <div>설명</div>
+          <textarea maxlength="100"></textarea>
+        </div>
+
+        <div class="modal__save">
+          <button class="modal__save-btn">
+            <div>저장하기</div>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+</body>
 </html>
+

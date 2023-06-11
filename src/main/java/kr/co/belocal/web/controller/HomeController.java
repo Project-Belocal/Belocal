@@ -25,5 +25,11 @@ public class HomeController {
         
         return "sign-up";
     }
+
+    @RequestMapping("/wishlists")
+    public String wishlists(Model model) {
+        
+        return "/wishlists/wishlists";
+    }
     
 }
