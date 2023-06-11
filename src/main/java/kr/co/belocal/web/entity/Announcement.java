@@ -3,6 +3,7 @@ package kr.co.belocal.web.entity;
 
 import java.sql.Timestamp;
 
+
 public class Announcement {
     private Integer id;
     private String title;

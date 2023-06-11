@@ -25,34 +25,32 @@
         </div>
 
         <!-- input 창 -->
-        <div class="login__id">
-            <div class="login__id-wrap">
-                <img src="./images/icon/login-id.svg" alt="">
-                <input class="login__input-id" type="email" placeholder="예)BeLocal@belocal.co.kr" autocomplete="off">
-                <button class="hidden" type="button">
-                    <img src="" alt="">
-                </button>
+        <form action="" method="post">
+            <div class="login__id">
+                <div class="login__id-wrap">
+                    <img src="./images/icon/login-id.svg" alt="">
+                    <input class="login__input-id" type="text" name="userId" placeholder="아이디를 입력해주세요." autocomplete="off">
+                    <button class="hidden" type="button">
+                        <img src="" alt="">
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="login__pw">
-            <div class="login__pw-wrap">
-                <img src="./images/icon/login-pwd.svg" alt="">
-                <input class="login__input-pw" type="password" placeholder="비밀번호는 8~16자 영문,숫자,특수기호" autocomplete="off">
+            <div class="login__pw">
+                <div class="login__pw-wrap">
+                    <img src="./images/icon/login-pwd.svg" alt="">
+                    <input class="login__input-pw" type="password" name="pw" placeholder="비밀번호는 8~16자 영문,숫자,특수기호" autocomplete="off">
+                </div>
             </div>
-        </div>
-
-
-
         <!-- 로그인/회원가입 버튼 -->
         <div class="login__btn-wrap">
             <div class="login__btn">
-                <a href="">sign in</a>
+                <button type="submit">sign in</button>
             </div>
             <div class="login__btn">
-                <a href="#">sign up</a>
+                <a href="sign-up">sign up</a>
             </div>
         </div>
-
+        </form>
 
         <!-- 계정 정보 관련 -->
         <div class="login__look">

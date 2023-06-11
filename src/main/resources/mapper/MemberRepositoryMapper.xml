@@ -5,19 +5,36 @@
 
 
 <mapper namespace="kr.co.belocal.web.repository.MemberRepository">
-    <select id="findAll" resultType="kr.co.belocal.web.entity.Member">
+
+
+    <!--아이디 중복 확인-->
+    <select id="checkId" resultType="String">
+        SELECT user_id FROM member WHERE user_id = #{userId}
+    </select>
+
+
+    <!--회원정보검색-->
+    <select id="findAll" resultType="Member">
         SELECT * FROM member WHERE id = #{id}
     </select>
 
+    <!--로그인-->
+    <select id="login" resultType="Member">
+        SELECT * FROM member WHERE user_id = #{userId} AND pw = #{pw}
+    </select>
+
+    <!--아이디 찾기-->
     <select id="findId" resultType="String">
         SELECT user_id FROM member WHERE phone_num = #{phoneNum}
     </select>
 
+    <!--비밀번호 찾기-->
     <select id="findPw" resultType="String">
         SELECT pw FROM member WHERE user_id = #{userId} and phone_num = #{phoneNum}
     </select>
 
-    <insert id="save" parameterType="kr.co.belocal.web.entity.Member">
+    <!--회원가입-->
+    <insert id="save" parameterType="Member">
         INSERT INTO member
         (
             user_id,
@@ -38,7 +55,8 @@
         );
     </insert>
 
-    <update id="update">
+    <!--회원 정보 수정-->
+    <update id="update" parameterType="Member">
         UPDATE member
             <set>
                 <if test="profilePic != null">profile_pic = #{profilePic},</if>
@@ -49,7 +67,8 @@
             WHERE id = #{id};
     </update>
 
-    <update id="delete">
+    <!--회원탈퇴-->
+    <update id="delete" parameterType="Member">
         UPDATE member
         <set>
             is_withdrawl = #{isWithdrawl}

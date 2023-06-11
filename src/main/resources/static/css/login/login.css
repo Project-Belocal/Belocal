@@ -127,7 +127,32 @@
     background-color: var(--color-point-blue);
     border-radius: var(--border-radius);
 }
+/*로그인 버튼*/
+.login__btn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: var(--color-point-blue);
+    color: var(--color-point-white);
+}
 
+/*.login__btn:nth-child(1){*/
+/*    background-color: var(--color-point-blue);*/
+/*    border: 1px solid var(--color-point-blue);*/
+/*}*/
+
+/*.login__btn:nth-child(1) button{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    color: var(--color-point-white);*/
+/*}*/
+
+
+/*회원가입 버튼*/
 .login__btn a{
     display: flex;
     justify-content: center;

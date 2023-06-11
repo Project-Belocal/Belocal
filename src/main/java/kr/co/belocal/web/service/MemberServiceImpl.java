@@ -13,10 +13,41 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private MemberRepository memberRepository;
 
-    @Override
-    public List<Member> getList() {
-        List<Member> list = memberRepository.findAll(4);
 
-        return list;
+    //아이디 찾기
+    @Override
+    public String getListByFindId(String phoneNum) {
+        return memberRepository.findId(phoneNum);
     }
+
+    //비밀번호 찾기
+    @Override
+    public String getListByFindId(String userId, String phoneNum) {
+        return memberRepository.findPw(userId,phoneNum);
+    }
+
+
+    //회원가입
+    @Override
+    public void save(Member member) {
+        memberRepository.save(member);
+    }
+
+
+    //로그인
+    @Override
+    public Member login(Member member) {
+        Member info = memberRepository.login(member);
+        if (info!=null){
+            return info;
+        }
+        return null;
+    }
+
+    @Override
+    public String checkId(String userId, String type) {
+        return memberRepository.checkId(userId);
+    }
+
+
 }
