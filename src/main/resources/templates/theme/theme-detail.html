@@ -6,205 +6,223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/theme-detail.css">
+    <link rel="stylesheet" href="/css/theme/theme-detail.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="/js/them-detail.js"></script>
 </head>
 <body>
+
+
 <!--========= theme__title ============-->
-    <section class="theme__title--header--section">
-        <div class="theme__title--header">
+<section class="theme__title--header--section">
+    <div class="theme__title--header">
 
-            <div  class="theme__title--header--button--before">
-                <button>
-                    <i class="material-symbols-outlined">
-                        navigate_before
-                    </i>
-                </button>
-            </div>
-
-            
-            <div  class="theme__title--header--button--share">
-                <button>
-                    <i class="material-symbols-outlined">
-                        ios_share
-                    </i>
-                </button>
-            </div>
-
-
+        <div  class="theme__title--header--button--before">
+            <button>
+                <i class="material-symbols-outlined">
+                    navigate_before
+                </i>
+            </button>
         </div>
 
 
+        <div class="theme__title--header--button--share">
+            <button>
+                <i class="material-symbols-outlined">
+                    more_vert
+                </i>
+            </button>
+        </div>
+    </div>
 
-        <div class="theme_title--pic--container">
-            <img src="/images/index-city.jpg" alt="">
+
+    <!-- ======== 모달창 영역 ======== -->
+    <div class="modal__background hidden">
+        <!-- <div class="modal__background--black hidden"> -->
+
+        <div class="modal__window">
+            <button class="modal__share-btn" type="button">
+                <span>공유하기</span>
+            </button>
+            <button class="modal__modify-btn" type="button">
+                <span>수정하기</span>
+            </button>
+            <button class="modal__delete-btn" type="button">
+                <span>삭제하기</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- </div> -->
+
+
+
+    <div class="theme_title--pic--container">
+        <img src="/images/index-city.jpg" alt="">
+    </div>
+
+
+
+
+    <div class="theme__contents--text--container">
+
+
+        <div class="theme__contents--text--title">
+            <h1>종로 뒷골목 투어</h1>
         </div>
 
 
-
-
-
-
-
-        <div class="theme__contents--text--container">
-
-        
-            <div class="theme__contents--text--title">
-                <h1>종로 뒷골목 투어</h1>
-            </div>
-
-
-            <div class="theme__contents--text--paragraph">
-                <p>종로의 오래된 피맛골은 서울특별시의 주간선도로이자 서울특별시 한강 이북 지역의 핵심 횡축도로로, 서울특별시 종로구 세종대로사거리에서 흥인지문을 지나 동대문구 신설동역에 이르는 연장 4.2km, 너비 35~40m(왕복 6~8차선)의 도로이다.
-                    51번 서울특별시도의 일부이며, 전 구간이 6번 국도에 속한다. 성산대교북단 - 내부순환로 - 홍지문터널 - 정릉터널 - 하월곡JC - 북부간선도로가 국도대체우회도로 역할을 하고 있으나 어째서인지 기존 도로 그대로 지정되었다.
-                </p>
-            </div>
-
-
-            <div class="theme__cotents--text--status">
-                <button>
-                    <i class="material-symbols-outlined">
-                        heart_plus
-                    </i>
-                </button>
-                <p>like 1022</p>
-                <p>location: Seoul</p>
-            </div>
-
-
+        <div class="theme__contents--text--paragraph">
+            <p>종로의 오래된 피맛골은 서울특별시의 주간선도로이자 서울특별시 한강 이북 지역의 핵심 횡축도로로, 서울특별시 종로구 세종대로사거리에서 흥인지문을 지나 동대문구 신설동역에 이르는 연장 4.2km, 너비 35~40m(왕복 6~8차선)의 도로이다.
+                51번 서울특별시도의 일부이며, 전 구간이 6번 국도에 속한다. 성산대교북단 - 내부순환로 - 홍지문터널 - 정릉터널 - 하월곡JC - 북부간선도로가 국도대체우회도로 역할을 하고 있으나 어째서인지 기존 도로 그대로 지정되었다.
+            </p>
         </div>
-    </section>
+
+
+        <div class="theme__cotents--text--status">
+            <button>
+                <i class="material-symbols-outlined">
+                    heart_plus
+                </i>
+            </button>
+            <p>like 1022</p>
+            <p>location: Seoul</p>
+        </div>
+
+
+    </div>
+</section>
 
 
 
 <!--========= 갹각의 장소들 ============-->
-    <section>
-        <div class="theme__each-place">
+<section>
+    <div class="theme__each-place">
 
-            <div class="theme__each-place--title">
-                <h1>각각의 장소들</h1>
-            </div>
-
-            <div class="theme__each-place--container">
-
-
-                    <div class="theme__each-place--place--container">
-                        <div class="theme__each-place--image--box">
-                            <img src="/images/location01.jpg" alt="">
-                        </div>
-
-                        <div class="theme__each-place--text">
-                            <p>여의도 포장마차</p>
-                            <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
-                                여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
-                                금융가 직원들의 회식 문화가 궁금하신가요?
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <div class="theme__each-place--place--container">
-                        <div class="theme__each-place--image--box">
-                            <img src="/images/location01.jpg" alt="">
-                        </div>
-
-                        <div class="theme__each-place--text">
-                            <p>여의도 포장마차</p>
-                            <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
-                                여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
-                                금융가 직원들의 회식 문화가 궁금하신가요?
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                    <div class="theme__each-place--place--container">
-                        <div class="theme__each-place--image--box">
-                            <img src="/images/location01.jpg" alt="">
-                        </div>
-
-                        <div class="theme__each-place--text">
-                            <p>여의도 포장마차</p>
-                            <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
-                                여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
-                                금융가 직원들의 회식 문화가 궁금하신가요?
-                            </p>
-                        </div>
-                    </div>
-
-                    
-            </div>
+        <div class="theme__each-place--title">
+            <h1>각각의 장소들</h1>
         </div>
-    </section>
+
+        <div class="theme__each-place--container">
+
+
+            <div class="theme__each-place--place--container">
+                <div class="theme__each-place--image--box">
+                    <img src="/images/location01.jpg" alt="">
+                </div>
+
+                <div class="theme__each-place--text">
+                    <p>여의도 포장마차</p>
+                    <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
+                        여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
+                        금융가 직원들의 회식 문화가 궁금하신가요?
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="theme__each-place--place--container">
+                <div class="theme__each-place--image--box">
+                    <img src="/images/location01.jpg" alt="">
+                </div>
+
+                <div class="theme__each-place--text">
+                    <p>여의도 포장마차</p>
+                    <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
+                        여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
+                        금융가 직원들의 회식 문화가 궁금하신가요?
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="theme__each-place--place--container">
+                <div class="theme__each-place--image--box">
+                    <img src="/images/location01.jpg" alt="">
+                </div>
+
+                <div class="theme__each-place--text">
+                    <p>여의도 포장마차</p>
+                    <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
+                        여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
+                        금융가 직원들의 회식 문화가 궁금하신가요?
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
 
 
 
 <!--========= 호스트 정보 ============-->
-    <section>
-        <div class="host-info">
+<section>
+    <div class="host-info">
 
 
-            <div class="host-info--title">
-                <h1>호스트정보</h1>
-            </div>
-
-            <hr>
-
-
-
-            <div class="host-info--pic--id">
-                <div class="host-info--pic">
-                    <img src="/images/profile-pic.jpg" alt="">
-                </div>
-
-                <div class="host-info--id--email">
-                    <h2>InnerJoin123</h2>
-                    <p>falconpunch@gmail.com</p>
-                </div>
-            </div>
-
-
-            <div class="host-info--self--text">
-                <p>
-                    제가 여행업을 시작하기까지도 꽤 힘이 들었지만 경험과 열정, 최선을 다하는 노력, 그리고 ...전 회사에서는 서비스와 인지도 면에서 상용 고객이 많았기에 10여년 이상을 유지했던 회사였으며 배낭여행을 비롯 전시회, 허니문, 패키지, 골프 등 전 여행업에 관해 고객에 맞추는 투어 플래너 및 고객관리까지 모든 업무를 통합적으로 해 나갔습니다.
-                </p>
-            </div>
-
-
+        <div class="host-info--title">
+            <h1>호스트정보</h1>
         </div>
-    </section>
+
+        <hr>
+
+
+
+        <div class="host-info--pic--id">
+            <div class="host-info--pic">
+                <img src="/images/profile-pic.jpg" alt="">
+            </div>
+
+            <div class="host-info--id--email">
+                <h2>InnerJoin123</h2>
+                <p>falconpunch@gmail.com</p>
+            </div>
+        </div>
+
+
+        <div class="host-info--self--text">
+            <p>
+                제가 여행업을 시작하기까지도 꽤 힘이 들었지만 경험과 열정, 최선을 다하는 노력, 그리고 ...전 회사에서는 서비스와 인지도 면에서 상용 고객이 많았기에 10여년 이상을 유지했던 회사였으며 배낭여행을 비롯 전시회, 허니문, 패키지, 골프 등 전 여행업에 관해 고객에 맞추는 투어 플래너 및 고객관리까지 모든 업무를 통합적으로 해 나갔습니다.
+            </p>
+        </div>
+
+
+    </div>
+</section>
 
 
 
 <!--========= 하단 채팅 요청 ============-->
-    <section class="theme__detail--reservation--footer">
+<section class="theme__detail--reservation--footer">
 
 
-        <div class="theme__detail--reservation--text--box">
-            <p>
-                예약 가능 날짜
-                <br>
-                2023-05-18 ~ 2023-07-01
-            </p>
+    <div class="theme__detail--reservation--text--box">
+        <p>
+            예약 가능 날짜
+            <br>
+            2023-05-18 ~ 2023-07-01
+        </p>
 
-            <p>
-                연락 가능 시간
-                <br>
-                09:30 ~ 12:20
-            </p>
-        </div>
+        <p>
+            연락 가능 시간
+            <br>
+            09:30 ~ 12:20
+        </p>
+    </div>
 
 
-        <div class="theme__detail--reservation--button--container">
-            <button>
-                <p>채팅요청</p>
-            </button>
+    <div class="theme__detail--reservation--button--container">
+        <button>
+            <p>채팅요청</p>
+        </button>
 
-        </div>
+    </div>
 
-    </section>
+</section>
 
-    
+
 </body>
 </html>
