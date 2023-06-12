@@ -48,10 +48,14 @@ public class MemberController {
     @PostMapping("login")
     public String  login(Member member , HttpSession session){
 
-        if (memberService.login(member))
-            return "redirect:/";
+        if (!memberService.login(member))
+            return "redirect:/login?error";
 
-        return "login/login";
+
+        session.setAttribute("id",member.getId());
+
+
+        return "redirect:/";
     }
 
     //회원가입 페이지

@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/login/login.css">
+    <script src="./js/login/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
+
     <!-- 뒤로가기 버튼 -->
     <div class="login__undo">
         <button>
             <img src="./images/icon/left-arrow.svg" alt="">
         </button>
     </div>
-    
+
     <div class="login">
 
         <!-- 로고 -->
@@ -71,14 +73,14 @@
             </div>
         </div>
 
-        
+
         <!-- sns 로그인 구분선 -->
         <div class="login__line-wrap">
             <div class="login__line"></div>
             <div class="login__or">or</div>
             <div class="login__line"></div>
         </div>
-        
+
 
         <!-- 구글 로그인 버튼 -->
         <div class="login__social">
@@ -86,6 +88,17 @@
                 <img src="./images/icon/google-btn.svg" alt="">
                 <span>Sign in with Google</span>
             </button>
+        </div>
+
+        <div class="login__social">
+            <button class="login__kakao">
+                <img src="./images/icon/google-btn.svg" alt="">
+                <span>Sign in with Kakao</span>
+            </button>
+        </div>
+
+        <div class="login__error hidden">
+            <span>아이디 및 비밀번호를 다시 확인해주세요.</span>
         </div>
 
 

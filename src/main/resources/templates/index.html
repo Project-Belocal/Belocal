@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/navbar}"
+>
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/navbar.css">
+<!--  <link rel="stylesheet" href="./css/navbar.css">-->
   <link rel="stylesheet" href="./css/index/header.css">
   <link rel="stylesheet" href="./css/index/category.css">
   <link rel="stylesheet" href="./css/index/location.css">
@@ -105,7 +109,7 @@
     <section class="theme">
       <div class="theme__title-box">
         <h2 class="theme__title">Theme</h2>
-        <a href="#" class="theme__link">더보기 &gt;</a>
+        <a href="/theme-list" class="theme__link">더보기 &gt;</a>
       </div>
       <!-- 바로 위 섹션과의 간격 밑 title-box와 container와의 간격 조절 해야됨 -->
       <!-- profile-text-contents-area 영역 내 문장이 밑의 예약가능 부분과 겹쳐짐
@@ -291,7 +295,7 @@
                 <img src="./images/profile-pic.jpg" alt="">
               </div>
               <!-- 유저 닉네임 -->
-              <p class="posting__user-nickname">아시발12세</p>
+              <p class="posting__user-nickname">한재검</p>
             </a>
           </div>
 
@@ -302,7 +306,7 @@
               <div class="posting__profile-img">
                 <img src="./images/profile-pic.jpg" alt="">
               </div>
-              <p class="posting__user-nickname">엄준식12세</p>
+              <p class="posting__user-nickname">카카카카카카케케캬</p>
             </a>
           </div>
           <div class="posting__feed">
@@ -403,42 +407,7 @@
   <!-- footer End-->
 
   <!-- nav-bar -->
-  <section>
-    <nav class="navbar">
-      <div class="navbar__list">
-        <a href="#" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/home.svg" alt="">
-          </div>
-          <div class="navbar__text">홈</div>
-        </a>
-        <a href="./wishlists" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/heart.svg" alt="">
-          </div>
-          <div class="navbar__text">찜목록</div>
-        </a>
-        <a href="./mylocation" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/location-pin.svg" alt="">
-          </div>
-          <div class="navbar__text">내위치</div>
-        </a>
-        <a href="./chat/chatlist" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/message.svg" alt="">
-          </div>
-          <div class="navbar__text">메시지</div>
-        </a>
-        <a href="./mypage" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/user.svg" alt="">
-          </div>
-          <div class="navbar__text">내정보</div>
-        </a>
-      </div>
-    </nav>
-  </section>
+<div th:replace="inc/navbar"></div>
   <!-- nav-bar End-->
 </body>
 
