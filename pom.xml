@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>kr.co.belocal</groupId>
-	<artifactI3d>belocal</artifactI3d>
+	<artifactId>belocal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>belocal</name>
 	<description>belocal project</description>
