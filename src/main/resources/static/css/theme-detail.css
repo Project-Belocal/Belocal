@@ -18,41 +18,26 @@
     height: 28px;
     /* background-color: lightblue; */
     padding: var(--section-padding);
-    margin-top: 6px;
 
 }
 
 
 .theme__title--header--button--before button{
     background: none;
-    color: var(--color-text-black);
+    color: var(--color-text-gray);
 }
 .theme__title--header--button--before i{
-    font-size: 24px;
+    font-size: 20px;
 }
 
 
-.theme__title--header--button--more button{
+.theme__title--header--button--share button{
     background: none;
-    color: var(--color-text-black);
-    /* font-weight: 800; */
+    color: var(--color-text-gray);
 }
-.theme__title--header--button--more i{
-    font-size: 24px;
+.theme__title--header--button--share i{
+    font-size: 16px;
 }
-/*
-.hidden{
-    display: none;
-} */
-
-
-
-
-
-
-
-
-
 
 
 
@@ -60,7 +45,7 @@
     width: 100%;
     height: 230px;
     position: relative;
-    overflow: hidden;
+    overflow: hidden;    
     /* background-color: aquamarine; */
     margin-bottom: var(--title-contents-gap);
 
@@ -200,7 +185,7 @@
     height: 90px;
     /* background-color: lightgray; */
     position:relative;
-    overflow: hidden;
+    overflow: hidden;  
     border-radius: 14px;
     margin-right: 10px;
 }
@@ -292,11 +277,12 @@
 }
 .host-info--pic {
     position:relative;
-    overflow: hidden;
+    overflow: hidden;  
     border-radius: 14px;
     margin-right: 10px;
     width: 80px;
     height: 80px;
+    /* background-color: lightcyan; */
     border-radius: 50%;
 }
 .host-info--pic img {
@@ -351,7 +337,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-
+    
     width: 100%;
     height: 100px;
     margin-bottom: 10px;
@@ -397,42 +383,4 @@
     font-size: var(--font-size-medium14);
     color: var(--color-text-gray);
     font-weight: var(--font-weight-semibold);
-}
-
-
-/*---- modal ------*/
-.modal__background {
-    display: flex;
-    position: fixed;
-    background: black;
-    z-index: 2;
-}
-.modal__window {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 140px;
-    height: 160px;
-    background-color: white;
-    margin-top: -170px;
-    margin-left: 220px;
-    border-radius: 14px;
-    box-shadow: var(--box-shadow);
-}
-
-.modal__background--black {
-    display: flex;
-    position: fixed;
-    top:0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
-
-
-.hidden {
-    display: none;
 }
