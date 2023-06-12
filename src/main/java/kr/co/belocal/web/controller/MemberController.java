@@ -14,19 +14,25 @@ public class MemberController {
     @Autowired
     MemberServiceImpl memberService;
 
-    //회원정보수정
-    @GetMapping("my/profile-edit")
-    public String profileEdit(){
-        return "my/profile-edit";
-    }
-    //닉네임 중복 체크
+
+    //아이디 중복 확인
     @PostMapping("sign-up/checkId")
     @ResponseBody
-    public int CheckId(@RequestParam("id") String id, @RequestParam("type") String type){
+    public int CheckId(@RequestParam("id") String id){
 
-        if (id.equals(memberService.checkId(id,type)))
+        if (id.equals(memberService.checkId(id)))
             return 1;
 
+        return 0;
+    }
+
+    //닉네임 중복 확인
+    @PostMapping("sign-up/checkNickName")
+    @ResponseBody
+    public int CheckNickName(@RequestParam("nickName") String nickName){
+
+        if (nickName.equals(memberService.checkNickName(nickName)))
+            return 1;
         return 0;
     }
 
@@ -35,26 +41,17 @@ public class MemberController {
     //로그인페이지
     @GetMapping("login")
     public String login(){
-        return "login";
+        return "login/login";
     }
 
     //로그인 정보 전송
     @PostMapping("login")
-    public String login(Member member , HttpSession session){
+    public String  login(Member member , HttpSession session){
 
+        if (memberService.login(member))
+            return "redirect:/";
 
-            Member login = memberService.login(member);
-
-            if (login==null){
-                System.out.println("가입된 정보 없음");
-            }
-
-            if(login!=null) {
-                session.setAttribute("loginMember", login);
-            }
-
-
-        return "redirect:/";
+        return "login/login";
     }
 
     //회원가입 페이지
@@ -66,10 +63,8 @@ public class MemberController {
     //회원가입 정보 전송
     @PostMapping("/sign-up")
     public String join(Member member,HttpSession session){
-
         memberService.save(member);
-
-        return "login";
+        return "login/login";
     }
 
 }

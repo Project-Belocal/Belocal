@@ -8,11 +8,11 @@ import java.util.List;
 
 @Mapper
 public interface MemberRepository {
-    BigDecimal rating = new BigDecimal(1);
 
     //아이디 중복 확인
     String checkId(String userId);
-
+    //닉네임 중복 확인
+    String checkNickName(String nickName);
 
     //로그인
     Member login(Member member);

@@ -8,7 +8,10 @@ public interface MemberService {
     String getListByFindId(String phoneNum);
     String getListByFindId(String userId,String phoneNum);
     void save(Member member);
-    Member login(Member member);
+    boolean login(Member member);
 
-    String checkId(String userId, String type);
+
+
+    String checkId(String userId);
+    String checkNickName(String nickName);
 }

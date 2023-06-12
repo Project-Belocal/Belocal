@@ -1,17 +1,24 @@
 package kr.co.belocal.web.service;
 
+import jakarta.servlet.http.HttpSession;
+import kr.co.belocal.web.config.SecurityConfig;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+
 
 @Service
 public class MemberServiceImpl implements MemberService{
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     //아이디 찾기
@@ -30,23 +37,36 @@ public class MemberServiceImpl implements MemberService{
     //회원가입
     @Override
     public void save(Member member) {
+        member.setPw(passwordEncoder.encode(member.getPw()));
         memberRepository.save(member);
     }
 
 
     //로그인
     @Override
-    public Member login(Member member) {
+    public boolean login(Member member) {
         Member info = memberRepository.login(member);
-        if (info!=null){
-            return info;
-        }
-        return null;
+
+        //일치하는 계정이 존재한다면
+        if (info!=null)
+            if (passwordEncoder.matches(member.getPw(),info.getPw()))
+                return true;
+
+        return false;
     }
 
+
+
+    //아이디 중복 확인
     @Override
-    public String checkId(String userId, String type) {
+    public String checkId(String userId) {
         return memberRepository.checkId(userId);
+    }
+
+    //닉네임 중복 확인
+    @Override
+    public String checkNickName(String nickName) {
+        return memberRepository.checkNickName(nickName);
     }
 
 
