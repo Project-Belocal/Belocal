@@ -38,23 +38,24 @@ header{
     border-radius: var(--border-radius);
 }
 
-.header__search-icon{
+.header__search span{
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     width: 24px;
     margin: 14px;
 }
 
-.header__search-bar{
+#open {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     border-radius: var(--border-radius);
     background-color: var(--color-point-white);
-    color:var(--color-text-gray2);
+    color: var(--color-text-gray);
     width: 100%;
     height: 100%;
+
 }
 
 .header__search-bar span {
