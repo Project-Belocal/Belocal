@@ -52,6 +52,7 @@
     --font-weight-light: 200;
 
     /*섹션 간격*/
+    --header-margin-bottom: 20px;
     --section-margin-bottom: 50px;
     --section-padding: 0 10px;
 
