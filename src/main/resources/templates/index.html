@@ -1,445 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/navbar.css">
-  <link rel="stylesheet" href="./css/index/header.css">
-  <link rel="stylesheet" href="./css/index/category.css">
-  <link rel="stylesheet" href="./css/index/location.css">
-  <link rel="stylesheet" href="./css/index/theme.css">
-  <link rel="stylesheet" href="./css/index/posting.css">
-  <link rel="stylesheet" href="./css/index/footer.css">
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-  <script src="./js/index/location.js" defer></script>
-  <title>BeLocal Main</title>
-
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/theme/theme-detail.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <script src="/js/them-detail-modal.js"></script>
 </head>
-
 <body>
-  <!-- TODO 1. 이미지 소스 정상적으로 수정 -->
-  <!-- header -->
-  <header>
-    <div class="header__wrap">
-      <div class="header__img">
-        <img src="./images/index-city.jpg" alt="">
-      </div>
 
-      <div class="header__search">
-        <img class="header__search-icon" src="./images/icon/search.svg" alt="">
-        <button class="header__search-bar" type="button"><span>검색해보셈 ㅋ</span></button>
-      </div>
+
+<!--========= theme__title ============-->
+<section class="theme__title--header--section">
+  <div class="theme__title--header">
+
+    <div  class="theme__title--header--button--before">
+      <button>
+        <i class="material-symbols-outlined">
+          navigate_before
+        </i>
+      </button>
     </div>
-  </header>
-
-  <main>
-    <!-- category -->
-    <section class="category">
-      <div class="category__title-box">
-        <h2 class="category__title">Category</h2>
-        <a href="#" class="category__link">더보기 &gt;</a>
-      </div>
-      <div class="category__items-box">
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-        <a href="#" class="category__item">
-          <div class="category__img">
-            <img src="./images/icon/category.svg" alt="">
-          </div>
-          <span class="category__text">카테고리이름</span>
-        </a>
-      </div>
-    </section>
-    <!-- category End-->
-
-    <!-- theme -->
-    <!-- TODO 1. class명 bem 방식으로 수정 -->
-    <!-- TODO 2. 전체 사이즈 재조정 (너무 크다고 생각 됨) -->
-    <!-- TODO 3. text 일정 길이 이상이면 ...으로 변하게 수정 -->
-    <!-- TODO 4. 하단 border 안 나오는 오류 수정 -->
-    <section class="theme">
-      <div class="theme__title-box">
-        <h2 class="theme__title">Theme</h2>
-        <a href="/theme-list" class="theme__link">더보기 &gt;</a>
-      </div>
-      <!-- 바로 위 섹션과의 간격 밑 title-box와 container와의 간격 조절 해야됨 -->
-      <!-- profile-text-contents-area 영역 내 문장이 밑의 예약가능 부분과 겹쳐짐
-      그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 -->
-      <div class="theme__container">
-        <!-------------- theme module start -------------->
-        <div class="theme-box-area">
-          <div class="theme-box-pic-area">
-            <img src="/images/index-city.jpg" alt="">
-          </div><!--theme-box-pic-area-->
-
-          <div class="profile-outter-box">
-            <div class="profile-pic-id-outter">
-              <div class="profile-pic">
-
-                <img src="/images/profile-pic.jpg" alt="">
-              </div><!--profile-pic-->
-              <div class="profile-id-text">
-                innerjoin123
-              </div><!--profile-id-text-->
-            </div><!--profile-pic-id-->
-
-            <div class="profile-text-area-outter">
-              <div class="profile-text-title-area">
-                <h2>을지로 노포 싹다 투어</h2>
-              </div><!--profile-text-title-area-->
-
-              <div class="profile-text-contents-area">
-                <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                  어쩌구 어쩌구 저쩌구 믿거나 말거나
-                  을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                  ㅁㅇㄴㄻㄴㅇㄻ
-                  ㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                  을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                  ㅁㅇㄴㄻㄴㅇㄻ
-                  ㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ
-                </p>
-              </div><!--profile-text-contents-area-->
 
 
-              <div class="profile-status-area">
-                <!-- <span class="status-icon"> -->
-                  <!-- <img src="/images/icon/reservation-ok.svg" alt=""> -->
-                    <i class="material-icons">event_available</i>
-                <!-- </span>status-icon -->
-
-                <div class="status-text">예약가능</div>
-
-              </div><!--profile-status-area-->
-            </div><!--profile-text-area-outter-->
-          </div><!--profile-outter-box-->
-        </div><!--theme-box-area-->
-        <!-------------- theme module end -------------->
-
-        <!-------------- theme module start -------------->
-        <div class="theme-box-area">
-          <div class="theme-box-pic-area">
-            <img src="/images/index-city.jpg" alt="">
-          </div><!--theme-box-pic-area-->
-
-          <div class="profile-outter-box">
-            <div class="profile-pic-id-outter">
-              <div class="profile-pic">
-
-                <img src="/images/profile-pic.jpg" alt="">
-              </div><!--profile-pic-->
-              <div class="profile-id-text">
-                innerjoin123
-              </div><!--profile-id-text-->
-            </div><!--profile-pic-id-->
-
-            <div class="profile-text-area-outter">
-              <div class="profile-text-title-area">
-                <h2>을지로 노포 싹다 투어</h2>
-              </div><!--profile-text-title-area-->
-
-              <div class="profile-text-contents-area">
-                <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                  어쩌구 어쩌구 저쩌구 믿거나 말거나
-                  을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                  ㅁㅇㄴㄻㄴㅇㄻ
-                  ㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                  을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                  ㅁㅇㄴㄻㄴㅇㄻ
-                  ㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ
-                  ㅁㄴㅇㄻㄴㅇㄹ
-                </p>
-              </div><!--profile-text-contents-area-->
+    <div class="theme__title--header--button--share">
+      <button>
+        <i class="material-symbols-outlined">
+          more_vert
+        </i>
+      </button>
+    </div>
+  </div>
 
 
-              <div class="profile-status-area">
-                    <i class="material-icons">event_available</i>
-                <div class="status-text">예약가능</div>
+  <!-- ======== 모달창 영역 ======== -->
+  <div class="modal__background hidden">
+    <!-- <div class="modal__background--black hidden"> -->
 
-              </div><!--profile-status-area-->
-            </div><!--profile-text-area-outter-->
-          </div><!--profile-outter-box-->
-        </div><!--theme-box-area-->
-        <!-------------- theme module end -------------->
+    <div class="modal__window">
+      <button class="modal__share-btn" type="button">
+        <span>공유하기</span>
+      </button>
+      <button class="modal__modify-btn" type="button">
+        <span>수정하기</span>
+      </button>
+      <button class="modal__delete-btn" type="button">
+        <span>삭제하기</span>
+      </button>
+    </div>
+  </div>
 
-        
-
-      </div><!--theme-container-->
-    </section>
-    <!-- theme End -->
+  <!-- </div> -->
 
 
-    <!-- location -->
-    <!-- TODO 1. draggable image slider로 수정 -->
-    <!-- TODO 2. 이미지 어둡게 하고 그 위에 정보 나타내기 -->
-    <!-- TODO 3. 메인 색상 활용 -->
-    <section class="location">
-      <div class="location__title">
-        <h1>location</h1>
-        <a href="">더보기></a>
-      </div>
 
-      <div class="location__slider">
-        <div class="location__images">
-          <div class="location__image">
-            <img src="./images/location01.jpg" alt="">
-          </div>
-          <div class="location__image">
-            <img src="./images/location02.jpg" alt="">
-          </div>
-          <div class="location__image">
-            <img src="./images/location03.jpg" alt="">
-          </div>
-          <div class="location__image">
-            <img src="./images/location04.jpg" alt="">
-          </div>
-          <div class="location__image">
-            <img src="./images/location05.jpg" alt="">
-          </div>
+  <div class="theme_title--pic--container">
+    <img src="/images/index-city.jpg" alt="">
+  </div>
+
+
+
+
+  <div class="theme__contents--text--container">
+
+
+    <div class="theme__contents--text--title">
+      <h1>종로 뒷골목 투어</h1>
+    </div>
+
+
+    <div class="theme__contents--text--paragraph">
+      <p>종로의 오래된 피맛골은 서울특별시의 주간선도로이자 서울특별시 한강 이북 지역의 핵심 횡축도로로, 서울특별시 종로구 세종대로사거리에서 흥인지문을 지나 동대문구 신설동역에 이르는 연장 4.2km, 너비 35~40m(왕복 6~8차선)의 도로이다.
+        51번 서울특별시도의 일부이며, 전 구간이 6번 국도에 속한다. 성산대교북단 - 내부순환로 - 홍지문터널 - 정릉터널 - 하월곡JC - 북부간선도로가 국도대체우회도로 역할을 하고 있으나 어째서인지 기존 도로 그대로 지정되었다.
+      </p>
+    </div>
+
+
+    <div class="theme__cotents--text--status">
+      <button>
+        <i class="material-symbols-outlined">
+          heart_plus
+        </i>
+      </button>
+      <p>like 1022</p>
+      <p>location: Seoul</p>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+<!--========= 갹각의 장소들 ============-->
+<section>
+  <div class="theme__each-place">
+
+    <div class="theme__each-place--title">
+      <h1>각각의 장소들</h1>
+    </div>
+
+    <div class="theme__each-place--container">
+
+
+      <div class="theme__each-place--place--container">
+        <div class="theme__each-place--image--box">
+          <img src="/images/location01.jpg" alt="">
         </div>
 
-        <div class="location__nav-buttons">
-          <div class="location__prev-button">
-            <img src="./images/icon/left-arrow.svg">
-          </div>
-          <div class="location__next-button">
-            <img src="./images/icon/right-arrow.svg">
-          </div>
-        </div>
-        <div class="location__nav-dots">
-          <span class="location__dot active"></span>
-          <span class="location__dot"></span>
-          <span class="location__dot"></span>
-          <span class="location__dot"></span>
-          <span class="location__dot"></span>
-        </div>
-      </div>
-    </section>
-    <!-- location End -->
-
-    <!-- posting -->
-    <!-- TODO 1. Theme처럼 카드 좌측에 붙여놓을지 아니면 간격 둘지 결정하기 -->
-    <section class="posting">
-      <!-- posting 제목 영역 -->
-      <div class="posting__title-box">
-        <div class="posting__title">Posting</div>
-        <a href="#" class="posting__link">더보기 ></a>
-      </div>
-
-      <!-- posting 영역 -->
-      <div class="posting__container">
-        <!-- posting 목록 -->
-        <div class="posting__list">
-          <!-- posting  -->
-          <div class="posting__feed">
-            <a class="posting__feed-link" href="#">
-              <!-- 등록이미지 -->
-              <img src="./images/location02.jpg" loading="lazy" alt="">
-              <!-- 프로필 이미지 -->
-              <div class="posting__profile-img">
-                <img src="./images/profile-pic.jpg" alt="">
-              </div>
-              <!-- 유저 닉네임 -->
-              <p class="posting__user-nickname">아시발12세</p>
-            </a>
-          </div>
-
-
-          <div class="posting__feed">
-            <a class="posting__feed-link" href="#">
-              <img src="./images/location02.jpg" alt="">
-              <div class="posting__profile-img">
-                <img src="./images/profile-pic.jpg" alt="">
-              </div>
-              <p class="posting__user-nickname">엄준식12세</p>
-            </a>
-          </div>
-          <div class="posting__feed">
-            <a class="posting__feed-link" href="#">
-              <img src="./images/location02.jpg" alt="">
-              <div class="posting__profile-img">
-                <img src="./images/profile-pic.jpg" alt="">
-              </div>
-              <p class="posting__user-nickname">엄준식12세</p>
-            </a>
-          </div>
-          <div class="posting__feed">
-            <a class="posting__feed-link" href="#">
-              <img src="./images/location02.jpg" alt="">
-              <div class="posting__profile-img">
-                <img src="./images/profile-pic.jpg" alt="">
-              </div>
-              <p class="posting__user-nickname">엄준식12세</p>
-            </a>
-          </div>
-          <div class="posting__feed">
-            <a class="posting__feed-link" href="#">
-              <img src="./images/location02.jpg" alt="">
-              <div class="posting__profile-img">
-                <img src="./images/profile-pic.jpg" alt="">
-              </div>
-              <p class="posting__user-nickname">엄준식12세</p>
-            </a>
-          </div>
-          <div class="posting__feed">
-            <a class="posting__feed-link" href="#">
-              <img src="./images/location02.jpg" alt="">
-              <div class="posting__profile-img">
-                <img src="./images/profile-pic.jpg" alt="">
-              </div>
-              <p class="posting__user-nickname">엄준식12세</p>
-            </a>
-          </div>
-
+        <div class="theme__each-place--text">
+          <p>여의도 포장마차</p>
+          <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
+            여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
+            금융가 직원들의 회식 문화가 궁금하신가요?
+          </p>
         </div>
       </div>
 
-    </section>
 
-    <!-- posting End-->
-  </main>
+      <div class="theme__each-place--place--container">
+        <div class="theme__each-place--image--box">
+          <img src="/images/location01.jpg" alt="">
+        </div>
 
-  <!-- footer -->
-  <footer class="footer">
-    <div class="footer__text">
-      <h3>1588-1588</h3>
-      <p>durdlerain@gamil.com</p>
+        <div class="theme__each-place--text">
+          <p>여의도 포장마차</p>
+          <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
+            여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
+            금융가 직원들의 회식 문화가 궁금하신가요?
+          </p>
+        </div>
+      </div>
+
+
+
+      <div class="theme__each-place--place--container">
+        <div class="theme__each-place--image--box">
+          <img src="/images/location01.jpg" alt="">
+        </div>
+
+        <div class="theme__each-place--text">
+          <p>여의도 포장마차</p>
+          <p>빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
+            여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
+            금융가 직원들의 회식 문화가 궁금하신가요?
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+<!--========= 호스트 정보 ============-->
+<section>
+  <div class="host-info">
+
+
+    <div class="host-info--title">
+      <h1>호스트정보</h1>
     </div>
 
-    <div class="footer__menu">
-      <div class="footer__items">
-        <a href="#">이용약관</a>
+    <hr>
+
+
+
+    <div class="host-info--pic--id">
+      <div class="host-info--pic">
+        <img src="/images/profile-pic.jpg" alt="">
       </div>
-      <div class="footer__items">
-        <a href="#">고객센터</a>
-      </div>
-      <div class="footer__items">
-        <a href="#">안전정책</a>
-      </div>
-      <div class="footer__items items-color">
-        <a href="#">BeLocal<br />소개</a>
+
+      <div class="host-info--id--email">
+        <h2>InnerJoin123</h2>
+        <p>falconpunch@gmail.com</p>
       </div>
     </div>
 
-    <div class="footer__content">
-      <div class="footer__list">
-        <a href="#">개인정보처리방침</a>
-        <a href="#">위치기반 서비스 이용약관</a>
-        <a href="#">사업자 정보확인</a>
-        <a href="#">회사 세부정보</a>
-      </div>
-      <div class="footer__text">
-        <span>
-          (주)브레이브모바일은 통신판매중개자로서 통신판매의 당사자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.
-        </span>
-      </div>
-      <ul class="footer__guide">
-        <li class="footer__text">
-          상호명:(주)브레이브모바일 · 대표이사:KIM ROBIN H · 개인정보책임관리자:김태우 · 주소:서울특별시 강남구 테헤란로 415, L7 강남타워 5층
-        </li>
-        <li class="footer__text">
-          사업자등록번호:120-88-22325 · 통신판매업신고증:제 2021-서울강남-00551 호 · 직업정보제공사업 신고번호:서울청 제 2019-21호
-        </li>
-        <li class="footer__text">
-          고객센터:1599-5319 · 이메일:support@soomgo.com
-        </li>
-        <li class="footer__text">
-          Copyright ©Brave Mobile Inc. All Rights Reserved.
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <!-- footer End-->
 
-  <!-- nav-bar -->
-  <section>
-    <nav class="navbar">
-      <div class="navbar__list">
-        <a href="#" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/home.svg" alt="">
-          </div>
-          <div class="navbar__text">홈</div>
-        </a>
-        <a href="/wishlists" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/heart.svg" alt="">
-          </div>
-          <div class="navbar__text">찜목록</div>
-        </a>
-        <a href="./mylocation" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/location-pin.svg" alt="">
-          </div>
-          <div class="navbar__text">내위치</div>
-        </a>
-        <a href="./chat/chatlist" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/message.svg" alt="">
-          </div>
-          <div class="navbar__text">메시지</div>
-        </a>
-        <a href="my-page/profile" type="button" class="navbar__btn">
-          <div>
-            <img src="./images/icon/user.svg" alt="">
-          </div>
-          <div class="navbar__text">내정보</div>
-        </a>
-      </div>
-    </nav>
-  </section>
-  <!-- nav-bar End-->
+    <div class="host-info--self--text">
+      <p>
+        제가 여행업을 시작하기까지도 꽤 힘이 들었지만 경험과 열정, 최선을 다하는 노력, 그리고 ...전 회사에서는 서비스와 인지도 면에서 상용 고객이 많았기에 10여년 이상을 유지했던 회사였으며 배낭여행을 비롯 전시회, 허니문, 패키지, 골프 등 전 여행업에 관해 고객에 맞추는 투어 플래너 및 고객관리까지 모든 업무를 통합적으로 해 나갔습니다.
+      </p>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+<!--========= 하단 채팅 요청 ============-->
+<section class="theme__detail--reservation--footer">
+
+
+  <div class="theme__detail--reservation--text--box">
+    <p>
+      예약 가능 날짜
+      <br>
+      2023-05-18 ~ 2023-07-01
+    </p>
+
+    <p>
+      연락 가능 시간
+      <br>
+      09:30 ~ 12:20
+    </p>
+  </div>
+
+
+  <div class="theme__detail--reservation--button--container">
+    <button>
+      <p>채팅요청</p>
+    </button>
+
+  </div>
+
+</section>
+
+
 </body>
-
 </html>
