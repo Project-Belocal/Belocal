@@ -13,7 +13,7 @@ import kr.co.belocal.web.service.TravelThemeService;
 
 @Controller
 public class TravelThemeController {
-    
+
     @Autowired
     private TravelThemeService service;
 
