@@ -17,6 +17,8 @@ public class TravelThemeServiceImp implements TravelThemeService {
     @Autowired
     private TravelThemeRepository repository;
 
+
+
     @Override
     public List<Theme> getList(Integer memberId) {
         return null;
@@ -36,11 +38,4 @@ public class TravelThemeServiceImp implements TravelThemeService {
     public Member getById(Integer memberId, Integer travelThemeId) {
         return null;
     }
-
-    @Override
-    public List<TravelTheme> getList() {
-        return null;
-    }
-
-
 }

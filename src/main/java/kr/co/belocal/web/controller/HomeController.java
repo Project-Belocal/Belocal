@@ -1,35 +1,18 @@
 package kr.co.belocal.web.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
 
-    @RequestMapping("/index")
-    public String index(Model model) {
-        
+    @GetMapping("index")
+    public String index(){
         return "index";
     }
 
-    @RequestMapping("/login")
-    public String login(Model model) {
-        
-        return "login";
+    @GetMapping("test")
+    public String test(){
+        return "chat/chatlist";
     }
-
-    @RequestMapping("/sign-up")
-    public String join(Model model) {
-        
-        return "sign-up";
-    }
-
-    @RequestMapping("/wishlists")
-    public String wishlists(Model model) {
-        
-        return "/wishlists/wishlists";
-    }
-    
 }

@@ -1,19 +1,16 @@
 package kr.co.belocal.web.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import java.sql.Date;
 import java.math.BigDecimal;
-import java.util.Arrays;
+
 
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Member {
     private Integer id;
     private String userId;

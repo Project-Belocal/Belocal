@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/sign-up/sign-up.css">
+    <script src="../js/sign-up/sign-up.js" defer></script>
     <title>Document</title>
 </head>
 <!-- TODO 뒤로가기 버튼,로고 위치 전체 페이지에서 고정-->
@@ -14,7 +15,7 @@
 
 <body>
         <!-- 뒤로가기 버튼 -->
-        <div class="test11">
+        <div class="header">
             <div class="sign-up__undo">
                 <button>
                     <img src="../images/icon/left-arrow.svg" alt="">
@@ -37,46 +38,63 @@
                 <div class="sign-up__container">
                     <!-- 아이디 -->
                     <div class="sign-up__input-wrap">
-                        <h3 class="sign-up__title ess">아이디</h3>
+                        <h3 class="sign-up__title">아이디</h3>
                         <div class="sign-up__input">
-                            <input class="sign-up__id" type="text" placeholder="아이디를 입력해 주세요">
+                            <input class="sign-up__id" name="userId" type="text" placeholder="아이디를 입력해 주세요">
                         </div>
-                        <p class="sign-up__error hidden">이미 존재하는 아이디 입니다.</p>
+                        <p class="sign-up__error idError hidden"></p>
                     </div>
 
                     <!-- 비밀번호 -->
                     <div class="sign-up__input-wrap">
-                        <h3 class="sign-up__title ess">비밀번호</h3>
+                        <h3 class="sign-up__title">비밀번호</h3>
                         <div class="sign-up__input">
-                            <input class="sign-up__pw" type="password" placeholder="영문, 숫자, 특수문자를 조합8~16자">
+                            <input class="sign-up__pw" name="pw" type="password" placeholder="영문, 숫자, 특수문자를 조합8~16자">
                         </div>
-                        <p class="sign-up__error hidden">영문, 숫자, 특수문자를 조합8~16자를 입력해주세요.</p>
+                        <p class="sign-up__error pwError hidden">영문, 숫자, 특수문자를 조합8~16자를 입력해주세요.</p>
                     </div>
 
                     <!-- 비밀번호 재확인 -->
-                    <div class="sign-up__input-wrap ess">
+                    <div class="sign-up__input-wrap">
                         <h3 class="sign-up__title">비밀번호 재확인</h3>
                         <div class="sign-up__input">
-                            <input class="sign-up__reconfirm" type="password" placeholder="비밀번호를 다시 입력해 주세요">
+                            <input class="sign-up__reconfirm" name="pw2" type="password" placeholder="비밀번호를 다시 입력해 주세요">
                         </div>
-                        <p class="sign-up__error hidden">비밀번호가 일치하지 않습니다.</p>
+                        <p class="sign-up__error reconfirmError hidden">비밀번호가 일치하지 않습니다.</p>
                     </div>
 
                     <!-- 이름 -->
                     <div class="sign-up__input-wrap">
                         <h3 class="sign-up__title">이름</h3>
                         <div class="sign-up__input">
-                            <input class="sign-up__name" type="text" placeholder="이름을 입력해 주세요" >
+                            <input class="sign-up__name" name="name" type="text" placeholder="이름을 입력해 주세요" >
                         </div>
                     </div>
 
                     <!-- 닉네임 -->
                     <div class="sign-up__input-wrap">
-                        <h3 class="sign-up__title ess">닉네임</h3>
+                        <h3 class="sign-up__title">닉네임</h3>
                         <div class="sign-up__input">
-                            <input class="sign-up__nick-name" type="text" placeholder="닉네임을 입력해 주세요">
+                            <input class="sign-up__nick-name" name="nickName" type="text" placeholder="닉네임을 입력해 주세요">
                         </div>
-                        <p class="sign-up__error hidden">이미 존재하는 닉네임 입니다.</p>
+                        <p class="sign-up__error nickError hidden">이미 존재하는 닉네임 입니다.</p>
+                    </div>
+
+                    <!-- 3. 필드(생년월일) -->
+                    <div class="sign-up__input-wrap">
+                        <h3 class="sign-up__title">생년월일</h3>
+                        <div class="sign-up__birth">
+                            <select class="box year"  >
+                                <option disabled selected>출생 연도</option>
+                            </select>
+                            <select class="box month" >
+                                <option disabled selected>월</option>
+                            </select>
+                            <select class="box day" >
+                                <option disabled selected>일</option>
+                            </select>
+                        </div>
+                        <input class="birth" type="hidden" name="birthDate" value="" >
                     </div>
 
                     <!-- 전화번호 -->
@@ -88,7 +106,7 @@
                             <option value="일본">일본+81</option>
                         </select>
                         <div class="sign-up__Auth">
-                            <input class="sign-up__tel" type="tel" placeholder="전화번호를 입력해 주세요">
+                            <input class="sign-up__tel" name="phoneNum" pattern="\d*" maxlength="11" type="tel" placeholder="전화번호를 입력해 주세요">
                             <input class="sign-up__tel-btn" type="button" value="인증번호 받기">
                         </div>
                         <p class="sign-up__error hidden">올바른 번호 11자리를 입력해 주세요</p>
@@ -114,7 +132,7 @@
                     </div>
 
                     <!-- 가입 버튼 -->
-                    <button type="submit" class="sign-up__btn action" href="#">가입하기</button>
+                    <button type="submit" class="sign-up__btn action">가입하기</button>
                 </div>
 
 

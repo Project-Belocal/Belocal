@@ -113,6 +113,7 @@ button {
 }
 
 button {
+    cursor: pointer;
     background-color: var(--color-point-white);
 }
 
