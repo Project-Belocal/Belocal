@@ -7,9 +7,10 @@ import java.util.List;
 @Mapper
 public interface TravelThemeRepository {
 
-
     // theme List 모두 불러오기
-    List<TravelTheme> findAll(Integer id);
+    List<TravelTheme> findAll();
+
+//    List<TravelTheme> findAll(Integer id);
 
 
     // theme 을 member id 에 맞게 불러오기
