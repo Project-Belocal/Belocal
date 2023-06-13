@@ -3,8 +3,7 @@
 /* 한글 */
 @font-face{
     font-family: 'Noto Sans KR';
-    /*src: url("/public/Noto_Sans_KR/NotoSansKR-Medium.otf") format("opentype");*/
-    src: url("public/Noto_Sans_KR/NotoSansKR-Medium.otf") format("opentype");
+    src: url('public/Noto_Sans_KR/NotoSansKR-Medium.otf') format('opentype');
     unicode-range:U+AC00-D7A3;
 }
 
@@ -113,6 +112,7 @@ button {
 }
 
 button {
+    cursor: pointer;
     background-color: var(--color-point-white);
 }
 
