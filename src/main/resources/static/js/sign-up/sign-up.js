@@ -199,3 +199,34 @@ window.addEventListener("load",function (){
 })
 
 
+//번호인증
+window.addEventListener("load",function (){
+    const phoneNum = document.querySelector(".sign-up__tel");
+    const sendBtn = document.querySelector(".sign-up__tel-btn");
+
+    sendBtn.onclick = function (){
+        let tel = phoneNum.value;
+
+
+        sendSms(tel);
+    }
+
+    const sendSms = async (tel)=>{
+        const response = await fetch("sms/send",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                to : tel
+            })
+        })
+        if (response.ok){
+            const data = await response.json();
+            console.log(data)
+        }else {
+            console.log("Error",response.status,response.statusText);
+        }
+    }
+
+})
