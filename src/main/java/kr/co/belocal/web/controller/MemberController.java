@@ -71,4 +71,9 @@ public class MemberController {
         return "login/login";
     }
 
-}
+
+
+    //user-profile 페이지 : id, nickname, email 불러오기
+//    @GetMapping("/user-profile")
+
+}//class
