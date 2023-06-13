@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     width: 390px;
-    height: 2200px;
+    height: 100%;
 
 }
 /*============ header =====================*/
@@ -23,16 +23,17 @@ body {
     align-items: center;
     align-content: center;
     width: 100%;
-    height: 100%;
     top: 100px;
     padding: var(--section-padding);
     background-color: white;
+    margin-bottom: 60px;
 
 }
 .search-modal-overlay {
     background-color: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
+
 
 }
 
@@ -480,6 +481,13 @@ body {
     color: #182CE3; /* 원하는 색상 값으로 변경 */
     transform: scale(0.8);
 }
+
+
+
+
+
+
+
 
 
 

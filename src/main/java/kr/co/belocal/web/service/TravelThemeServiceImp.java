@@ -17,20 +17,23 @@ public class TravelThemeServiceImp implements TravelThemeService {
     @Autowired
     private TravelThemeRepository repository;
 
-
-
     @Override
-    public List<Theme> getList(Integer memberId) {
+    public List<TravelTheme> getList() {
+        List<TravelTheme> list = repository.findAll();
+        return list;
+    }
+    @Override
+    public List<TravelTheme> getList(Integer memberId) {
         return null;
     }
 
     @Override
-    public List<Theme> getList(String categoryName, String location, String description) {
+    public List<TravelTheme> getList(String categoryName, String location, String description) {
         return null;
     }
 
     @Override
-    public Category findById(Integer memeberId, Integer traverThemeId) {
+    public Category findById(Integer memberId, Integer travelThemeId) {
         return null;
     }
 
@@ -38,4 +41,5 @@ public class TravelThemeServiceImp implements TravelThemeService {
     public Member getById(Integer memberId, Integer travelThemeId) {
         return null;
     }
+
 }
