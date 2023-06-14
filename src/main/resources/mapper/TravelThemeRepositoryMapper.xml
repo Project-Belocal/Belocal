@@ -4,7 +4,7 @@
 <mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
 
 
-    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
+    <select id="findAlL" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM
         travel_theme
@@ -39,7 +39,7 @@
         #{title},
         #{content},
         #{region},
-        #{regDate},
+        #{regDate}
         );
     </insert>
 

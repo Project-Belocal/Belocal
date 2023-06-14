@@ -7,6 +7,8 @@ import kr.co.belocal.web.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.belocal.web.entity.Category;
+import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.repository.TravelThemeRepository;
 import org.springframework.ui.context.Theme;

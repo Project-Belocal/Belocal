@@ -3,17 +3,16 @@ package kr.co.belocal.web.service;
 import kr.co.belocal.web.entity.Category;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
+
 import org.springframework.ui.context.Theme;
 
 import java.util.List;
 
 public interface TravelThemeService {
 
-
-
-    // 'user-profile' 유저가 올린 테마들 모두 보여주는 것
     List<TravelTheme> getList();
-
+    
+    // 'user-profile' 유저가 올린 테마들 모두 보여주는 것
     List<TravelTheme> getList(Integer memberId);
 
 
