@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
 
     @Autowired
-    MemberServiceImpl memberService;
+    private MemberServiceImpl memberService;
 
 
     //아이디 중복 확인
