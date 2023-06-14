@@ -1,0 +1,225 @@
+/*====== 가로 스크롤 설정 영역 ======*/
+.theme-index {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: var(--section-margin-bottom);
+}
+
+.theme__title-box-index{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--section-padding);
+    margin-bottom: var(--title-contents-gap);
+}
+
+.theme__title-index{
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+}
+
+.theme__container-index{
+    width: 100%;
+    height: 410px;
+    display: flex;
+    flex-direction: row;
+    /* overflow-x: hidden; */
+    overflow-x: scroll;
+    /* overflow-y: scroll; */
+    gap: 20px;
+    padding: 0 0 0 10px;
+    margin-bottom: 1px;
+}
+
+.theme__container-index::-webkit-scrollbar{
+    display: none;
+}
+
+/*====== theme-box-area ===========*/
+
+.theme-box-area-index {
+    /* margin: 0 auto; */
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    align-content: center;
+    width: 320px;
+    height: 400px;
+    background-color: white;
+    border-radius: 14px;
+    /* object-fit: cover; */
+    /* overflow: auto; */
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1px;
+
+}
+
+.theme-box-pic-area-index {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content: center;
+    box-sizing: border-box;
+    width: 320px;
+    height: 280px;
+    background-color: gray;
+    border-radius: 14px 14px 0 0;
+    /* box-sizing: border-box; */
+    object-fit: fill;
+    overflow: hidden;
+    margin-bottom: -10px;
+}
+
+.theme-box-pic-area-index img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.profile-outter-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 120px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    /* background-color: aqua; */
+    gap: 8px;
+    padding: var(--section-padding);
+}
+.profile-pic-id-outter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* align-self: center; */
+    /* align-content: center; */
+    width: 100px;
+    height: 100px;
+    margin-bottom: 18px;
+    /* background-color: blue; */
+    gap: 4px;
+}
+
+.profile-pic {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    width: 76px;
+    height: 76px;
+    /* margin-left: px; */
+    /* background-color: red; */
+    border-radius: 50%;
+    overflow:auto;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-id-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222222;
+
+}
+
+.profile-text-area-outter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* margin-top: 18px; */
+    /* gap: 10px; */
+    width: 208px;
+    height: 120px;
+    /* background-color: blueviolet; */
+
+}
+
+.profile-text-title-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* margin-bottom: 10px; */
+    width: 200px;
+    height: 30px;
+    /* background-color: red; */
+    /* overflow: ; */
+    padding: var(--section-padding);
+}
+
+.profile-text-title-area h2 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+
+.profile-text-contents-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin-bottom: 0px; */
+    width: 208px;
+    height: 48px;
+    /* background-color:blanchedalmond; */
+    margin-bottom: 0px;
+    padding: var(--section-padding);
+}
+
+.profile-text-contents-area p {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    color: #717171;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+}
+
+.profile-status-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    margin-top: 18px;
+    /* background-color: chartreuse; */
+    gap: 2px;
+    padding: var(--section-padding);
+}
+
+.status-text {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color:#182CE3;
+}
+
+
+.material-icons {
+    color: #182CE3; /* 원하는 색상 값으로 변경 */
+    transform: scale(0.8);
+}
+

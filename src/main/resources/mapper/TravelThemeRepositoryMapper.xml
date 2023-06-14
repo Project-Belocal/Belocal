@@ -8,8 +8,6 @@
         SELECT *
         FROM
         travel_theme
-        WHERE
-        id = #{id}
     </select>
 
 
@@ -18,7 +16,7 @@
         FROM
         travel_theme
         WHERE
-        member_id = #{id};
+        member_id = #{memberId};
     </select>
 
 

@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/login/login.css">
+    <script src="./js/login/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
+
     <!-- 뒤로가기 버튼 -->
     <div class="login__undo">
         <button>
             <img src="./images/icon/left-arrow.svg" alt="">
         </button>
     </div>
-    
+
     <div class="login">
 
         <!-- 로고 -->
@@ -25,33 +27,36 @@
         </div>
 
         <!-- input 창 -->
-        <div class="login__id">
-            <div class="login__id-wrap">
-                <img src="./images/icon/login-id.svg" alt="">
-                <input class="login__input-id" type="email" placeholder="예)BeLocal@belocal.co.kr" autocomplete="off">
-                <button class="hidden" type="button">
-                    <img src="" alt="">
-                </button>
+        <form action="" method="post">
+            <div class="login__id">
+                <div class="login__id-wrap">
+                    <img src="./images/icon/login-id.svg" alt="">
+                    <input class="login__input-id" type="text" name="userId" placeholder="아이디를 입력해주세요." autocomplete="off">
+                    <button class="hidden" type="button">
+                        <img src="" alt="">
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="login__pw">
-            <div class="login__pw-wrap">
-                <img src="./images/icon/login-pwd.svg" alt="">
-                <input class="login__input-pw" type="password" placeholder="비밀번호는 8~16자 영문,숫자,특수기호" autocomplete="off">
+            <div class="login__pw">
+                <div class="login__pw-wrap">
+                    <img src="./images/icon/login-pwd.svg" alt="">
+                    <input class="login__input-pw" type="password" name="pw" placeholder="비밀번호는 8~16자 영문,숫자,특수기호" autocomplete="off">
+                </div>
             </div>
-        </div>
+            <!-- 로그인/회원가입 버튼 -->
+            <div class="login__btn-wrap">
+                <div class="login__btn">
+                    <button type="submit" >
+                        <span>sign-in</span>
+                    </button>
+                </div>
+                <div class="login__btn">
+                    <a href="sign-up">sign up</a>
+                </div>
+            </div>
+        </form>
 
 
-
-        <!-- 로그인/회원가입 버튼 -->
-        <div class="login__btn-wrap">
-            <div class="login__btn">
-                <a href="">sign in</a>
-            </div>
-            <div class="login__btn">
-                <a href="/sign-up">sign up</a>
-            </div>
-        </div>
 
 
         <!-- 계정 정보 관련 -->
@@ -68,14 +73,14 @@
             </div>
         </div>
 
-        
+
         <!-- sns 로그인 구분선 -->
         <div class="login__line-wrap">
             <div class="login__line"></div>
             <div class="login__or">or</div>
             <div class="login__line"></div>
         </div>
-        
+
 
         <!-- 구글 로그인 버튼 -->
         <div class="login__social">
@@ -83,6 +88,17 @@
                 <img src="./images/icon/google-btn.svg" alt="">
                 <span>Sign in with Google</span>
             </button>
+        </div>
+
+        <div class="login__social">
+            <button class="login__kakao">
+                <img src="./images/icon/google-btn.svg" alt="">
+                <span>Sign in with Kakao</span>
+            </button>
+        </div>
+
+        <div class="login__error hidden">
+            <span>아이디 및 비밀번호를 다시 확인해주세요.</span>
         </div>
 
 

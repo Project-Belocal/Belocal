@@ -13,7 +13,7 @@ public interface TravelThemeService {
     List<TravelTheme> getList();
     
     // 'user-profile' 유저가 올린 테마들 모두 보여주는 것
-    List<TravelTheme> getList(Integer memberId);
+    List<Theme> getList(Integer memberId);
 
 
 
@@ -29,4 +29,5 @@ public interface TravelThemeService {
 
     // 'theme-detail' 페이지 하단 문자로 박아놓는 시간, 날짜임
     Member getById(Integer memberId, Integer travelThemeId);
+
 }

@@ -14,7 +14,7 @@ import kr.co.belocal.web.service.TravelThemeService;
 @Controller
 @RequestMapping("/theme")
 public class TravelThemeController {
-    
+
     @Autowired
     private TravelThemeService service;
 
@@ -27,3 +27,4 @@ public class TravelThemeController {
         return "theme/theme_list";
     }
 }
+
