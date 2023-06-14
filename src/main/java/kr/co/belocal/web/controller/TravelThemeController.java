@@ -12,6 +12,7 @@ import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.service.TravelThemeService;
 
 @Controller
+@RequestMapping("/theme")
 public class TravelThemeController {
     
     @Autowired

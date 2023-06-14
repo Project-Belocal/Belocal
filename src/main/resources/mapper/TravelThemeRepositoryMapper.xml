@@ -1,10 +1,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.belocal.web.repository.MemberRepository">
+<mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
 
 
-    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
+    <select id="findAlL" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM
         travel_theme
@@ -33,16 +33,15 @@
          content,
          region,
          reg_date,
-
         )
         VALUES
         (
         #{id},
-        #{member_id}>,
-        #{title: }>,
-        #{content}>,
-        #{region}>,
-        #{reg_date: current_timestamp()}>,
+        #{memberId},
+        #{title},
+        #{content},
+        #{region},
+        #{regDate}
         );
     </insert>
 
