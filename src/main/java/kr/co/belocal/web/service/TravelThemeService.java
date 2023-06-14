@@ -13,7 +13,7 @@ public interface TravelThemeService {
     List<TravelTheme> getList();
     
     // 'user-profile' 유저가 올린 테마들 모두 보여주는 것
-    List<Theme> getList(Integer memberId);
+    List<TravelTheme> getList(Integer memberId);
 
 
 
