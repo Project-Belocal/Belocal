@@ -1,14 +1,10 @@
 package kr.co.belocal.web.service;
 
-import jakarta.servlet.http.HttpSession;
-import kr.co.belocal.web.config.SecurityConfig;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 
 
 @Service
@@ -70,4 +66,4 @@ public class MemberServiceImpl implements MemberService{
     }
 
 
-}
+}//class

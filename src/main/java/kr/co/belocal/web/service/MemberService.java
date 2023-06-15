@@ -14,4 +14,5 @@ public interface MemberService {
 
     String checkId(String userId);
     String checkNickName(String nickName);
-}
+
+}//interface

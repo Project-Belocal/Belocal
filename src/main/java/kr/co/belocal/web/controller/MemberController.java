@@ -3,9 +3,14 @@ package kr.co.belocal.web.controller;
 
 import jakarta.servlet.http.HttpSession;
 import kr.co.belocal.web.entity.Member;
+import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.MemberServiceImpl;
+import kr.co.belocal.web.service.TravelThemeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -13,6 +18,8 @@ public class MemberController {
 
     @Autowired
     MemberServiceImpl memberService;
+
+
 
 
     //아이디 중복 확인
@@ -73,7 +80,15 @@ public class MemberController {
 
 
 
-    //user-profile 페이지 : id, nickname, email 불러오기
-//    @GetMapping("/user-profile")
 
 }//class
+
+
+
+
+
+
+
+
+
+

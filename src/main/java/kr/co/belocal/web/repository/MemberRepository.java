@@ -29,4 +29,7 @@ public interface MemberRepository {
     //계정삭제
     int delete(Member id);
 
-}
+
+
+
+}//class
