@@ -1,4 +1,4 @@
-package kr.co.belocal.web.service;
+package kr.co.belocal.web.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 

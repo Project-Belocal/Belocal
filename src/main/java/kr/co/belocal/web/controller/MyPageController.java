@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
 import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.service.PlaceService;
 import kr.co.belocal.web.service.TravelThemeService;
 
 @Controller
@@ -20,6 +21,9 @@ public class MyPageController {
 
     @Autowired
     private TravelThemeService travelThemeService;
+
+    @Autowired
+    private PlaceService placeService;
 
     @RequestMapping("/profile")
     public String profile() {
@@ -41,12 +45,13 @@ public class MyPageController {
 
     @PostMapping("/upload-place")
     public ResponseEntity<Integer> uploadPlace(@RequestBody Place place) {
-        
-        return null;
+        System.out.println(place);
+        Integer id = placeService.saveAndGetId(place);
+        return ResponseEntity.ok().body(id);
     }
 
     @PostMapping("/upload-img")
-    public ResponseEntity<PlaceImage> uploadImage() {
+    public ResponseEntity<PlaceImage> uploadImage(@RequestBody PlaceImage placeImage) {
         return null;
     }
 }

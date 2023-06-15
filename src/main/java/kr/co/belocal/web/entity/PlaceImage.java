@@ -8,6 +8,6 @@ import lombok.Data;
 public class PlaceImage {
     private Integer id;
     private Integer placeId;
-    private String src;
+    private String path;
     private Integer order;
 }

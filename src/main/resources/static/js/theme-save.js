@@ -84,10 +84,10 @@ themeSaveBtn.onclick = function() {
         const uploadedPlaceList = document.querySelector(".place__container").querySelectorAll(".place__item");
         
         for(let i = 0; i < uploadedPlaceList.length; i++) {
-            const placeCategoryId = uploadedPlaceList[i].querySelector(".place__category").querySelector("input").value;
-            const placeLocationId = uploadedPlaceList[i].querySelector(".place__location").querySelector("input").value;
-            const placeDescription = uploadedPlaceList[i].querySelector(".place__description").innerText;
-            const placeOrder = i;
+            let placeCategoryId = uploadedPlaceList[i].querySelector(".place__category").querySelector("input").value;
+            let placeLocationId = uploadedPlaceList[i].querySelector(".place__location").querySelector("input").value;
+            let placeDescription = uploadedPlaceList[i].querySelector(".place__description").innerText;
+            let placeOrder = i;
 
             places[i] = {
                 "travelThemeId": null,
@@ -97,12 +97,12 @@ themeSaveBtn.onclick = function() {
                 "order": placeOrder
             }
 
-            const uploadedPlaceImageList = uploadedPlaceList[i].querySelector(".place__images").querySelectorAll("img");
+            let uploadedPlaceImageList = uploadedPlaceList[i].querySelector(".place__images").querySelectorAll("img");
             let placeImages = [];
 
             for(let j = 0; j < uploadedPlaceImageList.length; j++) {
-                const imagePath = uploadedPlaceImageList[j].src;
-                const imageOrder = j;
+                let imagePath = uploadedPlaceImageList[j].src;
+                let imageOrder = j;
 
                 placeImages[j] = {
                     "placeId": null,
@@ -130,6 +130,7 @@ themeSaveBtn.onclick = function() {
           .then(response => response.json())
           .then(themeResponse => {
             places.forEach((place) => {
+                console.log(place);
                 place.travelThemeId = themeResponse;
 
                 fetch("/my-page/upload-place", {
@@ -139,7 +140,7 @@ themeSaveBtn.onclick = function() {
                     },
                     body: JSON.stringify(place)
                 })
-                .then(response => response.json())
+                .then(response => console.log(response.json()))
                 .then(placeResponse => {
                     placesImages.forEach((placeImages) => {
                         placeImages.forEach((placeImage) => {

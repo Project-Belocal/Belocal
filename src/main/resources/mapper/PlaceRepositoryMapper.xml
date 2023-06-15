@@ -11,4 +11,23 @@
         LIMIT 1
     </select>
 
+    <insert id="save" parameterType="kr.co.belocal.web.entity.Place">
+        INSERT INTO place
+        (
+            travel_theme_id,
+            category_id,
+            location_id,
+            description,
+            `order`
+        )
+        VALUES
+        (
+            #{travelThemeId},
+            #{categoryId},
+            #{locationId},
+            #{description},
+            #{order}
+        )
+    </insert>
+
 </mapper>
