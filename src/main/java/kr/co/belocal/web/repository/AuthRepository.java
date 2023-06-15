@@ -3,11 +3,10 @@ package kr.co.belocal.web.repository;
 import kr.co.belocal.web.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
-public interface MemberRepository {
+public interface AuthRepository {
 
     //아이디 중복 확인
     String checkId(String userId);

@@ -13,7 +13,7 @@ import kr.co.belocal.web.exception.AuthenticationNumberMismatchException;
 import kr.co.belocal.web.exception.BusinessException;
 import kr.co.belocal.web.exception.ErrorCode;
 import kr.co.belocal.web.exception.PhoneNumberDuplicateException;
-import kr.co.belocal.web.service.MemberService;
+import kr.co.belocal.web.service.AuthService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +54,7 @@ public class SmsService {
     @Value("${naver-cloud-sms.senderPhone}")
     private String phone;
 
-    private final MemberService memberService;
+    private final AuthService authService;
     private final SmsCertification smsCertification;
 
 
@@ -98,7 +98,7 @@ public class SmsService {
 
 
     public void sendSms(String phoneNumber) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        String  checkPhone = memberService.CheckPhoneNum(phoneNumber);
+        String  checkPhone = authService.CheckPhoneNum(phoneNumber);
         if (checkPhone!=null) {
             throw new PhoneNumberDuplicateException(phoneNumber);
         } else if (checkPhone == null) {

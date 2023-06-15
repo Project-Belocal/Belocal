@@ -4,7 +4,7 @@ package kr.co.belocal.web.service;
 import kr.co.belocal.web.entity.Member;
 
 
-public interface MemberService {
+public interface AuthService {
     String getListByFindId(String phoneNum);
     String getListByFindId(String userId,String phoneNum);
     void save(Member member);

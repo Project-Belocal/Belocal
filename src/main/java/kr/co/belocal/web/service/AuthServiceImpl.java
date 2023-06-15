@@ -1,21 +1,18 @@
 package kr.co.belocal.web.service;
 
-import jakarta.servlet.http.HttpSession;
-import kr.co.belocal.web.config.SecurityConfig;
 import kr.co.belocal.web.entity.Member;
-import kr.co.belocal.web.repository.MemberRepository;
+import kr.co.belocal.web.repository.AuthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class AuthServiceImpl implements AuthService {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private AuthRepository authRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -24,13 +21,13 @@ public class MemberServiceImpl implements MemberService{
     //아이디 찾기
     @Override
     public String getListByFindId(String phoneNum) {
-        return memberRepository.findId(phoneNum);
+        return authRepository.findId(phoneNum);
     }
 
     //비밀번호 찾기
     @Override
     public String getListByFindId(String userId, String phoneNum) {
-        return memberRepository.findPw(userId,phoneNum);
+        return authRepository.findPw(userId,phoneNum);
     }
 
 
@@ -38,14 +35,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void save(Member member) {
         member.setPw(passwordEncoder.encode(member.getPw()));
-        memberRepository.save(member);
+        authRepository.save(member);
     }
 
 
     //로그인
     @Override
     public boolean login(Member member) {
-        Member info = memberRepository.login(member);
+        Member info = authRepository.login(member);
 
         //일치하는 계정이 존재한다면
         if (info!=null)
@@ -60,18 +57,18 @@ public class MemberServiceImpl implements MemberService{
     //아이디 중복 확인
     @Override
     public String checkId(String userId) {
-        return memberRepository.checkId(userId);
+        return authRepository.checkId(userId);
     }
 
     //닉네임 중복 확인
     @Override
     public String checkNickName(String nickName) {
-        return memberRepository.checkNickName(nickName);
+        return authRepository.checkNickName(nickName);
     }
 
     @Override
     public String  CheckPhoneNum(String phoneNum) {
-        return memberRepository.CheckPhoneNum(phoneNum);
+        return authRepository.CheckPhoneNum(phoneNum);
     }
 
 
