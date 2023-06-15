@@ -15,6 +15,10 @@
     <select id="checkNickName" resultType="String">
         SELECT nickname FROM member WHERE nickname = #{nickName}
     </select>
+    <!--휴대폰 중복 확인-->
+    <select id="CheckPhoneNum" resultType="String">
+        SELECT phone_num FROM member WHERE phone_num = #{phoneNum}
+    </select>
 
     <!--회원정보검색-->
     <select id="findAll" resultType="Member">

@@ -13,4 +13,6 @@ public interface MemberService {
 
     String checkId(String userId);
     String checkNickName(String nickName);
+
+    String  CheckPhoneNum(String phoneNum);
 }

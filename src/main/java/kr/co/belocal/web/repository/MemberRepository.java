@@ -14,6 +14,9 @@ public interface MemberRepository {
     //닉네임 중복 확인
     String checkNickName(String nickName);
 
+    //휴대폰 중복 확인
+    String  CheckPhoneNum(String phoneNum);
+
     //로그인
     Member login(Member member);
     //회원 정보 조회
@@ -28,5 +31,6 @@ public interface MemberRepository {
     int update(Member member);
     //계정삭제
     int delete(Member id);
+
 
 }

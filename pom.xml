@@ -115,6 +115,20 @@
 			<artifactId>httpclient5</artifactId>
 			<version>5.2.1</version>
 		</dependency>
+		<dependency>
+			<groupId>net.nurigo</groupId>
+			<artifactId>sdk</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+
+
+		<!--redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
 
 	</dependencies>
 

@@ -5,13 +5,12 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
 @Builder
 public class SmsResponse {
-    private String requestId;
-    private LocalDateTime requestTime;
     private String statusCode;
     private String statusName;
-    private String smsConfirmNum;
+    private String requestId;
+    private LocalDateTime requestTime;
 }

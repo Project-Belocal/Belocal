@@ -69,5 +69,10 @@ public class MemberServiceImpl implements MemberService{
         return memberRepository.checkNickName(nickName);
     }
 
+    @Override
+    public String  CheckPhoneNum(String phoneNum) {
+        return memberRepository.CheckPhoneNum(phoneNum);
+    }
+
 
 }

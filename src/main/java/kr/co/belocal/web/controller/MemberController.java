@@ -24,7 +24,6 @@ public class MemberController {
         System.out.println("id = " + id);
         if (id.equals(memberService.checkId(id)))
             return 1;
-
         return 0;
     }
 
@@ -38,6 +37,12 @@ public class MemberController {
         return 0;
     }
 
+//    @PostMapping("sign-up/checkPhoneNum")
+//    public boolean CheckPhoneNum(@RequestParam("phoneNum") String phoneNum){
+//        if (phoneNum.equals(memberService.CheckPhoneNum(phoneNum)))
+//            return true;
+//        return false;
+//    }
 
 
     //로그인페이지
@@ -47,7 +52,7 @@ public class MemberController {
     }
 
     //로그인 정보 전송
-//    @PostMapping("login")
+    @PostMapping("login")
     public String  login(Member member , HttpSession session){
 
         //로그인 실패
@@ -59,8 +64,6 @@ public class MemberController {
 
         return "redirect:/";
     }
-
-
 
     //회원가입 페이지
     @GetMapping("/sign-up")
@@ -74,7 +77,6 @@ public class MemberController {
         memberService.save(member);
         return "login/login";
     }
-
 
     //아이디 찾기
     @GetMapping("/login/find-id")
