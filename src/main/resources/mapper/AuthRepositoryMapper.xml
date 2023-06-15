@@ -4,7 +4,7 @@
 
 
 
-<mapper namespace="kr.co.belocal.web.repository.MemberRepository">
+<mapper namespace="kr.co.belocal.web.repository.AuthRepository">
 
 
     <!--아이디 중복 확인-->
@@ -14,6 +14,10 @@
     <!--닉네임 중복 확인-->
     <select id="checkNickName" resultType="String">
         SELECT nickname FROM member WHERE nickname = #{nickName}
+    </select>
+    <!--휴대폰 중복 확인-->
+    <select id="CheckPhoneNum" resultType="String">
+        SELECT phone_num FROM member WHERE phone_num = #{phoneNum}
     </select>
 
     <!--회원정보검색-->

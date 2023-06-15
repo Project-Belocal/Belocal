@@ -3,16 +3,18 @@ package kr.co.belocal.web.repository;
 import kr.co.belocal.web.entity.Member;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
-public interface MemberRepository {
+public interface AuthRepository {
 
     //아이디 중복 확인
     String checkId(String userId);
     //닉네임 중복 확인
     String checkNickName(String nickName);
+
+    //휴대폰 중복 확인
+    String  CheckPhoneNum(String phoneNum);
 
     //로그인
     Member login(Member member);
@@ -28,5 +30,6 @@ public interface MemberRepository {
     int update(Member member);
     //계정삭제
     int delete(Member id);
+
 
 }

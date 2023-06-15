@@ -1,5 +1,6 @@
 package kr.co.belocal.web.entity;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.Builder;
 import lombok.Data;
 

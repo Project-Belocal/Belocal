@@ -190,6 +190,18 @@
     outline: none;
 }
 
+/*.sign-up__tel:invalid{*/
+/*    width: 70%;*/
+/*    height: 100%;*/
+/*    text-align:left;*/
+/*    border: 3px solid red;    !* box-shadow: var(--box-shadow); *!*/
+/*    border-radius: var(--border-radius);*/
+/*    padding: 0px 6px;*/
+/*    outline: none;*/
+/*}*/
+
+
+
 /* 인증번호 받기 */
 .sign-up__tel-btn{
     width: 30%;
@@ -203,11 +215,49 @@
 }
 
 
+.phoneError{
+    margin: 0 0;
+    visibility: hidden;
+}
+
+
+/*인증번호 확인*/
+.sign-up__verification{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    gap: 8px;
+}
+
+
+.sign-up__verification-btn {
+    width: 75%;
+    height: 40px;
+
+    font-size: var(--font-size-small10);
+    color: var(--color-point-white);
+    font-weight: var(--font-weight-regular);
+    border-radius: var(--border-radius);
+    background-color: var(--color-point-blue);
+}
+.verification-timer{
+    text-align: center;
+}
+
+
+.off{
+    background-color: var(--color-point-light-gray);
+}
+
+
+
 
 /* 약관동의 */
 
 .sign-up__terms{
-    margin: 12px 0;
+    margin-top: 24px;
 }
 
 .sign-up__check-main{
@@ -256,7 +306,7 @@
     color: var(--color-point-white);
     border-radius: var(--border-radius);
     background-color: var(--color-text-gray2);
-    margin: 32px 0;
+    margin: 8px 0 32px 0;
 }
 
 /* 가입버튼 조건 충족시 색 변경 */
