@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class Category {
+public class Location {
     private Integer id;
-    private String name;
+    private String name;    
 }

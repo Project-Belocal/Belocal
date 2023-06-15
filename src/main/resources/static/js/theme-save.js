@@ -69,6 +69,7 @@ themeSaveBtn.onclick = function() {
         const themePreferredTimeDataList = themeInfo.querySelector(".theme__preferred-time").querySelectorAll("input");
 
         const theme = {
+            "memberId": null,
             "title": themeTitleData.value,
             "description": themeDescriptionData.value,
             "bookableDateStart": themeBookableDateDataList[0].value,
@@ -89,6 +90,7 @@ themeSaveBtn.onclick = function() {
             const placeOrder = i;
 
             places[i] = {
+                "travelThemeId": null,
                 "categoryId": placeCategoryId,
                 "locationId": placeLocationId,
                 "description": placeDescription,
@@ -101,7 +103,9 @@ themeSaveBtn.onclick = function() {
             for(let j = 0; j < uploadedPlaceImageList.length; j++) {
                 const imagePath = uploadedPlaceImageList[j].src;
                 const imageOrder = j;
+
                 placeImages[j] = {
+                    "placeId": null,
                     "path": imagePath,
                     "order": imageOrder
                 }
@@ -110,12 +114,50 @@ themeSaveBtn.onclick = function() {
             placesImages[i] = placeImages;
         }
         
-        const data = {
-            "theme" : theme,
-            "places" : places,
-            "placesImages" : placesImages
-        };
+        // const data = {
+        //     "theme" : theme,
+        //     "places" : places,
+        //     "placesImages" : placesImages
+        // };
 
+        fetch("/my-page/upload-theme", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(theme)
+          })
+          .then(response => response.json())
+          .then(themeResponse => {
+            places.forEach((place) => {
+                place.travelThemeId = themeResponse;
+
+                fetch("/my-page/upload-place", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(place)
+                })
+                .then(response => response.json())
+                .then(placeResponse => {
+                    placesImages.forEach((placeImages) => {
+                        placeImages.forEach((placeImage) => {
+                            placeImage.placeId = placeResponse;
+
+                            fetch("my-page/upload-img", {
+                                method: "POST",
+                                header: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(placeImage)
+                            })
+                        })
+                    })
+                })
+            })
+
+          })
     }
 }
 

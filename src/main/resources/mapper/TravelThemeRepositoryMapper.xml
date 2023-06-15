@@ -19,27 +19,36 @@
         member_id = #{memberId};
     </select>
 
+    <select id="getLatestIdByMemberId" resultType="Integer">
+        SELECT id
+        FROM travel_theme
+        WHERE member_id = #{memberId}
+        ORDER BY reg_date DESC
+        LIMIT 1
+    </select>
 
     <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme">
         INSERT
         INTO
         travel_theme
         (
-         id,
          member_id,
          title,
-         content,
-         region,
-         reg_date,
+         description,
+         bookable_date_start,
+         bookable_date_end,
+         contact_preferred_time_start,
+         contact_preferred_time_end
         )
         VALUES
         (
-        #{id},
         #{memberId},
         #{title},
-        #{content},
-        #{region},
-        #{regDate}
+        #{description},
+        #{bookableDateStart},
+        #{bookableDateEnd},
+        #{contactPreferredTimeStart},
+        #{contactPreferredTimeEnd}
         );
     </insert>
 

@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Builder
 @Data
-public class Category {
+public class PlaceImage {
     private Integer id;
-    private String name;
+    private Integer placeId;
+    private String src;
+    private Integer order;
 }

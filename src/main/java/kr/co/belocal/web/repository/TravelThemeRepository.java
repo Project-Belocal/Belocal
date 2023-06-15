@@ -14,10 +14,10 @@ public interface TravelThemeRepository {
     // theme 을 member id 에 맞게 불러오기
     List<TravelTheme> findByMemberId(Integer memberId);
 
-
     // theme 저장(save) 하기
-    int save(TravelTheme travelTheme);
+    void save(TravelTheme travelTheme);
 
+    Integer getLatestIdByMemberId(Integer memberId);
 
     // theme 수정(update) 하기
     int update(TravelTheme travelTheme);
