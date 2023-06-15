@@ -7,6 +7,8 @@ import kr.co.belocal.web.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.belocal.web.entity.Category;
+import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.repository.TravelThemeRepository;
 import org.springframework.ui.context.Theme;
@@ -17,20 +19,23 @@ public class TravelThemeServiceImp implements TravelThemeService {
     @Autowired
     private TravelThemeRepository repository;
 
-
-
     @Override
-    public List<Theme> getList(Integer memberId) {
+    public List<TravelTheme> getList() {
+        List<TravelTheme> list = repository.findAll();
+        return list;
+    }
+    @Override
+    public List<TravelTheme> getList(Integer memberId) {
         return null;
     }
 
     @Override
-    public List<Theme> getList(String categoryName, String location, String description) {
+    public List<TravelTheme> getList(String categoryName, String location, String description) {
         return null;
     }
 
     @Override
-    public Category findById(Integer memeberId, Integer traverThemeId) {
+    public Category findById(Integer memberId, Integer travelThemeId) {
         return null;
     }
 
@@ -38,4 +43,5 @@ public class TravelThemeServiceImp implements TravelThemeService {
     public Member getById(Integer memberId, Integer travelThemeId) {
         return null;
     }
+
 }
