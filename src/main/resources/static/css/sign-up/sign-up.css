@@ -247,13 +247,6 @@
 }
 
 
-.off{
-    background-color: var(--color-point-light-gray);
-}
-
-
-
-
 /* 약관동의 */
 
 .sign-up__terms{
@@ -320,4 +313,8 @@
 
 select {
     overflow-y: auto;
+}
+
+.off{
+    background-color: var(--color-point-light-gray);
 }

@@ -130,7 +130,7 @@ window.addEventListener("load",function (){
     const reconfirmError = document.querySelector(".reconfirmError");
 
     pw.addEventListener("keyup",function (){
-        const regEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{11,30}$/;
+        const regEx = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.*\s).{8,16}$/;
 
 
         if (!regEx.test(pw.value)){
@@ -199,7 +199,6 @@ window.addEventListener("load",function (){
 
 //번호인증 전송 & 번호 중복 확인
 window.addEventListener("load",function (){
-    const phoneSection = document.querySelector(".sign-up__input-wrap");
     const authNum = document.querySelector(".sign-up__input-Auth");
 
     const verification = document.querySelector(".sign-up__verification");
@@ -209,6 +208,8 @@ window.addEventListener("load",function (){
     const error = document.querySelector(".phoneError");
     const phoneNum = document.querySelector(".sign-up__tel");
     const sendBtn = document.querySelector(".sign-up__tel-btn");
+
+    const signBtn = document.querySelector(".sign-up__btn");
     let sendNum;
 
 
@@ -317,6 +318,9 @@ window.addEventListener("load",function (){
             verificationBtn.hasAttribute("disable")
             clearInterval(timer); // 타이머 멈추기
             time.textContent = "인증완료";
+            signBtn.classList.remove("off");
+            signBtn.classList.add("action");
+            signBtn.removeAttribute("disabled")
         }else {
             time.textContent = "인증실패";
             console.log("Error",response.status,response.statusText)

@@ -34,6 +34,7 @@ public class SmsController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+
     @PostMapping("/sms/verification")
     public ResponseEntity<Void> checkSMS(@RequestBody Map<String ,Object> requestData) {
 
