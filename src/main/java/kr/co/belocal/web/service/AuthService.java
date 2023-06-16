@@ -1,18 +1,35 @@
 package kr.co.belocal.web.service;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import kr.co.belocal.web.entity.Member;
+import org.springframework.data.relational.core.sql.In;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 
 public interface AuthService {
-    String getListByFindId(String phoneNum);
-    String getListByFindId(String userId,String phoneNum);
-    void save(Member member);
+    int save(Member member);
+    void addRole(int id);
+
     boolean login(Member member);
 
 
-    String checkId(String userId);
-    String checkNickName(String nickName);
+    //아이디, 비번 찾기
+    String getFindId(String phoneNum);
 
-    String  CheckPhoneNum(String phoneNum);
+    //비밀번호 찾기 , 임시 비밀번호 생성
+    String getFindPw(String userId,String phoneNum) throws UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException;
+
+
+
+    //중복검사
+    String duplicateId(String userId);
+    String duplicateNickName(String nickName);
+    String  duplicatePhoneNum(String phoneNum);
+
+
 }
