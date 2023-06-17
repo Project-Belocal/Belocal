@@ -9,14 +9,14 @@ import kr.co.belocal.web.service.TravelThemeService;
 @Controller
 public class HomeController {
 
+    @GetMapping("/")
+    public String test(){
+        return "test";
+    }
+
     @GetMapping("index")
     public String index(){
 
         return "index";
-    }
-
-    @GetMapping("test")
-    public String test(){
-        return "chat/chatlist";
     }
 }

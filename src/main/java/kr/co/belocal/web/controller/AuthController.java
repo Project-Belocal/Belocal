@@ -61,7 +61,8 @@ public class AuthController {
 
     //로그인 정보 전송
     @PostMapping("login")
-    public String  login(Member member , HttpSession session){
+    public String  login(Member member){
+        System.out.println("member = " + member);
         //로그인 실패
         if (!authService.login(member))
             return "redirect:/login?error";
@@ -81,7 +82,7 @@ public class AuthController {
     public String join(Member member,HttpSession session){
         authService.save(member);
         authService.addRole(member.getId());
-        return "login/login";
+        return "redirect:/login";
     }
 
     //아이디 찾기

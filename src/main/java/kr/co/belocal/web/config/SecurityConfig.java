@@ -16,8 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
-@AllArgsConstructor
+//@EnableWebSecurity
+//@AllArgsConstructor
 public class SecurityConfig  {
 
 
@@ -28,26 +28,33 @@ public class SecurityConfig  {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((authorizeRequests)->
-                        authorizeRequests.anyRequest().permitAll()
+                .authorizeHttpRequests(auth-> auth
+//                        .requestMatchers("/member/**").hasAnyRole("MEMBER","ADMIN")
+//                        .requestMatchers("/guide/**").hasAnyRole("GUIDE","ADMIN")
+//                        .requestMatchers("/admin/**").hasAnyRole("ADMIN")
+                        .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
                         .loginPage("/login/login")
                         .loginProcessingUrl("/login")
-                        .usernameParameter("userId")
-                        .passwordParameter("pw")
+//                        .usernameParameter("userId")
+//                        .passwordParameter("pw")
                         .defaultSuccessUrl("/")
                         .permitAll()
                 )
-                .logout(Customizer.withDefaults());
+                .logout(logout->logout
+                        .logoutUrl("logout")
+                        .logoutSuccessUrl("/")
+                );
 
         return http.build();
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web ->
-                web.ignoring().anyRequest());
+        return (web -> web
+                .ignoring().requestMatchers("/images/**","/js/**","/css/**")
+        );
     }
 
     @Bean
