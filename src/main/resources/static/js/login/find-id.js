@@ -1,11 +1,20 @@
 
 //아이디 찾기
 window.addEventListener("load",function (){
+    const undo = document.querySelector(".find__inner button")
+
     const findId = document.querySelector(".input__id");
     const findIdBtn = document.querySelector(".find__id-btn");
     const inputArea = document.querySelector(".find__area");
     const resultInfo = document.querySelector(".find__user-info");
     const resultId = document.querySelector(".find__info-txt");
+
+
+    undo.onclick = function (){
+        history.go(-1);
+    }
+
+
     findIdBtn.onclick = function () {
         let phoneNum = findId.value;
 
@@ -32,6 +41,4 @@ window.addEventListener("load",function (){
             console.log("실패")
         }
     }
-
-
 })

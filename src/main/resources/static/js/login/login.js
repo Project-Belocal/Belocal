@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loginError = document.querySelector(".login__error");
+    const undo = document.querySelector(".login__undo>button");
     const queryString = window.location.search;
+
+    undo.onclick = function (){
+        history.go(-1);
+    }
 
     function fadeOut(element) {
         let op = 1;
