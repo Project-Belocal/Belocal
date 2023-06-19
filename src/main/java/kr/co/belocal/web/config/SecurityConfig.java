@@ -22,25 +22,24 @@ public class SecurityConfig  {
 
 
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth-> auth
-//                        .requestMatchers("/member/**").hasAnyRole("MEMBER","ADMIN")
-//                        .requestMatchers("/guide/**").hasAnyRole("GUIDE","ADMIN")
-//                        .requestMatchers("/admin/**").hasAnyRole("ADMIN")
+                        .requestMatchers("/js/**","/css/**","/images/**").permitAll()
+//                                .requestMatchers("/**").hasAnyRole("MEMBER","GUIDE","ADMIN")
+                        .requestMatchers("/member/**").hasAnyRole("MEMBER","GUIDE","ADMIN")
                         .anyRequest().permitAll()
                 )
-                .formLogin(login -> login
-                        .loginPage("/login/login")
+                .formLogin(form -> form
+                        .loginPage("/login")
                         .loginProcessingUrl("/login")
-//                        .usernameParameter("userId")
-//                        .passwordParameter("pw")
+                        .usernameParameter("userId")
+                        .passwordParameter("pw")
                         .defaultSuccessUrl("/")
-                        .permitAll()
+
                 )
                 .logout(logout->logout
                         .logoutUrl("logout")
@@ -50,12 +49,12 @@ public class SecurityConfig  {
         return http.build();
     }
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web -> web
-                .ignoring().requestMatchers("/images/**","/js/**","/css/**")
-        );
-    }
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web -> web
+//                .ignoring().anyRequest()
+//        );
+//    }
 
     @Bean
     PasswordEncoder passwordEncoder(){

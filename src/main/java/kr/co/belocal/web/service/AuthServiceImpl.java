@@ -2,6 +2,7 @@ package kr.co.belocal.web.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import kr.co.belocal.web.entity.Member;
+import kr.co.belocal.web.entity.MemberRoleView;
 import kr.co.belocal.web.exception.ErrorCode;
 import kr.co.belocal.web.exception.NotFoundException;
 import kr.co.belocal.web.repository.AuthRepository;
@@ -14,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Random;
 
 
@@ -76,19 +78,29 @@ public class AuthServiceImpl implements AuthService {
     }
 
 
+    @Override
+    public Member login(String username) {
+
+        return authRepository.login(username);
+    }
+
+    @Override
+    public List<MemberRoleView> getMemberRole(Integer memberId) {
+        return authRepository.getMemberRole(memberId);
+    }
+
 
     //로그인
-    @Override
-    public boolean login(Member member) {
-        Member info = authRepository.login(member);
-
-        //일치하는 계정이 존재한다면
-        if (info!=null)
-            if(passwordEncoder.matches(member.getPw(),info.getPw()))
-                return true;
-
-        return false;
-    }
+//    @Override
+//    public boolean login(Member member) {
+//        Member info = authRepository.login(member);
+//        //일치하는 계정이 존재한다면
+//        if (info!=null)
+//            if(passwordEncoder.matches(member.getPw(),info.getPw()))
+//                return true;
+//
+//        return false;
+//    }
 
 
     //회원가입
@@ -105,6 +117,7 @@ public class AuthServiceImpl implements AuthService {
     public void addRole(int id) {
         authRepository.addRole(id);
     }
+
 
 
     //아이디 중복 확인
