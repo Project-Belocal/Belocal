@@ -43,5 +43,9 @@ public class TravelThemeServiceImp implements TravelThemeService {
     public Member getById(Integer memberId, Integer travelThemeId) {
         return null;
     }
+    @Override
+    public int save(TravelTheme travelTheme) {
+        return repository.save(travelTheme);
+    }
 
 }

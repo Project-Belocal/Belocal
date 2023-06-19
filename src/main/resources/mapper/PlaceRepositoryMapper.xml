@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.belocal.web.repository.PlaceRepository">
+
+    <select id="getLatestIdByTravelThemeId" resultType="Integer">
+        SELECT id
+        FROM place
+        WHERE travel_theme_id = #{travelThemeId}
+        ORDER BY reg_date DESC
+        LIMIT 1
+    </select>
+
+    <insert id="save" parameterType="kr.co.belocal.web.entity.Place" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO place
+        (
+            travel_theme_id,
+            category_id,
+            location_id,
+            description,
+            `order`
+        )
+        VALUES
+        (
+            #{travelThemeId},
+            #{categoryId},
+            #{locationId},
+            #{description},
+            #{order}
+        )
+    </insert>
+
+</mapper>
