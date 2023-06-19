@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/login/find-pw.css">
+    <script src="../js/login/find-pw.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -21,8 +22,9 @@
             <div class="find__content-wrap">
                 <div class="find__content ">
                     <h2 class="find__title">비밀번호 찾기</h2>
-                    <div class="find__area">
-                        <!-- 번호 찾기 입력창 -->
+                    <form action="/login/find-pw/check" method="POST">
+                        <div class="find__area">
+                            <!-- 번호 찾기 입력창 -->
                             <div class="find__notice">
                                 <p>
                                     가입 시 등록한 휴대폰 번호를 입력하면
@@ -33,24 +35,24 @@
                             <div class="find__input-box" >
                                 <h3>아이디</h3>
                                 <div class="find__input-item">
-                                    <input type="text" placeholder="가입하신 아이디">
+                                    <input class="input__id" type="text" placeholder="가입하신 아이디">
                                 </div>
                                 <h3>휴대폰 번호</h3>
                                 <div class="find__input-item">
-                                    <input type="tel" placeholder="가입하신 휴대폰 번호">
+                                    <input class="input__phone" type="tel" placeholder="가입하신 휴대폰 번호">
                                 </div>
                             </div>
                             <div class="find__btn-box">
                                 <div class="find__btn-item">
-                                    <a href="#">문자 발송하기</a>
+                                    <button class="find__pw-btn" type="button">문자 발송하기</button>
                                 </div>
                             </div>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- 임시 비밀번호 발송 후 영역 -->
-            <div class="find__help">
-                <div>
+            <div class="find__help hidden">
                     <div class="find__temporary">
                         <p class="find__temporary-txt">
                             임시 비밀번호를 전송하였습니다.
@@ -61,7 +63,6 @@
                     <div class="find__btn-check">
                         <a class="find__btn" href="/login">로그인</a>
                     </div>
-                </div>
             </div>
 
         </div>
