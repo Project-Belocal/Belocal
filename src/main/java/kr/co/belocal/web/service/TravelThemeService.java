@@ -4,8 +4,6 @@ import kr.co.belocal.web.entity.Category;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
 
-import org.springframework.ui.context.Theme;
-
 import java.util.List;
 
 public interface TravelThemeService {
@@ -24,6 +22,6 @@ public interface TravelThemeService {
     // 'theme-detail' 페이지 하단 문자로 박아놓는 시간, 날짜임
     Member getById(Integer memberId, Integer travelThemeId);
 
-    Integer saveAndGetId(TravelTheme travelTheme);
+    int save(TravelTheme travelTheme);
 
 }

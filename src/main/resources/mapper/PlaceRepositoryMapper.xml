@@ -11,7 +11,7 @@
         LIMIT 1
     </select>
 
-    <insert id="save" parameterType="kr.co.belocal.web.entity.Place">
+    <insert id="save" parameterType="kr.co.belocal.web.entity.Place" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO place
         (
             travel_theme_id,

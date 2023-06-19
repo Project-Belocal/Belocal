@@ -15,9 +15,7 @@ public interface TravelThemeRepository {
     List<TravelTheme> findByMemberId(Integer memberId);
 
     // theme 저장(save) 하기
-    void save(TravelTheme travelTheme);
-
-    Integer getLatestIdByMemberId(Integer memberId);
+    int save(TravelTheme travelTheme);
 
     // theme 수정(update) 하기
     int update(TravelTheme travelTheme);

@@ -13,11 +13,9 @@ public class PlaceServiceImp implements PlaceService {
     private PlaceRepository repository;
 
     @Override
-    public Integer saveAndGetId(Place place) {
-        repository.save(place);
-        Integer placeId = repository.getLatestIdByTravelThemeId(place.getTravelThemeId());
-
-        return placeId;
+    public int save(Place place) {
+        return repository.save(place);
     }
     
 }
+

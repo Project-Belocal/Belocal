@@ -6,7 +6,5 @@ import kr.co.belocal.web.entity.Place;
 
 @Mapper
 public interface PlaceRepository {
-    void save(Place place);
-
-    Integer getLatestIdByTravelThemeId(Integer travelThemeId);
+    int save(Place place);
 }

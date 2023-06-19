@@ -4,5 +4,5 @@ import kr.co.belocal.web.entity.Place;
 
 public interface PlaceService {
     
-    Integer saveAndGetId(Place place);
+    int save(Place place);
 }

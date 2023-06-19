@@ -10,7 +10,6 @@
         travel_theme
     </select>
 
-
     <select id="findByMemberId" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM
@@ -19,15 +18,7 @@
         member_id = #{memberId};
     </select>
 
-    <select id="getLatestIdByMemberId" resultType="Integer">
-        SELECT id
-        FROM travel_theme
-        WHERE member_id = #{memberId}
-        ORDER BY reg_date DESC
-        LIMIT 1
-    </select>
-
-    <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme">
+    <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">
         INSERT
         INTO
         travel_theme
