@@ -1,0 +1,101 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kr.co.belocal.web.repository.AuthRepository">
+
+
+    <!--아이디 중복 확인-->
+    <select id="duplicateId" resultType="String">
+        SELECT user_id FROM member WHERE user_id = #{userId}
+    </select>
+    <!--닉네임 중복 확인-->
+    <select id="duplicateNickName" resultType="String">
+        SELECT nickname FROM member WHERE nickname = #{nickName}
+    </select>
+    <!--휴대폰 중복 확인-->
+    <select id="duplicatePhoneNum" resultType="String">
+        SELECT phone_num FROM member WHERE phone_num = #{phoneNum}
+    </select>
+
+    <!--회원정보검색-->
+    <select id="findAll" resultType="Member">
+        SELECT * FROM member WHERE id = #{id}
+    </select>
+
+    <!--로그인-->
+    <select id="login" resultType="Member">
+        SELECT * FROM member WHERE user_id = #{userId}
+    </select>
+
+    <!--아이디 찾기-->
+    <select id="getFindId" resultType="String">
+        SELECT user_id FROM member WHERE phone_num = #{phoneNum}
+    </select>
+    <!--비밀번호 찾기-->
+    <select id="getFindPw" resultType="Integer">
+        SELECT id FROM member WHERE user_id = #{userId} and phone_num = #{phoneNum}
+    </select>
+
+    <update id="updateTemporaryPwd" parameterType="Member">
+        UPDATE member
+            <set>
+                <if test="pw != null">pw = #{pw},</if>
+            </set>
+        WHERE id = #{id};
+    </update>
+
+
+    <!--회원가입-->
+    <insert id="save" parameterType="Member" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member
+        (
+            user_id,
+            pw,
+            nickname,
+            name,
+            phone_num,
+            birth_date
+        )
+        VALUES
+        (
+            #{userId},
+            #{pw},
+            #{nickName},
+            #{name},
+            #{phoneNum},
+            #{birthDate}
+        );
+    </insert>
+
+    <!--회원 권한 추가-->
+    <insert id="addRole" parameterType="int">
+        INSERT INTO role
+        ( member_id )
+        VALUES
+        ( #{id} );
+    </insert>
+
+    <!--회원 정보 수정-->
+    <update id="update" parameterType="Member">
+        UPDATE member
+            <set>
+                <if test="profilePic != null">profile_pic = #{profilePic},</if>
+                <if test="pw != null">pw = #{pw},</if>
+                <if test="nickName != null">nickname = #{nickName},</if>
+                <if test="phoneNum != null">phone_num = #{phoneNum}</if>
+            </set>
+            WHERE id = #{id};
+    </update>
+
+    <!--회원탈퇴-->
+    <update id="delete" parameterType="Member">
+        UPDATE member
+        <set>
+            is_withdrawl = #{isWithdrawl}
+        </set>
+        WHERE id = #{id};
+    </update>
+</mapper>

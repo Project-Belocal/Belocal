@@ -1,7 +1,8 @@
 .login{
-    /* max-width: 390px; */
+    max-width: 390px;
     width: 100%;
-    height: 844px;
+    height: 100vh;
+    /*height: 844px;*/
     margin: 0 auto;
     padding: 0 60px;
 }
@@ -12,7 +13,7 @@
     width: 100%;
     height: 52px;
     padding: var(--section-padding);
-    /* padding: var(--section-padding); */
+    position: sticky;
 }
 
 .login__undo img{

@@ -107,25 +107,21 @@
 }
 
 .find__btn-item{
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    background-color: var(--color-point-blue);
-}
-
-.find__btn-item a{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 40px;
-    font-size: var(--font-size-medium14);
-    color: var(--color-point-white);
+    overflow: hidden;
+    border-radius: var(--border-radius);
 }
 
-
-
-.hidden{
-    display: none;
+.find__btn-item button{
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-point-blue);
+    font-size: var(--font-size-medium14);
+    color: var(--color-point-white);
 }
 
 
@@ -175,4 +171,11 @@
     height: 42px;
     line-height: 42px;
     border-radius: 8px;
+}
+
+
+
+
+.hidden{
+    display: none;
 }
