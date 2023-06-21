@@ -1,6 +1,7 @@
 package kr.co.belocal.web.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.belocal.web.controller.request.UploadPlaceImageRequest;
+import kr.co.belocal.web.controller.request.UploadRequest;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
 import kr.co.belocal.web.entity.TravelTheme;
@@ -19,7 +22,7 @@ import kr.co.belocal.web.service.PlaceService;
 import kr.co.belocal.web.service.TravelThemeService;
 
 @Controller
-@RequestMapping("/my-page")
+@RequestMapping("/my")
 public class MyPageController {
 
     @Autowired
@@ -33,13 +36,19 @@ public class MyPageController {
 
     @RequestMapping("/profile")
     public String profile() {
-        return "/my-page/profile";
+        return "/member/my/profile";
     }
 
     @GetMapping("/theme-register")
     public String themeRegister() {
-        return "/my-page/theme-register";
+        return "/member/theme-register";
     }
+
+    // @PostMapping("/upload")
+    // public String upload(@RequestBody UploadRequest uploadRequest) {
+    //     System.out.println(uploadRequest);
+    //     return "redirect:/";
+    // }
 
     @PostMapping("/upload-theme")
     public ResponseEntity<Integer> uploadTravelTheme(@RequestBody TravelTheme travelTheme) {
@@ -57,15 +66,20 @@ public class MyPageController {
     }
 
     @PostMapping("/upload-img")
-    public ResponseEntity<Integer> uploadImage(@RequestBody List<List<PlaceImage>> placesImages) {
+    public String uploadImage(@RequestBody UploadPlaceImageRequest requestBody) {
+        List<List<PlaceImage>> placesImages = requestBody.placesImages();
+        
         for(int i = 0 ; i < placesImages.size(); i++) {
             List<PlaceImage> list = placesImages.get(i);
 
-            for(int j = 0; j < list.size(); j++) {
+            for(int j = 0; j < list.size(); j++) 
                 placeImageService.save(list.get(j));
-            }
         }
 
-        return ResponseEntity.ok().body(1);
+        // String url = "redirect:/theme/theme-detail";\
+        
+        String travelThemeId = String.valueOf(requestBody.travelThemeId());
+        String url = "redirect:/theme/theme-detail?id=" + travelThemeId;
+        return url;
     }
 }
