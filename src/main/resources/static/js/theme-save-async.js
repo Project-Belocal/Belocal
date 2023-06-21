@@ -58,7 +58,9 @@ themePreferredTimeInputList[1].onchange = function () {
         themeTimeMessage.classList.toggle("hidden");
 }
 
-function createTheme() {
+themeSaveBtn.onclick = async function () {
+    const isComplete = checkCompleteTheme();
+    if (!isComplete) return;
 
     const themeInfo = document.querySelector(".theme__info");
     const themeTitleData = themeInfo.querySelector(".theme__title").querySelector("textarea");
@@ -76,11 +78,7 @@ function createTheme() {
         "contactPreferredTimeEnd": themePreferredTimeDataList[1].value
     }
 
-    return theme;
-} 
-
-function createPlacesAndImages() {
-    let places = [];
+    let places = [ ];
     let placesImages = [];
 
     const uploadedPlaceList = document.querySelector(".place__container").querySelectorAll(".place__item");
@@ -116,63 +114,44 @@ function createPlacesAndImages() {
         placesImages[i] = placeImages;
     }
 
-    return {"places": places, "placesImages": placesImages};
-}
-
-themeSaveBtn.onclick = function (e) {
-    e.preventDefault();
-
-    const isComplete = checkCompleteTheme();
-    if (!isComplete) return;
-
-    const travelTheme = createTheme();
-    const placesAndImages = createPlacesAndImages();
-    const places = placesAndImages["places"];
-    const placesImages = placesAndImages["placesImages"];
-
-    const uploadObject = {
-        "travelTheme": travelTheme,
-        "places": places,
-        "placesImages": placesImages
-    };
+    const newThemeId = await uploadTheme(theme);
     
-    const uploadData = JSON.stringify(uploadObject);
+    if (!newThemeId) {
+        displayErrorMessage();
+        return;
+    }
 
-    document.querySelector("#uploadDataInput").value = uploadData;
-    document.querySelector("#travelThemeForm").submit();
-    // const newThemeId = uploadTheme(theme);
-    
-    // if (!newThemeId) {
-    //     displayErrorMessage();
-    //     return;
-    // }
+    // 각 장소에 테마 id 넣기
+    places.forEach((place) => {
+        place.travelThemeId = newThemeId;
+    });
 
-    // // 각 장소에 테마 id 넣기
-    // places.forEach((place) => {
-    //     place.travelThemeId = newThemeId;
-    // });
+    const placesIds = await uploadPlaces(places);
 
-    // const placesIds = await uploadPlaces(places);
+    // 각 이미지에 place의 id 입력
+    for(let i = 0; i < placesImages.length; i++) {
+        placesImages[i].forEach((placeImage) => {
+            placeImage.placeId = placesIds[i];
+        })
+    }
 
-    // // 각 이미지에 place의 id 입력
-    // for(let i = 0; i < placesImages.length; i++) {
-    //     placesImages[i].forEach((placeImage) => {
-    //         placeImage.placeId = placesIds[i];
-    //     })
-    // }
+    const data = {
+        "placesImages": placesImages,
+        "travelThemeId": newThemeId
+    }
 
-    // const data = {
-    //     "placesImages": placesImages,
-    //     "travelThemeId": newThemeId
-    // }
-
-    // fetch("/my/upload-img", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(data)
-    // })
+    fetch("/my/upload-img", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url; // 리디렉션 수행
+        }
+    })
 }
 
 
@@ -232,6 +211,13 @@ async function uploadPlaces(places) {
     return placeIds;
 }
 
+async function uploadPlacesImages(placesImages) {
+    for(const placeImages of placeImages) {
+        for(const placeImage of placeImages) {
+
+        }
+    }
+}
 
 /** 에러를 사용자에게 보여준다 */
 function displayErrorMessage() {

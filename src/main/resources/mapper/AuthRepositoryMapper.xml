@@ -30,6 +30,12 @@
         SELECT * FROM member WHERE user_id = #{userId}
     </select>
 
+    <!--회원 권한 조회-->
+    <select id="getMemberRole" resultType="MemberRoleView">
+        SELECT role FROM member_role_view where member_id = #{memberId}
+    </select>
+
+
     <!--아이디 찾기-->
     <select id="getFindId" resultType="String">
         SELECT user_id FROM member WHERE phone_num = #{phoneNum}

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import kr.co.belocal.web.config.SmsCertification;
-import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.sms.SmsMessage;
 import kr.co.belocal.web.entity.sms.SmsRequest;
 import kr.co.belocal.web.entity.sms.SmsResponse;

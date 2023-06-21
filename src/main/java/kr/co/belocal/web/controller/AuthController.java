@@ -21,7 +21,6 @@ import java.util.Map;
 
 @Controller
 public class AuthController {
-//admin1  qwer1234#
 
 
     @Autowired
@@ -60,16 +59,18 @@ public class AuthController {
     }
 
     //로그인 정보 전송
-    @PostMapping("login")
-    public String  login(Member member){
-        System.out.println("member = " + member);
-        //로그인 실패
-        if (!authService.login(member))
-            return "redirect:/login?error";
-
-        //로그인에 성공한다면
-        return "redirect:/";
-    }
+//    @PostMapping("login")
+//    public String  login(Member member){
+//
+//        System.out.println("member = " + member);
+//
+//        //로그인 실패
+//        if (!authService.login(member))
+//            return "redirect:/login?error";
+//
+//        //로그인에 성공한다면
+//        return "redirect:/";
+//    }
 
     //회원가입 페이지
     @GetMapping("/sign-up")

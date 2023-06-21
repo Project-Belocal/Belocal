@@ -22,6 +22,8 @@ public interface TravelThemeService {
     // 'theme-detail' 페이지 상단
     Category findById(Integer memberId, Integer travelThemeId);
 
+    TravelTheme get(Integer id);
+
     // 'theme-detail' 페이지 하단 문자로 박아놓는 시간, 날짜임
     Member getById(Integer memberId, Integer travelThemeId);
 

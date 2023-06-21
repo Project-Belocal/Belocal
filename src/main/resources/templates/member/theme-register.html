@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/theme-register.css">
   <script src="/js/theme-register.js" defer></script>
-  <script src="/js/theme-save.js" defer></script>
+  <script src="/js/theme-save-async.js" defer></script>
 </head>
 
 <body>
@@ -22,24 +22,26 @@
   </header>
 
   <main>
+    <!-- <form action="/my/upload" method="post" id="travelThemeForm"> -->
+
     <section class="theme__registration-1st">
       <section class="registration-instruction">
         <h2>테마를 구성하는 장소들을 등록해보세요</h2>
         <p>멋진 사진으로 장소를 더욱 흥미롭게 만들 수 있어요!</p>
       </section>
-  
+
       <section class="place__registration">
         <ul class="place__container">
         </ul>
-        
+
         <button href="" class="place__registration-btn">
           <img src="/images/icon/add.svg" alt="">
         </button>
-        
+
         <div class="place__message hidden">장소는 한 개 이상 등록되어야 합니다</div>
       </section>
-      
-  
+
+
       <div class="registration__next-btn">
         <button>다음</button>
       </div>
@@ -95,21 +97,22 @@
       </section>
 
       <div class="theme__save">
+        <!-- <input type="hidden" name="uploadData" id="uploadDataInput"> -->
         <button class="theme__save-btn">
           <div>저장하기</div>
         </button>
       </div>
     </section>
+
+    <!-- </form> -->
   </main>
-  <!-- 사진은 몇 장까지 등록 가능합니다 안내메시지 추가 -->
-  <!-- 등록된 사진 우측 상단에 x표시로 해당 사진 삭제할 수 있게 기능 추가 -->
-  <!-- 사진을 등록한 상태이면 사진 추가 버튼 안 나타나게 -->
+
   <section class="modal">
     <!-- Modal content -->
     <div class="modal__content">
       <div class="modal__header">
         <h1>장소 등록하기</h1>
-        <a href=""  class="modal__close">
+        <a href="" class="modal__close">
           <img src="/images/icon/x-black.svg" alt="">
         </a>
       </div>
@@ -121,14 +124,14 @@
             <div class="hidden">사진을 등록해주세요</div>
           </div>
           <div class="modal__image-preview__container">
-            <ul class="modal__image-preview slider"> 
+            <ul class="modal__image-preview slider">
             </ul>
-  
+
             <button class="modal__delete-btn hidden">
               <img src="/images/icon/delete.svg" alt="">
             </button>
           </div>
-  
+
           <input type="file" class="modal__upload-btn" accept="image/*" required multiple style="display: none;">
           <div class="modal__image-upload">
             <img src="/images/icon/add.svg" alt="">
@@ -200,10 +203,8 @@
           </button>
         </div>
       </div>
-      
     </div>
   </section>
-
 </body>
-</html>
 
+</html>
