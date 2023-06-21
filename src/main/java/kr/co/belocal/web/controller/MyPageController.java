@@ -43,6 +43,11 @@ public class MyPageController {
     public String themeRegister() {
         return "/member/theme-register";
     }
+    
+    @GetMapping("/profile-edit")
+    public String profileEdit(){
+        return "member/my/profile-edit";
+    }
 
     // @PostMapping("/upload")
     // public String upload(@RequestBody UploadRequest uploadRequest) {

@@ -40,10 +40,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -121,6 +118,32 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 			<version>3.1.0</version>
+		</dependency>
+
+		<!--채팅관련-->
+
+		<!--WebSocket-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<!--sockjs-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>sockjs-client</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+		<!--stomp-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>2.3.4</version>
+		</dependency>
+		<!--gson-->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
 		</dependency>
 
 
