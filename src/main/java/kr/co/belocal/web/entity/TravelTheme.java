@@ -12,7 +12,7 @@ public class TravelTheme {
     private Integer id;
     private Integer memberId;
     private String title;
-    private String content;
+    private String description;
     private String region;
     private Integer hits;
     private Timestamp regDate;

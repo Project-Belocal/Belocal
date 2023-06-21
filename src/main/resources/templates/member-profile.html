@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{inc/layout}"
->
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--      layout:decorate="~{inc/layout}"-->
+
+<link rel="stylesheet" href="/css/member-profile.css">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/member-profile.js" defer></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 
@@ -21,7 +25,7 @@
 
             <div class="user-profile__first--text--line">
                     <div class="user-profile__id">
-                        <h1>InnerJoin123</h1>
+                        <h1 th:text="${memberProfile.nickname}">InnerJoin123</h1>
                     </div>
 
                     <div class="user-profile__icon-local">
@@ -38,7 +42,8 @@
             </div>
 
             <div class="user-profile__email">
-                <p>durldlerain@gmail.com</p>
+                <p th:text="${memberProfile.userId}">durldlerain@gmail.com</p>
+<!--                <p>durldlerain@gmail.com</p>-->
             </div>
 
         </div>
@@ -63,7 +68,7 @@
 </section>
 
 
-<!--============== user-profile theme / post 상태 변경 영역 ===================-->
+<!--============== member-profile theme / post 상태 변경 영역 ===================-->
 <section class="user-profile--status">
 
     <div class="tabs-wrapper">
@@ -84,7 +89,8 @@
 
 
 
-                <section class="theme" th:each="t : ${list}">
+<!--                <section class="theme" th:each="travelTheme : ${TravelThemelist}">-->
+                <section class="theme">
                     <div class="theme__container">
                       <!-------------- theme module start -------------->
                       <div class="theme-box-area">
@@ -93,23 +99,26 @@
                         </div><!--theme-box-pic-area-->
               
                         <div class="profile-outter-box">
-                          <div class="profile-pic-id-outter">
+
+
+                    <div class="profile-pic-id-outter">
+
                             <div class="profile-pic">
-              
                               <img src="/images/profile-pic.jpg" alt="">
                             </div><!--profile-pic-->
-                            <div class="profile-id-text" th:text="${t.nickname}">
-<!--                              innerjoin123-->
+                            <div class="profile-id-text" th:text="${memberProfile.nickname}">
+                              innerjoin123
                             </div><!--profile-id-text-->
                           </div><!--profile-pic-id-->
               
                           <div class="profile-text-area-outter">
                             <div class="profile-text-title-area">
-                              <h2 th:text="title">을지로 노포 싹다 투어</h2>
+                              <p th:text="${travelThemeList.title}">을지로 노포 싹다 투어</p>
                             </div><!--profile-text-title-area-->
               
                             <div class="profile-text-contents-area">
-                              <p th:text="${description}">
+                              <p th:text="${travelThemeList.description}">
+                              <p>
                               을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
                                 어쩌구 어쩌구 저쩌구 믿거나 말거나
                                 을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
@@ -128,6 +137,7 @@
               
                             <div class="profile-status-area">
                                   <!-- <i class="material-icons">event_available</i> -->
+                                <!--예약상태-->
                                   <span class="material-symbols-outlined">
                                     event_available
                                   </span>
@@ -151,10 +161,10 @@
 
             </div> 
 
-            <div class="tab-panel" id="tab-post">
+            <div class="tab-panel2" id="tab-post">
                 <h1>post</h1>
                 <p>서비스 준비중 입니다.</p>
-            </div> 
+            </div>
 
         </div>
 

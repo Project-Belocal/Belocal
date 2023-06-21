@@ -33,8 +33,8 @@
     --color-text-lightgray: #E4E4E4;
 
     /*font Family*/
-    /*--font-family-eng: 'Inter', sans-serif;*/
-    /*--font-family-kr: 'Noto Sans KR', sans-serif;*/
+    --font-family-eng: 'Inter', sans-serif;
+    --font-family-kr: 'Noto Sans KR', sans-serif;
 
     /*Font Size*/
     --font-size-large32: 32px;

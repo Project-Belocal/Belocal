@@ -9,21 +9,19 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class MyPageRepositoryTest {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private AuthRepository authRepository;
     @Autowired
     private MyPageRepository myPageRepository;
 
     @Test
     void findAll() {
-        List<Member> list = memberRepository.findAll(4);
+        List<Member> list = authRepository.findAll(4);
         System.out.println("list = " + list);
     }
 

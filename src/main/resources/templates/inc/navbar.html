@@ -4,10 +4,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 
+<link rel="stylesheet" href="./css/navbar.css">
+
   <section th:fragment="navbar">
       <nav class="navbar">
         <div class="navbar__list">
-          <a href="#" type="button" class="navbar__btn">
+          <a href="/" type="button" class="navbar__btn">
             <div>
               <img src="./images/icon/home.svg" alt="">
             </div>
@@ -31,11 +33,11 @@
             </div>
             <div class="navbar__text">메시지</div>
           </a>
-          <a href="./mypage" type="button" class="navbar__btn">
+          <a href="./login" th:href="@{/my}" type="button" class="navbar__btn">
             <div>
               <img src="./images/icon/user.svg" alt="">
             </div>
-            <div class="navbar__text">내정보</div>
+            <div class="navbar__text">로그인</div>
           </a>
         </div>
       </nav>

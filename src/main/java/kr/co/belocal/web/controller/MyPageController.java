@@ -14,7 +14,7 @@ public class MyPageController {
         return "/my-page/profile";
     }
 
-    @RequestMapping("/theme-register")
+    @GetMapping("/theme-register")
     public String themeRegister() {
         return "/my-page/theme-register";
     }

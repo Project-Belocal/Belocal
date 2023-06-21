@@ -1,5 +1,6 @@
 package kr.co.belocal.web.entity;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,7 +17,7 @@ public class Member {
     private String userId;
     private String pw;
     private byte[] profilePic;
-    private String nickName;
+    private String nickname;
     private String name;
     private String phoneNum;
     private Date birthDate;

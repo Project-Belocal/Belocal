@@ -1,86 +1,43 @@
 package kr.co.belocal.web.controller;
 
 
-import jakarta.servlet.http.HttpSession;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.service.MemberService;
-import kr.co.belocal.web.service.MemberServiceImpl;
 import kr.co.belocal.web.service.TravelThemeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
 
     @Autowired
-    MemberServiceImpl memberService;
+    private MemberService memberService;
+    @Autowired
+    private TravelThemeService travelThemeService;
 
 
 
 
-    //아이디 중복 확인
-    @PostMapping("sign-up/checkId")
-    @ResponseBody
-    public int CheckId(@RequestParam("id") String id){
+    @GetMapping("member-profile")
+    public String getMemberProfile(@RequestParam(name = "i", required = false)Integer id, Model model){
 
-        if (id.equals(memberService.checkId(id)))
-            return 1;
+        Member memberProfile = memberService.getById(id);
+        List<TravelTheme> travelThemeList = travelThemeService.getListByMemberId(id);
 
-        return 0;
+
+        model.addAttribute("memberProfile", memberProfile);
+        model.addAttribute("travelTheme", travelThemeList);
+
+
+        return "member-profile";
     }
-
-    //닉네임 중복 확인
-    @PostMapping("sign-up/checkNickName")
-    @ResponseBody
-    public int CheckNickName(@RequestParam("nickName") String nickName){
-
-        if (nickName.equals(memberService.checkNickName(nickName)))
-            return 1;
-        return 0;
-    }
-
-
-
-    //로그인페이지
-    @GetMapping("login")
-    public String login(){
-        return "login/login";
-    }
-
-    //로그인 정보 전송
-    @PostMapping("login")
-    public String  login(Member member , HttpSession session){
-
-        if (!memberService.login(member))
-            return "redirect:/login?error";
-
-
-        session.setAttribute("id",member.getId());
-
-
-        return "redirect:/";
-    }
-
-    //회원가입 페이지
-    @GetMapping("/sign-up")
-    public String join(){
-        return "sign-up";
-    }
-
-    //회원가입 정보 전송
-    @PostMapping("/sign-up")
-    public String join(Member member,HttpSession session){
-        memberService.save(member);
-        return "login/login";
-    }
-
-
-
-
 }//class
 
 

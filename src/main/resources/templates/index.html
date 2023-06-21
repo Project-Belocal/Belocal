@@ -138,15 +138,27 @@
                     <img src="/images/index-city.jpg" alt="">
                 </div><!--theme-box-pic-area-->
 
-                <div class="profile-outter-box">
+                <div class="profile-outter-box" action="member-profile">
 
+<!--========== 아이디, 사진 부분 클릭했을 때 member-profile로 이동해야함 ====================-->
+<!--======== "profile-pic-id-outter" 클릭시 id를 전달해야 함 =========-->
+<!--                    <div class="profile-pic-id-outter" th:href="@{/member-profile(id=77)}">-->
                     <div class="profile-pic-id-outter">
+<!--                        <a href="?id=77"></a>-->
+<!--                        <a href="detail" th:href="@{/menu/detail(id=${m.id})}">-->
+
+                        <!--                    <div class="profile-pic-id-outter" th:data-id="${member.id}">-->
+<!--                    th:href="@{list(ct=${m.id})}"-->
+
+<!--                    <div class="profile-pic-id-outter">-->
+                        <a href="member-profile?i=2">
                         <div class="profile-pic">
                             <img src="/images/profile-pic.jpg" alt="">
                         </div><!--profile-pic-->
                         <div class="profile-id-text">
                             innerjoin123
                         </div><!--profile-id-text-->
+                        </a>
                     </div><!--profile-pic-id-->
 
                     <div class="profile-text-area-outter">
@@ -718,7 +730,7 @@
 <!-- footer End-->
 
 <!-- nav-bar -->
-<div th:replace="inc/navbar"></div>
+<div th:replace="~{inc/navbar}"></div>
 
 <!-- nav-bar End-->
 </body>
