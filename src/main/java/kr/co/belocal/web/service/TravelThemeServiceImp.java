@@ -19,11 +19,24 @@ public class TravelThemeServiceImp implements TravelThemeService {
     @Autowired
     private TravelThemeRepository repository;
 
+
+
+
+
+//====== member-profile 페이지 용 =================
+    @Override
+    public List<TravelTheme> getListByMemberId(Integer id) {
+
+        return repository.findAll(id);
+    }
+
+
+
     @Override
     public List<TravelTheme> getList() {
-        List<TravelTheme> list = repository.findAll();
-        return list;
+        return null;
     }
+
     @Override
     public List<TravelTheme> getList(Integer memberId) {
         return null;
@@ -52,4 +65,10 @@ public class TravelThemeServiceImp implements TravelThemeService {
         return repository.findById(id);
     }
 
-}
+
+}//class
+
+
+
+
+

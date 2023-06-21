@@ -22,4 +22,4 @@ public class RedisConfig {
         return new LettuceConnectionFactory(host, port);
     }
 
-} 
+}

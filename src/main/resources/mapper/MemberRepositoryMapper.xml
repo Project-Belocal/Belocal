@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.belocal.web.repository.MemberRepository">
+
+<!--
+'member-profile 페이지' member Table에서 id로 가져올 것들
+1. nickname
+2. user_id (email)
+-->
+    <select id="findById" resultType="kr.co.belocal.web.entity.Member">
+        SELECT
+        *
+        FROM
+        member
+        WHERE id = #{id};
+        <!-- 반환 타입이 Member Type이기 때문에
+            Member 테이블에 있는 모든 걸 싹 다 들고옴
+            들고온 것들 중 필요한 컬럼을 thymeleaf쪽에서 선택적으로 뿌려줌
+            -->
+    </select>
+
+
+    <!-- <추가로 가져올 것들>
+    1. profile_image 테이블의 profile 이미지
+
+    2. nickname 과 profile 사진은
+    member테이블에 있는데 어떻게 theme box 안으로 가져오지?
+    -->
+
+
+
+
+
+</mapper>
