@@ -17,7 +17,7 @@ import org.springframework.ui.context.Theme;
 public class TravelThemeServiceImp implements TravelThemeService {
 
     @Autowired
-    private TravelThemeRepository travelThemeRepository;
+    private TravelThemeRepository repository;
 
 
 
@@ -27,7 +27,7 @@ public class TravelThemeServiceImp implements TravelThemeService {
     @Override
     public List<TravelTheme> getListByMemberId(Integer id) {
 
-        return travelThemeRepository.findAll(id);
+        return repository.findAll(id);
     }
 
 
@@ -58,7 +58,7 @@ public class TravelThemeServiceImp implements TravelThemeService {
     }
     @Override
     public int save(TravelTheme travelTheme) {
-        return travelThemeRepository.save(travelTheme);
+        return repository.save(travelTheme);
     }
     @Override
     public TravelTheme get(Integer id) {

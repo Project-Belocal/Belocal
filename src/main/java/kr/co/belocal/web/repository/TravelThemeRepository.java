@@ -12,7 +12,7 @@ public interface TravelThemeRepository {
 
 
     // theme List 모두 불러오기
-    List<TravelTheme> findAll();
+//    List<TravelTheme> findAll();
 
     TravelTheme findById(Integer id);
 

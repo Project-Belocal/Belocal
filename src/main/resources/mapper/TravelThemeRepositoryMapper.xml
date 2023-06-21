@@ -4,11 +4,11 @@
 <mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
 
 
-    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
-        SELECT *
-        FROM
-        travel_theme
-    </select>
+<!--    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme-->
+<!--    </select>-->
 
     <select id="findById" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
@@ -16,7 +16,7 @@
         WHERE id = #{id};
     </select>
 
-    <select id="findByMemberId" resultType="kr.co.belocal.web.entity.TravelTheme">
+    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM
         travel_theme
@@ -82,13 +82,7 @@
 3. is_reserved
 4. member_id
 -->
-    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
-        SELECT *
-        FROM
-        travel_theme
-        WHERE
-        member_id = ${memberId};
-    </select>
+
 </mapper>
 
 
