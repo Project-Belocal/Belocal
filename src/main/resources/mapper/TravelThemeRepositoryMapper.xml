@@ -4,12 +4,11 @@
 <mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
 
 
-    <select id="findAlL" resultType="kr.co.belocal.web.entity.TravelTheme">
+    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM
         travel_theme
     </select>
-
 
     <select id="findByMemberId" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
@@ -19,28 +18,29 @@
         member_id = #{memberId};
     </select>
 
-
-    <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme">
+    <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">
         INSERT
         INTO
         travel_theme
         (
-         id,
          member_id,
          title,
-         content,
-         region,
-         reg_date,
+         description,
+         bookable_date_start,
+         bookable_date_end,
+         contact_preferred_time_start,
+         contact_preferred_time_end
         )
         VALUES
         (
-        #{id},
         #{memberId},
         #{title},
-        #{content},
-        #{region},
-        #{regDate}
-        );
+        #{description},
+        #{bookableDateStart},
+        #{bookableDateEnd},
+        #{contactPreferredTimeStart},
+        #{contactPreferredTimeEnd}
+        )
     </insert>
 
 

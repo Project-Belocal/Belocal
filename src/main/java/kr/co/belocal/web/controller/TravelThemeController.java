@@ -26,5 +26,11 @@ public class TravelThemeController {
         System.out.println(list);
         return "theme/theme_list";
     }
+
+    @GetMapping("theme-detail")
+    public String detail(Model model) {
+
+        return "theme/theme-detail";
+    }
 }
 

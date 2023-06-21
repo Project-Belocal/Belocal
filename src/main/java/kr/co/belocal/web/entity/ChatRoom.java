@@ -1,15 +1,25 @@
 package kr.co.belocal.web.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Timestamp;
 
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChatRoom {
-    private Integer id;
-    private Integer travelThemeId;
-    private Integer travelerId;
-    private Integer guideId;
-    private Integer isDeleted;
-    private Timestamp requestTime;
-    private Timestamp approvalTime;
-    private Timestamp rejectionTime;
+    private Integer id;                 //채팅방 번호
+    private Integer travelThemeId;      //게시글 번호
+    private Integer travelerId;         //여행객 번호
+    private Integer guideId;            //가이드 번호
+    private Integer isDeleted;          //삭제 유무
+    private Timestamp requestTime;      //신청일시
+    private Timestamp approvalTime;     //허가일시
+    private Timestamp rejectionTime;    //거절일시
 }

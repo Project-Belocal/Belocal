@@ -17,7 +17,7 @@ public class Member {
     private String userId;
     private String pw;
     private byte[] profilePic;
-    private String nickname;
+    private String nickName;
     private String name;
     private String phoneNum;
     private Date birthDate;

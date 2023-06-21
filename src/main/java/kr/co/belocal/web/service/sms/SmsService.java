@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import kr.co.belocal.web.config.SmsCertification;
+import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.sms.SmsMessage;
 import kr.co.belocal.web.entity.sms.SmsRequest;
 import kr.co.belocal.web.entity.sms.SmsResponse;
@@ -58,11 +59,8 @@ public class SmsService {
     private final SmsCertification smsCertification;
 
 
-    //휴대폰 인증 번호
+    //휴대폰 인증 번호 생성
     private final String smsConfirmNum = createSmsKey();
-
-
-
 
 
 
@@ -96,12 +94,12 @@ public class SmsService {
         return encodeBase64String;
     }
 
-
+    //인증번호 전송
     public void sendSms(String phoneNumber) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        String  checkPhone = authService.CheckPhoneNum(phoneNumber);
-        if (checkPhone!=null) {
+        String  duplicatePhone = authService.duplicatePhoneNum(phoneNumber);
+        if (duplicatePhone!=null) {
             throw new PhoneNumberDuplicateException(phoneNumber);
-        } else if (checkPhone == null) {
+        } else if (duplicatePhone == null) {
 
 
             //난수 생성
@@ -121,7 +119,7 @@ public class SmsService {
                     .contentType("COMM")
                     .countryCode("82")
                     .from(phone)
-                    .content("[sms test] 인증번호 [" + smsConfirmNum + "]를 입력해주세요")
+                    .content("[Belocal] 인증번호 [" + smsConfirmNum + "]를 입력해주세요")
                     .messages(messages)
                     .build();
 
@@ -159,8 +157,70 @@ public class SmsService {
 
             smsCertification.createSmsCertification(phoneNumber, smsConfirmNum);
         }
-
     }
+
+
+    //임시 비밀번호 전송
+    public void TemporarySms(String phoneNumber,String TemporaryPwd) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        String  duplicatePhone = authService.duplicatePhoneNum(phoneNumber);
+        if (duplicatePhone==null) {
+            throw new PhoneNumberDuplicateException(phoneNumber);
+        } else if (duplicatePhone != null) {
+
+
+
+            //현재시간
+            String time = Long.toString(System.currentTimeMillis());
+
+            List<SmsMessage> messages = new ArrayList<>();
+            // 보내는 사람에게 내용을 보냄.
+            SmsMessage smsMessage = new SmsMessage();
+            smsMessage.setTo(phoneNumber);
+            messages.add(smsMessage); // 번호생성후 전송
+
+            // 전체 json에 대해 메시지를 만든다.
+            SmsRequest smsRequest = SmsRequest.builder()
+                    .type("SMS")
+                    .contentType("COMM")
+                    .countryCode("82")
+                    .from(phone)
+                    .content("[Belocal] 임시비밀번호는 [" + TemporaryPwd + "]입니다. 로그인후 비밀번호를 변경해주세요.")
+                    .messages(messages)
+                    .build();
+
+            // 쌓아온 바디를 json 형태로 변환시켜준다.
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonBody = objectMapper.writeValueAsString(smsRequest);
+
+            // 헤더세팅
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.set("x-ncp-apigw-timestamp", time);
+            headers.set("x-ncp-iam-access-key", accessKey);
+            // signature 서명하기.
+            headers.set("x-ncp-apigw-signature-v2", makeSignature(time)); // signature 서명
+
+
+            // 위에서 조립한 jsonBody와 헤더를 조립한다.
+            HttpEntity<String> body = new HttpEntity<>(jsonBody, headers);
+//        System.out.println(body.getBody());
+
+            //restTemplate로 post 요청 보내고 오류가 없으면 202코드 반환
+            try {
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+                //restTemplate를 통해 외부 api와 통신
+
+                SmsResponse smsResponse = restTemplate.postForObject(
+                        new URI("https://sens.apigw.ntruss.com/sms/v2/services/" + serviceId + "/messages"),
+                        body,
+                        SmsResponse.class);
+            } catch (Exception e) {
+                throw new BusinessException(ErrorCode.SMS_API_CALL_FAILED);
+            }
+        }
+    }
+
 
     //사용자가 입력한 인증번호가 Redis에 저장된 인증번호와 동일한지 확인
     public boolean verifySms(String phone, String verification) {
@@ -196,6 +256,7 @@ public class SmsService {
         }
         return key.toString();
     }
+
 
 
 }
