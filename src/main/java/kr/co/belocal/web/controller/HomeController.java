@@ -9,7 +9,6 @@ import kr.co.belocal.web.service.TravelThemeService;
 @Controller
 public class HomeController {
 
-
     @GetMapping("index")
     public String index(){
 

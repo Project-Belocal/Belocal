@@ -47,5 +47,9 @@ public class TravelThemeServiceImp implements TravelThemeService {
     public int save(TravelTheme travelTheme) {
         return repository.save(travelTheme);
     }
+    @Override
+    public TravelTheme get(Integer id) {
+        return repository.findById(id);
+    }
 
 }

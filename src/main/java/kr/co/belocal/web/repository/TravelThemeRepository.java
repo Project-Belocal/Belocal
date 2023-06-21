@@ -10,6 +10,7 @@ public interface TravelThemeRepository {
     // theme List 모두 불러오기
     List<TravelTheme> findAll();
 
+    TravelTheme findById(Integer id);
 
     // theme 을 member id 에 맞게 불러오기
     List<TravelTheme> findByMemberId(Integer memberId);

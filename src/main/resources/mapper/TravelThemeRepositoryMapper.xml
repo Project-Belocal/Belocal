@@ -10,6 +10,12 @@
         travel_theme
     </select>
 
+    <select id="findById" resultType="kr.co.belocal.web.entity.TravelTheme">
+        SELECT *
+        FROM travel_theme
+        WHERE id = #{id};
+    </select>
+
     <select id="findByMemberId" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM
