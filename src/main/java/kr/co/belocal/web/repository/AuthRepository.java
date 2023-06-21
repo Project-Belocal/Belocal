@@ -1,6 +1,7 @@
 package kr.co.belocal.web.repository;
 
 import kr.co.belocal.web.entity.Member;
+import kr.co.belocal.web.entity.MemberRoleView;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.relational.core.sql.In;
 
@@ -16,8 +17,12 @@ public interface AuthRepository {
     //휴대폰 중복 확인
     String  duplicatePhoneNum(String phoneNum);
 
+    //회원 권한 조회
+    List<MemberRoleView> getMemberRole(Integer memberId);
+
+
     //로그인
-    Member login(Member member);
+    Member login(String username);
     //회원 정보 조회
     List<Member> findAll(Integer id);
     //id찾기

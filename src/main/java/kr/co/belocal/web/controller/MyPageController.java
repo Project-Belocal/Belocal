@@ -19,7 +19,7 @@ import kr.co.belocal.web.service.PlaceService;
 import kr.co.belocal.web.service.TravelThemeService;
 
 @Controller
-@RequestMapping("/my-page")
+@RequestMapping("/my")
 public class MyPageController {
 
     @Autowired
@@ -31,14 +31,15 @@ public class MyPageController {
     @Autowired
     private PlaceImageService placeImageService;
 
-    @RequestMapping("/profile")
-    public String profile() {
-        return "/my-page/profile";
+    @GetMapping
+    public String my(){
+        return "member/my/profile";
     }
 
-    @GetMapping("/theme-register")
-    public String themeRegister() {
-        return "/my-page/theme-register";
+
+    @GetMapping("/profile-edit")
+    public String profileEdit(){
+        return "member/my/profile-edit";
     }
 
     @PostMapping("/upload-theme")
