@@ -33,7 +33,7 @@ public class MemberController {
 
 
         model.addAttribute("memberProfile", memberProfile);
-        model.addAttribute("travelTheme", travelThemeList);
+        model.addAttribute("travelThemeList", travelThemeList);
 
 
         return "member-profile";

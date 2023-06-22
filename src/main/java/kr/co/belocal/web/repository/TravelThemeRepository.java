@@ -8,7 +8,7 @@ import java.util.List;
 public interface TravelThemeRepository {
 
 //====== member-profile 페이지용 ===========
-    List<TravelTheme> findAll(Integer id);
+    List<TravelTheme> findAll(Integer id, int offset, int size);
 
 
     // theme List 모두 불러오기
