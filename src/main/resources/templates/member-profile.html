@@ -89,7 +89,7 @@
 
 
 
-                <section class="theme" th:each="travelTheme : ${TravelTheme}">
+                <section class="theme" th:each="t:${travelThemeList}">
                     <div class="theme__container">
                       <!-------------- theme module start -------------->
                       <div class="theme-box-area">
@@ -112,11 +112,11 @@
               
                           <div class="profile-text-area-outter">
                             <div class="profile-text-title-area">
-                              <p th:text="${travelTheme.title}">을지로 노포 싹다 투어</p>
+                              <p th:text="${t.title}">을지로 노포 싹다 투어</p>
                             </div><!--profile-text-title-area-->
               
                             <div class="profile-text-contents-area">
-                              <p th:text="${travelTheme.description}">
+                              <p th:text="${t.description}">
                               <p>
                               을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
                                 어쩌구 어쩌구 저쩌구 믿거나 말거나
@@ -152,8 +152,8 @@
 
 
               
-                    </div><!--theme-container-->
-                  </section>
+            </div><!--theme-container-->
+      </section>
                   <!-- theme End -->
 
 
