@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/navbar.css">
+
     <link rel="stylesheet" href="../css/my-page/profile.css">
     <script src="../js/mypage/profile.js" defer></script>
     <title>Document</title>
@@ -35,7 +36,7 @@
             <!-- 프로필 수정 및 내 게시물 -->
             <div class="my__link">
                 <div class="my__link-btn">
-                    <a href="profile-edit">프로필 수정</a>
+                    <a href="my/profile-edit">프로필 수정</a>
                 </div>
                 <div class="my__link-btn">
                     <a href="#">내 게시물</a>
@@ -184,6 +185,9 @@
                 </div>
             </div>
         </div>
+        <form method="post" action="/logout">
+            <button  type="submit">로그아웃</button>
+        </form>
 </main>
 
 <!-- nav-bar -->

@@ -3,6 +3,8 @@ package kr.co.belocal.web.controller;
 import java.util.List;
 import java.util.Map;
 
+import kr.co.belocal.web.entity.Member;
+import kr.co.belocal.web.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ import kr.co.belocal.web.service.TravelThemeService;
 public class MyPageController {
 
     @Autowired
+    private MemberService memberService;
+
+    @Autowired
     private TravelThemeService travelThemeService;
 
     @Autowired
@@ -34,20 +39,41 @@ public class MyPageController {
     @Autowired
     private PlaceImageService placeImageService;
 
-    @RequestMapping("/profile")
+    @GetMapping
     public String profile() {
         return "/member/my/profile";
     }
+
+
+
+    @GetMapping("/profile-edit")
+    public String profileEdit(){
+        return "member/my/profile-edit";
+    }
+
+    @PostMapping("/profile-edit/send")
+    public String profileEdit(Member member){
+
+        System.out.println("member = " + member);
+
+
+
+        memberService.editSave(member);
+        
+        return "redirect:/my";
+    }
+
+
 
     @GetMapping("/theme-register")
     public String themeRegister() {
         return "/member/theme-register";
     }
-    
-    @GetMapping("/profile-edit")
-    public String profileEdit(){
-        return "member/my/profile-edit";
-    }
+
+
+
+
+
 
     // @PostMapping("/upload")
     // public String upload(@RequestBody UploadRequest uploadRequest) {

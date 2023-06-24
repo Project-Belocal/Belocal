@@ -32,8 +32,6 @@ public class AuthServiceImpl implements AuthService {
     //임시 비밀번호 생성
     private final String TemporaryPwd = temporaryKey();
 
-
-
     //아이디 찾기
     @Override
     public String getFindId(String phoneNum) {
@@ -75,6 +73,20 @@ public class AuthServiceImpl implements AuthService {
 //            return Sucess
 //        }
         return TemporaryPwd;
+    }
+
+    @Override
+    public Integer checkPw(Integer memberId, String pw) {
+
+        String  result = authRepository.checkPw(memberId, pw);
+
+        if (result==null)
+            throw new NotFoundException(pw,ErrorCode.INVALID_INPUT_VALUE);
+
+        if (passwordEncoder.matches(pw,result)){
+            return 1;
+        }
+        return 0;
     }
 
 

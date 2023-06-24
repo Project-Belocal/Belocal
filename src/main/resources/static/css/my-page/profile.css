@@ -149,7 +149,8 @@
 .my-page-main{
     display: flex;
     max-width: 390px;
-    height: 622px;
+    height: 100vh;
+    overflow-y: hidden;
     flex-direction: column;
     padding: var(--section-padding);
 }
@@ -418,3 +419,4 @@
     0% {bottom:-300px; opacity:0}
     100% {bottom:0px; opacity:1}
 }
+

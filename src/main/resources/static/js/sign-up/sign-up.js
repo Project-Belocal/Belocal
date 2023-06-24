@@ -280,6 +280,7 @@ window.addEventListener("load",function (){
 
 
 
+    //문자 전송
     const sendSms = async (toPhone)=>{
         const response = await fetch("/sms/send",{
             method:"POST",
@@ -301,6 +302,7 @@ window.addEventListener("load",function (){
 
     }
 
+    //문자인증
     const sendVerification = async (verificationNum,toPhone) =>{
         clearInterval(timer); // 타이머 멈추기
         const response = await fetch("/sms/verification",{
