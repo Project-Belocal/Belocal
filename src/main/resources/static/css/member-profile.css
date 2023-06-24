@@ -1,3 +1,9 @@
+body {
+    height: auto;
+    width: 390px;
+    /*background-color: #182CE3;*/
+}
+
 
 /* ============== user-profile 상단 영역 ========= */
 .user-profile__container {

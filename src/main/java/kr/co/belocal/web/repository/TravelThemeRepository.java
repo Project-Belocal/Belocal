@@ -9,6 +9,7 @@ public interface TravelThemeRepository {
 
 //====== member-profile 페이지용 ===========
     List<TravelTheme> findAll(Integer id, int offset, int size);
+//    List<TravelTheme> findAll(Integer id);
 
 
     // theme List 모두 불러오기

@@ -9,7 +9,7 @@ import java.util.List;
 public interface TravelThemeService {
 
     //====== member-profile 페이지 용 =================
-    List<TravelTheme> getListByMemberId(Integer id);
+    List<TravelTheme> getListByMemberId(Integer id, int offset);
 
     List<TravelTheme> getList();
 

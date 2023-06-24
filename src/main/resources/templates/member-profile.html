@@ -6,6 +6,8 @@
 
 <link rel="stylesheet" href="/css/member-profile.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/reset.css">
+
 <script src="/js/member-profile.js" defer></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -69,111 +71,95 @@
 
 
 <!--============== member-profile theme / post 상태 변경 영역 ===================-->
-<section class="user-profile--status">
+    <section class="user-profile--status">
+        <div class="tabs-wrapper">
 
-    <div class="tabs-wrapper">
+                <ul class="nav-tabs">
+                    <li class="tab is-active" data-target="#tab-theme">theme</li>
+                    <li class="tab" data-target="#tab-post">post</li>
+                </ul>
 
-        <ul class="nav-tabs">
-            <li class="tab is-active" data-target="#tab-theme">theme</li>
-            <li class="tab" data-target="#tab-post">post</li>
-        </ul>
-
-
-
-
-        <div class="tab-content">
-
-            <div class="tab-panel is-active" id="tab-theme">
-                <!-- <h1>theme</h1>
-                <p>asdkljsladfkalsdjflaksdfjdslfjdsklfjdslkfajdlksjfalskdfj</p> -->
+            <div class="tab-content">
+                <div class="tab-panel is-active" id="tab-theme">
+                        <!-- <h1>theme</h1>
+                        <p>asdkljsladfkalsdjflaksdfjdslfjdsklfjdslkfajdlksjfalskdfj</p> -->
 
 
 
-                <section class="theme" th:each="t:${travelThemeList}">
-                    <div class="theme__container">
-                      <!-------------- theme module start -------------->
-                      <div class="theme-box-area">
-                        <div class="theme-box-pic-area">
-                          <img src="/images/index-city.jpg" alt="">
-                        </div><!--theme-box-pic-area-->
-              
-                        <div class="profile-outter-box">
+<!-- ============= 페이징 하기 위한 부분 ========================================== -->
+<!--                    <div class="infinite">-->
+<!--                        <div class="list">-->
+
+<!--                            <section class="theme" th:each="t:${travelThemeList}" th:text="${offset}">-->
+                            <section class="theme" th:each="t:${travelThemeList}" th:text="${offset}">
+                                <div class="theme__container">
+                                                  <!-- ------------ theme module start -------------->
+                                      <div class="theme-box-area">
+                                                        <div class="theme-box-pic-area">
+                                                            <img src="/images/index-city.jpg" alt="">
+                                                        </div><!--theme-box-pic-area-->
+
+                                          <div class="profile-outter-box">
+                                                        <div class="profile-pic-id-outter">
+                                                            <div class="profile-pic">
+                                                              <img src="/images/profile-pic.jpg" alt="">
+                                                            </div><!--profile-pic-->
+                                                            <div class="profile-id-text" th:text="${memberProfile.nickName}">
+                                                              innerjoin123
+                                                            </div><!--profile-id-text-->
+                                                        </div><!--profile-pic-id-outter-->
+
+                                              <div class="profile-text-area-outter">
+                                                        <div class="profile-text-title-area">
+                                                          <p th:text="${t.title}">을지로 노포 싹다 투어</p>
+                                                        </div><!--profile-text-title-area-->
+                                                        <div class="profile-text-contents-area">
+                                                          <p th:text="${t.description}" />
+                                                          <p>
+                                                          을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                                            ㄴㅇㄹ
+                                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
+                                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                                            ㄴㅇㄹ
+                                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                                          </p>
+                                                        </div><!--profile-text-contents-area-->
+
+                                                        <div class="profile-status-area">
+                                                                  <!-- <i class="material-icons">event_available</i> -->
+                                                                <!--예약상태-->
+                                                                  <span class="material-symbols-outlined">
+                                                                    event_available
+                                                                  </span>
+                                                            <div class="status-text">
+                                                                예약가능
+                                                            </div>
+                                                        </div><!--profile-status-area-->
+
+                                              </div><!--profile-text-area-outter-->
+                                          </div><!--profile-outter-box-->
+                                      </div><!--theme-box-area-->
+                                                  <!-------------- theme module end -------------->
+                                </div><!--theme-container-->
+                            </section>
+<!--                        </div>&lt;!&ndash;list&ndash;&gt;-->
+<!--                    </div>&lt;!&ndash;infinite&ndash;&gt;-->
 
 
-                    <div class="profile-pic-id-outter">
-
-                            <div class="profile-pic">
-                              <img src="/images/profile-pic.jpg" alt="">
-                            </div><!--profile-pic-->
-                            <div class="profile-id-text" th:text="${memberProfile.nickName}">
-                              innerjoin123
-                            </div><!--profile-id-text-->
-                          </div><!--profile-pic-id-->
-              
-                          <div class="profile-text-area-outter">
-                            <div class="profile-text-title-area">
-                              <p th:text="${t.title}">을지로 노포 싹다 투어</p>
-                            </div><!--profile-text-title-area-->
-              
-                            <div class="profile-text-contents-area">
-                              <p th:text="${t.description}">
-                              <p>
-                              을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                                어쩌구 어쩌구 저쩌구 믿거나 말거나
-                                을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                ㅁㅇㄴㄻㄴㅇㄻ
-                                ㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                                을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                ㅁㅇㄴㄻㄴㅇㄻ
-                                ㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ
-                              </p>
-                            </div><!--profile-text-contents-area-->
-              
-              
-                            <div class="profile-status-area">
-                                  <!-- <i class="material-icons">event_available</i> -->
-                                <!--예약상태-->
-                                  <span class="material-symbols-outlined">
-                                    event_available
-                                  </span>
-              
-                              <div class="status-text">예약가능</div>
-              
-                            </div><!--profile-status-area-->
-                          </div><!--profile-text-area-outter-->
-                        </div><!--profile-outter-box-->
-                      </div><!--theme-box-area-->
-                      <!-------------- theme module end -------------->
-              
-
-
-              
-            </div><!--theme-container-->
-      </section>
-                  <!-- theme End -->
-
-
-
-            </div>
-
-            <div class="tab-panel2" id="tab-post">
-                <h1>post</h1>
-                <p>서비스 준비중 입니다.</p>
-            </div>
-
-        </div>
-
-
-
-
-    </div>
-
-
-</section>
+                </div><!--tab-pannel-->
+                                <div class="tab-panel2" id="tab-post">
+                                    <h1>post</h1>
+                                    <p>서비스 준비중 입니다.</p>
+                                </div>
+            </div><!--tab-content-->
+        </div><!--tabs-wrapper-->
+    </section>
 
 
 
@@ -182,5 +168,5 @@
 
 
     
-</body>
+    </body>
 </html>
