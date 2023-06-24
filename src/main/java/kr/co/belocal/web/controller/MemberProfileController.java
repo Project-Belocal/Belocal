@@ -1,4 +1,4 @@
-package kr.co.belocal.web.controller.request;
+package kr.co.belocal.web.controller;
 
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;

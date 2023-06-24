@@ -53,10 +53,7 @@ public class TravelThemeServiceImp implements TravelThemeService {
         return null;
     }
 
-    @Override
-    public Category findById(Integer memberId, Integer travelThemeId) {
-        return null;
-    }
+
 
     @Override
     public Member getById(Integer memberId, Integer travelThemeId) {
