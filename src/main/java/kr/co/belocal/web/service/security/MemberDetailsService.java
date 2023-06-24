@@ -22,7 +22,6 @@ public class MemberDetailsService implements UserDetailsService {
     @Autowired
     private AuthService authService;
 
-    //3OJwTDDz
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -36,7 +35,6 @@ public class MemberDetailsService implements UserDetailsService {
                 .id(member.getId())
                 .userId(member.getUserId())
                 .pw(member.getPw())
-                .profilePic(member.getProfilePic())
                 .nickName(member.getNickName())
                 .name(member.getName())
                 .phoneNum(member.getPhoneNum())

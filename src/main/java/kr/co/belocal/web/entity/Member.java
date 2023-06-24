@@ -16,7 +16,6 @@ public class Member {
     private Integer id;
     private String userId;
     private String pw;
-    private byte[] profilePic;
     private String nickName;
     private String name;
     private String phoneNum;
@@ -24,5 +23,5 @@ public class Member {
     private Date regDate;
     private BigDecimal rating;
     private Integer isWithdrawl;
-
+    private String selfIntroduction;
 }

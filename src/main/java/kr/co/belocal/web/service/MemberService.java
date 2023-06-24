@@ -4,4 +4,6 @@ import kr.co.belocal.web.entity.Member;
 
 public interface MemberService {
     Member getById(Integer id);
+
+    Integer editSave(Member member);
 }

@@ -16,6 +16,8 @@ public interface AuthRepository {
     String duplicateNickName(String nickName);
     //휴대폰 중복 확인
     String  duplicatePhoneNum(String phoneNum);
+    //현재 비밀번호 확인
+    String  checkPw(Integer memberId, String pw);
 
     //회원 권한 조회
     List<MemberRoleView> getMemberRole(Integer memberId);
