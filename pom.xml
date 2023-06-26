@@ -146,6 +146,14 @@
 			<version>2.10.1</version>
 		</dependency>
 
+		<!-- google cloud storage -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter</artifactId>
+			<version>1.2.5.RELEASE</version>
+		</dependency>
+
 
 	</dependencies>
 
@@ -164,6 +172,12 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<!-- <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources> -->
 	</build>
 
 </project>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" 
 	xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 <head>
     <meta charset="UTF-8">
@@ -12,13 +13,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="/js/them-detail-modal.js"></script>
 </head>
-<body>
-
-
+<body></body>
 <!--========= theme__title ============-->
 <section class="theme__title--header--section">
     <div class="theme__title--header">
-
         <div  class="theme__title--header--button--before">
             <button>
                 <i class="material-symbols-outlined">
@@ -26,7 +24,6 @@
                 </i>
             </button>
         </div>
-
 
         <div class="theme__title--header--button--share">
             <button>
@@ -36,7 +33,6 @@
             </button>
         </div>
     </div>
-
 
     <!-- ======== 모달창 영역 ======== -->
     <div class="modal__background hidden">
@@ -57,14 +53,13 @@
 
     <!-- </div> -->
 
-
-
-    <div class="theme_title--pic--container">
-        <img src="/images/index-city.jpg" alt="">
-    </div>
-
-
-
+    <section class="theme__image-preview__container">
+        <ul class="theme__image-preview slider">
+            <li class="slide">
+                <img src="" alt="">
+            </li>
+        </ul>
+      </section>
 
     <div class="theme__contents--text--container">
 
@@ -225,6 +220,10 @@
 
 </section>
 
+<!-- nav-bar -->
+<div th:replace="~{inc/navbar}"></div>
+
+<!-- nav-bar End-->
 
 </body>
 </html>

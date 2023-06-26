@@ -1,3 +1,5 @@
+let inputFileLists = [];
+
 window.addEventListener("load", () => {
     const body = document.querySelector("body");
 
@@ -7,11 +9,11 @@ window.addEventListener("load", () => {
     const regBtn = document.querySelector(".place__registration-btn");
     // Get the <span> element that closes the modal
     const closeBtn = document.querySelector(".modal__close");
-    
+
     const deleteBtn = document.querySelector(".modal__delete-btn");
-    
-    const modalSaveBtn = document.querySelector(".modal__save-btn"); 
-    
+
+    const modalSaveBtn = document.querySelector(".modal__save-btn");
+
     const nextBtn = document.querySelector(".registration__next-btn").querySelector("button");
     const prevBtn = document.querySelector(".header__prev-button");
 
@@ -20,30 +22,30 @@ window.addEventListener("load", () => {
     let categorySelectedText, locationSelectedText;
     const descriptionArea = modal.querySelector(".modal__place-description").querySelector("textarea");
 
-    categorySelector.onchange = function() {
+    categorySelector.onchange = function () {
         const categoryMessage = modal.querySelector(".modal__place-category__header").querySelector("div");
-        if(categorySelector.value != "" && !categoryMessage.classList.contains("hidden"))
+        if (categorySelector.value != "" && !categoryMessage.classList.contains("hidden"))
             categoryMessage.classList.toggle("hidden");
 
         categorySelectedText = categorySelector.options[categorySelector.selectedIndex].text;
     }
 
-    locationSelector.onchange = function() {
+    locationSelector.onchange = function () {
         const locationMessage = modal.querySelector(".modal__place-location__header").querySelector("div");
-        if(locationSelector.value != "" && !locationMessage.classList.contains("hidden"))
+        if (locationSelector.value != "" && !locationMessage.classList.contains("hidden"))
             locationMessage.classList.toggle("hidden");
 
         locationSelectedText = locationSelector.options[locationSelector.selectedIndex].text;
     }
 
-    descriptionArea.onchange = function() {
+    descriptionArea.onchange = function () {
         const descriptionMessage = modal.querySelector(".modal__place-description__header").querySelector("div");
-        if(descriptionArea.value != "" && !descriptionMessage.classList.contains("hidden"))
+        if (descriptionArea.value != "" && !descriptionMessage.classList.contains("hidden"))
             descriptionMessage.classList.toggle("hidden");
     }
 
     function toggleRegistrationPages() {
-        if(placeContainer.childElementCount == 0) {
+        if (placeContainer.childElementCount == 0) {
             document.querySelector(".place__message").classList.remove("hidden");
             return;
         }
@@ -56,7 +58,7 @@ window.addEventListener("load", () => {
         })
 
         const placesImageList = placeContainer.querySelectorAll(".place__images");
-        
+
         placesImageList.forEach((placeImageContainer) => {
             const placeImages = placeImageContainer.querySelectorAll("img");
 
@@ -82,7 +84,7 @@ window.addEventListener("load", () => {
     prevBtn.onclick = toggleRegistrationPages;
     nextBtn.onclick = toggleRegistrationPages;
 
-    deleteBtn.onclick = function(e) {
+    deleteBtn.onclick = function (e) {
         e.preventDefault();
 
         const slider = document.querySelector(".modal__image-preview");
@@ -115,34 +117,42 @@ window.addEventListener("load", () => {
     }
 
     modalSaveBtn.onclick = function (e) {
+        const modalImageInput = document.querySelector(".modal__upload-btn");
         const slider = document.querySelector(".modal__image-preview");
         const modalPlaceCategory = document.querySelector(".modal__place-category");
         const modalPlaceLocation = document.querySelector(".modal__place-location");
         const modalPlaceDescription = document.querySelector(".modal__place-description");
-       
-        const isEmptySlider = slider.childElementCount == 0 ? true : false; 
-        if(isEmptySlider) {
+
+        const isEmptySlider = slider.childElementCount == 0 ? true : false;
+        if (isEmptySlider) {
             modal.querySelector(".modal__place-img__header").querySelector("div").classList.remove("hidden");
             return;
         }
 
         const isEmptyCategory = modalPlaceCategory.querySelector("select").value == "" ? true : false;
-        if(isEmptyCategory) {
+        if (isEmptyCategory) {
             modalPlaceCategory.querySelector(".modal__place-category__header").querySelector("div").classList.remove("hidden");
             return;
         }
-        
+
         const isEmptyLocation = modalPlaceLocation.querySelector("select").value == "" ? true : false;
-        if(isEmptyLocation) {
+        if (isEmptyLocation) {
             modalPlaceLocation.querySelector(".modal__place-location__header").querySelector("div").classList.remove("hidden");
             return;
         }
-        
+
         const isEmptyDescription = modalPlaceDescription.querySelector("textarea").value == "" ? true : false;
-        if(isEmptyDescription) {
+        if (isEmptyDescription) {
             modalPlaceDescription.querySelector(".modal__place-description__header").querySelector("div").classList.remove("hidden");
             return;
         }
+        // input type=file에 저장된 image들(files)을 inputFileLists 배열에 저장
+        inputFileLists.push(Array.from(modalImageInput.files));
+        // for(let i = 0; i < modalImageInput.files.length; i++) {
+        //     inputFileLists[inputFileLists.length-1].push(modalImageInput.files[i]);
+        // }
+
+        // console.log(inputFileLists);
         // 저장 버튼을 누르면 모달 밖의 place__container라는 ul 영역에 
         // li 형식으로 장소에 관련된 내용을 넣어서 저장한 뒤 내부 내용은 삭제하고 모달창을 닫기
 
@@ -179,7 +189,7 @@ window.addEventListener("load", () => {
 
         const placeDescription = document.createElement("div");
         placeDescription.classList.add("place__description");
-        placeDescription.innerHTML = modalPlaceDescription.querySelector("textarea").value; 
+        placeDescription.innerHTML = modalPlaceDescription.querySelector("textarea").value;
 
         const placeDeleteBtn = document.createElement("div");
         placeDeleteBtn.classList.add("place__delete-btn");
@@ -201,12 +211,12 @@ window.addEventListener("load", () => {
         // 2. modal 내부 내용을 삭제
         deleteBtn.click();
 
-        modalPlaceCategory.querySelector("select").value="";
-        modalPlaceLocation.querySelector("select").value="";
-        modalPlaceDescription.querySelector("textarea").value="";
+        modalPlaceCategory.querySelector("select").value = "";
+        modalPlaceLocation.querySelector("select").value = "";
+        modalPlaceDescription.querySelector("textarea").value = "";
 
         const placeMessage = document.querySelector(".place__message");
-        if(!placeMessage.classList.contains("hidden"))
+        if (!placeMessage.classList.contains("hidden"))
             placeMessage.classList.toggle("hidden");
         // 3. modal 창을 닫기
         closeBtn.click();
@@ -214,14 +224,22 @@ window.addEventListener("load", () => {
 
     const placeContainer = document.querySelector(".place__container");
 
-    placeContainer.onclick = function(e) {
-        if(e.target.classList.contains("place__delete-btn__img")) {
+    placeContainer.onclick = function (e) {
+        if (e.target.classList.contains("place__delete-btn__img")) {
+            const targetNode = e.target.parentNode.parentNode;
+            const placeItemList = placeContainer.querySelectorAll(".place__item");
+
+            for(let i = 0; i < placeItemList.length; i++) {
+                if(placeItemList[i] === targetNode)
+                    inputFileLists.splice(i, 1);
+            }
+                
             placeContainer.removeChild(e.target.parentNode.parentNode);
         }
     }
 
-    placeContainer.onchange = function() {
-        if(placeContainer.childElementCount > 0) 
+    placeContainer.onchange = function () {
+        if (placeContainer.childElementCount > 0)
             document.querySelector(".place__message").classList.toggle("hidden");
     }
 
@@ -371,11 +389,11 @@ window.addEventListener("load", () => {
 
     function getImageFiles(e) {
         const files = e.currentTarget.files;
-        
-        const imageMessage =  modal.querySelector(".modal__place-img__header").querySelector("div");
+    
+        const imageMessage = modal.querySelector(".modal__place-img__header").querySelector("div");
         const isMessageHidden = imageMessage.classList.contains("hidden");
 
-        if(!isMessageHidden)
+        if (!isMessageHidden)
             imageMessage.classList.toggle("hidden");
         // 서버에 업로드 요청
 
@@ -385,9 +403,9 @@ window.addEventListener("load", () => {
         const modalImagePreviewContainer = document.querySelector(".modal__image-preview__container");
         const modalImagePreview = modalImagePreviewContainer.querySelector(".modal__image-preview");
         const deleteBtn = modalImagePreviewContainer.querySelector(".modal__delete-btn");
-        
+
         // const themeImagePreview = document.querySelector(".theme__image-preview"); 
-        
+
         // 업로드 파일 개수 검사
         if ([...files].length >= 6) {
             alert('이미지는 최대 5개 까지 업로드가 가능합니다.');
@@ -413,6 +431,293 @@ window.addEventListener("load", () => {
         initModalImageSlider();
         // initThemeImageSlider();
 
-        e.currentTarget.value = "";
+        // e.currentTarget.value = "";
+    }
+});
+
+window.addEventListener("load", () => {
+    const themeSaveBtn = document.querySelector(".theme__save-btn");
+
+    const themeTitle = document.querySelector(".theme__title");
+    const themeDescription = document.querySelector(".theme__description");
+    const themeBookableDate = document.querySelector(".theme__bookable-date");
+    const themePreferredTime = document.querySelector(".theme__preferred-time");
+    const themeBookableDateList = themeBookableDate.querySelectorAll("input");
+    const themePreferredTimeList = themePreferredTime.querySelectorAll("input");
+
+    const themeTitleArea = themeTitle.querySelector("textarea");
+    const themeDescriptionArea = themeDescription.querySelector("textarea");
+    const themeBookableDateInputList = themeBookableDate.querySelectorAll("input");
+    const themePreferredTimeInputList = themePreferredTime.querySelectorAll("input");
+
+    themeTitleArea.onchange = function () {
+        const themeTitleMessage = themeTitle.querySelector(".theme__title__header").querySelector("div");
+
+        if (themeTitleArea != "" && !themeTitleMessage.classList.contains("hidden"))
+            themeTitleMessage.classList.toggle("hidden");
+    }
+
+    themeDescriptionArea.onchange = function () {
+        const themeDescriptionMessage = themeDescription.querySelector(".theme__description__header").querySelector("div");
+
+        if (themeDescriptionArea != "" && !themeDescriptionMessage.classList.contains("hidden"))
+            themeDescriptionMessage.classList.toggle("hidden");
+    }
+
+    themeBookableDateInputList[0].onchange = function () {
+        const isCompleteDate = (themeBookableDateInputList[0].value != "" && themeBookableDateInputList[1].value != "") ? true : false;
+        const themeDateMessage = themeBookableDate.querySelector(".theme__bookable-date__header").querySelector("div");
+
+        if (isCompleteDate && !themeDateMessage.classList.contains("hidden"))
+            themeDateMessage.classList.toggle("hidden");
+    }
+
+    themeBookableDateInputList[1].onchange = function () {
+        const isCompleteDate = (themeBookableDateInputList[0].value != "" && themeBookableDateInputList[1].value != "") ? true : false;
+        const themeDateMessage = themeBookableDate.querySelector(".theme__bookable-date__header").querySelector("div");
+
+        if (isCompleteDate && !themeDateMessage.classList.contains("hidden"))
+            themeDateMessage.classList.toggle("hidden");
+    }
+
+    themePreferredTimeInputList[0].onchange = function () {
+        const isCompleteTime = (themePreferredTimeInputList[0].value != "" && themePreferredTimeInputList[1].value != "") ? true : false;
+        const themeTimeMessage = themePreferredTime.querySelector(".theme__preferred-time__header").querySelector("div");
+
+        if (isCompleteTime && !themeTimeMessage.classList.contains("hidden"))
+            themeTimeMessage.classList.toggle("hidden");
+    }
+
+    themePreferredTimeInputList[1].onchange = function () {
+        const isCompleteDate = (themePreferredTimeInputList[0].value != "" && themePreferredTimeInputList[1].value != "") ? true : false;
+        const themeTimeMessage = themePreferredTime.querySelector(".theme__preferred-time__header").querySelector("div");
+
+        if (isCompleteDate && !themeTimeMessage.classList.contains("hidden"))
+            themeTimeMessage.classList.toggle("hidden");
+    }
+
+    themeSaveBtn.onclick = async function () {
+        uploadInputImage();
+
+        return;
+        const isComplete = checkCompleteTheme();
+        if (!isComplete) return;
+
+        const themeInfo = document.querySelector(".theme__info");
+        const themeTitleData = themeInfo.querySelector(".theme__title").querySelector("textarea");
+        const themeDescriptionData = themeInfo.querySelector(".theme__description").querySelector("textarea");
+        const themeBookableDateDataList = themeInfo.querySelector(".theme__bookable-date").querySelectorAll("input");
+        const themePreferredTimeDataList = themeInfo.querySelector(".theme__preferred-time").querySelectorAll("input");
+
+        const theme = {
+            "memberId": null,
+            "title": themeTitleData.value,
+            "description": themeDescriptionData.value,
+            "bookableDateStart": themeBookableDateDataList[0].value,
+            "bookableDateEnd": themeBookableDateDataList[1].value,
+            "contactPreferredTimeStart": themePreferredTimeDataList[0].value,
+            "contactPreferredTimeEnd": themePreferredTimeDataList[1].value
+        }
+
+        let places = [];
+        let placesImages = [];
+
+        const uploadedPlaceList = document.querySelector(".place__container").querySelectorAll(".place__item");
+
+        for (let i = 0; i < uploadedPlaceList.length; i++) {
+            let placeCategoryId = uploadedPlaceList[i].querySelector(".place__category").querySelector("input").value;
+            let placeLocationId = uploadedPlaceList[i].querySelector(".place__location").querySelector("input").value;
+            let placeDescription = uploadedPlaceList[i].querySelector(".place__description").innerText;
+            let placeOrder = i;
+
+            places[i] = {
+                "travelThemeId": null,
+                "categoryId": placeCategoryId,
+                "locationId": placeLocationId,
+                "description": placeDescription,
+                "order": placeOrder
+            }
+
+            let uploadedPlaceImageList = uploadedPlaceList[i].querySelector(".place__images").querySelectorAll("img");
+            let placeImages = [];
+
+            for (let j = 0; j < uploadedPlaceImageList.length; j++) {
+                let imagePath = uploadedPlaceImageList[j].src;
+                let imageOrder = j;
+
+                placeImages[j] = {
+                    "placeId": null,
+                    "path": imagePath,
+                    "order": imageOrder
+                }
+            }
+
+            placesImages[i] = placeImages;
+        }
+
+        const newThemeId = await uploadTheme(theme);
+
+        if (!newThemeId) {
+            displayErrorMessage();
+            return;
+        }
+
+        // 각 장소에 테마 id 넣기
+        places.forEach((place) => {
+            place.travelThemeId = newThemeId;
+        });
+
+        const placesIds = await uploadPlaces(places);
+
+        // 각 이미지에 place의 id 입력
+        for (let i = 0; i < placesImages.length; i++) {
+            placesImages[i].forEach((placeImage) => {
+                placeImage.placeId = placesIds[i];
+            })
+        }
+
+        const data = {
+            "placesImages": placesImages,
+            "travelThemeId": newThemeId
+        }
+
+        fetch("/my/upload-img", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url; // 리디렉션 수행
+                }
+            })
+    }
+
+    async function uploadInputImage() {
+        const formData = new FormData();
+
+        inputFileLists.forEach((inputFileList) => {
+            inputFileList.forEach((file) => {
+                formData.append("image", file);
+            })
+        })
+
+        try {
+            const response = await fetch("/my/upload-file", {
+                method: "POST",
+                body: formData
+            })
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    } 
+    // /**
+    // * @returns {number | null} themeId
+    // */
+    async function uploadTheme(travelTheme) {
+        try {
+            const response = await fetch("/my/upload-theme", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(travelTheme),
+            });
+            const data = await response.json();
+            return data;
+
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
+
+
+    // /**
+    // * @returns {number | null} placeId
+    // */
+    async function uploadPlace(place) {
+        try {
+            const response = await fetch("/my/upload-place", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(place),
+            });
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.log(error);
+            return null;
+            // 문제 발생 여지
+            // placeIds 배열에 null 들어가면 처리해야함
+        }
+    }
+
+    async function uploadPlaces(places) {
+        const placeIds = [];
+
+        for (const place of places) {
+            const id = await uploadPlace(place);
+            placeIds.push(id);
+        }
+
+        return placeIds;
+    }
+
+    async function uploadPlacesImages(placesImages) {
+        for (const placeImages of placeImages) {
+            for (const placeImage of placeImages) {
+
+            }
+        }
+    }
+
+    /** 에러를 사용자에게 보여준다 */
+    function displayErrorMessage() {
+        alert("업로드 중에 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+
+
+    function checkCompleteTheme() {
+
+        const isEmptyThemeTitle = themeTitle.querySelector("textarea").value == "" ? true : false;
+        const isEmptyThemeDescription = themeDescription.querySelector("textarea").value == "" ? true : false;
+        const isIncompleteDate = (themeBookableDateList[0].value == "" || themeBookableDateList[1].value == "") ? true : false;
+        const isIncompleteTime = (themePreferredTimeList[0].value == "" || themePreferredTimeList[1].value == "") ? true : false;
+
+        if (isEmptyThemeTitle) {
+            const themeTitleMessage = themeTitle.querySelector(".theme__title__header").querySelector("div");
+            themeTitleMessage.classList.remove("hidden");
+            return;
+        }
+
+        if (isEmptyThemeDescription) {
+            const themeDescriptionMessage = themeDescription.querySelector(".theme__description__header").querySelector("div");
+            themeDescriptionMessage.classList.remove("hidden");
+            return;
+        }
+
+        if (isIncompleteDate) {
+            const themeBookableDateMessage = themeBookableDate.querySelector(".theme__bookable-date__header").querySelector("div");
+            themeBookableDateMessage.classList.remove("hidden");
+            return;
+        }
+
+        if (isIncompleteTime) {
+            const themePreferredTimeMessage = themePreferredTime.querySelector(".theme__preferred-time__header").querySelector("div");
+            themePreferredTimeMessage.classList.remove("hidden");
+            return;
+        }
+
+        return true;
     }
 });

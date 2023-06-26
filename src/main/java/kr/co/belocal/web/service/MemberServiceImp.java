@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImp implements MemberService{
 
     @Autowired
-    MemberRepository memberRepository;
+    private MemberRepository repository;
 
 
     @Override
     public Member getById(Integer id) {
 
-        return memberRepository.findById(id);
+        return repository.findById(id);
     }
 }//class

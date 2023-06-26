@@ -19,11 +19,9 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
+
     @Autowired
     private TravelThemeService travelThemeService;
-
-
-
 
     @GetMapping("member-profile")
     public String getMemberProfile(@RequestParam(name = "i", required = false)Integer id, Model model){
