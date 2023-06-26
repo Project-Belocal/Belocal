@@ -1,5 +1,7 @@
 package kr.co.belocal.web.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.belocal.web.entity.PlaceImage;
@@ -8,4 +10,5 @@ import kr.co.belocal.web.entity.PlaceImage;
 public interface PlaceImageRepository {
     int save(PlaceImage placeImage);
 
+    List<PlaceImage> findAll(int placeId);
 }

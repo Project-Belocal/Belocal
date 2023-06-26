@@ -1,5 +1,7 @@
 package kr.co.belocal.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,14 @@ public class PlaceImageServiceImp implements PlaceImageService {
     private PlaceImageRepository repository;
 
     @Override
-    public int save(PlaceImage placeImage) {
+    public int append(PlaceImage placeImage) {
         return repository.save(placeImage);
+    }
+
+    @Override
+    public List<PlaceImage> getListByPlaceId(int placeId) {
+        
+        return repository.findAll(placeId);
     }
     
 }

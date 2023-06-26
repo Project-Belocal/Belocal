@@ -20,7 +20,7 @@ public class MemberServiceImp implements MemberService{
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
 
     @Override
@@ -92,4 +92,5 @@ public class MemberServiceImp implements MemberService{
 
         return result;
     }
+
 }//class
