@@ -130,6 +130,10 @@ public class AuthServiceImpl implements AuthService {
         authRepository.addRole(id);
     }
 
+    @Override
+    public String getProfileImg(Integer memberId) {
+        return authRepository.getProfileImg(memberId);
+    }
 
 
     //아이디 중복 확인
@@ -140,8 +144,8 @@ public class AuthServiceImpl implements AuthService {
 
     //닉네임 중복 확인
     @Override
-    public String duplicateNickName(String nickName) {
-        return authRepository.duplicateNickName(nickName);
+    public String duplicateNickname(String nickname) {
+        return authRepository.duplicateNickname(nickname);
     }
 
     //휴대폰 중복 확인

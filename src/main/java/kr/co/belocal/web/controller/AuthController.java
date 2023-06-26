@@ -42,11 +42,11 @@ public class AuthController {
     }
 
     //닉네임 중복 확인
-    @PostMapping("sign-up/checkNickName")
+    @PostMapping("sign-up/checkNickname")
     @ResponseBody
-    public int CheckNickName(@RequestParam("nickName") String nickName){
+    public int CheckNickname(@RequestParam("nickname") String nickname){
 
-        if (nickName.equals(authService.duplicateNickName(nickName)))
+        if (nickname.equals(authService.duplicateNickname(nickname)))
             return 1;
         return 0;
     }

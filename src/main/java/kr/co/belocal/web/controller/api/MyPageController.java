@@ -1,11 +1,19 @@
 package kr.co.belocal.web.controller.api;
 
+import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.service.AuthService;
+import kr.co.belocal.web.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController("apiMyPageController")
 @RequestMapping("my/api/mys")
@@ -14,13 +22,17 @@ public class MyPageController {
     @Autowired
     private AuthService authService;
 
+    @Autowired
+    private FileService fileService;
+
+
     @PostMapping("/duplicateNickname")
     public int duplicateNickname(@RequestBody Map<String, Object> request) {
 
 
         String nickname = (String) request.get("nickname");
 
-        if (nickname.equals(authService.duplicateNickName(nickname)))
+        if (nickname.equals(authService.duplicateNickname(nickname)))
             return 1;
         return 0;
     }
@@ -40,6 +52,13 @@ public class MyPageController {
             return 1;
 
         return 0;
+    }
+
+    @PostMapping("/profileUpload")
+    public ResponseEntity<ProfileImage> profileUpload(MultipartFile uploadFile) {
+
+        fileService.fileSave(uploadFile);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }

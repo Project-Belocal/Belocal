@@ -33,7 +33,7 @@ public class MemberServiceImp implements MemberService{
     //회원정보 수정
     @Override
     public Integer editSave(Member member) {
-        String defaultNickName = null;
+        String defaultNickname = null;
         String defaultSelfIntroduction = null;
         String defaultPw = null;
         String defaultPhone = null;
@@ -45,7 +45,7 @@ public class MemberServiceImp implements MemberService{
 
         List<Member> list = authRepository.findAll(member.getId());
         for (Member defaultValue : list) {
-            defaultNickName = defaultValue.getNickName();
+            defaultNickname = defaultValue.getNickname();
             defaultSelfIntroduction = defaultValue.getSelfIntroduction();
             defaultPw = defaultValue.getPw();
             defaultPhone = defaultValue.getPhoneNum();
@@ -53,10 +53,10 @@ public class MemberServiceImp implements MemberService{
 
 
 
-        if (member.getNickName().equals("")||member.getNickName()==null)
-            nickname = defaultNickName;
+        if (member.getNickname().equals("")||member.getNickname()==null)
+            nickname = defaultNickname;
         else
-            nickname = member.getNickName();
+            nickname = member.getNickname();
 
 
         if (member.getSelfIntroduction().equals("")||member.getSelfIntroduction()==null)
@@ -81,7 +81,7 @@ public class MemberServiceImp implements MemberService{
         Member input = Member
                 .builder()
                 .id(member.getId())
-                .nickName(nickname)
+                .nickname(nickname)
                 .selfIntroduction(selfIntroduction)
                 .pw(pw)
                 .phoneNum(phone)

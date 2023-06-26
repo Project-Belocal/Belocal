@@ -25,7 +25,7 @@
         <form method="post" action="/my/profile-edit/send">
             <!-- edit 영역 -->
             <div class="edit__wrap">
-                <input type="file" accept="image/jpeg,image/png" hidden="hidden">
+                <input class="file-input" name="uploadFile" type="file" accept="image/jpeg,image/png" hidden="hidden">
                 <!-- 프로필 이미지 영역 -->
                 <div class="edit__profile">
                     <div class="edit__img">
@@ -33,12 +33,12 @@
                     </div>
                     <div class="edit__detail">
                         <div class="edit__name">
-                            <span th:text="${#authentication.principal.nickName}"
+                            <span th:text="${#authentication.principal.nickname}"
                             >회원 닉네임</span>
                         </div>
                         <div class="edit__btn-box">
-                            <button class="edit__btn edit" type="button">이미지 변경</button>
-                            <button class="edit__btn delete" type="button">삭제</button>
+                            <button class="edit__btn edit edit-btn" type="button">이미지 변경</button>
+                            <button class="edit__btn delete delete-btn" type="button">삭제</button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             <div class="edit__input-box">
                                 <h5>닉네임</h5>
                                 <div class="edit__input-item">
-                                    <input class="nickname" name="nickName" type="text" maxlength='12' placeholder="변경할 닉네임 입력">
+                                    <input class="nickname" name="nickname" type="text" maxlength='12' placeholder="변경할 닉네임 입력">
                                 </div>
                                 <p class="edit__error nickError hidden">이미 존재하는 닉네임 입니다.</p>
                             </div>
@@ -147,6 +147,6 @@
 <input
         class="member__nickname"
         type="hidden"
-        th:value="${#authentication.principal.nickName}">
+        th:value="${#authentication.principal.nickname}">
 </body>
 </html>

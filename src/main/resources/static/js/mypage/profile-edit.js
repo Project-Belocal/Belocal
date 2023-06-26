@@ -24,6 +24,12 @@ window.addEventListener("load",function (){
     const time = document.querySelector(".verification-timer");
     const authNum = document.querySelector(".edit__input-Auth");
 
+    //이미지 변경버튼
+    const editImg = document.querySelector(".edit-btn");
+    const fileInput = document.querySelector(".file-input");
+
+
+
     let nicknameCheck = false;
     let currentPwCheck = false;
     let id = memberId.value;
@@ -241,4 +247,48 @@ window.addEventListener("load",function (){
             console.log("Error",response.status,response.statusText)
         }
     }
+
+
+
+    //프로필 파일 업로드
+    editImg.addEventListener("click", function() {
+        fileInput.click();
+    });
+
+    let regex = new RegExp("(.*?)\.(jpg|png)$");
+    let maxSize = 1048576; //1MB
+    function fileCheck(fileName,fileSize){
+        if (fileSize>=maxSize)
+            return false;
+
+        if (!regex.test(fileName)){
+            return false;
+        }
+
+        return true;
+    }
+
+    fileInput.addEventListener("change",function (e){
+        let formData = new FormData();
+        let upFile = document.querySelector('input[name="uploadFile"]');
+        let fileList = upFile.files;
+        let fileObj = fileList[0];
+
+
+        if (!fileCheck(fileObj.name,fileObj.size)){
+            return false;
+        }
+
+        formData.append("uploadFile",fileObj);
+
+        fetch("api/mys/profileUpload",{
+            method:"POST",
+            body:formData
+        })
+            .then(response=>response.json())
+            .then(data => {
+                console.log(data)
+            })
+    })
+
 })

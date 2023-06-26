@@ -17,6 +17,8 @@ public interface AuthService {
     int save(Member member);
     void addRole(int id);
 
+    String getProfileImg(Integer memberId);
+
     Member login(String username);
 //    boolean login(Member member);
 
@@ -34,7 +36,7 @@ public interface AuthService {
 
     //중복검사
     String duplicateId(String userId);
-    String duplicateNickName(String nickName);
+    String duplicateNickname(String nickname);
     String duplicatePhoneNum(String phoneNum);
 
 

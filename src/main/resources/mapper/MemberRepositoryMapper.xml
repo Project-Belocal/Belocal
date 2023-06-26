@@ -33,7 +33,7 @@
     <update id="editSave" parameterType="Member">
         UPDATE member
             <set>
-                <if test="nickName != null">nickname = #{nickName},</if>
+                <if test="nickname != null">nickname = #{nickname},</if>
                 <if test="selfIntroduction != null">self_introduction = #{selfIntroduction},</if>
                 <if test="pw != null">pw = #{pw},</if>
                 <if test="phoneNum != null">phone_num = #{phoneNum},</if>

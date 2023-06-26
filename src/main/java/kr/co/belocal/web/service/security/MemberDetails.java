@@ -22,9 +22,10 @@ public class MemberDetails implements UserDetails {
     private Integer id;
     private String userId;
     private String pw;
-    private String nickName;
+    private String nickname;
     private String name;
     private String phoneNum;
+    private String profileImg;
     private BigDecimal rating;
     private List<GrantedAuthority> authorities;
 
