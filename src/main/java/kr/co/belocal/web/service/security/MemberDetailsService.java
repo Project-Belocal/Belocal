@@ -2,6 +2,7 @@ package kr.co.belocal.web.service.security;
 
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.MemberRoleView;
+import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.exception.ErrorCode;
 import kr.co.belocal.web.exception.NotFoundException;
 import kr.co.belocal.web.service.AuthService;
@@ -25,19 +26,23 @@ public class MemberDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+
         Member member = authService.login(username);
         if (member==null){
             throw new NotFoundException(username, ErrorCode.MEMBER_NOT_FOUND);
         }
+
+        String profileImg = authService.getProfileImg(member.getId());
 
         MemberDetails memberDetails = MemberDetails
                 .builder()
                 .id(member.getId())
                 .userId(member.getUserId())
                 .pw(member.getPw())
-                .nickName(member.getNickName())
+                .nickname(member.getNickname())
                 .name(member.getName())
                 .phoneNum(member.getPhoneNum())
+                .profileImg(profileImg)
                 .rating(member.getRating())
                 .build();
 

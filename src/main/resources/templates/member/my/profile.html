@@ -15,7 +15,7 @@
     <header class="my-page-header">
         <!-- 유저 이미지 -->
         <div class="my__profile-img">
-            <img src="../images/profile-pic.jpg" alt="">
+            <img src="../images/icon/user.svg" alt="">
         </div>
         <!-- 유저 정보 내용 -->
         <div class="my__profile-content">
@@ -24,7 +24,7 @@
                 <div class="my__info">
                     <!-- 유저 이름 -->
                     <div class="my__name">
-                        <span>userName001</span>
+                        <span th:text="${#authentication.principal.nickname}"></span>
                     </div>
                     <!-- 로컬 유무 -->
                     <div class="my__local">
@@ -119,7 +119,7 @@
             <div class="modal">
                 <!-- 모달 클릭바 -->
                 <button class="modal__close" type="button">
-                    <img src="../images/icon/x.svg" alt="">
+                    <img src="../images/icon/x-black.svg" alt="">
                 </button>
                 <!-- 모달 목록 -->
                 <div class="modal__item-list">
@@ -181,6 +181,343 @@
                             </div>
                         </div>
                     </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="modal__item" href="#">
+                    <!-- 유저 프로필 -->
+                    <div class="modal__profile">
+                        <div class="modal__profile-img">
+                            <img src="../images/profile-pic.jpg" alt="">
+                        </div>
+                        <div class="modal__name">
+                            <span>유저아이디입nida</span>
+                        </div>
+                    </div>
+                    <!-- 글정보 -->
+                    <div class="modal__content">
+                        <div class="modal__title">
+                            <h2>theme 제목 나옴</h2>
+                        </div>
+                        <div class="modal__text">
+                            <span>theme 내용 </span>
+                        </div>
+                        <div class="modal__book">
+                            <div class="modal__book-icon">
+                                <img src="../images/icon/reservation-not.svg" alt="">
+                            </div>
+                            <div class="modal__book-state">
+                                <span>예약가능</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                    <a class="modal__item" href="#">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span>유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2>theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span>theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
 
                 </div>
             </div>
@@ -190,9 +527,14 @@
         </form>
 </main>
 
+
+
 <!-- nav-bar -->
 <div th:replace="inc/navbar"></div>
 <!-- nav-bar End-->
-
+<input
+        class="member__id"
+        type="hidden"
+        th:value="${#authentication.principal.id}">
 </body>
 </html>
