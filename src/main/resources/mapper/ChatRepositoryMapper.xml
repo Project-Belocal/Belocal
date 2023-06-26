@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.belocal.web.repository.ChatRepository">
+
+    <select id="findAll" resultType="ChatRoom">
+        SELECT * FROM chat_room WHERE
+            guide_id = #{memberId}
+        OR
+            traveler_id = #{memberId}
+    </select>
+
+</mapper>

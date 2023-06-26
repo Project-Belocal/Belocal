@@ -8,13 +8,15 @@ import java.util.List;
 
 public interface TravelThemeService {
 
-    List<TravelTheme> getList();
-
+    //====== member-profile 페이지 용 =================
     List<TravelTheme> getListByMemberId(Integer id);
 
-    
+    List<TravelTheme> getList();
+
+
     // 'user-profile' 유저가 올린 테마들 모두 보여주는 것
-    List<TravelTheme> getList(Integer memberId);
+//    List<TravelTheme> getList(Integer memberId);
+
 
     // 'search-result' 페이지에서 검색어에 맞는 검색결과에 해당하는 테마리스트 보여주기
     List<TravelTheme> getList(String categoryName, String location, String description);

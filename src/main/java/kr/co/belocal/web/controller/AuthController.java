@@ -99,7 +99,7 @@ public class AuthController {
     }
 
 
-
+    //아이디 찾기
     @PostMapping("/login/find-id/check")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
