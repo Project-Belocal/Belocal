@@ -1,5 +1,8 @@
 package kr.co.belocal.web.entity;
 
+
+
+
 public class Appointment {
     private Integer id;
     private Integer travelThemeId;
