@@ -1,5 +1,4 @@
-//package kr.co.belocal.web.controller;
-
+package kr.co.belocal.web.controller;
 
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
@@ -14,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-//@Controller
-//public class MemberController {
-//
-//    @Autowired
-//    private MemberService memberService;
-//    @Autowired
-//    private TravelThemeService travelThemeService;
+@Controller
+public class MemberController {
+
+    @Autowired
+    private MemberService memberService;
+    @Autowired
+    private TravelThemeService travelThemeService;
 
 
 
+    @GetMapping("member-profile")
+    public String getMemberProfile(
+            @RequestParam(name = "i", required = false, defaultValue="2")Integer id,
+            @RequestParam(name = "offset", defaultValue = "0") int offset, Model model){
 
-//    @GetMapping("member-profile")
-//    public String getMemberProfile(
-//            @RequestParam(name = "i", required = false)Integer id, Model model){
-//
-//        Member memberProfile = memberService.getById(id);
-//        List<TravelTheme> travelThemeList = travelThemeService.getListByMemberId(id);
-//
-//
-//        model.addAttribute("memberProfile", memberProfile);
-//        model.addAttribute("travelThemeList", travelThemeList);
-//
-//
-//        return "member-profile";
-//    }
-//}//class
+        Member memberProfile = memberService.getById(id);
+        List<TravelTheme> travelThemeList = travelThemeService.getListByMemberId(id, offset);
+
+
+        model.addAttribute("memberProfile", memberProfile);
+        model.addAttribute("travelThemeList", travelThemeList);
+
+
+        return "member-profile";
+    }
+}//class
 
 
 

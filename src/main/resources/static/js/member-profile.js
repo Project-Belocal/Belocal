@@ -26,35 +26,83 @@ tabs.forEach((tab) => {
 });
 
 
-//==== 페이지 스크롤(6개씩 불러오기) =============================================
-// 1. 현재, 기본으로 6개를 불러오도록 되어있음(service, repository에서
-// 2. 스크롤이 화면(.infinite)의 끝에 닿으면 6개를 더 불러오도록 해야 함
-// 3. infinite의 세로길이 : 2710px 임
-// 4. 등차수열 ' 1+(i-1)1 ' 로 불러와야 할 텐데...... 0~5(6개), 6~11(6개)
-// 5. 스크롤이 바닥에 한번 닿을 때 마다 offset++ 되고 그 값을 controller에 전달해야 함
-// ** new IntersectionObserver() 활용해 보
-
-// const infinite = document.querySelector('.infinite');
-// const list = document.querySelector('.list');
-// const tw = document.querySelector('.tabs-wrapper');
 
 
-let offset = 0;
+
+
+let offset = 6;
 let batchSize = 6;
 
 window.addEventListener('scroll', function() {
     let documentHeight = document.documentElement.scrollHeight;
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
+    let themeList = document.querySelector(".theme-list");
 
-    if(scrollTop + windowHeight >= documentHeight) {
-        fetchData(offset, batchSize);
+    let url = `http://localhost:8080/api/memberprofile?offset=${offset}`;
+
+
+    console.log("documentHeight: ", documentHeight);
+    console.log("scrollTop: ", scrollTop);
+    console.log("windowHeight: ", windowHeight);
+
+
+    if(windowHeight + scrollTop == documentHeight) {
+        // fetchData(offset);
         offset += batchSize;
-   }
-});
+
+        console.log("offset: ", offset);
 
 
+        // fetch(`api/memberprofile?offset=${offset}`)
+        fetch(url)
+            .then(response => response.json())
+            .then(list => {
+                // console.log("list",list);
+                for (let theme of list) {
+                    let travelTheme =
+                        `<section class="theme"">
+                            <div class="theme-box-area">
+                                    <div class="theme-box-pic-area">
+                                        <img src="/images/index-city.jpg" alt="">
+                                    </div>
+                                <div class="profile-outter-box">
+                                    <div class="profile-pic-id-outter">
+                                        <div class="profile-pic">
+    
+                                            <img src="/images/profile-pic.jpg" alt="">
+                                        </div>
+                                        <div class="profile-id-text">
+                                            innerjoin123
+                                        </div>
+                                    </div>
+                                    <div class="profile-text-area-outter">
+                                            <div class="profile-text-title-area">
+                                                <p>${theme.title}</p>
+                                            </div>
+                                            <div class="profile-text-contents-area">
+                                                <p>
 
+                                                </p>
+                                            </div>
+                                            <div class="profile-status-area">
+                                                <span class="material-symbols-outlined">
+                                                    event_available
+                                                </span>
+                                                <div class="status-text">
+                                                    예약가능
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>`
+
+                    themeList.insertAdjacentHTML("beforeend", travelTheme);
+                }
+            })
+        }
+    });
 
 
 

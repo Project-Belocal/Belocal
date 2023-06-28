@@ -36,7 +36,6 @@ public class MemberDetailsService implements UserDetailsService {
                 .id(member.getId())
                 .userId(member.getUserId())
                 .pw(member.getPw())
-                .profilePic(member.getProfilePic())
                 .nickName(member.getNickName())
                 .name(member.getName())
                 .phoneNum(member.getPhoneNum())

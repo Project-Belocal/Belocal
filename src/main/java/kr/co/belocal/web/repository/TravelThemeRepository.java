@@ -12,6 +12,7 @@ public interface TravelThemeRepository {
 //    List<TravelTheme> findAll(Integer id);
 
 
+
     // theme List 모두 불러오기
 //    List<TravelTheme> findAll();
 

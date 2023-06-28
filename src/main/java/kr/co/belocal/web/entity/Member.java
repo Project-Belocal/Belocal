@@ -16,7 +16,6 @@ public class Member {
     private Integer id;
     private String userId;
     private String pw;
-    private byte[] profilePic;
     private String nickName;
     private String name;
     private String phoneNum;

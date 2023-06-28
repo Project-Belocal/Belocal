@@ -30,8 +30,8 @@ public class TravelThemeServiceImp implements TravelThemeService {
         // (2-1) * 5 = 5 '+1'
         // (3-1) * 5 = 10 '+1'
 
-//        return repository.findAll(id, offset, 6);
         return repository.findAll(id, offset, 6);
+//        return repository.findAll(id, 0, 6);
     }
 
 

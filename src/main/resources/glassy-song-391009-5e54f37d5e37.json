@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "glassy-song-391009",
+  "private_key_id": "5e54f37d5e37aad0239840a838d09f5c78a14032",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCdLbd+TJenPxw7\nALnV8z4tjwSFPHlWn2cScJu61+AwOTuggXTUBx3uuaM0mfZEheKxwSs5Bj0wcxGK\nZUpP9ArQdP9BfZOXA3EvtR1iF3lGyAk8X7XHk1NO0crUg+uMrA6IVqok0jGdNCJa\nBgebpz9f2pGO1ApxmPwkCfJK63Vzlq60qm3/nYLshOk2mTlWf4HrGsz4+O4dljcJ\nHY4JKo1p0yj1LNxODOQoTHV16osoaYHo7kPna+kGWINKYi3O0rYCRXPXTgOVrzo2\nSSCpMXa7AVA9hKbmLx8q20gLhB25ieZOgp8azAQLje1gEmPXlL1BDcxOsBD1LmsI\nsh8eA2TDAgMBAAECgf874erCiPRPXWaoR0kwj2qpim0MVezTizzb2rXgiqLOIv/7\nBIp+Gyb27tP64RPyOoeKIGObiV6TbDKG3P8/uyDsKHPCKmsQhC4jy7rMgkcYn2HU\nWl5NmeSa3qg016ddvab+9TjuihVL4F2+mTgqrtHLohOwigdwlXIlWekGxEfqFpAG\nJMS8mlPJUNLQJfhlL2AD5RhJS72uA5BNbY/JrDTVc85iSyaOz1xH8liy1BuS7rgR\nN0xZlN0VFFKbIjgTS2dsw49bhoJ3DYc614wDYr/yUaEHhGcVSU7EaOS2cWZIkhI4\nl9O1e7QO9ilq95rK+XuxQdCUzmu7BpZZjdCfOAECgYEA1NHKXFHABEREQ+v9QM+l\nJWjGGYTYBcmqCnb0bnjMhnjG/5g6dCuOKCcJtU1billCQzImeqfDFozRWxa+4MY5\nBcxbRTvbfeCsAEVY9926bNjijlhaSx4DxYuGUGe8RClTnIlg/xwoLwEa39dGJW9r\nCi7BhgJ+OnAzmoXK6HmPcMMCgYEAvRHXg7tqA1KSr81lPqsEQpxlCRHP/nCQMbCh\nKxJKGCkQFMtzBBWmUea7aqXpc/D+lHTOs3cYQDJI2ZXUlJPwRYHxC9EeLeQBq0m7\njOpDhAYpUgrAwn73wRJWYg7cum83+2ZMBQrGRYhxEzAXxv+T47dJ5LtA4Yi1CXHo\ntLF8/AECgYBQbE8qgAIuGpYpjL6RhWaFMojaD+eKmGDXv4gzTxcLIg0hfadpSyRX\nbBkxGGClcYGm3wbHhyokFWbwIzJSwtW9qTI8gZg6g3K8T3iFgpb2lydWX3EPvfHy\n7vz82Za9s1hTaV7sSPmueZ5sRG/PqcErgevD9qE4+DmoBTNeksFv/QKBgDbapFJd\n34YTQOesicFC0LuasF2PQ28orU0dV8UtSz3zO+0skbQPq+97J8jrVe4Db3kW4pmC\n5hBKBoTKSaDJwx4Hcy3ggAcEbc+KVtWtaeU1/GsHH6HOQIdNkK5mbXfRqMZRiaC0\n3Y1y5ouQmnVr1TZuCQxJn6tPhGa3G7LBA+gBAoGBANBISplx7bP6AkbF+fuw1Rw3\nzM9rxyk6mRWAgDt70Nuo3Jy4GIlEinfJ9eC9To5eUPocJ0PLYnpYEi8+5Vo02PfY\nEWEIqEW/v4M9OtSWq5aFmbqkbiV7+ggrtksceqdKyEPkkp53F13ym/9sxNvCsO08\n9OTu+kTubWaRHz+bTpa7\n-----END PRIVATE KEY-----\n",
+  "client_email": "springboot-storage-access@glassy-song-391009.iam.gserviceaccount.com",
+  "client_id": "101756469441291736758",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/springboot-storage-access%40glassy-song-391009.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
