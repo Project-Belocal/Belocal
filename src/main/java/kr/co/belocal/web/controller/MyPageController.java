@@ -35,9 +35,6 @@ import kr.co.belocal.web.service.TravelThemeService;
 @RequestMapping("/my")
 public class MyPageController {
 
-    @Value("${upload.path}")
-    private String uploadPath;
-
     @Autowired
     private MemberService memberService;
 
