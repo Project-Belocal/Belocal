@@ -6,11 +6,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import kr.co.belocal.web.entity.Member;
-import kr.co.belocal.web.service.MemberService;
+import jakarta.servlet.http.HttpSession;
+import kr.co.belocal.web.entity.*;
+import kr.co.belocal.web.service.*;
+import kr.co.belocal.web.service.security.MemberDetails;
+import kr.co.belocal.web.service.security.MemberDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +34,6 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.belocal.web.controller.request.UploadPlaceImageRequest;
 import kr.co.belocal.web.controller.request.UploadRequest;
-import kr.co.belocal.web.entity.Place;
-import kr.co.belocal.web.entity.PlaceImage;
-import kr.co.belocal.web.entity.TravelTheme;
-import kr.co.belocal.web.service.PlaceImageService;
-import kr.co.belocal.web.service.PlaceService;
-import kr.co.belocal.web.service.TravelThemeService;
 
 @Controller
 @RequestMapping("/my")
@@ -37,6 +41,15 @@ public class MyPageController {
 
     @Value("${upload.path}")
     private String uploadPath;
+
+
+    @Autowired
+    private MemberDetailsService memberDetailsService;
+
+
+
+    @Autowired
+    private FileService fileService;
 
     @Autowired
     private MemberService memberService;
@@ -50,6 +63,8 @@ public class MyPageController {
     @Autowired
     private PlaceImageService placeImageService;
 
+
+
     @GetMapping
     public String profile() {
         return "/member/my/profile";
@@ -62,15 +77,23 @@ public class MyPageController {
         return "member/my/profile-edit";
     }
 
+
     @PostMapping("/profile-edit/send")
-    public String profileEdit(Member member){
+    public String profileEdit(Member member, @RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session) throws IOException {
 
-        System.out.println("member = " + member);
-
-
-
+        fileService.fileSave(uploadFile,member.getId());
         memberService.editSave(member);
-        
+
+
+        //이미지를 업데이트 후 시큐리티 세션을 재등록 해주는 작업업
+        UserDetails user = memberDetailsService.loadUserByUsername(member.getUserId());
+        Authentication auth = new UsernamePasswordAuthenticationToken
+                (user,user.getPassword(),user.getAuthorities());
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+
+        securityContext.setAuthentication(auth);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
         return "redirect:/my";
     }
 

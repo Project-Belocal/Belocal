@@ -27,7 +27,7 @@ window.addEventListener("load",function (){
     //이미지 변경버튼
     const editImg = document.querySelector(".edit-btn");
     const fileInput = document.querySelector(".file-input");
-
+    const profileImg = document.querySelector(".edit__profile-img");
 
 
     let nicknameCheck = false;
@@ -274,21 +274,31 @@ window.addEventListener("load",function (){
         let fileList = upFile.files;
         let fileObj = fileList[0];
 
-
         if (!fileCheck(fileObj.name,fileObj.size)){
             return false;
         }
 
-        formData.append("uploadFile",fileObj);
+        let imgFile = fileObj;
+        let imgReader = new FileReader();
 
-        fetch("api/mys/profileUpload",{
-            method:"POST",
-            body:formData
-        })
-            .then(response=>response.json())
-            .then(data => {
-                console.log(data)
-            })
+        imgReader.onload = function (event){
+            profileImg.src = event.target.result;
+            console.log(event.target.result)
+        }
+
+        imgReader.readAsDataURL(imgFile)
+
+        //저장버튼이 눌려야 작동되어야 하는 부분
+        // formData.append("uploadFile",fileObj);
+        //
+        // fetch("api/mys/profileUpload",{
+        //     method:"POST",
+        //     body:formData
+        // })
+        //     .then(response=>response.json())
+        //     .then(data => {
+        //         console.log(data)
+        //     })
     })
 
 })

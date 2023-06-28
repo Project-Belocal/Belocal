@@ -1,6 +1,7 @@
 package kr.co.belocal.web.service;
 
 import kr.co.belocal.web.entity.Member;
+import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.repository.AuthRepository;
 import kr.co.belocal.web.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +92,11 @@ public class MemberServiceImp implements MemberService{
         Integer result = memberRepository.editSave(input);
 
         return result;
+    }
+
+    @Override
+    public ProfileImage getProfileImg(Integer memberId) {
+        return memberRepository.getProfileImg(memberId);
     }
 
 }//class

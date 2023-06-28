@@ -22,14 +22,18 @@
                 </button>
             </div>
         </div>
-        <form method="post" action="/my/profile-edit/send">
+        <form method="post" action="/my/profile-edit/send" enctype="multipart/form-data">
+            <input type="hidden" name="userId" th:value="${#authentication.principal.userId}">
             <!-- edit 영역 -->
             <div class="edit__wrap">
                 <input class="file-input" name="uploadFile" type="file" accept="image/jpeg,image/png" hidden="hidden">
                 <!-- 프로필 이미지 영역 -->
                 <div class="edit__profile">
                     <div class="edit__img">
-                        <img src="../images/icon/user.svg" alt="">
+<!--                        th:if="${#authentication.principal.profileImg != null}"-->
+<!--                        <img class="edit__profile-img" th:if="${#authentication.principal.profileImg == null}" src="../images/icon/user.svg" alt="Default Image">-->
+                        <img class="edit__profile-img"  th:src="${#authentication.principal.profileImg}" alt="User Image">
+<!--                        <img class="edit__profile-img" src="../images/icon/user.svg" alt="">-->
                     </div>
                     <div class="edit__detail">
                         <div class="edit__name">
