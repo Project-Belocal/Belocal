@@ -1,6 +1,5 @@
 package kr.co.belocal.web.controller;
 
-
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.service.MemberService;
@@ -19,15 +18,18 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
-
     @Autowired
     private TravelThemeService travelThemeService;
 
+
+
     @GetMapping("member-profile")
-    public String getMemberProfile(@RequestParam(name = "i", required = false)Integer id, Model model){
+    public String getMemberProfile(
+            @RequestParam(name = "i", required = false, defaultValue="2")Integer id,
+            @RequestParam(name = "offset", defaultValue = "0") int offset, Model model){
 
         Member memberProfile = memberService.getById(id);
-        List<TravelTheme> travelThemeList = travelThemeService.getListByMemberId(id);
+        List<TravelTheme> travelThemeList = travelThemeService.getListByMemberId(id, offset);
 
 
         model.addAttribute("memberProfile", memberProfile);

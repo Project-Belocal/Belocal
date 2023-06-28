@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<!--      layout:decorate="~{inc/layout}"-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="/css/member-profile.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="js/member-profile.js" defer></script>
 
-<link rel="stylesheet" href="/css/member-profile.css">
-<link rel="stylesheet" href="/css/style.css">
-<script src="/js/member-profile.js" defer></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>user-profile</title>
 </head>
 <body>
 
@@ -16,34 +19,33 @@
 <section class="user-profile__container">
     <div class="user-profile__profile-zone">
 
-            <div class="user-profile__profile-pic">
-                <img src="/images/profile-pic.jpg" alt="">
-            </div>
+        <div class="user-profile__profile-pic">
+            <img src="/images/profile-pic.jpg" alt="">
+        </div>
 
 
         <div class="user-profile--text--container">
 
             <div class="user-profile__first--text--line">
-                    <div class="user-profile__id">
-                        <h1 th:text="${memberProfile.nickname}">InnerJoin123</h1>
-                    </div>
+                <div class="user-profile__id">
+                    <h1>InnerJoin123</h1>
+                </div>
 
-                    <div class="user-profile__icon-local">
-                        <i class="material-symbols-outlined">
-                            star
-                        </i>
-                        <p>local</p>
-                    </div>
+                <div class="user-profile__icon-local">
+                    <i class="material-symbols-outlined">
+                        star
+                    </i>
+                    <p>local</p>
+                </div>
 
-                    <button class="user-profile__button" type="button">
-                        <p>follow</p>
-                    </button>
-                    <br>
+                <button class="user-profile__button" type="button">
+                    <p>follow</p>
+                </button>
+                <br>
             </div>
 
             <div class="user-profile__email">
                 <p th:text="${memberProfile.userId}">durldlerain@gmail.com</p>
-<!--                <p>durldlerain@gmail.com</p>-->
             </div>
 
         </div>
@@ -55,10 +57,10 @@
         <p>68 post</p>
         <p>40 followers</p>
     </div>
-    
+
     <div class="hr--container">
         <hr class="hr-solid">
-    </div>  
+    </div>
 
 
     <div class="user-profile--comment--container">
@@ -68,7 +70,7 @@
 </section>
 
 
-<!--============== member-profile theme / post 상태 변경 영역 ===================-->
+<!--============== user-profile theme / post 상태 변경 영역 ===================-->
 <section class="user-profile--status">
 
     <div class="tabs-wrapper">
@@ -88,79 +90,79 @@
                 <p>asdkljsladfkalsdjflaksdfjdslfjdsklfjdslkfajdlksjfalskdfj</p> -->
 
 
+                <!-------------- theme module start -------------->
 
-                <section class="theme" th:each="t:${travelThemeList}">
-                    <div class="theme__container">
-                      <!-------------- theme module start -------------->
-                      <div class="theme-box-area">
-                        <div class="theme-box-pic-area">
-                          <img src="/images/index-city.jpg" alt="">
-                        </div><!--theme-box-pic-area-->
-              
+
+        <section class="themeList-section">
+            <div class="theme-list">
+
+                <section class="theme" th:each="t : ${travelThemeList}">
+                    <div class="theme-box-area">
+                            <div class="theme-box-pic-area">
+                                <img src="/images/index-city.jpg" alt="">
+                            </div>
                         <div class="profile-outter-box">
+                                    <div class="profile-pic-id-outter">
+                                        <div class="profile-pic">
+
+                                            <img src="/images/profile-pic.jpg" alt="">
+                                        </div>
+                                        <div class="profile-id-text" th:text="${memberProfile.nickName}">
+                                            innerjoin123
+                                        </div>
+                                    </div>
+                            <div class="profile-text-area-outter">
+                                    <div class="profile-text-title-area">
+                                        <p th:text="${t.title}">을지로 노포 싹다 투어</p>
+                                    </div>
+                                    <div class="profile-text-contents-area">
+                                        <p th:text="${t.description}">
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
+                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                            ㅁㅇㄴㄻㄴㅇㄻ
+                                            ㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                            ㅁㄴㅇㄻㄴㅇㄹ
+                                        </p>
+                                    </div>
+                                    <div class="profile-status-area">
+                                        <span class="material-symbols-outlined">
+                                            event_available
+                                        </span>
+                                        <div class="status-text">
+                                            예약가능
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+            <!-- theme End -->
 
 
-                    <div class="profile-pic-id-outter">
-
-                            <div class="profile-pic">
-                              <img src="/images/profile-pic.jpg" alt="">
-                            </div><!--profile-pic-->
-                            <div class="profile-id-text" th:text="${memberProfile.nickname}">
-                              innerjoin123
-                            </div><!--profile-id-text-->
-                          </div><!--profile-pic-id-->
-              
-                          <div class="profile-text-area-outter">
-                            <div class="profile-text-title-area">
-                              <p th:text="${t.title}">을지로 노포 싹다 투어</p>
-                            </div><!--profile-text-title-area-->
-              
-                            <div class="profile-text-contents-area">
-                              <p th:text="${t.description}">
-                              <p>
-                              을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                                어쩌구 어쩌구 저쩌구 믿거나 말거나
-                                을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                ㅁㅇㄴㄻㄴㅇㄻ
-                                ㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                                을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                ㅁㅇㄴㄻㄴㅇㄻ
-                                ㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ
-                                ㅁㄴㅇㄻㄴㅇㄹ
-                              </p>
-                            </div><!--profile-text-contents-area-->
-              
-              
-                            <div class="profile-status-area">
-                                  <!-- <i class="material-icons">event_available</i> -->
-                                <!--예약상태-->
-                                  <span class="material-symbols-outlined">
-                                    event_available
-                                  </span>
-              
-                              <div class="status-text">예약가능</div>
-              
-                            </div><!--profile-status-area-->
-                          </div><!--profile-text-area-outter-->
-                        </div><!--profile-outter-box-->
-                      </div><!--theme-box-area-->
-                      <!-------------- theme module end -------------->
-              
 
 
-              
-            </div><!--theme-container-->
-      </section>
-                  <!-- theme End -->
+
+
+
+
+
 
 
 
             </div>
 
-            <div class="tab-panel2" id="tab-post">
+            <div class="tab-panel" id="tab-post">
                 <h1>post</h1>
                 <p>서비스 준비중 입니다.</p>
             </div>
@@ -181,6 +183,6 @@
 
 
 
-    
+
 </body>
 </html>

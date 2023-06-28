@@ -22,8 +22,16 @@ public class TravelThemeServiceImp implements TravelThemeService {
 
 //====== member-profile 페이지 용 =================
     @Override
-    public List<TravelTheme> getListByMemberId(Integer id) {
-        return repository.findAll(id, 0, 6);
+    public List<TravelTheme> getListByMemberId(Integer id, int offset) {
+//    public List<TravelTheme> getListByMemberId(Integer id) {
+        // 0-5, 6-11, 12-17, 18-23, 24-29
+        // (현재페이지번호-1) * 페이지당 요청 자료 개수
+        // (0-1) * 5 = 0
+        // (2-1) * 5 = 5 '+1'
+        // (3-1) * 5 = 10 '+1'
+
+        return repository.findAll(id, offset, 6);
+//        return repository.findAll(id, 0, 6);
     }
 
 
@@ -34,7 +42,7 @@ public class TravelThemeServiceImp implements TravelThemeService {
     }
 
 
-
+//
 //    @Override
 //    public List<TravelTheme> getList(Integer memberId) {
 //        return null;
@@ -45,10 +53,7 @@ public class TravelThemeServiceImp implements TravelThemeService {
         return null;
     }
 
-    @Override
-    public Category findById(Integer memberId, Integer travelThemeId) {
-        return null;
-    }
+
 
     @Override
     public Member getById(Integer memberId, Integer travelThemeId) {
