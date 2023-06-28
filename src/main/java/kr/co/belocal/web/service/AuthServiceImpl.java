@@ -34,15 +34,17 @@ public class AuthServiceImpl implements AuthService {
 
     //아이디 찾기
     @Override
-    public String getFindId(String phoneNum) {
-        String getId = authRepository.getFindId(phoneNum);
+    public String findByUserId(String phoneNum) {
+        String getId = authRepository.findByUserId(phoneNum);
         if (getId == null)
             throw new NotFoundException(phoneNum, ErrorCode.MEMBER_NOT_FOUND);
 
+        //회원의 아이디를 일정부분 가려서 보여줌
         StringBuilder str = new StringBuilder(getId);
         for (int i = 2; i < 5; i++)
             str.setCharAt(i,'*');
         getId = str.toString();
+
         return getId;
     }
 
@@ -83,16 +85,14 @@ public class AuthServiceImpl implements AuthService {
         if (result==null)
             throw new NotFoundException(pw,ErrorCode.INVALID_INPUT_VALUE);
 
-        if (passwordEncoder.matches(pw,result)){
+        if (passwordEncoder.matches(pw,result))
             return 1;
-        }
         return 0;
     }
 
 
     @Override
     public Member login(String username) {
-
         return authRepository.login(username);
     }
 
@@ -100,19 +100,6 @@ public class AuthServiceImpl implements AuthService {
     public List<MemberRoleView> getMemberRole(Integer memberId) {
         return authRepository.getMemberRole(memberId);
     }
-
-
-    //로그인
-//    @Override
-//    public boolean login(Member member) {
-//        Member info = authRepository.login(member);
-//        //일치하는 계정이 존재한다면
-//        if (info!=null)
-//            if(passwordEncoder.matches(member.getPw(),info.getPw()))
-//                return true;
-//
-//        return false;
-//    }
 
 
     //회원가입
@@ -130,28 +117,24 @@ public class AuthServiceImpl implements AuthService {
         authRepository.addRole(id);
     }
 
-    @Override
-    public String getProfileImg(Integer memberId) {
-        return authRepository.getProfileImg(memberId);
-    }
 
 
     //아이디 중복 확인
     @Override
-    public String duplicateId(String userId) {
-        return authRepository.duplicateId(userId);
+    public String isIdDuplicate(String userId) {
+        return authRepository.isIdDuplicate(userId);
     }
 
     //닉네임 중복 확인
     @Override
-    public String duplicateNickname(String nickname) {
-        return authRepository.duplicateNickname(nickname);
+    public String isNicknameDuplicate(String nickname) {
+        return authRepository.isNicknameDuplicate(nickname);
     }
 
     //휴대폰 중복 확인
     @Override
-    public String  duplicatePhoneNum(String phoneNum) {
-        return authRepository.duplicatePhoneNum(phoneNum);
+    public String  isPhoneNumDuplicate(String phoneNum) {
+        return authRepository.isPhoneNumDuplicate(phoneNum);
     }
 
 

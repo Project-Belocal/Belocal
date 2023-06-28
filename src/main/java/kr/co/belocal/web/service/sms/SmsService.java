@@ -95,7 +95,7 @@ public class SmsService {
 
     //인증번호 전송
     public void sendSms(String phoneNumber) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        String  duplicatePhone = authService.duplicatePhoneNum(phoneNumber);
+        String  duplicatePhone = authService.isPhoneNumDuplicate(phoneNumber);
         if (duplicatePhone!=null) {
             throw new PhoneNumberDuplicateException(phoneNumber);
         } else if (duplicatePhone == null) {
@@ -161,7 +161,7 @@ public class SmsService {
 
     //임시 비밀번호 전송
     public void TemporarySms(String phoneNumber,String TemporaryPwd) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        String  duplicatePhone = authService.duplicatePhoneNum(phoneNumber);
+        String  duplicatePhone = authService.isPhoneNumDuplicate(phoneNumber);
         if (duplicatePhone==null) {
             throw new PhoneNumberDuplicateException(phoneNumber);
         } else if (duplicatePhone != null) {

@@ -17,16 +17,15 @@ public interface AuthService {
     int save(Member member);
     void addRole(int id);
 
-    String getProfileImg(Integer memberId);
 
+    //Security login check
     Member login(String username);
-//    boolean login(Member member);
 
     //권한조회
     List<MemberRoleView> getMemberRole(Integer memberId);
 
-    //아이디, 비번 찾기
-    String getFindId(String phoneNum);
+    //아이디
+    String findByUserId(String phoneNum);
 
     //비밀번호 찾기 , 임시 비밀번호 생성
     String getFindPw(String userId,String phoneNum) throws UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException;
@@ -35,9 +34,9 @@ public interface AuthService {
     Integer  checkPw(Integer memberId,String pw);
 
     //중복검사
-    String duplicateId(String userId);
-    String duplicateNickname(String nickname);
-    String duplicatePhoneNum(String phoneNum);
+    String isIdDuplicate(String userId);
+    String isNicknameDuplicate(String nickname);
+    String isPhoneNumDuplicate(String phoneNum);
 
 
 }
