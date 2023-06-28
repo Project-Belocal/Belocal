@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +31,6 @@
         <!-- 컨텐츠 영역 -->
         <div class="message__list">
             <div class="message__wrap">
-
                 <!-- 탭1 메시지 페이지 -->
                 <div class="message__item hidden">
 <!--                    <div class="message__box">-->
@@ -78,7 +80,9 @@
                 </div>
             </div>
         </div>
-</section>
+
+
+    </section>
     <div th:replace="inc/navbar"></div>
 
 </body>

@@ -1,4 +1,8 @@
 
+body{
+    overflow-y: hidden;
+}
+
 /* header 전체 영역 */
 .my-page-header{
     display: flex;
@@ -17,6 +21,7 @@
     border-radius: 50%;
     margin-bottom: auto;
     overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.3);
 }
 
 .my__profile-img img{
@@ -149,7 +154,8 @@
 .my-page-main{
     display: flex;
     max-width: 390px;
-    height: 622px;
+    height: 100vh;
+    overflow-y: hidden;
     flex-direction: column;
     padding: var(--section-padding);
 }
@@ -280,7 +286,7 @@
     padding: 14px 14px;
     width: 100%;
     height: 100%;
-    gap: 6px;
+    gap: 24px;
     border-radius: var(--border-radius);
     background-color: var(--color-point-white);
 
@@ -295,12 +301,12 @@
     align-items: center;
     width: 100%;
     height: 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
 }
 
 .modal__close img{
     width: 22px;
     height: 22px;
-    filter: invert(100%) sepia(96%) saturate(23%) hue-rotate(248deg) brightness(94%) contrast(100%);
 }
 
 
@@ -418,3 +424,4 @@
     0% {bottom:-300px; opacity:0}
     100% {bottom:0px; opacity:1}
 }
+

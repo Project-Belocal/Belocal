@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/my-page/profile-edit.css">
+    <script src="/js/mypage/profile-edit.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -19,101 +22,131 @@
                 </button>
             </div>
         </div>
-        <!-- edit 영역 -->
-        <div class="edit__wrap">
-            <input type="file" accept="image/jpeg,image/png" hidden="hidden">
-            <!-- 프로필 이미지 영역 -->
-            <div class="edit__profile">
-                <div class="edit__img">
-                    <img src="../images/profile-pic.jpg" alt="">
-                </div>
-                <div class="edit__detail">
-                    <div class="edit__name">
-                        <span>wwwwwwwww</span>
+        <form method="post" action="/my/profile-edit/send">
+            <!-- edit 영역 -->
+            <div class="edit__wrap">
+                <input class="file-input" name="uploadFile" type="file" accept="image/jpeg,image/png" hidden="hidden">
+                <!-- 프로필 이미지 영역 -->
+                <div class="edit__profile">
+                    <div class="edit__img">
+                        <img src="../images/icon/user.svg" alt="">
                     </div>
-                    <div class="edit__btn-box">
-                        <button class="edit__btn" type="button">이미지 변경</button>
-                        <button class="edit__btn" type="button">삭제</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="edit__info">
-                <div class="edit__info-box">
-                    <h4>프로필 정보</h4>
-
-                    <!-- 닉네임 변경 -->
-                    <div class="edit__unit">
-                        <div class="edit__input-box">
-                            <h5>닉네임</h5>
-                            <div class="edit__input-item">
-                                <input type="text" maxlength='12' placeholder="현재 닉네임 표시">
-                            </div>
-                            <p class="edit__error">이미 존재하는 닉네임 입니다.</p>
+                    <div class="edit__detail">
+                        <div class="edit__name">
+                            <span th:text="${#authentication.principal.nickname}"
+                            >회원 닉네임</span>
                         </div>
-                    </div>
-
-                    <!-- 비밀번호 변경 -->
-                    <div class="edit__unit">
-                        <div class="edit__input-box">
-                            <h5>현재 비밀번호</h5>
-                            <div class="edit__input-item">
-                                <input type="password" placeholder="비밀번호">
-                            </div>
-                            <p class="edit__error">비밀번호가 일치하지 않습니다.</p>
-                        </div>
-
-                        <div class="edit__input-box">
-                            <h5>새 비밀번호</h5>
-                            <div class="edit__input-item">
-                                <input type="password" placeholder="비밀번호">
-                            </div>
-                        </div>
-
-                        <div class="edit__input-box">
-                            <h5>새 비밀번호 확인</h5>
-                            <div class="edit__input-item">
-                                <input type="password" placeholder="비밀번호">
-                            </div>
-                            <p class="edit__error">비밀번호가 일치하지 않습니다.</p>
-                        </div>
-                    </div>
-
-                    <!-- 번호변경 -->
-                    <div class="edit__unit">
-                        <h5>휴대폰 번호</h5>
-                        <select class="edit__input-item" name="" id="">
-                            <option value="대한민국">대한민국+82</option>
-                            <option value="미국">미국+1</option>
-                            <option value="일본">일본+81</option>
-                        </select>
-                        <div class="edit__Auth">
-                            <input class="edit__input-item item1" type="tel" placeholder="전화번호를 입력해 주세요">
-                            <input class="edit__input-item item2" type="button" value="인증번호 받기">
-                        </div>
-                        <p class="edit__error">올바른 번호 11자리를 입력해 주세요</p>
-                        <div class="edit__input-item">
-                            <input type="tel" placeholder="인증번호를 입력해 주세요">
+                        <div class="edit__btn-box">
+                            <button class="edit__btn edit edit-btn" type="button">이미지 변경</button>
+                            <button class="edit__btn delete delete-btn" type="button">삭제</button>
                         </div>
                     </div>
                 </div>
+
+                <div class="edit__info">
+                    <div class="edit__info-box">
+                        <h4 class="edit__sub-title"></h4>
+
+                        <!-- 닉네임 변경 -->
+                        <div class="edit__unit">
+                            <div class="edit__input-box">
+                                <h5>닉네임</h5>
+                                <div class="edit__input-item">
+                                    <input class="nickname" name="nickname" type="text" maxlength='12' placeholder="변경할 닉네임 입력">
+                                </div>
+                                <p class="edit__error nickError hidden">이미 존재하는 닉네임 입니다.</p>
+                            </div>
+                        </div>
+
+                        <!--자기소개 변경-->
+                        <div class="edit__unit">
+                            <div class="edit__input-box">
+                                <h5>자기소개</h5>
+                                <textarea name="selfIntroduction" class="edit__introduction" maxlength="130" placeholder="자기소개를 입력해 주세요"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- 비밀번호 변경 -->
+                        <div class="edit__unit">
+                            <div class="edit__input-box">
+                                <h5>현재 비밀번호</h5>
+                                <div class="edit__input-item">
+                                    <input class="current-pw" type="password"  placeholder="비밀번호">
+                                </div>
+                                <p class="edit__error pwError hidden">현재 비밀번호가 일치하지 않습니다.</p>
+                            </div>
+
+                            <div class="edit__input-box">
+                                <h5>새 비밀번호</h5>
+                                <div class="edit__input-item">
+                                    <input class="new-Pw" name="pw" type="password" placeholder="비밀번호" disabled>
+                                </div>
+                                <p class="edit__error newPwError hidden"></p>
+                            </div>
+
+                            <div class="edit__input-box">
+                                <h5>새 비밀번호 확인</h5>
+                                <div class="edit__input-item">
+                                    <input class="new-Pw-check" type="password" placeholder="비밀번호" disabled>
+                                </div>
+                                <p class="edit__error pwCheckError hidden">비밀번호가 일치하지 않습니다.</p>
+                            </div>
+                        </div>
+
+                        <!-- 번호변경 -->
+                        <div class="edit__unit">
+                            <h5>휴대폰 번호</h5>
+                            <select class="edit__input-item" name="" id="">
+                                <option value="대한민국">대한민국+82</option>
+                                <option value="미국">미국+1</option>
+                                <option value="일본">일본+81</option>
+                            </select>
+
+                            <div class="edit__Auth">
+                                <input class="edit__tel" name="phoneNum"  maxlength="11" type="tel" placeholder="-를 제외한 번호를 입력해주세요." >
+                                <button class="edit__tel-btn off" type="button"  disabled>인증번호 받기</button>
+                            </div>
+
+                            <p class="edit__error phoneError">올바른 번호 11자리를 입력해 주세요</p>
+
+                            <div class="edit__input-item">
+                                <input type="number" name="verificationNum" class="edit__input-Auth" placeholder="인증번호를 입력해 주세요" >
+                            </div>
+
+                            <div class="edit__verification">
+                                <button class="edit__verification-btn" type="button">인증번호 확인</button>
+                                <span class="verification-timer">03:00</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edit__save">
+                    <button type="submit">
+                        <span>저장</span>
+                    </button>
+                </div>
             </div>
+            <input type="hidden" name="id" th:value="${#authentication.principal.id}">
+        </form>
+        <form action="" method="post">
+                <div class="edit__withdrawal">
+                    <button type="submit">
+                        <span>회원탈퇴</span>
+                    </button>
+                </div>
+        </form>
 
-            <div class="edit__save">
-                <button type="submit">
-                    <span>저장</span>
-                </button>
-            </div>
-
-
-            <div class="edit__withdrawal">
-                <button type="submit">
-                    <span>회원탈퇴</span>
-                </button>
-            </div>
-
-
-        </div>
     </div>
+
+<input
+        class="member__id"
+        type="hidden"
+        th:value="${#authentication.principal.id}">
+<input
+        class="member__nickname"
+        type="hidden"
+        th:value="${#authentication.principal.nickname}">
 </body>
 </html>

@@ -45,20 +45,30 @@
     display: none;
 } */
 
-.theme_title--pic--container {
-    width: 100%;
-    height: 230px;
-    position: relative;
+.theme__image-preview__container {
+    margin-top: var(--section-margin-bottom);
     overflow: hidden;
-    /* background-color: aquamarine; */
-    margin-bottom: var(--title-contents-gap);
-
-}
-.theme_title--pic--container img {
-    object-fit: cover;
+    position: relative;
+  }
+  
+  .theme__image-preview {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .theme__image-preview li {
+    flex: 0 0 100%;
+    width: 390px;
+    height: 200px;
+  }
+  
+  .theme__image-preview li img {
     width: 100%;
     height: 100%;
-}
+    object-fit: cover;
+  }
 
 .theme__contents--text--container {
     display: flex;

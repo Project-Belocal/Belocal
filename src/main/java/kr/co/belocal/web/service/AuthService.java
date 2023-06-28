@@ -17,9 +17,12 @@ public interface AuthService {
     int save(Member member);
     void addRole(int id);
 
+    String getProfileImg(Integer memberId);
+
     Member login(String username);
 //    boolean login(Member member);
 
+    //권한조회
     List<MemberRoleView> getMemberRole(Integer memberId);
 
     //아이디, 비번 찾기
@@ -28,11 +31,13 @@ public interface AuthService {
     //비밀번호 찾기 , 임시 비밀번호 생성
     String getFindPw(String userId,String phoneNum) throws UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException;
 
+    //현재 비밀번호 확인
+    Integer  checkPw(Integer memberId,String pw);
 
     //중복검사
     String duplicateId(String userId);
-    String duplicateNickName(String nickName);
-    String  duplicatePhoneNum(String phoneNum);
+    String duplicateNickname(String nickname);
+    String duplicatePhoneNum(String phoneNum);
 
 
 }

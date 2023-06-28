@@ -159,21 +159,21 @@ window.addEventListener("load",function (){
 })
 //닉네임 중복 확인
 window.addEventListener("load",function (){
-    const nickName = document.querySelector(".sign-up__nick-name");
+    const nickname = document.querySelector(".sign-up__nick-name");
     const nickError = document.querySelector(".nickError");
     let nickCheck = false;
 
-    nickName.addEventListener("keyup",function (){
+    nickname.addEventListener("keyup",function (){
         let regEx = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
 
-        if (!regEx.test(nickName.value)){
+        if (!regEx.test(nickname.value)){
             nickCheck = false;
             nickError.innerHTML = "사용할 수 없는 닉네임입니다."
             nickError.style.color ="red";
             nickError.classList.remove("hidden");
         }else {
             let xhr = new XMLHttpRequest();
-            xhr.open("POST","sign-up/checkNickName", true);
+            xhr.open("POST","sign-up/checkNickname", true);
             xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
             xhr.onreadystatechange = function (){
                 if (xhr.readyState===4 && xhr.status===200){
@@ -280,6 +280,7 @@ window.addEventListener("load",function (){
 
 
 
+    //문자 전송
     const sendSms = async (toPhone)=>{
         const response = await fetch("/sms/send",{
             method:"POST",
@@ -301,6 +302,7 @@ window.addEventListener("load",function (){
 
     }
 
+    //문자인증
     const sendVerification = async (verificationNum,toPhone) =>{
         clearInterval(timer); // 타이머 멈추기
         const response = await fetch("/sms/verification",{

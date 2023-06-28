@@ -13,9 +13,11 @@ public interface AuthRepository {
     //아이디 중복 확인
     String duplicateId(String userId);
     //닉네임 중복 확인
-    String duplicateNickName(String nickName);
+    String duplicateNickname(String nickname);
     //휴대폰 중복 확인
     String  duplicatePhoneNum(String phoneNum);
+    //현재 비밀번호 확인
+    String  checkPw(Integer memberId, String pw);
 
     //회원 권한 조회
     List<MemberRoleView> getMemberRole(Integer memberId);
@@ -44,5 +46,6 @@ public interface AuthRepository {
     //계정삭제
     int delete(Member id);
 
-
+    //이미지 가져오기
+    String getProfileImg(Integer memberId);
 }

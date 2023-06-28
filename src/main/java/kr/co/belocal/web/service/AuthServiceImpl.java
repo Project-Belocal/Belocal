@@ -32,8 +32,6 @@ public class AuthServiceImpl implements AuthService {
     //임시 비밀번호 생성
     private final String TemporaryPwd = temporaryKey();
 
-
-
     //아이디 찾기
     @Override
     public String getFindId(String phoneNum) {
@@ -77,6 +75,20 @@ public class AuthServiceImpl implements AuthService {
         return TemporaryPwd;
     }
 
+    @Override
+    public Integer checkPw(Integer memberId, String pw) {
+
+        String  result = authRepository.checkPw(memberId, pw);
+
+        if (result==null)
+            throw new NotFoundException(pw,ErrorCode.INVALID_INPUT_VALUE);
+
+        if (passwordEncoder.matches(pw,result)){
+            return 1;
+        }
+        return 0;
+    }
+
 
     @Override
     public Member login(String username) {
@@ -118,6 +130,10 @@ public class AuthServiceImpl implements AuthService {
         authRepository.addRole(id);
     }
 
+    @Override
+    public String getProfileImg(Integer memberId) {
+        return authRepository.getProfileImg(memberId);
+    }
 
 
     //아이디 중복 확인
@@ -128,8 +144,8 @@ public class AuthServiceImpl implements AuthService {
 
     //닉네임 중복 확인
     @Override
-    public String duplicateNickName(String nickName) {
-        return authRepository.duplicateNickName(nickName);
+    public String duplicateNickname(String nickname) {
+        return authRepository.duplicateNickname(nickname);
     }
 
     //휴대폰 중복 확인

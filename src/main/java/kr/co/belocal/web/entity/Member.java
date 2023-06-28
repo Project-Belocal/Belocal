@@ -16,12 +16,12 @@ public class Member {
     private Integer id;
     private String userId;
     private String pw;
-    private String nickName;
+    private String nickname;
     private String name;
     private String phoneNum;
     private Date birthDate;
     private Date regDate;
     private BigDecimal rating;
     private Integer isWithdrawl;
-
+    private String selfIntroduction;
 }
