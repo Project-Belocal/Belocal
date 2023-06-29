@@ -31,6 +31,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.belocal.web.controller.request.UploadPlaceImageRequest;
 import kr.co.belocal.web.controller.request.UploadRequest;
@@ -38,7 +43,11 @@ import kr.co.belocal.web.controller.request.UploadRequest;
 @Controller
 @RequestMapping("/my")
 public class MyPageController {
+    @Value("${spring.cloud.gcp.storage.bucket}") 
+    private String bucketName;
 
+    private Storage storage;
+    
     @Value("${upload.path}")
     private String uploadPath;
 
@@ -70,8 +79,6 @@ public class MyPageController {
         return "/member/my/profile";
     }
 
-
-
     @GetMapping("/profile-edit")
     public String profileEdit(){
         return "member/my/profile-edit";
@@ -97,17 +104,10 @@ public class MyPageController {
         return "redirect:/my";
     }
 
-
-
     @GetMapping("/theme-register")
     public String themeRegister() {
         return "/member/theme-register";
     }
-
-
-
-
-
 
     // @PostMapping("/upload")
     // public String upload(@RequestBody UploadRequest uploadRequest) {
@@ -117,33 +117,32 @@ public class MyPageController {
 
     @PostMapping("/upload-file") 
     public ResponseEntity<String[]> uploadFile(
-            @RequestPart(name="image") MultipartFile[] fileList,
-            HttpServletRequest request
+            @RequestPart(name="image") MultipartFile[] fileList
             ) throws IllegalStateException, IOException {
+        
+        storage = StorageOptions.getDefaultInstance().getService();
 
-        String[] filePathList = new String[fileList.length];    
-        String filePath = System.getProperty("user.dir");
-        System.out.println(filePath); 
-        // for(MultipartFile image: fileList) {
-            
-        //     // 파일명 생성 
-        //     // System.out.println(file.getOriginalFilename());
-        //     // jpg로만 해도 되나???
-        //     String fileName = UUID.randomUUID().toString() + ".jpg";
+        String[] filePathList = new String[fileList.length];
 
-        //     // 파일 경로 생성
-        //     // String filePath = uploadPath + File.separator + fileName;
-            
-        //     // 파일 저장
-        //     File file = new File(uploadPath, fileName);
-        //     image.transferTo(file);
-        // }
-        return ResponseEntity.ok().body(null);
+    
+        for(int i = 0; i < fileList.length; i++) {
+            MultipartFile image = fileList[i];
+
+            String fileName = UUID.randomUUID().toString() + ".jpg";
+            BlobId blobId = BlobId.of(bucketName, fileName);
+            BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType(image.getContentType()).build();
+            storage.create(blobInfo, image.getBytes());
+
+            filePathList[i] = "https://storage.googleapis.com/belocal-bucket/" + fileName;
+        }
+
+   
+        return ResponseEntity.ok().body(filePathList);
     }
 
     @PostMapping("/upload-theme")
     public ResponseEntity<Integer> uploadTravelTheme(@RequestBody TravelTheme travelTheme) {
-        travelTheme.setMemberId(2);
+        travelTheme.setMemberId(1);
         int result = travelThemeService.save(travelTheme);
 
         return ResponseEntity.ok().body(travelTheme.getId());
@@ -166,7 +165,7 @@ public class MyPageController {
             for(int j = 0; j < list.size(); j++) 
                 placeImageService.append(list.get(j));
         }
-
+        
         // String url = "redirect:/theme/theme-detail";\
         
         String travelThemeId = String.valueOf(requestBody.travelThemeId());
@@ -174,3 +173,4 @@ public class MyPageController {
         return url;
     }
 }
+    

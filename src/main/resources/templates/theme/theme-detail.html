@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/theme-detail.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="/js/them-detail-modal.js"></script>
+    <script src="/js/them-detail-modal.js" defer></script>
+    <script src="/js/theme-detail.js" defer></script>
 </head>
 <body></body>
 <!--========= theme__title ============-->
@@ -55,22 +56,22 @@
 
     <section class="theme__image-preview__container">
         <ul class="theme__image-preview slider">
-            <li class="slide">
-                <img src="" alt="">
+            <li class="slide" th:each="placeImage : ${placeImageLists1d}">
+                <img src="" alt="" th:src="${placeImage.path}">
             </li>
         </ul>
-      </section>
+    </section>
 
     <div class="theme__contents--text--container">
 
 
         <div class="theme__contents--text--title">
-            <h1>종로 뒷골목 투어</h1>
+            <h1 th:text="${travelTheme.title}">종로 뒷골목 투어</h1>
         </div>
 
 
         <div class="theme__contents--text--paragraph">
-            <p>종로의 오래된 피맛골은 서울특별시의 주간선도로이자 서울특별시 한강 이북 지역의 핵심 횡축도로로, 서울특별시 종로구 세종대로사거리에서 흥인지문을 지나 동대문구 신설동역에 이르는 연장 4.2km, 너비 35~40m(왕복 6~8차선)의 도로이다.
+            <p th:text="${travelTheme.description}">종로의 오래된 피맛골은 서울특별시의 주간선도로이자 서울특별시 한강 이북 지역의 핵심 횡축도로로, 서울특별시 종로구 세종대로사거리에서 흥인지문을 지나 동대문구 신설동역에 이르는 연장 4.2km, 너비 35~40m(왕복 6~8차선)의 도로이다.
                 51번 서울특별시도의 일부이며, 전 구간이 6번 국도에 속한다. 성산대교북단 - 내부순환로 - 홍지문터널 - 정릉터널 - 하월곡JC - 북부간선도로가 국도대체우회도로 역할을 하고 있으나 어째서인지 기존 도로 그대로 지정되었다.
             </p>
         </div>
@@ -82,8 +83,8 @@
                     heart_plus
                 </i>
             </button>
-            <p>like 1022</p>
-            <p>location: Seoul</p>
+            <span>like 1022</span>
+            <span>location: Seoul</span>
         </div>
 
 
@@ -101,8 +102,6 @@
         </div>
 
         <div class="theme__each-place--container">
-
-
             <div class="theme__each-place--place--container">
                 <div class="theme__each-place--image--box">
                     <img src="/images/location01.jpg" alt="">
