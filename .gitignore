@@ -21,6 +21,7 @@ target/
 *.ipr
 **/application-dev.properties
 *.yml
+*.json
 
 ### NetBeans ###
 /nbproject/private/

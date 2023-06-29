@@ -18,7 +18,8 @@
         travel_theme
         WHERE
         member_id = #{id}
-        limit #{offset}, #{size};
+        limit #{offset}, #{size}
+<!--        ORDER BY id ASC;-->
     </select>
 
     <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">

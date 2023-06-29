@@ -1,68 +1,66 @@
 package kr.co.belocal.web.service;
 
+
+
+
+import com.google.cloud.storage.*;
 import kr.co.belocal.web.entity.ProfileImage;
-import org.springframework.http.ResponseEntity;
+import kr.co.belocal.web.repository.MemberRepository;
+import kr.co.belocal.web.service.security.MemberDetails;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.IOException;
 import java.util.UUID;
+
 
 @Service
 public class FileServiceImpl implements FileService{
+
+    @Value("${spring.cloud.gcp.storage.bucket}")// application.yml에 써둔 bucket 이름
+    private String bucketName;
+
+    @Autowired
+    private MemberRepository memberRepository;
+
+    private Storage storage;
+
+
     @Override
-    public void fileSave(MultipartFile uploadFile) {
+    public void fileSave(MultipartFile uploadFile,Integer memberId) throws IOException {
         System.out.println("uploadFile = " + uploadFile.getOriginalFilename());
-        System.out.println("uploadFile.getSize() = " + uploadFile.getSize());
-        System.out.println("uploadFile.getContentType() = " + uploadFile.getContentType());
+        System.out.println("uploadFile = " + uploadFile.getContentType());
+        System.out.println("uploadFile = " + uploadFile.getSize());
+        System.out.println("uploadFile = " + uploadFile);
+        System.out.println("memberId = " + memberId);
 
-        String uploadFolder = "D:\\Project\\Spring-Project\\src\\main\\resources\\public\\profileImg";
-
-        //폴더 날짜 경로
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        Date date = new Date();
-
-        String str = sdf.format(date);
-
-        String datePath = str.replace("-", File.separator);
-
-        /* 폴더 생성 */
-        File uploadPath = new File(uploadFolder, datePath);
-
-        if(uploadPath.exists() == false) {
-            uploadPath.mkdirs();
-        }
-
-
-        /* 파일 이름 */
-        String uploadFileName = uploadFile.getOriginalFilename();
-
-        /* uuid 적용 파일 이름 */
+        Storage storage = StorageOptions.getDefaultInstance().getService();
         String uuid = UUID.randomUUID().toString();
 
-        uploadFileName = uuid + "_" + uploadFileName;
+        BlobId blobId = BlobId.of(bucketName, uuid);
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
+                .setContentType(uploadFile.getContentType())
+                .build();
+        Blob blob = storage.create(blobInfo, uploadFile.getBytes());
+
+        //js에서 cloud로 값을보내고 js로 응답 -> 응답한 값을 서버로 전송 고려하기
 
         ProfileImage profileImage = ProfileImage
                 .builder()
-                .name(uploadFileName)
-                .path(datePath)
+                .memberId(memberId)
+                .name(uploadFile.getOriginalFilename())
                 .uuid(uuid)
+                .path(bucketName)
                 .build();
 
-        /* 파일 위치, 파일 이름을 합친 File 객체 */
-        File saveFile = new File(uploadPath, uploadFileName);
-
-        /* 파일 저장 */
-        try {
-            uploadFile.transferTo(saveFile);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        memberRepository.updateProfileImg(profileImage);
 
     }
+
 
 
 }
