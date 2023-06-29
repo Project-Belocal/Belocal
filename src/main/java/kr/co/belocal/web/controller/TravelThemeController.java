@@ -55,12 +55,14 @@ public class TravelThemeController {
         // 테마 상세 페이지에서 thymeleaf로 출력할 데이터 준비
         TravelTheme travelTheme = travelThemeService.get(travelThemeId);
         List<Place> placeList = placeService.getListByTravelThemeId(travelThemeId);
-        List<List<PlaceImage>> placeImageLists = new ArrayList<List<PlaceImage>>();
+        List<List<PlaceImage>> placeImageLists2d = new ArrayList<List<PlaceImage>>();
+        List<PlaceImage> placeImageLists1d = new ArrayList<>();
 
         for(int i = 0; i < placeList.size(); i++) {
             int placeId = placeList.get(i).getId();
             List<PlaceImage> placeImageList = placeImageService.getListByPlaceId(placeId);
-            placeImageLists.add(i, placeImageList);
+            placeImageLists2d.add(i, placeImageList);
+            placeImageLists1d.addAll(placeImageList);
         }
 
         int memberId = travelTheme.getMemberId();
@@ -68,7 +70,8 @@ public class TravelThemeController {
 
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeList);
-        model.addAttribute("placeImageLists", placeImageLists); 
+        model.addAttribute("placeImageLists2d", placeImageLists2d); 
+        model.addAttribute("placeImageLists1d", placeImageLists1d);
         model.addAttribute("member", member);
 
         return "theme/theme-detail";
