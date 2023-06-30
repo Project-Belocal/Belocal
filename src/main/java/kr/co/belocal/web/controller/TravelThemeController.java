@@ -15,11 +15,13 @@ import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
 import kr.co.belocal.web.entity.ProfileImage;
+import kr.co.belocal.web.entity.Role;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.PlaceImageService;
 import kr.co.belocal.web.service.PlaceService;
 import kr.co.belocal.web.service.ProfileImageService;
+import kr.co.belocal.web.service.RoleService;
 import kr.co.belocal.web.service.TravelThemeService;
 import kr.co.belocal.web.service.WishlistService;
 
@@ -44,6 +46,9 @@ public class TravelThemeController {
 
     @Autowired
     private ProfileImageService profileImageService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/theme-list")
     public String list(Model model) {
@@ -78,7 +83,9 @@ public class TravelThemeController {
         Member member = memberService.getById(memberId); 
         int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId); 
         ProfileImage profileImage = profileImageService.getByMemberId(memberId);
-
+        
+        Role role = roleService.getByMemberId(memberId);
+        System.out.println(role);
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeList);
         model.addAttribute("placeImageLists2d", placeImageLists2d); 
