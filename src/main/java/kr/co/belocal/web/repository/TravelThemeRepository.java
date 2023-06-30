@@ -1,6 +1,7 @@
 package kr.co.belocal.web.repository;
 
 import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.entity.TravelThemeView;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
 public interface TravelThemeRepository {
 
 //====== member-profile 페이지용 ===========
-    List<TravelTheme> findAll(Integer id, int offset, int size);
+    List<TravelThemeView> findAll(Integer id, int offset, int size);
 //    List<TravelTheme> findAll(Integer id);
 
 

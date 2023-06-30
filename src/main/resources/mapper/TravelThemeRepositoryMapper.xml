@@ -12,15 +12,28 @@
         WHERE id = #{id};
     </select>
 
-    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">
+<!--    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme-->
+<!--        WHERE-->
+<!--        member_id = #{id}-->
+<!--        limit #{offset}, #{size}-->
+<!--    </select>-->
+
+
+    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelThemeView">
         SELECT *
         FROM
-        travel_theme
+        travel_theme_view
         WHERE
         member_id = #{id}
+        ORDER BY reg_date DESC
         limit #{offset}, #{size}
-<!--        ORDER BY id ASC;-->
     </select>
+
+
+
 
     <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">
         INSERT

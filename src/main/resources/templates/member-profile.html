@@ -20,7 +20,7 @@
     <div class="user-profile__profile-zone">
 
         <div class="user-profile__profile-pic">
-            <img src="/images/profile-pic.jpg" alt="">
+<!--            <img th:text="${memberProfile.uuid}" src="/images/profile-pic.jpg" alt="">-->
         </div>
 
 
@@ -28,14 +28,14 @@
 
             <div class="user-profile__first--text--line">
                 <div class="user-profile__id">
-                    <h1>InnerJoin123</h1>
+                    <h1 th:text="${memberProfile.nickname}">InnerJoin123</h1>
                 </div>
 
                 <div class="user-profile__icon-local">
                     <i class="material-symbols-outlined">
                         star
                     </i>
-                    <p>local</p>
+                    <p th:text="${role.roleTypeId}">local</p>
                 </div>
 
                 <button class="user-profile__button" type="button">
@@ -64,7 +64,7 @@
 
 
     <div class="user-profile--comment--container">
-        <p>"서울의 구석구석 같이해요"</p>
+<!--        <p th:text="${memberProfile.selfIntroduction}">"서울의 구석구석 같이해요"</p>-->
     </div>
 
 </section>
@@ -96,18 +96,19 @@
         <section class="themeList-section">
             <div class="theme-list">
 
-                <section class="theme" th:each="t : ${travelThemeList}">
+                <section class="theme" th:each="t:${travelThemeList}">
                     <div class="theme-box-area">
                             <div class="theme-box-pic-area">
-                                <img src="/images/index-city.jpg" alt="">
+                                <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
                             </div>
                         <div class="profile-outter-box">
                                     <div class="profile-pic-id-outter">
                                         <div class="profile-pic">
 
-                                            <img src="/images/profile-pic.jpg" alt="">
+
+                                            <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="">
                                         </div>
-                                        <div class="profile-id-text" th:text="${memberProfile.nickName}">
+                                        <div class="profile-id-text" th:text="${t.nickname}">
                                             innerjoin123
                                         </div>
                                     </div>
@@ -120,24 +121,23 @@
                                             을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
                                             어쩌구 어쩌구 저쩌구 믿거나 말거나
                                             을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
                                         </p>
                                     </div>
                                     <div class="profile-status-area">
-                                        <span class="material-symbols-outlined">
-                                            event_available
-                                        </span>
-                                        <div class="status-text">
-                                            예약가능
+                                        <div th:if="${t.isReserved}">
+                                            <span class="material-symbols-outlined">
+                                                event_available
+                                            </span>
                                         </div>
+
+                                        <div th:if="!${t.isReserved}">
+                                            <span class="material-symbols-outlined">
+                                                event_busy
+                                            </span>
+                                        </div>
+
+                                        <div th:if="${t.isReserved}">예약가능</div>
+                                        <div th:if="!${t.isReserved}">예약중</div>
                                     </div>
                             </div>
                         </div>

@@ -21,13 +21,26 @@
             -->
     </select>
 
+<!--    <select id="findByIdMember" resultType="kr.co.belocal.web.entity.Member">-->
+<!--        SELECT-->
+<!--        m.nickname,-->
+<!--        m.user_id,-->
+<!--        m.self_introduction,-->
+<!--        r.role_type_id,-->
+<!--        pi.uuid-->
 
-    <!-- <추가로 가져올 것들>
-    1. profile_image 테이블의 profile 이미지
+<!--        FROM member AS m-->
 
-    2. nickname 과 profile 사진은
-    member테이블에 있는데 어떻게 theme box 안으로 가져오지?
-    -->
+<!--        JOIN role AS r ON-->
+<!--        m.id = r.member_id-->
+
+<!--        JOIN profile_image AS pi ON-->
+<!--        m.id = pi.member_id-->
+
+<!--        WHERE m.id= #{id};-->
+<!--    </select>-->
+
+
 
 
     <update id="editSave" parameterType="Member">
