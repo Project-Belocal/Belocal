@@ -27,7 +27,7 @@
     color: var(--color-text-black);
 }
 .theme__title--header--button--before i{
-    font-size: 24px;
+    font-size: 32px;
 }
 
 
@@ -37,7 +37,7 @@
     /* font-weight: 800; */
 }
 .theme__title--header--button--more i{
-    font-size: 24px;
+    font-size: 32px;
 }
 /*
 .hidden{
