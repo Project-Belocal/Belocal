@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
+import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.PlaceImageService;
 import kr.co.belocal.web.service.PlaceService;
+import kr.co.belocal.web.service.ProfileImageService;
 import kr.co.belocal.web.service.TravelThemeService;
+import kr.co.belocal.web.service.WishlistService;
 
 @Controller
 @RequestMapping("/theme")
@@ -35,6 +38,12 @@ public class TravelThemeController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired 
+    private WishlistService wishlistService;
+
+    @Autowired
+    private ProfileImageService profileImageService;
 
     @GetMapping("/theme-list")
     public String list(Model model) {
@@ -67,13 +76,16 @@ public class TravelThemeController {
 
         int memberId = travelTheme.getMemberId();
         Member member = memberService.getById(memberId); 
+        int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId); 
+        ProfileImage profileImage = profileImageService.getByMemberId(memberId);
 
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeList);
         model.addAttribute("placeImageLists2d", placeImageLists2d); 
         model.addAttribute("placeImageLists1d", placeImageLists1d);
         model.addAttribute("member", member);
-
+        model.addAttribute("wishlistCount", wishlistCount);
+        model.addAttribute("profileImage", profileImage);
         return "theme/theme-detail";
     }
 }
