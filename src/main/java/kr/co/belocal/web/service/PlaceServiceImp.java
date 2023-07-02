@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.belocal.web.entity.Place;
+import kr.co.belocal.web.entity.PlaceView;
 import kr.co.belocal.web.repository.PlaceRepository;
 
 @Service
@@ -23,6 +24,11 @@ public class PlaceServiceImp implements PlaceService {
     public List<Place> getListByTravelThemeId(int travelThemeId) {
         
         return repository.findAll(travelThemeId);
+    }
+
+    @Override
+    public List<PlaceView> getViewListByTravelThemeId(int travelThemeId) {
+        return repository.findViewAll(travelThemeId);
     }
     
 }

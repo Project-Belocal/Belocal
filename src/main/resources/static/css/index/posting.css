@@ -22,13 +22,13 @@
 }
 
 .posting__title{
-    font-weight: var(--font-weight-bold);
     font-size: var(--font-size-large18);
-
+    font-weight: var(--font-weight-bold);
 }
 
 .posting__link{
-    font-size: var(--font-size-small10);
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
 }
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 

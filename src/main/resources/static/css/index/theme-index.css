@@ -20,6 +20,11 @@
     font-weight: var(--font-weight-bold);
 }
 
+.theme__link {
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+}
+
 .theme__container-index{
     width: 100%;
     height: 410px;

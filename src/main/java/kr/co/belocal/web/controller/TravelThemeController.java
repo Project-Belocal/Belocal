@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
+import kr.co.belocal.web.entity.PlaceView;
 import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.entity.Role;
 import kr.co.belocal.web.entity.TravelTheme;
@@ -68,12 +69,12 @@ public class TravelThemeController {
     ) {
         // 테마 상세 페이지에서 thymeleaf로 출력할 데이터 준비
         TravelTheme travelTheme = travelThemeService.get(travelThemeId);
-        List<Place> placeList = placeService.getListByTravelThemeId(travelThemeId);
+        List<PlaceView> placeViewList = placeService.getViewListByTravelThemeId(travelThemeId);
         List<List<PlaceImage>> placeImageLists2d = new ArrayList<List<PlaceImage>>();
         List<PlaceImage> placeImageLists1d = new ArrayList<>();
 
-        for(int i = 0; i < placeList.size(); i++) {
-            int placeId = placeList.get(i).getId();
+        for(int i = 0; i < placeViewList.size(); i++) {
+            int placeId = placeViewList.get(i).getId();
             List<PlaceImage> placeImageList = placeImageService.getListByPlaceId(placeId);
             placeImageLists2d.add(i, placeImageList);
             placeImageLists1d.addAll(placeImageList);
@@ -87,7 +88,7 @@ public class TravelThemeController {
         Role role = roleService.getByMemberId(memberId);
         System.out.println(role);
         model.addAttribute("travelTheme", travelTheme);
-        model.addAttribute("placeList", placeList);
+        model.addAttribute("placeList", placeViewList);
         model.addAttribute("placeImageLists2d", placeImageLists2d); 
         model.addAttribute("placeImageLists1d", placeImageLists1d);
         model.addAttribute("member", member);
