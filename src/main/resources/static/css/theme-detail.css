@@ -21,7 +21,6 @@
 
 }
 
-
 .theme__title--header--button--before button{
     background: none;
     color: var(--color-text-black);
@@ -141,66 +140,49 @@
     font-weight: var(--font-weight-regular);
     color: var(--color-text-gray);
 }
+
 .theme__cotents--text--status :nth-child(2) {
     margin-right: 12px;
 }
-
-
-
-
-
 
 /*========= 갹각의 장소들 ============*/
 .theme__each-place {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 390px;
-    height: 374px;
-    /* background-color: lightblue; */
+    width: 100%;
     padding: var(--section-padding);
     margin-bottom: var(--section-margin-bottom);
 }
+
 .theme__each-place--title {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     width: 100%;
-    height: 30px;
-    /* background-color: beige; */
     margin-bottom: var(--title-contents-gap);
 }
-.theme__each-place--title h1 {
-    font-family: var(--font-family-kr);
-    font-size: var(--font-size-large16);
-    color: var(--color-text-gray);
-    font-weight: var(--font-weight-semibold);
-}
 
+.theme__each-place--title h2 {
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+}
 
 .theme__each-place--container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     gap: 30px;
 }
 
-
 .theme__each-place--place--container {
     display: flex;
+    gap: var(--title-contents-gap);
     width: 100%;
     height: 90px;
-    /* background-color: blanchedalmond; */
 }
+
 .theme__each-place--image--box {
     width: 90px;
     height: 90px;
-    /* background-color: lightgray; */
-    position:relative;
     overflow: hidden;
     border-radius: 14px;
-    margin-right: 10px;
 }
 
 .theme__each-place--image--box img {
@@ -209,18 +191,22 @@
     height: 100%;
 }
 
-.theme__each-place--text {
-    width: 200px;
+.theme__each-place__attributes {
     height: 100%;
-    /* background-color: aqua; */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.theme__each-place--text :first-child {
+
+.theme__each-place__attributes :first-child {
     font-family: var(--font-family-kr);
     font-size: var(--font-size-medium14);
     color: var(--color-text-gray);
     font-weight: var(--font-weight-semibold);
 }
-.theme__each-place--text :nth-child(2) {
+
+.theme__each-place__attributes :nth-child(2) {
     font-family: var(--font-family-kr);
     font-size: var(--font-size-medium12);
     color: var(--color-text-gray);

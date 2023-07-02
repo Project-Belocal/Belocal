@@ -51,11 +51,8 @@ public class MyPageController {
     @Value("${upload.path}")
     private String uploadPath;
 
-
     @Autowired
     private MemberDetailsService memberDetailsService;
-
-
 
     @Autowired
     private FileService fileService;

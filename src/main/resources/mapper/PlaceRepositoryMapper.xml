@@ -10,6 +10,23 @@
         ORDER BY `order` ASC
     </select>
 
+    <select id="findViewAll" resultType="PlaceView">
+        SELECT
+            p.id,
+            p.travel_theme_id,
+            c.name category,
+            l.name location,
+            p.description,
+            p.order,
+            pi.path
+        FROM place p
+        JOIN category c ON p.category_id = c.id
+        JOIN location l ON p.location_id = l.id
+        JOIN place_image pi ON p.id = pi.place_id
+        WHERE p.travel_theme_id = #{travelThemeId} AND pi.order = 0
+        ORDER BY p.order ASC
+    </select>
+
     <insert id="save" parameterType="kr.co.belocal.web.entity.Place" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO place
         (
