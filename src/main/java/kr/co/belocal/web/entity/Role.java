@@ -15,5 +15,4 @@ public class Role {
     private Integer memberId;
     private Integer roleTypeId;
 
-
 }

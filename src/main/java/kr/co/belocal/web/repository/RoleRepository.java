@@ -9,6 +9,8 @@ import java.util.List;
 
 @Mapper
 public interface RoleRepository {
-    Role findByMemberId(Integer memberId);
+    Integer findByMemberId(Integer memberId);
+
+
     List<Role> findRoleById(Integer memberId);
 }

@@ -3,17 +3,22 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.belocal.web.repository.RoleRepository">
-    <select id="findByMemberId" resultType="Role">
-        SELECT *
-        FROM role
-        WHERE member_id = #{memberId}
-    </select>
-
-
-    <select id="findRoleById" resultType="Role">
+    <select id="findByMemberId" resultType="Integer">
+<!--        SELECT-->
+<!--        role_type_id-->
+<!--        FROM role-->
+<!--        WHERE member_id = #{memberId}-->
         SELECT
         role_type_id
-        FROM role
-        WHERE member_id = #{memberId}
+        FROM
+        role
+        WHERE
+        member_id = #{memberId}
+        ORDER BY
+        role_type_id
+        DESC
+        LIMIT 1;
     </select>
+
+
 </mapper>

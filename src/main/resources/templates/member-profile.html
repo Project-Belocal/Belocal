@@ -32,18 +32,19 @@
                 </div>
 
                 <div class="user-profile__icon-local">
-                    <i class="material-symbols-outlined">
+<!--                    <i class="material-symbols-outlined">-->
+<!--                        star-->
+<!--                    </i>-->
+                        <span th:if="${role==3}">
+                            Local
+                        <i class="material-symbols-outlined">
                         star
-                    </i>
-<!--                    <span th:each="r:${roleType}">-->
-<!--                        <div th:text="${roleType.role} == 3">-->
-                        <div>
-                            <span>Local</span>
-                        </div>
-<!--                    </span>-->
-<!--                    <div th:unless="${roleType}">-->
-<!--                        <p>nn</p>-->
-<!--                    </div>-->
+                         </i>
+                        </span>
+
+                        <span th:if="${role==1}">
+                            admin
+                        </span>
 
 
 

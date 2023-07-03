@@ -30,14 +30,14 @@ public class MemberController {
 
     @GetMapping("member-profile")
     public String getMemberProfile(
-            @RequestParam(name = "i", required = false, defaultValue="2")Integer id,
+            @RequestParam(name = "i", required = false, defaultValue="1")Integer id,
             @RequestParam(name = "offset", defaultValue = "0") int offset, Model model){
 
         Member memberProfile = memberService.getById(id);
         List<TravelThemeView> travelThemeList = travelThemeService.getListByMemberId(id, offset);
-        Role role = roleService.getByMemberId(id);
+        Integer role = roleService.getByMemberId(id);
 
-        List<Role> roleType = roleService.getRoleById(id);
+//        List<Role> roleType = roleService.getRoleById(id);
 
         ProfileImage profileImage = profileImageService.getByMemberId(id);
 
@@ -47,11 +47,11 @@ public class MemberController {
         model.addAttribute("travelThemeList", travelThemeList);
         model.addAttribute("role", role);
 
-        model.addAttribute("roleType", roleType);
+//        model.addAttribute("roleType", roleType);
         model.addAttribute("profileImage", profileImage);
 
 
-        System.out.println("roleType: " + role);
+        System.out.println("role: " + role);
 
 
 

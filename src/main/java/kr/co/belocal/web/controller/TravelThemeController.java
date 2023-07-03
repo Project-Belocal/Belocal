@@ -84,7 +84,7 @@ public class TravelThemeController {
         int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId); 
         ProfileImage profileImage = profileImageService.getByMemberId(memberId);
         
-        Role role = roleService.getByMemberId(memberId);
+        Integer role = roleService.getByMemberId(memberId);
         System.out.println(role);
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeList);
