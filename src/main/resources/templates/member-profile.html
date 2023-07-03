@@ -20,7 +20,7 @@
     <div class="user-profile__profile-zone">
 
         <div class="user-profile__profile-pic">
-<!--            <img th:text="${memberProfile.uuid}" src="/images/profile-pic.jpg" alt="">-->
+            <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${profileImage.uuid})}" src="/images/profile-pic.jpg" alt="">
         </div>
 
 
@@ -35,7 +35,19 @@
                     <i class="material-symbols-outlined">
                         star
                     </i>
-                    <p th:text="${role.roleTypeId}">local</p>
+<!--                    <span th:each="r:${roleType}">-->
+<!--                        <div th:text="${roleType.role} == 3">-->
+                        <div>
+                            <span>Local</span>
+                        </div>
+<!--                    </span>-->
+<!--                    <div th:unless="${roleType}">-->
+<!--                        <p>nn</p>-->
+<!--                    </div>-->
+
+
+
+
                 </div>
 
                 <button class="user-profile__button" type="button">

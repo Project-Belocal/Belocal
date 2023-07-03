@@ -5,7 +5,10 @@ import kr.co.belocal.web.entity.MemberRoleView;
 import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.exception.ErrorCode;
 import kr.co.belocal.web.exception.NotFoundException;
+import kr.co.belocal.web.repository.MemberRepository;
 import kr.co.belocal.web.service.AuthService;
+import kr.co.belocal.web.service.FileService;
+import kr.co.belocal.web.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,16 +26,27 @@ public class MemberDetailsService implements UserDetailsService {
     @Autowired
     private AuthService authService;
 
+    @Autowired
+    private MemberService memberService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        System.out.println("username = " + username);
 
         Member member = authService.login(username);
         if (member==null){
             throw new NotFoundException(username, ErrorCode.MEMBER_NOT_FOUND);
         }
 
-        String profileImg = authService.getProfileImg(member.getId());
+        ProfileImage profileImage = memberService.getProfileImg(member.getId());
+
+
+        StringBuilder img = new StringBuilder();
+        img.append("https://storage.googleapis.com/")
+                .append(profileImage.getPath()+"/")
+                .append(profileImage.getUuid());
+//        String img = "https://storage.googleapis.com/belocal-bucket/"+profileImage.getUuid();
 
         MemberDetails memberDetails = MemberDetails
                 .builder()
@@ -42,7 +56,7 @@ public class MemberDetailsService implements UserDetailsService {
                 .nickname(member.getNickname())
                 .name(member.getName())
                 .phoneNum(member.getPhoneNum())
-                .profileImg(profileImg)
+                .profileImg(String.valueOf(img))
                 .rating(member.getRating())
                 .build();
 

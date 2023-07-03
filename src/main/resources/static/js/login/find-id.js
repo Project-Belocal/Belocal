@@ -3,8 +3,8 @@
 window.addEventListener("load",function (){
     const undo = document.querySelector(".find__inner button")
 
-    const findId = document.querySelector(".input__id");
-    const findIdBtn = document.querySelector(".find__id-btn");
+    const int = document.querySelector(".input__id");
+    const intBtn = document.querySelector(".find__id-btn");
     const inputArea = document.querySelector(".find__area");
     const resultInfo = document.querySelector(".find__user-info");
     const resultId = document.querySelector(".find__info-txt");
@@ -15,8 +15,8 @@ window.addEventListener("load",function (){
     }
 
 
-    findIdBtn.onclick = function () {
-        let phoneNum = findId.value;
+    intBtn.onclick = function () {
+        let phoneNum = int.value;
 
         findIdCheck(phoneNum);
     }

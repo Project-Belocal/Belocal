@@ -1,10 +1,8 @@
 package kr.co.belocal.web.controller;
 
-import kr.co.belocal.web.entity.Member;
-import kr.co.belocal.web.entity.Role;
-import kr.co.belocal.web.entity.TravelTheme;
-import kr.co.belocal.web.entity.TravelThemeView;
+import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.MemberService;
+import kr.co.belocal.web.service.ProfileImageService;
 import kr.co.belocal.web.service.RoleService;
 import kr.co.belocal.web.service.TravelThemeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,8 @@ public class MemberController {
     private TravelThemeService travelThemeService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ProfileImageService profileImageService;
 
 
 
@@ -35,14 +35,23 @@ public class MemberController {
 
         Member memberProfile = memberService.getById(id);
         List<TravelThemeView> travelThemeList = travelThemeService.getListByMemberId(id, offset);
-        Role role =roleService.getByMemberId(id);
+        Role role = roleService.getByMemberId(id);
 
-        System.out.println("role:" +role);
+        List<Role> roleType = roleService.getRoleById(id);
+
+        ProfileImage profileImage = profileImageService.getByMemberId(id);
+
 
 
         model.addAttribute("memberProfile", memberProfile);
         model.addAttribute("travelThemeList", travelThemeList);
         model.addAttribute("role", role);
+
+        model.addAttribute("roleType", roleType);
+        model.addAttribute("profileImage", profileImage);
+
+
+        System.out.println("roleType: " + role);
 
 
 

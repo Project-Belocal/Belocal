@@ -54,6 +54,19 @@
         WHERE id = #{id}
     </update>
 
+    <update id="updateProfileImg" parameterType="ProfileImage">
+        UPDATE profile_image
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="path != null">path = #{path},</if>
+            <if test="uuid != null">uuid = #{uuid},</if>
+        </set>
+        WHERE member_id = #{memberId}
+    </update>
 
+
+    <select id="getProfileImg" parameterType="ProfileImage">
+        SELECT * FROM profile_image WHERE member_id = #{memberId}
+    </select>
 
 </mapper>

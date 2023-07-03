@@ -10,4 +10,6 @@ import kr.co.belocal.web.entity.TravelTheme;
 public interface WishlistRepository {
     
     List<TravelTheme> findAll(int memberId);
+
+    int countsByTravelTheme(int travelThemeId);
 }

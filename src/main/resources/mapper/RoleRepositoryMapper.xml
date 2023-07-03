@@ -1,17 +1,19 @@
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.belocal.web.repository.RoleRepository">
-
-
     <select id="findByMemberId" resultType="Role">
-        SELECT
-<!--        role_type_id-->
-        *
-        FROM
-        role
-        WHERE member_id = #{id}
+        SELECT *
+        FROM role
+        WHERE member_id = #{memberId}
     </select>
 
+
+    <select id="findRoleById" resultType="Role">
+        SELECT
+        role_type_id
+        FROM role
+        WHERE member_id = #{memberId}
+    </select>
 </mapper>

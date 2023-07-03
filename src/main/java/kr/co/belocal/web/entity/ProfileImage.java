@@ -11,9 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProfileImage {
     private Integer id;
-    private Integer memberId; //상품?id
+    private Integer memberId; //회원id
     private String name; //파일이름
     private String path; //경로
     private String uuid;
-
 }

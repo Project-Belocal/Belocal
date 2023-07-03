@@ -11,11 +11,12 @@ import java.util.List;
 public interface AuthRepository {
 
     //아이디 중복 확인
-    String duplicateId(String userId);
+    String isIdDuplicate(String userId);
     //닉네임 중복 확인
-    String duplicateNickname(String nickname);
+    String isNicknameDuplicate(String nickname);
     //휴대폰 중복 확인
-    String  duplicatePhoneNum(String phoneNum);
+    String isPhoneNumDuplicate(String phoneNum);
+
     //현재 비밀번호 확인
     String  checkPw(Integer memberId, String pw);
 
@@ -27,8 +28,10 @@ public interface AuthRepository {
     Member login(String username);
     //회원 정보 조회
     List<Member> findAll(Integer id);
+
     //id찾기
-    String getFindId(String phoneNum);
+    String findByUserId(String phoneNum);
+
     //pw찾기 -> 값이 존재하면 id값 반환
     Integer getFindPw(String userId,String phoneNum);
 
@@ -46,6 +49,4 @@ public interface AuthRepository {
     //계정삭제
     int delete(Member id);
 
-    //이미지 가져오기
-    String getProfileImg(Integer memberId);
 }

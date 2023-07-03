@@ -33,10 +33,10 @@ public class AuthController {
     //아이디 중복 확인
     @PostMapping("sign-up/checkId")
     @ResponseBody
-    public int duplicateId(@RequestParam("id") String id){
+    public int isIdDuplicate(@RequestParam("id") String id){
 
         System.out.println("id = " + id);
-        if (id.equals(authService.duplicateId(id)))
+        if (id.equals(authService.isIdDuplicate(id)))
             return 1;
         return 0;
     }
@@ -46,7 +46,7 @@ public class AuthController {
     @ResponseBody
     public int CheckNickname(@RequestParam("nickname") String nickname){
 
-        if (nickname.equals(authService.duplicateNickname(nickname)))
+        if (nickname.equals(authService.isNicknameDuplicate(nickname)))
             return 1;
         return 0;
     }
@@ -103,9 +103,9 @@ public class AuthController {
     @PostMapping("/login/find-id/check")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public Map<String ,Object>  findId(@RequestBody Map<String ,Object> request){
+    public Map<String ,Object> findByUserId(@RequestBody Map<String ,Object> request){
         String response = (String) request.get("phoneNum");
-        String userId = authService.getFindId(response);
+        String userId = authService.findByUserId(response);
 
         Map<String ,Object> returnMap = new HashMap<>();
         returnMap.put("userId",userId);

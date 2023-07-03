@@ -21,6 +21,7 @@ target/
 *.ipr
 **/application-dev.properties
 *.yml
+*.json
 
 ### NetBeans ###
 /nbproject/private/
@@ -34,3 +35,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### GSC ###
+**/glassy-song-391009-5e54f37d5e37.json
