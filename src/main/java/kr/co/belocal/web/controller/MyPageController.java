@@ -47,9 +47,9 @@ public class MyPageController {
     private String bucketName;
 
     private Storage storage;
-    
-    @Value("${upload.path}")
-    private String uploadPath;
+
+//    @Value("${upload.path}")
+//    private String uploadPath;
 
     @Autowired
     private MemberDetailsService memberDetailsService;
