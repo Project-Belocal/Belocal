@@ -13,8 +13,8 @@ public class TravelTheme {
     private Integer memberId;
     private String title;
     private String description;
-    private Date bookableDateStart;
-    private Date bookableDateEnd;
+    private String bookableDateStart;
+    private String bookableDateEnd;
     private String contactPreferredTimeStart;
     private String contactPreferredTimeEnd;
     private Integer hits;
