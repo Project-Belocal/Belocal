@@ -3,13 +3,14 @@ package kr.co.belocal.web.service;
 import kr.co.belocal.web.entity.Category;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.entity.TravelThemeView;
 
 import java.util.List;
 
 public interface TravelThemeService {
 
     //====== member-profile 페이지 용 =================
-    List<TravelTheme> getListByMemberId(Integer id, int offset);
+    List<TravelThemeView> getListByMemberId(Integer id, int offset);
 //    List<TravelTheme> getListByMemberId(Integer id);
 
     List<TravelTheme> getList();

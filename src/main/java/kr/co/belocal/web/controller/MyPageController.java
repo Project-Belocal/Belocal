@@ -47,7 +47,7 @@ public class MyPageController {
     private String bucketName;
 
     private Storage storage;
-//
+
 //    @Value("${upload.path}")
 //    private String uploadPath;
 
