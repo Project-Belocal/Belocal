@@ -32,7 +32,13 @@
         limit #{offset}, #{size}
     </select>
 
-
+    <select id="getListForMain" resultType="kr.co.belocal.web.entity.TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
 
 
     <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">

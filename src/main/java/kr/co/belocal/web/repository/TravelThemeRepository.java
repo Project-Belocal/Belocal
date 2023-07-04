@@ -12,10 +12,10 @@ public interface TravelThemeRepository {
     List<TravelThemeView> findAll(Integer id, int offset, int size);
 //    List<TravelTheme> findAll(Integer id);
 
-
+    List<TravelThemeView> getListForMain(int offset, int size);
 
     // theme List 모두 불러오기
-//    List<TravelTheme> findAll();
+    List<TravelTheme> getList();
 
     TravelTheme findById(Integer id);
 

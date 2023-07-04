@@ -36,13 +36,19 @@ public class TravelThemeServiceImp implements TravelThemeService {
 //        return repository.findAll(id, 0, 6);
     }
 
+    @Override
+    public List<TravelThemeView> getListForMain(int offset) {
+        return repository.getListForMain(offset, 6);
+    }
 
 
     @Override
     public List<TravelTheme> getList() {
         return null;
     }
-
+//    public List<TravelThemeView> getListForMain() {
+//        return repository.getListForMain();
+//    }
 
 //
 //    @Override
