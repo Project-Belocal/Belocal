@@ -71,7 +71,6 @@ public class MyPageController {
     }
 
 
-
     @GetMapping("/profile-edit")
     public String profileEdit(){
         return "member/my/profile-edit";
@@ -79,10 +78,14 @@ public class MyPageController {
 
 
     @PostMapping("/profile-edit/send")
-    public String profileEdit(Member member, @RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session) throws IOException {
+    public String profileEdit(Member member,
+                              @RequestParam("uploadFile") MultipartFile uploadFile,
+                              HttpSession session
+    ) throws IOException {
 
-        fileService.fileSave(uploadFile,member.getId());
-        memberService.editSave(member);
+
+        fileService.profileSave(uploadFile,member.getId()); //회원 이미지 저장
+        memberService.editSave(member); // 회원정보 수정
 
 
         //이미지를 업데이트 후 시큐리티 세션을 재등록 해주는 작업업
@@ -94,8 +97,14 @@ public class MyPageController {
         securityContext.setAuthentication(auth);
         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 
+
+
         return "redirect:/my";
     }
+
+
+
+
 
 
 
@@ -103,10 +112,6 @@ public class MyPageController {
     public String themeRegister() {
         return "/member/theme-register";
     }
-
-
-
-
 
 
     // @PostMapping("/upload")

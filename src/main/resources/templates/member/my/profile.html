@@ -15,7 +15,8 @@
     <header class="my-page-header">
         <!-- 유저 이미지 -->
         <div class="my__profile-img">
-            <img src="../images/icon/user.svg" alt="">
+            <img src="../images/icon/user.svg" alt=""
+                 th:src="${#authentication.principal.profileImg}">
         </div>
         <!-- 유저 정보 내용 -->
         <div class="my__profile-content">
@@ -27,7 +28,8 @@
                         <span th:text="${#authentication.principal.nickname}"></span>
                     </div>
                     <!-- 로컬 유무 -->
-                    <div class="my__local">
+                    <div class="my__local"
+                         th:if="${#authentication.principal.authorities.contains('ROLE_GUIDE')}">
                         <img src="../images/logo-beLocal.svg" alt="">
                         <span>local</span>
                     </div>
@@ -96,20 +98,20 @@
                         <img src="../images/icon/right-arrow.svg" alt="">
                     </button>
                 </li>
-                <li class="my__deal-item">
-                    <button class="item2" type="button">
-                        <h3>예약</h3>
-                        <span>1</span>
-                        <img src="../images/icon/right-arrow.svg" alt="">
-                    </button>
-                </li>
-                <li class="my__deal-item">
-                    <button class="item3" type="button">
-                        <h3>완료</h3>
-                        <span>3</span>
-                        <img src="../images/icon/right-arrow.svg" alt="">
-                    </button>
-                </li>
+<!--                <li class="my__deal-item">-->
+<!--                    <button class="item2" type="button">-->
+<!--                        <h3>예약</h3>-->
+<!--                        <span>1</span>-->
+<!--                        <img src="../images/icon/right-arrow.svg" alt="">-->
+<!--                    </button>-->
+<!--                </li>-->
+<!--                <li class="my__deal-item">-->
+<!--                    <button class="item3" type="button">-->
+<!--                        <h3>완료</h3>-->
+<!--                        <span>3</span>-->
+<!--                        <img src="../images/icon/right-arrow.svg" alt="">-->
+<!--                    </button>-->
+<!--                </li>-->
             </ul>
         </div>
 

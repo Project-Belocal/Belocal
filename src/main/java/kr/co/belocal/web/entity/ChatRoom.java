@@ -19,7 +19,6 @@ public class ChatRoom {
     private Integer travelerId;         //여행객 번호
     private Integer guideId;            //가이드 번호
     private Integer isDeleted;          //삭제 유무
-    private Timestamp requestTime;      //신청일시
-    private Timestamp approvalTime;     //허가일시
-    private Timestamp rejectionTime;    //거절일시
+    private Integer isAccepted;         //수락 유무
+
 }

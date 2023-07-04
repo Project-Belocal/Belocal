@@ -7,5 +7,7 @@ import java.io.IOException;
 
 public interface FileService {
 
-    void fileSave(MultipartFile uploadFile, Integer memberId) throws IOException;
+    void profileSave(MultipartFile uploadFile, Integer memberId) throws IOException;
+
+
 }
