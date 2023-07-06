@@ -64,17 +64,19 @@
 
         <section class="category__items-box">
 
-            <div class="category__item" th:each="ctg : ${categoryList}">
+            <button class="category__item" th:each="ctg : ${categoryList}">
+
+                <a href="" th:href="@{/search-result(ctg=${ctg.id})}">
                 <div class="category-box">
                     <span class="material-symbols-outlined" th:text="${ctg.icons}">
                         liquor
                     </span>
                 </div>
                 <p class="category__text" th:text="${ctg.name}">liquor</p>
-            </div>
+                </a>
+            </button>
 
         </section><!--category__items-box-->
-<!--    </section>-->
     <!-- category End-->
 
     <!-- theme -->
@@ -82,69 +84,11 @@
     <!-- TODO 2. 전체 사이즈 재조정 (너무 크다고 생각 됨) -->
     <!-- TODO 3. text 일정 길이 이상이면 ...으로 변하게 수정 -->
     <!-- TODO 4. 하단 border 안 나오는 오류 수정 -->
-<!--    <section class="theme-index">-->
-<!--        <div class="theme__title-box-index">-->
-<!--            <h2 class="theme__title-index">Theme</h2>-->
-<!--            <a href="#" class="theme__link">더보기 &gt;</a>-->
-<!--        </div>-->
+
 <!--        &lt;!&ndash; 바로 위 섹션과의 간격 밑 title-box와 container와의 간격 조절 해야됨 &ndash;&gt;-->
 <!--        &lt;!&ndash; profile-text-contents-area 영역 내 문장이 밑의 예약가능 부분과 겹쳐짐-->
 <!--        그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 &ndash;&gt;-->
-<!--        <div class="theme__container-index">-->
-<!--            &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; theme module start &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--            <div class="theme-box-area-index">-->
 
-
-<!--                <div class="theme-box-pic-area-index">-->
-<!--                    <img src="/images/index-city.jpg" alt="">-->
-<!--                </div>&lt;!&ndash;theme-box-pic-area&ndash;&gt;-->
-
-<!--                <div class="profile-outter-box" action="member-profile">-->
-
-<!--&lt;!&ndash;========== 아이디, 사진 부분 클릭했을 때 member-profile로 이동해야함 ====================&ndash;&gt;-->
-<!--&lt;!&ndash;======== "profile-pic-id-outter" 클릭시 id를 전달해야 함 =========&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="profile-pic-id-outter" th:href="@{/member-profile(id=77)}">&ndash;&gt;-->
-<!--                    <div class="profile-pic-id-outter">-->
-<!--                        <a href="member-profile">-->
-<!--                            <div class="profile-pic">-->
-<!--                                <img src="/images/profile-pic.jpg" alt="">-->
-<!--                            </div>&lt;!&ndash;profile-pic&ndash;&gt;-->
-<!--                            <div class="profile-id-text">-->
-<!--                                innerjoin123-->
-<!--                            </div>&lt;!&ndash;profile-id-text&ndash;&gt;-->
-<!--                        </a>-->
-<!--                    </div>&lt;!&ndash;profile-pic-id&ndash;&gt;-->
-
-<!--                    <div class="profile-text-area-outter">-->
-
-<!--                        <div class="profile-text-title-area">-->
-<!--                            <h2>을지로 노포 싹다 투어</h2>-->
-<!--                        </div>&lt;!&ndash;profile-text-title-area&ndash;&gt;-->
-
-<!--                        <div class="profile-text-contents-area">-->
-<!--                            <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구-->
-<!--                                어쩌구 어쩌구 저쩌구 믿거나 말거나-->
-<!--                            </p>-->
-<!--                        </div>&lt;!&ndash;profile-text-contents-area&ndash;&gt;-->
-
-<!--                        <div class="profile-status-area">-->
-<!--                            <i class="material-icons">event_available</i>-->
-<!--                            <div class="status-text">예약가능</div>-->
-<!--                        </div>&lt;!&ndash;profile-status-area&ndash;&gt;-->
-
-<!--                    </div>&lt;!&ndash;profile-text-area-outter&ndash;&gt;-->
-
-
-<!--                </div>&lt;!&ndash;profile-outter-box&ndash;&gt;-->
-<!--            </div>&lt;!&ndash;theme-box-area-index&ndash;&gt;-->
-<!--            &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; theme module end &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-
-
-
-
-<!--        </div>&lt;!&ndash;theme-container&ndash;&gt;-->
-<!--    </section>-->
-    <!-- theme End -->
 
     <section class="travel-theme">
         <div class="travel-theme-title-box">
@@ -342,11 +286,6 @@
 
 
 
-
-
-
-
-
 <!-- ================= 모달창 부분 ============================================================= -->
 <div class="search-modal hidden">
     <div class="search-modal-overlay">
@@ -355,16 +294,33 @@
 
             <!--============ header =====================-->
             <header>
+<!--                <div class="search">-->
+<!--                    <div class="search__container ">-->
+<!--                        <input class="search-bar" type="button" value="을지로 노포, 망원동 카페">-->
+<!--                            <span class="material-symbols-outlined">-->
+<!--                                    search-->
+<!--                            </span>-->
+<!--                        <button id="exit">취소</button>-->
+<!--                        </input>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="search">-->
                 <div class="search">
-                    <div class="search__container ">
-                        <input class="search-bar" type="button" value="을지로 노포, 망원동 카페">
-                        <span class="material-symbols-outlined">
-                                search
-                                </span>
-                        <button id="exit">취소</button>
-                        </input>
-                    </div>
+                    <form class="search-bar" action="/search-result">
+                        <button class="search-button">
+                          <span class="material-symbols-outlined">
+                              search
+                          </span>
+                        </button>
+                        <label class="search-input" for="search-input">
+                        </label>
+                        <input type="text" id="search-input" name="s" placeholder="힙당동, 서촌맛집">
+                    </form>
+                    <button id="exit">cancle</button>
                 </div>
+
+
             </header>
 
 
@@ -460,159 +416,57 @@
                     <div class="theme__container">
 
 
-                        <!-------------- theme module start -------------->
-                        <div class="theme-box-area">
+<!--                        &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; theme module start &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--                        <div class="theme-box-area">-->
 
-                            <div class="theme-box-pic-area">
-                                <img src="/images/index-city.jpg" alt="">
-                            </div>
+<!--                            <div class="theme-box-pic-area">-->
+<!--                                <img src="/images/index-city.jpg" alt="">-->
+<!--                            </div>-->
 
-                            <div class="profile-outter-box">
-                                <div class="profile-pic-id-outter">
-                                    <div class="profile-pic">
-                                        <img src="/images/profile-pic.jpg" alt="">
-                                    </div>
-                                    <div class="profile-id-text">
-                                        innerjoin123
-                                    </div>
-                                </div>
+<!--                            <div class="profile-outter-box">-->
+<!--                                <div class="profile-pic-id-outter">-->
+<!--                                    <div class="profile-pic">-->
+<!--                                        <img src="/images/profile-pic.jpg" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="profile-id-text">-->
+<!--                                        innerjoin123-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
-                                <div class="profile-text-area-outter">
-                                    <div class="profile-text-title-area">
-                                        <h2>을지로 노포 싹다 투어</h2>
-                                    </div>
+<!--                                <div class="profile-text-area-outter">-->
+<!--                                    <div class="profile-text-title-area">-->
+<!--                                        <h2>을지로 노포 싹다 투어</h2>-->
+<!--                                    </div>-->
 
-                                    <div class="profile-text-contents-area">
-                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                        </p>
-                                    </div>
-
-
-                                    <div class="profile-status-area">
-                                              <span class="material-symbols-outlined">
-                                                event_available
-                                              </span>
-
-                                        <div class="status-text">예약가능</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-------------- theme module end -------------->
-
-                        <!-------------- theme module start -------------->
-                        <div class="theme-box-area">
-                            <div class="theme-box-pic-area">
-                                <img src="/images/index-city.jpg" alt="">
-                            </div>
-
-                            <div class="profile-outter-box">
-                                <div class="profile-pic-id-outter">
-                                    <div class="profile-pic">
-
-                                        <img src="/images/profile-pic.jpg" alt="">
-                                    </div>
-                                    <div class="profile-id-text">
-                                        innerjoin123
-                                    </div>
-                                </div>
-
-                                <div class="profile-text-area-outter">
-                                    <div class="profile-text-title-area">
-                                        <h2>을지로 노포 싹다 투어</h2>
-                                    </div>
-
-                                    <div class="profile-text-contents-area">
-                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                        </p>
-                                    </div>
+<!--                                    <div class="profile-text-contents-area">-->
+<!--                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구-->
+<!--                                            어쩌구 어쩌구 저쩌구 믿거나 말거나-->
+<!--                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구-->
+<!--                                            ㅁㅇㄴㄻㄴㅇㄻ-->
+<!--                                            ㄴㅇㄹ-->
+<!--                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나-->
+<!--                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구-->
+<!--                                            ㅁㅇㄴㄻㄴㅇㄻ-->
+<!--                                            ㄴㅇㄹ-->
+<!--                                            ㅁㄴㅇㄻㄴㅇㄹ-->
+<!--                                            ㅁㄴㅇㄻㄴㅇㄹ-->
+<!--                                            ㅁㄴㅇㄻㄴㅇㄹ-->
+<!--                                        </p>-->
+<!--                                    </div>-->
 
 
-                                    <div class="profile-status-area">
-                                          <span class="material-symbols-outlined">
-                                          event_available
-                                          </span>
-                                        <div class="status-text">예약가능</div>
+<!--                                    <div class="profile-status-area">-->
+<!--                                              <span class="material-symbols-outlined">-->
+<!--                                                event_available-->
+<!--                                              </span>-->
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-------------- theme module end -------------->
+<!--                                        <div class="status-text">예약가능</div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; theme module end &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
 
-
-                        <!-------------- theme module start -------------->
-                        <div class="theme-box-area">
-                            <div class="theme-box-pic-area">
-                                <img src="/images/index-city.jpg" alt="">
-                            </div>
-
-                            <div class="profile-outter-box">
-                                <div class="profile-pic-id-outter">
-                                    <div class="profile-pic">
-
-                                        <img src="/images/profile-pic.jpg" alt="">
-                                    </div>
-                                    <div class="profile-id-text">
-                                        innerjoin123
-                                    </div>
-                                </div>
-
-                                <div class="profile-text-area-outter">
-                                    <div class="profile-text-title-area">
-                                        <h2>을지로 노포 싹다 투어</h2>
-                                    </div>
-
-                                    <div class="profile-text-contents-area">
-                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                            ㅁㅇㄴㄻㄴㅇㄻ
-                                            ㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                            ㅁㄴㅇㄻㄴㅇㄹ
-                                        </p>
-                                    </div>
-
-
-                                    <div class="profile-status-area">
-                                  <span class="material-symbols-outlined">
-                                      event_available
-                                      </span>
-                                        <div class="status-text">예약가능</div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-------------- theme module end -------------->
 
 
                     </div><!--theme-container-->

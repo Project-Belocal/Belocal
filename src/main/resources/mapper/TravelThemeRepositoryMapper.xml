@@ -12,16 +12,8 @@
         WHERE id = #{id};
     </select>
 
-<!--    <select id="findAll" resultType="kr.co.belocal.web.entity.TravelTheme">-->
-<!--        SELECT *-->
-<!--        FROM-->
-<!--        travel_theme-->
-<!--        WHERE-->
-<!--        member_id = #{id}-->
-<!--        limit #{offset}, #{size}-->
-<!--    </select>-->
 
-
+    <!-- ====== member-profile 페이지용 =========== -->
     <select id="findAll" resultType="kr.co.belocal.web.entity.TravelThemeView">
         SELECT *
         FROM
@@ -32,6 +24,8 @@
         limit #{offset}, #{size}
     </select>
 
+
+    <!-- ====== main화면 기본 6개 나오는 부분 ================= -->
     <select id="getListForMain" resultType="kr.co.belocal.web.entity.TravelThemeView">
         SELECT *
         FROM
@@ -39,6 +33,23 @@
         ORDER BY reg_date DESC
         limit #{offset}, #{size}
     </select>
+
+
+    <!-- ====== search-modal : 검색용 ================= -->
+    <select id="getListByQuery" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE title LIKE '%${query}%' OR description LIKE '%${query}%'
+    </select>
+    <select id="getListByCtgId" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE ctgId = #{ctgId}
+    </select>
+
+
 
 
     <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">
