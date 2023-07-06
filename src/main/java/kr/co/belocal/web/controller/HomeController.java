@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 
-@Controller
+@Controller("/index")
 public class HomeController {
 
     @Autowired
@@ -34,11 +34,36 @@ public class HomeController {
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("travelThemeList", travelThemeList);
 
-
         return "index";
     }
 
 
+    @GetMapping("search-result")
+    public String search(
+            @RequestParam(name="s", required=false)String query,
+            @RequestParam(name="ctg", required=false)Integer ctgId,
+            Model model){
+
+        List<TravelThemeView> searchThemeList = null;
+
+        if(query != null) {
+            searchThemeList = travelThemeService.getListByQuery(query);
+        } else if(ctgId != null) {
+            searchThemeList = travelThemeService.getListByCtgId(ctgId);
+        }
+        model.addAttribute("search", searchThemeList);
+        model.addAttribute("ctg", searchThemeList);
 
 
-}
+
+        return "/search-result";
+    }//search
+
+
+
+
+
+
+
+
+}//class

@@ -10,9 +10,17 @@ public interface TravelThemeRepository {
 
 //====== member-profile 페이지용 ===========
     List<TravelThemeView> findAll(Integer id, int offset, int size);
-//    List<TravelTheme> findAll(Integer id);
 
+//====== main화면 기본 6개 나오는 부분 =================
     List<TravelThemeView> getListForMain(int offset, int size);
+
+
+//====== search-modal : 검색용 =================
+    List<TravelThemeView> getListByQuery(String query);
+    List<TravelThemeView> getListByCtgId(Integer ctgId);
+
+
+
 
     // theme List 모두 불러오기
     List<TravelTheme> getList();
