@@ -1,5 +1,8 @@
 package kr.co.belocal.web.config;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -8,10 +11,10 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 
+@Slf4j
 @Configuration
 @EnableWebSocketMessageBroker
 public class ChatConfig implements WebSocketMessageBrokerConfigurer {
-
 
     // 웹소켓 configuration의 addHandler 메소드와 유사
     // cors, SockJS 설정 가능
@@ -23,7 +26,8 @@ public class ChatConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // stomp 접속 주소 url => /ws-stomp
         registry.addEndpoint("/ws-stomp")
-                .withSockJS(); // SocketJS 를 연결한다는 설정
+                .withSockJS() // SocketJS 를 연결한다는 설정
+                .setHeartbeatTime(1000);
 //                .setAllowedOriginPatterns("*") // 연결될 엔드포인트
     }
 
@@ -37,4 +41,6 @@ public class ChatConfig implements WebSocketMessageBrokerConfigurer {
         // 메시지를 발행하는 요청 url => 즉 메시지 보낼 때
         registry.setApplicationDestinationPrefixes("/pub");
     }
+
+
 }

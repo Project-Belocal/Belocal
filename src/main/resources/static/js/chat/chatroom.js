@@ -1,5 +1,5 @@
 window.addEventListener("load",function(){
-    {
+
         const section = document.querySelector(".room");
         const Menu = section.querySelector(".room__menu");
         const Nav = section.querySelector(".room__nav");
@@ -38,7 +38,8 @@ window.addEventListener("load",function(){
                 reportModal.classList.add("hidden");
             }
         }
-    }
+    messageArea.scrollTop = messageArea.scrollHeight;
+
     //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 })
 
@@ -57,10 +58,31 @@ let stompClient = null;
 let socket = new SockJS('/ws-stomp');
 stompClient = Stomp.over(socket);
 stompClient.connect({}, onConnected);
+stompClient.heartbeat.incoming = 1000;
+stompClient.heartbeat.outgoing = 1000;
+
 
 function onConnected() {
     // sub 할 url => /sub/chat/room/roomId 로 구독한다
     stompClient.subscribe('/sub/chat/room/' + chatRoomId, onMessageReceived);
+
+    console.log("연결체크용")
+
+    //소켓에 연결한다면? -> 채팅메세지의 id가 내꺼가 아닌 데이터들의 checked를 1로 변경
+    fetch("api/chats/check",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/JSON"
+        },
+        body:JSON.stringify({
+            roomId:chatRoomId,
+            id:memberId.value
+        })
+    })
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data)
+        })
 }
 
 
@@ -85,24 +107,54 @@ function sendMessage(event) {
 // 넘어온 JSON 형식의 메시지를 parse 해서 사용한다.
 function onMessageReceived(payload) {
     // console.log("payload 들어오냐? :"+payload);
-    let chat = JSON.parse(payload.body);
+    let payloadData = JSON.parse(payload.body);
+    let chat = payloadData.chat;
+    let uuid = payloadData.uuid;
     let id = chat.memberId;
-    memberId.value;
 
-    let temp = ``
+    let chatItem = document.createElement("div");
+    let imgItme = document.createElement("button");
 
-    messageArea.innerHTML = temp;
-    // let messageElement = document.createElement('li');
-    //
-    // messageElement.classList.add('chat-message');
-    // let textElement = document.createElement('p');
-    // let messageText = document.createTextNode(chat.message);
-    //
-    // textElement.appendChild(messageText);
-    //
-    // messageElement.appendChild(textElement);
-    //
-    // messageArea.appendChild(messageElement);
-    // messageArea.scrollTop = messageArea.scrollHeight;
+    let timeSpan = document.createElement("span");
+    let messageParagraph = document.createElement("p");
+    let contentDiv = document.createElement("div");
+    let profileImg = document.createElement("img");
+
+
+    if (parseInt(memberId.value) === id) {
+        chatItem.classList.add("room__item", "my-msg");
+    } else {
+        chatItem.classList.add("room__item");
+        chatItem.appendChild(imgItme);
+        imgItme.classList.add("room__user-img");
+        imgItme.appendChild(profileImg);
+        profileImg.src = "https://storage.googleapis.com/belocal-bucket/"+uuid
+    }
+
+
+    timeSpan.classList.add("room__time");
+    timeSpan.textContent = chat.regDate;
+
+    messageParagraph.classList.add("room__msg");
+    messageParagraph.textContent = chat.message;
+
+    contentDiv.classList.add("room__content");
+
+    if (parseInt(memberId.value) === id) {
+        contentDiv.appendChild(timeSpan);
+        contentDiv.appendChild(messageParagraph);
+    } else {
+        contentDiv.appendChild(messageParagraph);
+        contentDiv.appendChild(timeSpan);
+    }
+
+
+
+    chatItem.appendChild(contentDiv);
+
+    messageArea.appendChild(chatItem);
+
+    //메세지 입력시 스크롤 위치 맨아래로
+    messageArea.scrollTop = messageArea.scrollHeight;
 }
     messageForm.addEventListener('submit', sendMessage, true)

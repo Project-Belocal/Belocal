@@ -21,5 +21,6 @@ public class ChatRoomListView {
     private String guideNickname;    // 가이드 닉네임
     private String message;          // 마지막으로 받은 메세지
     private String regDate;          // 마지막으로 받은 메시지 시간
+    private Integer sender;          // 마지막으로 메세지 보낸사람 id
     private Integer checkedCount;    // 안읽은 메시지 개수
 }

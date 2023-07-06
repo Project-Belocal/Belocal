@@ -24,5 +24,8 @@ public interface ChatRepository {
     //채팅방 생성하기
 
     //채팅로그 저장
-    ChatLog addLog(ChatLog chatLog);
+    void addLog(ChatLog chatLog);
+
+    //채팅 확인 유무 업데이트
+    void chatUpdate(ChatLog chatLog);
 }

@@ -39,8 +39,10 @@ public class ChatController {
 
         List<ChatRoomListView> list = chatService.findAll(1);
 
+        log.info("list {}",list);
+
         model.addAttribute("chatList", list);
-        log.info("SHOW ALL ChatList {}", list);
+
 
         return "chat/chatlist";
     }
@@ -50,7 +52,7 @@ public class ChatController {
     @GetMapping("chat/room")
     public String getChatRoom(
             @RequestParam(name = "id") Integer roomId,
-            Model model) {
+            Model model) throws ParseException {
 
         ChatRoom chatRoom = chatService.findChatRoomById(roomId);
         List<ChatLogListView> chatLog = chatService.chatLogFindAll(roomId);

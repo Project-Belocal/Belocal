@@ -7,7 +7,6 @@ window.addEventListener("load", function() {
   const noticeWrap = document.querySelector('.message__notice-wrap');
 
 
-  // chatListLoad("http://localhost:8080/api/chats")
   // 페이지 로드 시 처리
   if (messageBox) {
     document.querySelector('.message__item').classList.remove('hidden');
@@ -52,3 +51,4 @@ window.addEventListener("load", function() {
 
 
 });
+

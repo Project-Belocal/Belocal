@@ -3,25 +3,26 @@ package kr.co.belocal.web.controller.api;
 import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.ChatService;
 import kr.co.belocal.web.service.MemberService;
-import kr.co.belocal.web.service.security.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.ui.Model;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.async.DeferredResult;
 
-import java.text.ParseException;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Slf4j
 @RequiredArgsConstructor
 @RestController("apiChatController")
-@RequestMapping("api/chats")
+@RequestMapping("/chat/api/chats")
 public class ChatController {
 
 
@@ -34,33 +35,43 @@ public class ChatController {
     private MemberService memberService;
 
 
-    //채팅방 목록 조회
-    @GetMapping("chat/list")
-    public String chatList(Model model) throws ParseException {
+    @PostMapping("/check")
+    public Integer messageChecked(
+                @RequestBody Map<String, Object> requestBody
+            ){
 
-        List<ChatRoomListView> list = chatService.findAll(1);
+        Integer chatRoomId = Integer.valueOf((String) requestBody.get("roomId"));
+        Integer memberId = Integer.valueOf((String) requestBody.get("id"));
 
-        model.addAttribute("chatList", list);
-        log.info("SHOW ALL ChatList {}", list);
+        //memberId -> 내 id
+        //내 id가 아닌 log들의 checked를 1로 바꿔야함.
+        //내id와 여행객id가 같다면? -> 가이드id를 업데이트
+        //내id와 가이드id가 같다면? -> 여행객id를 업데이트
+        ChatRoom chatRoom = chatService.findChatRoomById(chatRoomId);
+        Integer traveler = chatRoom.getTravelerId();
+        Integer guide = chatRoom.getGuideId();
+        Integer id = null;
 
-        return "chat/chatlist";
-    }
+        if (memberId.equals(traveler)) {
+            id = guide;
+        }else {
+            id = traveler;
+        }
 
 
-    //채팅방 id를 받아서 채팅방으로 이동
-    @GetMapping("chat/room")
-    public String getChatRoom(
-            @RequestParam(name = "id") Integer roomId,
-            Model model) {
-
-        ChatRoom chatRoom = chatService.findChatRoomById(roomId);
-        List<ChatLogListView> chatLog = chatService.chatLogFindAll(roomId);
+        ChatLog chatLog = ChatLog
+                .builder()
+                .memberId(id)
+                .chatRoomId(chatRoomId)
+                .isChecked(1)
+                .build();
 
 
-        model.addAttribute("chatRoom", chatRoom);
-        model.addAttribute("chatLog",chatLog);
+//
+        chatService.chatUpdate(chatLog);
 
-        return "chat/chatroom";
+
+        return 200;
     }
 
 
@@ -69,23 +80,41 @@ public class ChatController {
     //처리가 완료된다면  /sub/chat/room/roomId로 메세지가 전송
     @MessageMapping("chat/sendMessage")
     public void sendMessage(@Payload ChatLog chat) {
-        System.out.println("Received chat message: " + chat.getMessage());
-        System.out.println("Chat Room ID: " + chat.getChatRoomId());
-        System.out.println("Member ID: " + chat.getMemberId());
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedTime = currentTime.format(formatter);
 
+        ProfileImage img = memberService.getProfileImg(chat.getMemberId());
+        String uuid = img.getUuid();
 
-        //chatLog의 메세지에 입력받은값 저장
+        Map<String, Object> combinedData = new HashMap<>();
+        combinedData.put("chat", chat);
+        combinedData.put("uuid", uuid);
+
+        //chatLog의 메세지에 입력받은값 저장,보낸시간 저장
         chat.setMessage(chat.getMessage());
+        chat.setRegDate(formattedTime);
         //지정된 사용자에게 입력받은값을 전송
-        template.convertAndSend("/sub/chat/room/" + chat.getChatRoomId(), chat);
+//        template.convertAndSend("/sub/chat/room/" + chat.getChatRoomId(), chat);
+        template.convertAndSend("/sub/chat/room/" + chat.getChatRoomId(), combinedData);
 
-        ChatLog test = ChatLog
+
+        
+        ChatLog add = ChatLog
                 .builder()
                 .chatRoomId(chat.getChatRoomId())
                 .memberId(chat.getMemberId())
                 .message(chat.getMessage())
+                .regDate(chat.getRegDate())
                 .build();
 
-        chatService.addLog(test);
+        chatService.addLog(add);
     }
+
+
+
+
+
+
+
 }

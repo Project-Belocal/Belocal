@@ -17,8 +17,11 @@ public interface ChatService {
     ChatRoom createRoom(Integer travelThemeId,Integer travelerId,Integer guideId);
 
     //채팅로그 조회
-    List<ChatLogListView> chatLogFindAll(Integer chatRoomId);
+    List<ChatLogListView> chatLogFindAll(Integer chatRoomId) throws ParseException;
 
     //채팅기록 저장
-    ChatLog addLog(ChatLog chatLog);
+    void addLog(ChatLog chatLog);
+
+    //채팅 확인 유무 업뎃
+    void chatUpdate(ChatLog chatLog);
 }

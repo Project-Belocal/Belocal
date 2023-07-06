@@ -6,7 +6,6 @@ import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -55,12 +54,32 @@ public class ChatServiceImpl implements ChatService{
 
 
     @Override
-    public List<ChatLogListView> chatLogFindAll(Integer chatRoomId) {
-        return chatRepository.chatLogFindAll(chatRoomId);
+    public List<ChatLogListView> chatLogFindAll(Integer chatRoomId) throws ParseException {
+        String outputPattern = "yyyy-MM-dd HH:mm";
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+        List<ChatLogListView> list = chatRepository.chatLogFindAll(chatRoomId);
+
+        for (ChatLogListView item : list) {
+            String inputDate = item.getRegDate();
+            Date date = inputFormat.parse(inputDate);
+            String formattedDate = outputFormat.format(date);
+            item.setRegDate(formattedDate);
+        }
+
+
+        return list;
     }
 
     @Override
-    public ChatLog addLog(ChatLog chatLog) {
-        return chatRepository.addLog(chatLog);
+    public void addLog(ChatLog chatLog) {
+        chatRepository.addLog(chatLog);
+    }
+
+    @Override
+    public void chatUpdate(ChatLog chatLog) {
+        chatRepository.chatUpdate(chatLog);
     }
 }
