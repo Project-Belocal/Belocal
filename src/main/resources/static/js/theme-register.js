@@ -497,9 +497,8 @@ window.addEventListener("load", () => {
     }
 
     themeSaveBtn.onclick = async function () {
-        uploadInputImage();
-
-        return;
+        let placeImagePathList = await uploadInputImage();
+        
         const isComplete = checkCompleteTheme();
         if (!isComplete) return;
 
@@ -542,12 +541,11 @@ window.addEventListener("load", () => {
             let placeImages = [];
 
             for (let j = 0; j < uploadedPlaceImageList.length; j++) {
-                let imagePath = uploadedPlaceImageList[j].src;
                 let imageOrder = j;
 
                 placeImages[j] = {
                     "placeId": null,
-                    "path": imagePath,
+                    "path": null,
                     "order": imageOrder
                 }
             }
@@ -568,12 +566,19 @@ window.addEventListener("load", () => {
         });
 
         const placesIds = await uploadPlaces(places);
-
-        // 각 이미지에 place의 id 입력
+        let placeImagePathListIndex = 0;
+        // 각 이미지에 place의 id 및 주소 입력
         for (let i = 0; i < placesImages.length; i++) {
-            placesImages[i].forEach((placeImage) => {
+            let placeImages = placesImages[i];
+
+            for(let j = 0; j < placeImages.length; j++) {
+                let placeImage = placeImages[j];
                 placeImage.placeId = placesIds[i];
-            })
+                placeImage.path = placeImagePathList[placeImagePathListIndex++];
+            }
+            // placesImages[i].forEach((placeImage) => {
+            //     placeImage.placeId = placesIds[i];
+            // })
         }
 
         const data = {
@@ -588,11 +593,11 @@ window.addEventListener("load", () => {
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url; // 리디렉션 수행
-                }
-            })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url; // 리디렉션 수행
+            }
+        })
     }
 
     async function uploadInputImage() {

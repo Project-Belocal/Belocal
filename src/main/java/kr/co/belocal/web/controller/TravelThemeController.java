@@ -14,11 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
+import kr.co.belocal.web.entity.PlaceView;
+import kr.co.belocal.web.entity.ProfileImage;
+import kr.co.belocal.web.entity.Role;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.PlaceImageService;
 import kr.co.belocal.web.service.PlaceService;
+import kr.co.belocal.web.service.ProfileImageService;
+import kr.co.belocal.web.service.RoleService;
 import kr.co.belocal.web.service.TravelThemeService;
+import kr.co.belocal.web.service.WishlistService;
 
 @Controller
 @RequestMapping("/theme")
@@ -36,7 +42,14 @@ public class TravelThemeController {
     @Autowired
     private MemberService memberService;
 
+    @Autowired
+    private WishlistService wishlistService;
 
+    @Autowired
+    private ProfileImageService profileImageService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/theme-list")
     public String list(Model model) {
@@ -56,23 +69,31 @@ public class TravelThemeController {
     ) {
         // 테마 상세 페이지에서 thymeleaf로 출력할 데이터 준비
         TravelTheme travelTheme = travelThemeService.get(travelThemeId);
-        List<Place> placeList = placeService.getListByTravelThemeId(travelThemeId);
-        List<List<PlaceImage>> placeImageLists = new ArrayList<List<PlaceImage>>();
+        List<PlaceView> placeViewList = placeService.getViewListByTravelThemeId(travelThemeId);
+        List<List<PlaceImage>> placeImageLists2d = new ArrayList<List<PlaceImage>>();
+        List<PlaceImage> placeImageLists1d = new ArrayList<>();
 
-        for(int i = 0; i < placeList.size(); i++) {
-            int placeId = placeList.get(i).getId();
+        for(int i = 0; i < placeViewList.size(); i++) {
+            int placeId = placeViewList.get(i).getId();
             List<PlaceImage> placeImageList = placeImageService.getListByPlaceId(placeId);
-            placeImageLists.add(i, placeImageList);
+            placeImageLists2d.add(i, placeImageList);
+            placeImageLists1d.addAll(placeImageList);
         }
 
         int memberId = travelTheme.getMemberId();
         Member member = memberService.getById(memberId); 
+        int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId);
+        ProfileImage profileImage = profileImageService.getByMemberId(memberId);
 
+        Integer role = roleService.getByMemberId(memberId);
+        System.out.println(role);
         model.addAttribute("travelTheme", travelTheme);
-        model.addAttribute("placeList", placeList);
-        model.addAttribute("placeImageLists", placeImageLists); 
+        model.addAttribute("placeList", placeViewList);
+        model.addAttribute("placeImageLists2d", placeImageLists2d);
+        model.addAttribute("placeImageLists1d", placeImageLists1d);
         model.addAttribute("member", member);
-
+        model.addAttribute("wishlistCount", wishlistCount);
+        model.addAttribute("profileImage", profileImage);
         return "theme/theme-detail";
     }
 }

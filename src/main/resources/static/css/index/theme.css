@@ -1,39 +1,45 @@
 /*====== 가로 스크롤 설정 영역 ======*/
 .theme {
     display: flex;
-    flex-direction: column;
     width: 100%;
     /* gap: 10px; */
     margin-bottom: var(--section-margin-bottom);
 }
 
-.theme__title-box{
+
+.travel-theme-title-box{
     display: flex;
+    height: 22px;
     justify-content: space-between;
     align-items: flex-end;
-    padding: var(--section-padding);
     margin-bottom: var(--title-contents-gap);
+    padding: var(--section-padding);
 }
 
-.theme__title{
+.travel-theme-title{
     font-size: var(--font-size-large18);
     font-weight: var(--font-weight-bold);
 }
 
-.theme__container{
-    /* width: 390px;
-    height: 600px; */
+.travel-theme-link{
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+}
+
+
+
+
+.theme-list{
     display: flex;
-    /* justify-content: center; */
-    /* align-content: center; */
-    flex-direction: row;
+    width: 100%;
+    height: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
-    gap: 20px;
+    gap: 12px;
     padding: 0 0 0 10px;
 }
 
-.theme__container::-webkit-scrollbar{
+.theme-list::-webkit-scrollbar{
     display: none;
 }
 
