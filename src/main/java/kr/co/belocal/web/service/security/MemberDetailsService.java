@@ -40,12 +40,19 @@ public class MemberDetailsService implements UserDetailsService {
         }
 
         ProfileImage profileImage = memberService.getProfileImg(member.getId());
-
-
         StringBuilder img = new StringBuilder();
-        img.append("https://storage.googleapis.com/")
-                .append(profileImage.getPath()+"/")
-                .append(profileImage.getUuid());
+
+        if (profileImage.getName().isEmpty()){
+            img.append("/images/icon/user.svg");
+        }else {
+            img.append("https://storage.googleapis.com/")
+                    .append(profileImage.getPath()+"/")
+                    .append(profileImage.getUuid());
+        }
+
+
+
+
 //        String img = "https://storage.googleapis.com/belocal-bucket/"+profileImage.getUuid();
 
         MemberDetails memberDetails = MemberDetails

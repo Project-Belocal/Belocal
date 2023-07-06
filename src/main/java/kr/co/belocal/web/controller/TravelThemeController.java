@@ -42,7 +42,7 @@ public class TravelThemeController {
     @Autowired
     private MemberService memberService;
 
-    @Autowired 
+    @Autowired
     private WishlistService wishlistService;
 
     @Autowired
@@ -82,14 +82,14 @@ public class TravelThemeController {
 
         int memberId = travelTheme.getMemberId();
         Member member = memberService.getById(memberId); 
-        int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId); 
+        int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId);
         ProfileImage profileImage = profileImageService.getByMemberId(memberId);
-        
+
         Integer role = roleService.getByMemberId(memberId);
         System.out.println(role);
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeViewList);
-        model.addAttribute("placeImageLists2d", placeImageLists2d); 
+        model.addAttribute("placeImageLists2d", placeImageLists2d);
         model.addAttribute("placeImageLists1d", placeImageLists1d);
         model.addAttribute("member", member);
         model.addAttribute("wishlistCount", wishlistCount);

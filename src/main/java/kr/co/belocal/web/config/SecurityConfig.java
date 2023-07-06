@@ -64,7 +64,6 @@ public class SecurityConfig  {
                         .usernameParameter("userId")
                         .passwordParameter("pw")
                         .defaultSuccessUrl("/")
-
                 )
                 .logout(logout->logout
                         .logoutUrl("/logout")

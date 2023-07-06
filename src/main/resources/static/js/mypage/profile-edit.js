@@ -29,6 +29,10 @@ window.addEventListener("load",function (){
     const fileInput = document.querySelector(".file-input");
     const profileImg = document.querySelector(".edit__profile-img");
 
+    //이미지 삭제 버튼
+    const deletedImg = document.querySelector(".delete-btn");
+    const defaultImagePath = '../images/icon/user.svg';
+
 
     let nicknameCheck = false;
     let currentPwCheck = false;
@@ -274,6 +278,8 @@ window.addEventListener("load",function (){
         let fileList = upFile.files;
         let fileObj = fileList[0];
 
+        console.log(fileList)
+
         if (!fileCheck(fileObj.name,fileObj.size)){
             return false;
         }
@@ -283,22 +289,18 @@ window.addEventListener("load",function (){
 
         imgReader.onload = function (event){
             profileImg.src = event.target.result;
-            console.log(event.target.result)
         }
 
         imgReader.readAsDataURL(imgFile)
+    })
 
-        //저장버튼이 눌려야 작동되어야 하는 부분
-        // formData.append("uploadFile",fileObj);
-        //
-        // fetch("api/mys/profileUpload",{
-        //     method:"POST",
-        //     body:formData
-        // })
-        //     .then(response=>response.json())
-        //     .then(data => {
-        //         console.log(data)
-        //     })
+
+
+    //프로필 파일 삭제
+    deletedImg.addEventListener("click",function (e){
+        let upFile = document.querySelector('input[name="uploadFile"]');
+        profileImg.src = defaultImagePath;
+        upFile.files = defaultImagePath;
     })
 
 })
