@@ -58,7 +58,7 @@
                                     <span th:text="${cl.regDate}"></span>
                                 </div>
                             </div>
-                            <div class="message__notification" th:if="${#authentication.principal.id != cl.sender}">
+                            <div class="message__notification" th:if="${cl.checkedCount > 0 and #authentication.principal.id != cl.sender}">
                                 <p th:text="${cl.checkedCount}"></p>
                             </div>
                         </div>
@@ -91,5 +91,7 @@
 
     </section>
     <div th:replace="inc/navbar"></div>
+    <input class="member-id" type="hidden" th:value="${#authentication.principal.id}">
+
 </body>
 </html>

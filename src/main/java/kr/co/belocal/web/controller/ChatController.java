@@ -4,17 +4,16 @@ package kr.co.belocal.web.controller;
 import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.ChatService;
 import kr.co.belocal.web.service.MemberService;
+import kr.co.belocal.web.service.TravelThemeService;
+import kr.co.belocal.web.service.security.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
@@ -32,14 +31,21 @@ public class ChatController {
     private ChatService chatService;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private TravelThemeService travelThemeService;
 
     //채팅방 목록 조회
     @GetMapping("chat/list")
-    public String chatList(Model model) throws ParseException {
+    public String chatList(@AuthenticationPrincipal MemberDetails member,
+                           Model model) throws ParseException {
 
-        List<ChatRoomListView> list = chatService.findAll(1);
+
+        System.out.println("member = " + member.getId());
+
+        List<ChatRoomListView> list = chatService.findAll(member.getId());
 
         log.info("list {}",list);
+
 
         model.addAttribute("chatList", list);
 
@@ -52,12 +58,25 @@ public class ChatController {
     @GetMapping("chat/room")
     public String getChatRoom(
             @RequestParam(name = "id") Integer roomId,
+            @AuthenticationPrincipal MemberDetails member,
             Model model) throws ParseException {
 
+
+
         ChatRoom chatRoom = chatService.findChatRoomById(roomId);
+
+        Member memberInfo = null;
+
+
+        if (member.getId().equals(chatRoom.getTravelerId())) {
+            memberInfo = memberService.getByIdMember(chatRoom.getGuideId());
+        }else {
+            memberInfo = memberService.getByIdMember(chatRoom.getTravelerId());
+        }
+
         List<ChatLogListView> chatLog = chatService.chatLogFindAll(roomId);
 
-
+        model.addAttribute("info",memberInfo);
         model.addAttribute("chatRoom", chatRoom);
         model.addAttribute("chatLog",chatLog);
 

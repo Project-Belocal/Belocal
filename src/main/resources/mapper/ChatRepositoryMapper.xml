@@ -35,11 +35,19 @@
         )
     </insert>
     
-    <update id="chatUpdate" parameterType="chatLog">
+    <update id="chatUpdate" parameterType="ChatLog">
         UPDATE chat_log
             <set>
                 <if test="isChecked != null">is_checked = #{isChecked}</if>
             </set>
         WHERE member_id = #{memberId} AND chat_room_id = #{chatRoomId}
+    </update>
+
+    <update id="deletedRoom" parameterType="ChatRoom">
+        UPDATE chat_room
+            <set>
+                is_deleted = 1
+            </set>
+        WHERE id = #{chatRoomId}
     </update>
 </mapper>

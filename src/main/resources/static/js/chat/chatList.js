@@ -50,5 +50,24 @@ window.addEventListener("load", function() {
   });
 
 
+
 });
 
+// window.addEventListener("load",function (){
+//   const memberId = document.querySelector(".member-id");
+//   let id = memberId.value;
+//
+//   fetch("api/chats/list",{
+//     method:"POST",
+//     headers:{
+//       "Content-Type":"application/JSON"
+//     },
+//     body:JSON.stringify({
+//       id
+//     })
+//   })
+//       .then(response => response.json())
+//       .then(data=>{
+//         console.log(data)
+//       })
+// })
