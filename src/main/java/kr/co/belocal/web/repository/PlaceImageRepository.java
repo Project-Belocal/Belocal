@@ -11,4 +11,6 @@ public interface PlaceImageRepository {
     int save(PlaceImage placeImage);
 
     List<PlaceImage> findAll(int placeId);
+
+    PlaceImage getPlaceImg(Integer placeId);
 }

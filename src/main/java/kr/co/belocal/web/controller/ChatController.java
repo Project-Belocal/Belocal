@@ -2,9 +2,7 @@ package kr.co.belocal.web.controller;
 
 
 import kr.co.belocal.web.entity.*;
-import kr.co.belocal.web.service.ChatService;
-import kr.co.belocal.web.service.MemberService;
-import kr.co.belocal.web.service.TravelThemeService;
+import kr.co.belocal.web.service.*;
 import kr.co.belocal.web.service.security.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +30,11 @@ public class ChatController {
     @Autowired
     private MemberService memberService;
     @Autowired
+    private PlaceService placeService;
+    @Autowired
+    private PlaceImageService placeImageService;
+
+    @Autowired
     private TravelThemeService travelThemeService;
 
     //채팅방 목록 조회
@@ -39,8 +42,6 @@ public class ChatController {
     public String chatList(@AuthenticationPrincipal MemberDetails member,
                            Model model) throws ParseException {
 
-
-        System.out.println("member = " + member.getId());
 
         List<ChatRoomListView> list = chatService.findAll(member.getId());
 
@@ -73,9 +74,19 @@ public class ChatController {
         }else {
             memberInfo = memberService.getByIdMember(chatRoom.getTravelerId());
         }
-
         List<ChatLogListView> chatLog = chatService.chatLogFindAll(roomId);
 
+        Integer themeId = chatRoom.getTravelThemeId();
+        TravelTheme theme = travelThemeService.get(themeId);
+        Place place = placeService.findById(themeId);
+        PlaceImage placeImage = placeImageService.getFirstImageByPlaceId(place.getId());
+
+        System.out.println("theme = " + theme);
+        log.info("img {}",placeImage);
+
+        model.addAttribute("theme",theme);
+        model.addAttribute("place",place);
+        model.addAttribute("placeImg",placeImage);
         model.addAttribute("info",memberInfo);
         model.addAttribute("chatRoom", chatRoom);
         model.addAttribute("chatLog",chatLog);

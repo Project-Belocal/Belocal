@@ -36,11 +36,11 @@
     <!-- 예약한 theme정보 -->
     <div class="room__theme">
         <div class="room__theme-Img">
-            <img src="../images/location01.jpg">
+            <img th:src="${placeImg.path}">
         </div>
         <div class="room__theme-content">
-            <h3>theme 제목이 들어갈 공간</h3>
-            <p>theme 내용 설명이 들어갈 공간</p>
+            <h3 th:text="${theme.title}">theme 제목이 들어갈 공간</h3>
+            <p th:text="${theme.description}">theme 내용 설명이 들어갈 공간</p>
         </div>
         <button class="room__reservation" type="button">
             <span>일정 잡기</span>
