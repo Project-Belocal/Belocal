@@ -109,7 +109,6 @@ window.addEventListener("load", () => {
         body.style.overflow = "hidden";
     }
 
-    // When the user clicks on <span> (x), close the modal
     closeBtn.onclick = function (e) {
         e.preventDefault();
         modal.style.display = "none";

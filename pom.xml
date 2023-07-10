@@ -162,14 +162,6 @@
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter -->
 
 		<!-- https://mvnrepository.com/artifact/com.google.cloud/google-cloud-storage -->
-		<dependency>
-			<groupId>com.google.cloud</groupId>
-			<artifactId>google-cloud-storage</artifactId>
-			<version>1.12.0</version>
-		</dependency>
-
-
-
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

@@ -36,14 +36,14 @@
             <div class="navbar__text">메시지</div>
           </a>
 
-          <a sec:authorize="isAnonymous()" href="./login" type="button" class="navbar__btn">
+          <a sec:authorize="isAnonymous()" href="/login" type="button" class="navbar__btn">
             <div>
               <img src="/images/icon/user.svg" alt="">
             </div>
             <div class="navbar__text">로그인</div>
           </a>
 
-          <a sec:authorize="isAuthenticated()" href="./my" type="button" class="navbar__btn">
+          <a sec:authorize="isAuthenticated()" href="/my" type="button" class="navbar__btn">
             <div>
               <img src="/images/icon/user.svg" alt="">
             </div>
