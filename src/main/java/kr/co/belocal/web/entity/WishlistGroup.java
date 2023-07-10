@@ -13,4 +13,5 @@ public class WishlistGroup {
     private String title;
     private Integer isDeleted;
     private Timestamp regDate;
+    private String thumbnailPath;
 }

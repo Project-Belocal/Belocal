@@ -8,4 +8,24 @@
         FROM wishlist
         WHERE travel_theme_id = #{travelThemeId}
     </select>
+
+    <insert id="save" parameterType="Wishlist">
+        INSERT INTO wishlist
+        (
+            travel_theme_id,
+            wishlist_group_id
+        )
+        VALUES
+        (
+            #{travelThemeId},
+            #{wishlistGroupId}
+        )
+    </insert>
+
+    <delete id="delete">
+        DELETE w FROM wishlist w
+        JOIN wishlist_group wg 
+        ON wg.id = w.wishlist_group_id
+        WHERE w.travel_theme_id = #{travelThemeId} AND wg.member_id = #{memberId}
+    </delete>
 </mapper>

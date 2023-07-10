@@ -20,6 +20,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import kr.co.belocal.web.handler.AuthSuccessHandler;
+
 import javax.swing.*;
 
 @Configuration
@@ -63,8 +65,8 @@ public class SecurityConfig  {
                         .loginProcessingUrl("/login")
                         .usernameParameter("userId")
                         .passwordParameter("pw")
-                        .defaultSuccessUrl("/")
-
+                        .successHandler(authSuccessHandler())
+                        // .defaultSuccessUrl("/")
                 )
                 .logout(logout->logout
                         .logoutUrl("/logout")
@@ -81,7 +83,10 @@ public class SecurityConfig  {
     }
 
 
-
+    @Bean
+    public AuthSuccessHandler authSuccessHandler() {
+        return new AuthSuccessHandler();
+    }
 
 
 }
