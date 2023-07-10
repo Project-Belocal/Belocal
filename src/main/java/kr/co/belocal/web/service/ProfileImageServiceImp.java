@@ -14,6 +14,7 @@ public class ProfileImageServiceImp implements ProfileImageService{
 
     @Override
     public ProfileImage getByMemberId(int memberId) {
+
         return repository.findByMemberId(memberId);
     }
     

@@ -6,6 +6,6 @@ import kr.co.belocal.web.entity.ProfileImage;
 
 @Mapper
 public interface ProfileImageRepository {
-    
     ProfileImage findByMemberId(int memberId);
+
 }

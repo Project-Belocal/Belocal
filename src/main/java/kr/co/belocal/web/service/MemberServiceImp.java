@@ -30,6 +30,11 @@ public class MemberServiceImp implements MemberService{
         return memberRepository.findById(id);
     }
 
+    @Override
+    public Member getByIdMember(Integer id) {
+        return memberRepository.findById(id);
+    }
+
 
     //회원정보 수정
     @Override

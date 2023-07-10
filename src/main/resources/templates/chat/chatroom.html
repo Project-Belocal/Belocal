@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +10,15 @@
     <link rel="stylesheet" href="../css/chat/chatroom.css">
     <script src="../js/chat/chatroom.js" defer></script>
     <title>Document</title>
+
+    <style>
+        .form-control {
+            width: 100%;
+            min-height: 38px;
+            font-size: 15px;
+            border: 1px solid #c8c8c8;
+        }
+    </style>
 </head>
 <body>
 
@@ -44,7 +55,6 @@
             <span>일정 잡기</span>
         </button>
     </div>
-
 
     <!-- 모달창 영역 -->
     <div class="room__modal-bg hidden">
@@ -91,115 +101,85 @@
 
 
 
-
     <!-- 메시지 내역 -->
-    <div class="room__chat-wrap">
+<!--    <div class="room__chat-wrap">-->
+<!--        <div th:each="log:${chatLog}">-->
+<!--            &lt;!&ndash; 상대가 보낸 메세지 &ndash;&gt;-->
+<!--            <div class="room__item" th:if="${log.memberId != #authentication.principal.id}">-->
+<!--                <button class="room__user-img" type="button">-->
+<!--                    <img src="../images/profile-pic.jpg" alt="">-->
+<!--                </button>-->
+<!--                <div class="room__content">-->
+<!--                    <p class="room__msg" th:text="${log.message}">상대방이 보낸 메세지</p>-->
+<!--                    <span class="room__time" th:text="${log.regDate}">메세지 등록 시간</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; 내가 보낸 메세지 &ndash;&gt;-->
+<!--            <div class="room__item my-msg"  th:unless="${log.memberId == #authentication.principal.id}">-->
+<!--                <div class="room__content">-->
+<!--                    <p class="room__msg" th:text="${log.message}">내가 보낸 메세지</p>-->
+<!--                    <span class="room__time" th:text="${log.regDate}">메세지 등록 시간</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--        <ul id="messageArea">-->
+<!--            <div  th:each="log:${chatLog}">-->
+<!--                <div th:text="${log.message}">테스트</div>-->
+<!--            </div>-->
+<!--        </ul>-->
 
 
-        <!-- 상대가 보낸 메세지 -->
-        <div class="room__item">
-            <button class="room__user-img" type="button">
-                <img src="../images/profile-pic.jpg" alt="">
-            </button>
-            <div class="room__content">
-                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                </p>
-                <span class="room__time" >오전 23시 59분</span>
+
+    <div id="messageArea" class="room__chat-wrap">
+        <div th:each="log:${chatLog}">
+            <div  class="room__item" th:if="${#authentication.principal.id != log.memberId}">
+                <button class="room__user-img" type="button">
+                    <img src="/images/profile-pic.jpg" th:if="${#authentication.principal.id == log.guideId}"
+                         th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${log.travelerImg}}"
+                         alt="travelerImg">
+                    <img src="/images/profile-pic.jpg" th:if="${#authentication.principal.id == log.travelerId}"
+                         th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${log.guideImg}}"
+                         alt="Guide Image">
+                </button>
+                <div class="room__content">
+                    <p class="room__msg" th:text="${log.message}" >상대방이 보낸 메세지</p>
+                    <span class="room__time" th:text="${log.regDate}" >메세지 등록 시간</span>
+                </div>
+            </div>
+
+            <div class="room__item my-msg" th:if="${#authentication.principal.id == log.memberId}">
+                <div class="room__content">
+                    <span class="room__time" th:text="${log.regDate}">메세지 등록 시간</span>
+                    <p class="room__msg" th:text="${log.message}">내가 보낸 메세지</p>
+                </div>
             </div>
         </div>
 
 
-        <!-- 내가 보낸 메세지 -->
-        <div class="room__item my-msg">
-            <div class="room__content">
-                <span class="room__time">오전 9시 34분</span>
-                <p class="room__msg">하이</p>
+        <form id="messageForm" name="messageForm" nameForm="messageForm" >
+            <div class="room__input">
+                <div class="room__input-wrap">
+                    <textarea id="message" class="room__text" placeholder="메시지를 입력하세요." cols="30" rows="1"></textarea>
+                    <button class="room__input-btn" type="submit">
+                        <img src="../images/icon/send-message.svg" alt="">
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <!-- 상대가 보낸 메세지 -->
-        <div class="room__item">
-            <button class="room__user-img" type="button">
-                <img src="../images/profile-pic.jpg" alt="">
-            </button>
-            <div class="room__content">
-                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                </p>
-                <span class="room__time" >오전 23시 59분</span>
-            </div>
-        </div>
-
-
-        <!-- 내가 보낸 메세지 -->
-        <div class="room__item my-msg">
-            <div class="room__content">
-                <span class="room__time">오전 9시 34분</span>
-                <p class="room__msg">하이</p>
-            </div>
-        </div>
-
-        <!-- 상대가 보낸 메세지 -->
-        <div class="room__item">
-            <button class="room__user-img" type="button">
-                <img src="../images/profile-pic.jpg" alt="">
-            </button>
-            <div class="room__content">
-                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                </p>
-                <span class="room__time" >오전 23시 59분</span>
-            </div>
-        </div>
-
-
-        <!-- 내가 보낸 메세지 -->
-        <div class="room__item my-msg">
-            <div class="room__content">
-                <span class="room__time">오전 9시 34분</span>
-                <p class="room__msg">하이</p>
-            </div>
-        </div>
-
-
-        <!-- 상대가 보낸 메세지 -->
-        <div class="room__item">
-            <button class="room__user-img" type="button">
-                <img src="../images/profile-pic.jpg" alt="">
-            </button>
-            <div class="room__content">
-                <p class="room__msg" >김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                    김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지  김세정...몸매 노래 얼굴 다가진여자..하지만 강릉함씨 32대손인 나 함필규는 가지지 못했지
-                </p>
-                <span class="room__time" >오전 23시 59분</span>
-            </div>
-        </div>
-
-
-        <!-- 내가 보낸 메세지 -->
-        <div class="room__item my-msg">
-            <div class="room__content">
-                <span class="room__time">오전 9시 34분</span>
-                <p class="room__msg">하이</p>
-            </div>
-        </div>
+        </form>
     </div>
 
-    <!-- 메시지 전송 창 -->
-    <div class="room__input">
-        <div class="room__input-wrap">
-            <textarea class="room__text" placeholder="메시지를 입력하세요." cols="30" rows="1"></textarea>
-            <button class="room__input-btn" type="button">
-                <img src="../images/icon/send-message.svg" alt="">
-            </button>
-        </div>
 
-    </div>
+
+
+
+<!--        <input type="text" id="message" class="form-control" >-->
 
 </section>
 
-
-
+<input type="hidden" name="chatRoomId" th:value="log.id">
+<input class="member-id" type="hidden" name="id" th:value="${#authentication.principal.id}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </body>
 </html>

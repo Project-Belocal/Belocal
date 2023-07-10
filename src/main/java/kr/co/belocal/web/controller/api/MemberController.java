@@ -1,6 +1,7 @@
 package kr.co.belocal.web.controller.api;
 
 import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.entity.TravelThemeView;
 import kr.co.belocal.web.service.TravelThemeService;
 import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,6 @@ import java.util.List;
 public class MemberController {
 
 
-//    @Autowired
-//    private MemberService memberService;
 
     @Autowired
     private TravelThemeService service;
@@ -26,12 +25,12 @@ public class MemberController {
 
 
     @GetMapping("")
-    public ResponseEntity<List<TravelTheme>> getListByMemberId(
-            @RequestParam(name = "i", required = false, defaultValue="2")Integer id,
+    public ResponseEntity<List<TravelThemeView>> getListByMemberId(
+            @RequestParam(name = "i", required = false, defaultValue="2")Integer memberId,
             @RequestParam(name = "offset") int offset) {
 
 
-        List<TravelTheme> travelThemeList = service.getListByMemberId(id, offset);
+        List<TravelThemeView> travelThemeList = service.getListByMemberId(memberId, offset);
 //        System.out.print(travelThemeList.get(0));
 
         return ResponseEntity.ok().body(travelThemeList);

@@ -43,13 +43,13 @@ import kr.co.belocal.web.controller.request.UploadRequest;
 @Controller
 @RequestMapping("/my")
 public class MyPageController {
-    @Value("${spring.cloud.gcp.storage.bucket}") 
+    @Value("${spring.cloud.gcp.storage.bucket}")
     private String bucketName;
 
     private Storage storage;
-    
-    @Value("${upload.path}")
-    private String uploadPath;
+
+//    @Value("${upload.path}")
+//    private String uploadPath;
 
     @Autowired
     private MemberDetailsService memberDetailsService;
@@ -76,6 +76,7 @@ public class MyPageController {
         return "/member/my/profile";
     }
 
+
     @GetMapping("/profile-edit")
     public String profileEdit(){
         return "member/my/profile-edit";
@@ -83,10 +84,14 @@ public class MyPageController {
 
 
     @PostMapping("/profile-edit/send")
-    public String profileEdit(Member member, @RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session) throws IOException {
+    public String profileEdit(Member member,
+                              @RequestParam("uploadFile") MultipartFile uploadFile,
+                              HttpSession session
+    ) throws IOException {
 
-        fileService.fileSave(uploadFile,member.getId());
-        memberService.editSave(member);
+
+        fileService.profileSave(uploadFile,member.getId()); //회원 이미지 저장
+        memberService.editSave(member); // 회원정보 수정
 
 
         //이미지를 업데이트 후 시큐리티 세션을 재등록 해주는 작업업
@@ -97,6 +102,8 @@ public class MyPageController {
 
         securityContext.setAuthentication(auth);
         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
+
 
         return "redirect:/my";
     }
@@ -116,12 +123,12 @@ public class MyPageController {
     public ResponseEntity<String[]> uploadFile(
             @RequestPart(name="image") MultipartFile[] fileList
             ) throws IllegalStateException, IOException {
-        
+
         storage = StorageOptions.getDefaultInstance().getService();
 
         String[] filePathList = new String[fileList.length];
 
-    
+
         for(int i = 0; i < fileList.length; i++) {
             MultipartFile image = fileList[i];
 
@@ -133,7 +140,7 @@ public class MyPageController {
             filePathList[i] = "https://storage.googleapis.com/belocal-bucket/" + fileName;
         }
 
-   
+
         return ResponseEntity.ok().body(filePathList);
     }
 
@@ -162,7 +169,7 @@ public class MyPageController {
             for(int j = 0; j < list.size(); j++) 
                 placeImageService.append(list.get(j));
         }
-        
+
         // String url = "redirect:/theme/theme-detail";\
         
         String travelThemeId = String.valueOf(requestBody.travelThemeId());
@@ -170,4 +177,3 @@ public class MyPageController {
         return url;
     }
 }
-    

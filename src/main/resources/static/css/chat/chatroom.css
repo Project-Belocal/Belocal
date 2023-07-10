@@ -137,7 +137,6 @@
     display: flex;
     margin-top: 0;
     align-items: center;
-    align-items: flex-start;
     justify-content: flex-start;
     padding: 12px 12px;
     width: 100%;
@@ -176,6 +175,7 @@
     margin:  8px 8px 0 0;
     border-radius: 50%;
     width: 52px;
+    height: 52px;
     overflow: hidden;
     object-fit: cover;
 }
@@ -425,4 +425,9 @@ select option[value=""][disabled] {
 
 .hidden{
     display: none;
+}
+
+.chat-message {
+    padding-left: 68px;
+    position: relative;
 }

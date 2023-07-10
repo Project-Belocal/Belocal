@@ -47,7 +47,7 @@ public class TravelThemeController {
     @Autowired
     private MemberService memberService;
 
-    @Autowired 
+    @Autowired
     private WishlistService wishlistService;
 
     @Autowired
@@ -109,7 +109,7 @@ public class TravelThemeController {
         // System.out.println(role);
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeViewList);
-        model.addAttribute("placeImageLists2d", placeImageLists2d); 
+        model.addAttribute("placeImageLists2d", placeImageLists2d);
         model.addAttribute("placeImageLists1d", placeImageLists1d);
         model.addAttribute("member", uploadMember);
         model.addAttribute("wishlistCount", wishlistCount);

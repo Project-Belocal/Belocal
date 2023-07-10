@@ -4,7 +4,9 @@ import java.util.List;
 
 import kr.co.belocal.web.entity.Category;
 import kr.co.belocal.web.entity.Member;
+import kr.co.belocal.web.entity.TravelThemeView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import kr.co.belocal.web.entity.TravelTheme;
@@ -22,16 +24,25 @@ public class TravelThemeServiceImp implements TravelThemeService {
 
 //====== member-profile 페이지 용 =================
     @Override
-    public List<TravelTheme> getListByMemberId(Integer id, int offset) {
-//    public List<TravelTheme> getListByMemberId(Integer id) {
-        // 0-5, 6-11, 12-17, 18-23, 24-29
-        // (현재페이지번호-1) * 페이지당 요청 자료 개수
-        // (0-1) * 5 = 0
-        // (2-1) * 5 = 5 '+1'
-        // (3-1) * 5 = 10 '+1'
-
+    public List<TravelThemeView> getListByMemberId(Integer id, int offset) {
         return repository.findAll(id, offset, 6);
-//        return repository.findAll(id, 0, 6);
+    }
+
+
+//====== main화면 기본 6개 나오는 부분 =================
+    @Override
+    public List<TravelThemeView> getListForMain(int offset) {
+        return repository.getListForMain(offset, 6);
+    }
+
+//====== search-modal : 검색용 =================
+    @Override
+    public List<TravelThemeView> getListByQuery(String query){
+        return repository.getListByQuery(query);
+    }
+    @Override
+    public List<TravelThemeView> getListByCtgId(Integer ctgId){
+        return repository.getListByCtgId(ctgId);
     }
 
 
@@ -42,16 +53,11 @@ public class TravelThemeServiceImp implements TravelThemeService {
     }
 
 
-//
+
 //    @Override
-//    public List<TravelTheme> getList(Integer memberId) {
+//    public List<TravelTheme> getList(String categoryName, String location, String description) {
 //        return null;
 //    }
-
-    @Override
-    public List<TravelTheme> getList(String categoryName, String location, String description) {
-        return null;
-    }
 
 
 
