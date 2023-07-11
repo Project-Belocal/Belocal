@@ -10,15 +10,6 @@
     <link rel="stylesheet" href="../css/chat/chatroom.css">
     <script src="../js/chat/chatroom.js" defer></script>
     <title>Document</title>
-
-    <style>
-        .form-control {
-            width: 100%;
-            min-height: 38px;
-            font-size: 15px;
-            border: 1px solid #c8c8c8;
-        }
-    </style>
 </head>
 <body>
 
@@ -32,10 +23,10 @@
         </button>
         <div class="room__detail">
             <div class="room__user-name">
-                <span>innerJoin123</span>
+                <span th:text="${info.nickname}"></span>
             </div>
             <div class="room__date">
-                <span>응답 시간 : 1시간</span>
+<!--                <span>응답 시간 : </span>-->
             </div>
         </div>
         <button class="room__menu" type="button">
@@ -45,11 +36,11 @@
     <!-- 예약한 theme정보 -->
     <div class="room__theme">
         <div class="room__theme-Img">
-            <img src="../images/location01.jpg">
+            <img th:src="${placeImg.path}">
         </div>
         <div class="room__theme-content">
-            <h3>theme 제목이 들어갈 공간</h3>
-            <p>theme 내용 설명이 들어갈 공간</p>
+            <h3 th:text="${theme.title}">theme 제목이 들어갈 공간</h3>
+            <p th:text="${theme.description}">theme 내용 설명이 들어갈 공간</p>
         </div>
         <button class="room__reservation" type="button">
             <span>일정 잡기</span>
@@ -66,8 +57,8 @@
                 <button class="nav-btn" type="button">
                     <span>차단하기</span>
                 </button>
-                <button class="nav-btn" type="button">
-                    <a href="#">나가기</a>
+                <button class="nav-btn exit" type="button">
+                    <a href="/chat/list">나가기</a>
                 </button>
             </div>
         </div>

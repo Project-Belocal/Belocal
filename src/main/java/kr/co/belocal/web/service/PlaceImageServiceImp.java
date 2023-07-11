@@ -24,6 +24,11 @@ public class PlaceImageServiceImp implements PlaceImageService {
         
         return repository.findAll(placeId);
     }
-    
+
+    @Override
+    public PlaceImage getFirstImageByPlaceId(Integer placeId) {
+        return repository.getPlaceImg(placeId);
+    }
+
 }
 

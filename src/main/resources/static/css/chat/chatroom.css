@@ -234,6 +234,7 @@
     outline: none;
     max-height: 150px;
     text-align: left;
+    overflow-y: hidden;
     font-size: var(--font-size-medium14);
 }
 

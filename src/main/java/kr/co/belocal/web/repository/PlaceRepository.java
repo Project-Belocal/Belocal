@@ -10,8 +10,8 @@ import kr.co.belocal.web.entity.PlaceView;
 @Mapper
 public interface PlaceRepository {
     int save(Place place);
-
     List<Place> findAll(int travelThemeId);
-
     List<PlaceView> findViewAll(int travelThemeId);
+
+    Place findById(Integer travelThemeId);
 }

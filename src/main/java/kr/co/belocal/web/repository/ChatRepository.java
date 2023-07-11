@@ -28,4 +28,7 @@ public interface ChatRepository {
 
     //채팅 확인 유무 업데이트
     void chatUpdate(ChatLog chatLog);
+
+    //채팅방 삭제
+    void deletedRoom(Integer chatRoomId);
 }

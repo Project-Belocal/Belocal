@@ -9,6 +9,7 @@ window.addEventListener("load",function(){
         const reportModal = section.querySelector(".room__report");
         const reportClose = section.querySelector(".room__report-close");
 
+        const exitBtn = document.querySelector(".exit");
 
         //뒤로가기
         Undo.onclick = function () {
@@ -38,6 +39,25 @@ window.addEventListener("load",function(){
                 reportModal.classList.add("hidden");
             }
         }
+
+
+    exitBtn.onclick = function (){
+        console.log("흠")
+        fetch("/api/chats/exit",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/JSON"
+            },
+            body:JSON.stringify({
+                chatRoomId:chatRoomId
+            })
+        }).then(response=>response.json()).then(data=>{
+            console.log(data)
+        })
+    }
+
+
+
     messageArea.scrollTop = messageArea.scrollHeight;
 
     //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -58,31 +78,33 @@ let stompClient = null;
 let socket = new SockJS('/ws-stomp');
 stompClient = Stomp.over(socket);
 stompClient.connect({}, onConnected);
-stompClient.heartbeat.incoming = 1000;
-stompClient.heartbeat.outgoing = 1000;
+
+stompClient.heartbeat.incoming = 0;
+stompClient.heartbeat.outgoing = 0;
+
+
 
 
 function onConnected() {
     // sub 할 url => /sub/chat/room/roomId 로 구독한다
     stompClient.subscribe('/sub/chat/room/' + chatRoomId, onMessageReceived);
 
-    console.log("연결체크용")
-
     //소켓에 연결한다면? -> 채팅메세지의 id가 내꺼가 아닌 데이터들의 checked를 1로 변경
-    fetch("api/chats/check",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/JSON"
+    fetch("/api/chats/check", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/JSON"
         },
-        body:JSON.stringify({
-            roomId:chatRoomId,
-            id:memberId.value
+        body: JSON.stringify({
+            roomId: chatRoomId,
+            id: memberId.value
         })
     })
-        .then(response=>response.json())
-        .then(data=>{
+        .then(response => response.json())
+        .then(data => {
             console.log(data)
         })
+
 }
 
 
@@ -99,6 +121,7 @@ function sendMessage(event) {
 
         stompClient.send("/pub/chat/sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
+        messageInput.focus();
     }
     event.preventDefault();
 }
@@ -158,3 +181,13 @@ function onMessageReceived(payload) {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
     messageForm.addEventListener('submit', sendMessage, true)
+
+
+window.addEventListener("keypress",function (e){
+    const enterBtn = document.querySelector(".room__input-btn");
+    if (e.code==="Enter"){
+        e.preventDefault()
+        enterBtn.click();
+        return;
+    }
+})

@@ -1,13 +1,22 @@
 package kr.co.belocal.web.controller.api;
 
+import jakarta.servlet.http.HttpSession;
+import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.service.AuthService;
 import kr.co.belocal.web.service.FileService;
+import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.security.MemberDetails;
+import kr.co.belocal.web.service.security.MemberDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +36,11 @@ public class MyPageController {
 
     @Autowired
     private FileService fileService;
+
+    @Autowired
+    private MemberDetailsService memberDetailsService;
+    @Autowired
+    private MemberService memberService;
 
 
     @PostMapping("/duplicateNickname")
@@ -67,4 +81,27 @@ public class MyPageController {
 //        return ResponseEntity.status(HttpStatus.OK).build();
 //    }
 
+
+    //로컬  권한 추가
+    @PostMapping("/addGuideRole")
+    public String addGuideRole(@RequestBody Map<String ,Object> request, HttpSession session){
+        Integer memberId = Integer.valueOf((String) request.get("id"));
+
+
+        authService.addGuideRole(memberId);
+
+        Member member = memberService.getByIdMember(memberId);
+
+        //권한을 업데이트 후 시큐리티 세션을 재등록 해주는 작업업
+        UserDetails user = memberDetailsService.loadUserByUsername(member.getUserId());
+        Authentication auth = new UsernamePasswordAuthenticationToken
+                (user,user.getPassword(),user.getAuthorities());
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+
+        securityContext.setAuthentication(auth);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
+
+        return "200";
+    }
 }

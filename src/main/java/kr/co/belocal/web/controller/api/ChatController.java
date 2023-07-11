@@ -6,16 +6,19 @@ import kr.co.belocal.web.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.async.DeferredResult;
+import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -25,7 +28,6 @@ import java.util.Map;
 @RequestMapping("/api/chats")
 public class ChatController {
 
-
     //지정된 사용자에게 메세지를 보내는 인터페이스
     private final SimpMessageSendingOperations template;
 
@@ -34,7 +36,16 @@ public class ChatController {
     @Autowired
     private MemberService memberService;
 
+    @PostMapping("/createRoom")
+    public String createRoom(
+            @RequestBody Map<String ,Object> req
+    ){
 
+
+        return "200";
+    }
+
+    //방 입장시 메세지 확인
     @PostMapping("/check")
     public Integer messageChecked(
                 @RequestBody Map<String, Object> requestBody
@@ -52,11 +63,10 @@ public class ChatController {
         Integer guide = chatRoom.getGuideId();
         Integer id = null;
 
-        if (memberId.equals(traveler)) {
+        if (memberId.equals(traveler))
             id = guide;
-        }else {
+        else
             id = traveler;
-        }
 
 
         ChatLog chatLog = ChatLog
@@ -66,10 +76,7 @@ public class ChatController {
                 .isChecked(1)
                 .build();
 
-
-//
         chatService.chatUpdate(chatLog);
-
 
         return 200;
     }
@@ -114,7 +121,46 @@ public class ChatController {
 
 
 
+    //퇴장시
+    @EventListener
+    public void webSocketDisconnectListener(SessionDisconnectEvent event) {
+        log.info("DisConnEvent {}", event);
+
+        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
+
+        // stomp 세션에 있던 uuid 와 roomId 를 확인해서 채팅방 유저 리스트와 room 에서 해당 유저를 삭제
+        Integer memberId = (Integer) headerAccessor.getSessionAttributes().get("memberId");
+        Integer roomId = (Integer) headerAccessor.getSessionAttributes().get("roomId");
+
+        log.info("headAccessor {}", headerAccessor);
+
+
+            // builder 어노테이션 활용
+            ChatLog chat = ChatLog.builder()
+                    .chatRoomId(roomId)
+                    .memberId(memberId)
+                    .message(" 님 퇴장!!")
+                    .build();
+
+            template.convertAndSend("/sub/chat/room/" + roomId, chat);
+        }
 
 
 
-}
+    //채팅방 나가기
+    @PostMapping("/exit")
+    public String chatExit(@RequestBody Map<String ,Object> request){
+
+        Integer chatRoomId = Integer.valueOf((String) request.get("chatRoomId"));
+        chatService.deletedRoom(chatRoomId);
+
+        return "200";
+    }
+}//class end
+
+
+
+
+
+
+

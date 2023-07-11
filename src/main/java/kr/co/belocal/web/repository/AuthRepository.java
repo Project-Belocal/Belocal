@@ -2,6 +2,8 @@ package kr.co.belocal.web.repository;
 
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.MemberRoleView;
+import kr.co.belocal.web.entity.ProfileImage;
+import kr.co.belocal.web.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.relational.core.sql.In;
 
@@ -41,12 +43,18 @@ public interface AuthRepository {
 
     //회원가입
     int save(Member member);
-    //권한 부여
+    //가입시 기본 권한 부여
     void addRole(Integer id);
+    //가이드 권한 부여
+    void addGuideRole(Role role);
+
 
     //회원 정보 수정
     int update(Member member);
     //계정삭제
     int delete(Member id);
 
+    void addDefaultImg(ProfileImage profileImage);
+
+    Integer findByRole(Integer memberId);
 }

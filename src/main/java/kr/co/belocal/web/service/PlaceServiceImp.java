@@ -30,6 +30,11 @@ public class PlaceServiceImp implements PlaceService {
     public List<PlaceView> getViewListByTravelThemeId(int travelThemeId) {
         return repository.findViewAll(travelThemeId);
     }
-    
+
+    @Override
+    public Place findById(Integer travelThemeId) {
+        return repository.findById(travelThemeId);
+    }
+
 }
 

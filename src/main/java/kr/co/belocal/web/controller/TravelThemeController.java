@@ -65,7 +65,7 @@ public class TravelThemeController {
         List<TravelTheme> list = travelThemeService.getList();
         model.addAttribute("list", list);
         System.out.println(list);
-        return "theme/theme_list";
+        return "theme/theme-list";
     }
 
 

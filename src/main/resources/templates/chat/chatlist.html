@@ -58,7 +58,7 @@
                                     <span th:text="${cl.regDate}"></span>
                                 </div>
                             </div>
-                            <div class="message__notification" th:if="${#authentication.principal.id != cl.sender}">
+                            <div class="message__notification" th:if="${cl.checkedCount > 0 and #authentication.principal.id != cl.sender}">
                                 <p th:text="${cl.checkedCount}"></p>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                 </div>
 
                 <!-- 탭2 알림 페이지 -->
-                <div class="message__notice hidden">
+                <div class="message__notice data hidden">
 <!--                    <div class="message__notice-wrap">-->
 <!--                        <span>엄준식12세 님이 요청을 수락했습니다.</span>-->
 <!--                        <span>2023-05-12 17:30</span>-->
@@ -91,5 +91,6 @@
 
     </section>
     <div th:replace="inc/navbar"></div>
+    <input class="member-id" type="hidden" th:value="${#authentication.principal.id}">
 </body>
 </html>

@@ -56,7 +56,7 @@ public class SecurityConfig  {
                                                     ,"/my/**"
                                                     ,"/location/**"
                                                     ,"/chat/**")
-                                .hasAnyRole("MEMBER","GUIDE","ADMIN")
+                                .hasAnyRole("USER","GUIDE","ADMIN")
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
