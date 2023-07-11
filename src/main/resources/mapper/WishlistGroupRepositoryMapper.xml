@@ -11,6 +11,12 @@
       WHERE wg.member_id = #{memberId} AND w.travel_theme_id = #{travelThemeId}
     </select>
 
+    <select id="findById" resultType="WishlistGroup">
+      SELECT *
+      FROM wishlist_group
+      WHERE id = #{wishlistGroupId}
+    </select>
+
     <select id="findViewAll" resultType="wishlistGroupView">
       SELECT
         id,
