@@ -2,7 +2,6 @@ package kr.co.belocal.web.config;
 
 
 
-import com.sun.nio.sctp.NotificationHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -25,11 +24,12 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      */
 
 
-
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // stomp 접속 주소 url => /ws-stomp
-        registry.addEndpoint("/ws-stomp").setAllowedOriginPatterns("*").withSockJS(); // SocketJS 를 연결한다는 설정
+        registry.addEndpoint("/ws-stomp")
+                .setAllowedOriginPatterns("*")
+                .withSockJS(); // SocketJS 를 연결한다는 설정
     }
 
     // STOMP에서 사용하는 메시지 브로커 설정

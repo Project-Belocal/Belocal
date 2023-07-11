@@ -50,18 +50,8 @@ window.addEventListener("load", function() {
   });
 
 
-  let temp = `      <div class="message__notice-wrap">
-                        <span>엄준식12세 님이 요청을 수락했습니다.</span>
-                        <span>2023-05-12 17:30</span>
-                    </div>`
 
-  const eventSource = new EventSource("/sse");
-  eventSource.onmessage = function (e){
-  const p = document.createElement("p");
-  p.innerHTML = e.data;
 
-  document.querySelector(".data").insertAdjacentHTML("afterend", temp);
-}
 
 });
 

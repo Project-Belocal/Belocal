@@ -43,7 +43,7 @@ window.addEventListener("load",function(){
 
     exitBtn.onclick = function (){
         console.log("흠")
-        fetch("/chat/api/chats/exit",{
+        fetch("/api/chats/exit",{
             method:"POST",
             headers:{
                 "Content-Type":"application/JSON"
@@ -90,7 +90,7 @@ function onConnected() {
     stompClient.subscribe('/sub/chat/room/' + chatRoomId, onMessageReceived);
 
     //소켓에 연결한다면? -> 채팅메세지의 id가 내꺼가 아닌 데이터들의 checked를 1로 변경
-    fetch("/chat/api/chats/check", {
+    fetch("/api/chats/check", {
         method: "POST",
         headers: {
             "Content-Type": "application/JSON"

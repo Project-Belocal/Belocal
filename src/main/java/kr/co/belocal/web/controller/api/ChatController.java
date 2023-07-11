@@ -3,7 +3,6 @@ package kr.co.belocal.web.controller.api;
 import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.ChatService;
 import kr.co.belocal.web.service.MemberService;
-import kr.co.belocal.web.service.security.MemberDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,6 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
@@ -28,7 +25,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @RestController("apiChatController")
-@RequestMapping("/chat/api/chats")
+@RequestMapping("/api/chats")
 public class ChatController {
 
     //지정된 사용자에게 메세지를 보내는 인터페이스
@@ -39,6 +36,14 @@ public class ChatController {
     @Autowired
     private MemberService memberService;
 
+    @PostMapping("/createRoom")
+    public String createRoom(
+            @RequestBody Map<String ,Object> req
+    ){
+
+
+        return "200";
+    }
 
     //방 입장시 메세지 확인
     @PostMapping("/check")
@@ -114,6 +119,8 @@ public class ChatController {
     }
 
 
+
+
     //퇴장시
     @EventListener
     public void webSocketDisconnectListener(SessionDisconnectEvent event) {
@@ -138,23 +145,6 @@ public class ChatController {
             template.convertAndSend("/sub/chat/room/" + roomId, chat);
         }
 
-
-//    //채팅방 목록 조회
-//    @PostMapping("/list")
-//    public String chatList(Model model,
-//                            @RequestBody Map<String ,Object> requestBody) throws ParseException {
-//
-//
-//        List<ChatRoomListView> list = chatService.findAll(1);
-//
-//        log.info("api list {}",list);
-//
-//        model.addAttribute("chatList", list);
-//
-//
-////        return "chat/chatlist";
-//        return "200";
-//    }
 
 
     //채팅방 나가기
