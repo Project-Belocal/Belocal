@@ -103,10 +103,9 @@ public class TravelThemeController {
             wishlistGroupViewList = wishlistGroupService.getViewListByMemberId(memberId);
         }
              
-        
-
         // Role role = roleService.getByMemberId(memberId);
         // System.out.println(role);
+        model.addAttribute("uploadMemberId", uploadMemberId);
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeViewList);
         model.addAttribute("placeImageLists2d", placeImageLists2d);

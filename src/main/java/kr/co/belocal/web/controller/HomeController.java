@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 
-@Controller("/index")
+@Controller
 public class HomeController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class HomeController {
     @Autowired
     private TravelThemeService travelThemeService;
 
-    @GetMapping("index")
+    @GetMapping("/")
     public String index(
             @RequestParam(name="offset", defaultValue = "0")int offset,
             Model model){
@@ -51,11 +51,10 @@ public class HomeController {
         } else if(ctgId != null) {
             searchThemeList = travelThemeService.getListByCtgId(ctgId);
         }
+
         model.addAttribute("search", searchThemeList);
         model.addAttribute("ctg", searchThemeList);
-
-
-
+        
         return "/search-result";
     }//search
 

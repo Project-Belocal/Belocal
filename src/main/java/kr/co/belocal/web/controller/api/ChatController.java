@@ -22,7 +22,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @RestController("apiChatController")
-@RequestMapping("/chat/api/chats")
+@RequestMapping("/api/chats")
 public class ChatController {
 
 

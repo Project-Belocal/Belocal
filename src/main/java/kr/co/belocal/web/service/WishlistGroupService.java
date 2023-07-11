@@ -8,6 +8,10 @@ import kr.co.belocal.web.entity.WishlistGroupView;
 public interface WishlistGroupService {
     
     int append(WishlistGroup wishlistGroup);
+
+    WishlistGroup getById(int wishlistGroupId);
+
     int getStatus(int travelThemeId, int memberId);
+
     List<WishlistGroupView> getViewListByMemberId(int memberId);
 }

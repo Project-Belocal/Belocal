@@ -29,5 +29,10 @@ public class WishlistGroupServiceImp implements WishlistGroupService {
     public List<WishlistGroupView> getViewListByMemberId(int memberId) {
         return repository.findViewAll(memberId);
     }
+
+    @Override
+    public WishlistGroup getById(int wishlistGroupId) {
+        return repository.findById(wishlistGroupId);
+    }
     
 }
