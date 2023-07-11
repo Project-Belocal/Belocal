@@ -1,0 +1,55 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.belocal.web.repository.WishlistGroupRepository">
+    <select id="findStatus" resultType="int">
+      SELECT 
+      COUNT(wg.id) cnt
+      FROM wishlist_group wg
+      JOIN wishlist w ON wg.id = w.wishlist_group_id
+      WHERE wg.member_id = #{memberId} AND w.travel_theme_id = #{travelThemeId}
+    </select>
+
+    <select id="findViewAll" resultType="wishlistGroupView">
+      SELECT
+        id,
+        title,
+        thumbnail_path
+      FROM wishlist_group
+      WHERE member_id = #{memberId}
+    </select>
+    <!-- <select id="findViewAll" resultType="WishlistGroupView">
+      SELECT
+        wg.title,
+        pi.path
+      FROM wishlist_group wg
+      JOIN 
+      (
+        SELECT
+          wishlist_group_id,
+          travel_theme_id,
+          MAX(reg_date)
+        FROM wishlist 
+        GROUP BY wishlist_group_id
+      ) w ON wg.id = w.wishlist_group_id
+      JOIN place p ON w.travel_theme_id = p.travel_theme_id
+      JOIN place_image pi ON p.id = pi.place_id
+	    WHERE wg.member_id = #{memberId} AND p.order = 0 AND pi.order = 0;
+    </select> -->
+
+    <insert id="save" parameterType="WishlistGroup" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO wishlist_group
+      (
+        member_id,
+        title,
+        thumbnail_path
+      )
+      VALUES
+      (
+        #{memberId},
+        #{title},
+        #{thumbnailPath}
+      )
+    </insert>
+</mapper>

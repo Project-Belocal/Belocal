@@ -372,9 +372,9 @@ textarea {
   /* Full width */
   /* height: 100vh; */
   /* Full height */
-  overflow-y: auto;
+  /* overflow-y: auto; */
   /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
+  /* background-color: rgb(0, 0, 0); */
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
@@ -391,7 +391,7 @@ textarea {
   border: 1px solid #888;
   width: 100%;
   max-height: calc(100vh - 100px);
-  overflow-y: auto;
+  /* overflow-y: auto; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s; */
@@ -428,7 +428,7 @@ textarea {
   justify-content: center;
   align-items: center;
 
-  background-color: white;
+  background-color: #fefefe;
   height: 50px;
   margin-bottom: var(--header-margin-bottom);
 }
@@ -455,6 +455,8 @@ textarea {
 
 .modal__body {
   padding: var(--section-padding);
+  max-height: calc(100vh - 182px); 
+  overflow-y: auto;
 }
 
 .modal__body h2 {
