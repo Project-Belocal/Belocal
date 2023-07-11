@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.servlet.http.HttpSession;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.service.AuthService;
+import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.sms.SmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,9 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private MemberService memberService;
 
     @Autowired
     private SmsService smsService;
@@ -82,6 +86,7 @@ public class AuthController {
     @PostMapping("/sign-up")
     public String join(Member member,HttpSession session){
         authService.save(member);
+        authService.addDefaultImg(member.getId());
         authService.addRole(member.getId());
         return "redirect:/login";
     }

@@ -191,7 +191,7 @@ window.addEventListener("load",function (){
                     }
                 }
             }
-            let params = "type=nickname&nickName=" + encodeURIComponent(nickName.value);
+            let params = "type=nickname&nickname=" + encodeURIComponent(nickname.value);
             xhr.send(params);
         }
     })

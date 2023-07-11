@@ -4,6 +4,7 @@ package kr.co.belocal.web.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.MemberRoleView;
+import kr.co.belocal.web.entity.ProfileImage;
 import org.springframework.data.relational.core.sql.In;
 
 import java.io.UnsupportedEncodingException;
@@ -15,7 +16,12 @@ import java.util.List;
 
 public interface AuthService {
     int save(Member member);
+    //가이드 권한 조회
+    Integer FindByRole(Integer memberId);
+    //회원가입시 권한
     void addRole(int id);
+    //가이드 권한 추가
+    void addGuideRole(Integer memberId);
 
 
     //Security login check
@@ -37,6 +43,9 @@ public interface AuthService {
     String isIdDuplicate(String userId);
     String isNicknameDuplicate(String nickname);
     String isPhoneNumDuplicate(String phoneNum);
+
+    //기본이미지 저장
+    void addDefaultImg(Integer memberId);
 
 
 }

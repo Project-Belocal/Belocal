@@ -1,7 +1,4 @@
 
-body{
-    overflow-y: hidden;
-}
 
 /* header 전체 영역 */
 .my-page-header{
@@ -154,7 +151,7 @@ body{
 .my-page-main{
     display: flex;
     max-width: 390px;
-    height: 100vh;
+    height: 100%;
     overflow-y: hidden;
     flex-direction: column;
     padding: var(--section-padding);
@@ -199,9 +196,6 @@ body{
     font-size: var(--font-size-small10);
 }
 
-.active{
-    display: none;
-}
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
@@ -258,7 +252,23 @@ body{
     filter: invert(40%) sepia(62%) saturate(0%) hue-rotate(245deg) brightness(94%) contrast(97%);
 }
 
+/*배너창*/
+.banner{
+    position: relative;
+    margin-top: 42px;
+    margin-bottom: 42px;
+    height: 200px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    overflow: hidden;
+}
 
+.banner img{
+    width: 100%;
+    height: 100%;
+}
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
@@ -408,8 +418,57 @@ body{
     font-size: var(--font-size-small10);
 }
 
-/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+/*footer*/
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 79px;
+    padding-bottom: 36px;
+}
 
+.info__item {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.info__link{
+    position: relative;
+    display: inline-block;
+    padding: 3px 9px;
+    color: #929294;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -.5px;
+}
+
+.bulkhead::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 1px;
+    height: 10px;
+    background-color: #d7dfe7;
+}
+
+.logo__local{
+    width: 74px;
+    height: 14px;
+    background-position: -47px -120px;
+    margin: 16px 0 2px;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.active{
+    display: none;
+}
 
 .hidden{
     display: none;

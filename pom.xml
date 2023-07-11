@@ -157,6 +157,12 @@
 			<version>2.15.2</version>
 		</dependency>
 
+		<!--SSE-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
 
 		<!-- google cloud storage -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter -->

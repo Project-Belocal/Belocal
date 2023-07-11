@@ -45,7 +45,7 @@ public class ChatController {
 
         List<ChatRoomListView> list = chatService.findAll(member.getId());
 
-        log.info("list {}",list);
+//        log.info("list {}",list);
 
 
         model.addAttribute("chatList", list);
@@ -74,15 +74,14 @@ public class ChatController {
         }else {
             memberInfo = memberService.getByIdMember(chatRoom.getTravelerId());
         }
-        List<ChatLogListView> chatLog = chatService.chatLogFindAll(roomId);
 
+        List<ChatLogListView> chatLog = chatService.chatLogFindAll(roomId);
         Integer themeId = chatRoom.getTravelThemeId();
         TravelTheme theme = travelThemeService.get(themeId);
         Place place = placeService.findById(themeId);
         PlaceImage placeImage = placeImageService.getFirstImageByPlaceId(place.getId());
 
-        System.out.println("theme = " + theme);
-        log.info("img {}",placeImage);
+
 
         model.addAttribute("theme",theme);
         model.addAttribute("place",place);
