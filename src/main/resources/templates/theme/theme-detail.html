@@ -18,6 +18,7 @@
     <!-- <script src="/js/them-detail-modal.js" defer></script> -->
     <script src="/js/theme-detail/image-slider.js" defer></script>
     <script src="/js/theme-detail/wishlist-modal.js" defer></script>
+    <script src="/js/theme-detail/request-chat.js" defer></script>
 </head>
 <body>
     
@@ -175,12 +176,31 @@
             </p>
         </div>
 
-        <div class="theme__detail--reservation--button--container">
+        <button type="button" 
+                class="theme__detail__chat-request"
+                sec:authorize="isAuthenticated()"
+                th:data-travel-theme-id="${travelTheme.id}"
+                th:data-traveler-id="${#authentication.principal.id}"
+                th:data-guide-id="${uploadMemberId}"
+                >
+            <a href="">
+                채팅요청
+            </a>
+        </button>
+
+        <button type="button" 
+                class="theme__detail__chat-request not-logined"
+                sec:authorize="isAnonymous()">
+            <a href="/login">
+                채팅요청
+            </a>
+        </button>
+        <!-- <div class="theme__detail--reservation--button--container">
             <button>
                 <div>채팅요청</div>
             </button>
 
-        </div>
+        </div> -->
     </section>
     
     <section class="wishlist__modal hidden">
@@ -215,7 +235,6 @@
                     <img th:src="${wishlistGroup.path}">
                     <span th:text="${wishlistGroup.title}">새로운 위시리스트 만들기</span>
                 </div>
-
             </div>
         </div>
     </section>

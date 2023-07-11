@@ -10,6 +10,10 @@ import kr.co.belocal.web.entity.WishlistGroupView;
 @Mapper
 public interface WishlistGroupRepository {
     int findStatus(int travelThemeId, int memberId);
+
+    WishlistGroup findById(int wishlistGroupId);
+
     int save(WishlistGroup wishlistGroup);
+
     List<WishlistGroupView> findViewAll(int memberId);
 }
