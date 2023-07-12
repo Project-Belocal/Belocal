@@ -1,6 +1,7 @@
 package kr.co.belocal.web.controller.api;
 
 import kr.co.belocal.web.entity.*;
+import kr.co.belocal.web.service.ChatRoomService;
 import kr.co.belocal.web.service.ChatService;
 import kr.co.belocal.web.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,9 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
     @Autowired
+    private ChatRoomService chatRoomService;
+
+    @Autowired
     private MemberService memberService;
 
 
@@ -50,7 +54,7 @@ public class ChatController {
         //내 id가 아닌 log들의 checked를 1로 바꿔야함.
         //내id와 여행객id가 같다면? -> 가이드id를 업데이트
         //내id와 가이드id가 같다면? -> 여행객id를 업데이트
-        ChatRoom chatRoom = chatService.findChatRoomById(chatRoomId);
+        ChatRoom chatRoom = chatRoomService.findChatRoomById(chatRoomId);
         Integer traveler = chatRoom.getTravelerId();
         Integer guide = chatRoom.getGuideId();
         Integer id = null;
@@ -139,15 +143,6 @@ public class ChatController {
 
 
 
-    //채팅방 나가기
-    @PostMapping("/exit")
-    public String chatExit(@RequestBody Map<String ,Object> request){
-
-        Integer chatRoomId = Integer.valueOf((String) request.get("chatRoomId"));
-        chatService.deletedRoom(chatRoomId);
-
-        return "200";
-    }
 }//class end
 
 

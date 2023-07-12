@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.co.belocal.web.entity.ChatRoom;
 import kr.co.belocal.web.service.ChatRoomService;
 
+import java.util.Map;
+
 @RestController("apiChatRoomController")
 @RequestMapping("/api/chatRooms")
 public class ChatRoomController {
@@ -27,4 +29,8 @@ public class ChatRoomController {
 
         return new ResponseEntity<Object> (null, HttpStatus.BAD_REQUEST);
     }
+
+
+
+
 }

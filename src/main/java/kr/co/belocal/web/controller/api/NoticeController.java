@@ -1,11 +1,5 @@
 package kr.co.belocal.web.controller.api;
 
-
-import kr.co.belocal.web.entity.Notice;
-import kr.co.belocal.web.service.NoticeService;
-import lombok.RequiredArgsConstructor;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -14,7 +8,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 public class NoticeController {
 
 
-
+    //Sse 방식을 이용한 알림기능
     @GetMapping("/sub")
     public SseEmitter subscribe(
             @PathVariable Integer memberId,

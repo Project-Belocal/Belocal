@@ -16,7 +16,7 @@ public class Notice {
     private Integer receiverId;
     private Integer chatRoomId;
     private Integer isRead;
-    private Timestamp createdDate;
+    private String createdDate;
     private String content;
     private Integer type;
 }

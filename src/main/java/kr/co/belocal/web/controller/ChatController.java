@@ -28,6 +28,9 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
     @Autowired
+    private ChatRoomService chatRoomService;
+
+    @Autowired
     private MemberService memberService;
     @Autowired
     private PlaceService placeService;
@@ -43,7 +46,7 @@ public class ChatController {
                            Model model) throws ParseException {
 
 
-        List<ChatRoomListView> list = chatService.findAll(member.getId());
+        List<ChatRoomListView> list = chatRoomService.findAll(member.getId());
 
 //        log.info("list {}",list);
 
@@ -64,7 +67,7 @@ public class ChatController {
 
 
 
-        ChatRoom chatRoom = chatService.findChatRoomById(roomId);
+        ChatRoom chatRoom = chatRoomService.findChatRoomById(roomId);
 
         Member memberInfo = null;
 
