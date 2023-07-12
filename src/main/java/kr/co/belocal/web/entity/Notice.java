@@ -1,11 +1,22 @@
 package kr.co.belocal.web.entity;
 
-import java.sql.Timestamp;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Notice {
     private Integer id;
-    private Integer memberId;
+    private Integer chatRoomId;
+    private Integer senderId;
+    private Integer receiverId;
     private Integer isRead;
-    private Timestamp createdDate;
+    private String  createdDate;
     private String content;
+    private Integer type;
 }

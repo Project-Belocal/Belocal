@@ -16,10 +16,12 @@
         WHERE id = #{id} ORDER BY reg_date ASC ;
     </select>
 
+    <!--채팅방 하나 조회-->
     <select id="findChatRoomById" resultType="ChatRoom">
         SELECT * FROM chat_room WHERE id = #{id}
     </select>
 
+    <!--채팅로그 추가-->
     <insert id="addLog" parameterType="ChatLog">
         INSERT INTO chat_log
         (
@@ -34,7 +36,8 @@
             #{message}
         )
     </insert>
-    
+
+    <!--채팅 읽음 처리-->
     <update id="chatUpdate" parameterType="ChatLog">
         UPDATE chat_log
             <set>
@@ -43,6 +46,7 @@
         WHERE member_id = #{memberId} AND chat_room_id = #{chatRoomId}
     </update>
 
+    <!--채팅방 나가기-->
     <update id="deletedRoom" parameterType="ChatRoom">
         UPDATE chat_room
             <set>

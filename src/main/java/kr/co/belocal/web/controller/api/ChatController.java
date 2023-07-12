@@ -36,14 +36,6 @@ public class ChatController {
     @Autowired
     private MemberService memberService;
 
-    @PostMapping("/createRoom")
-    public String createRoom(
-            @RequestBody Map<String ,Object> req
-    ){
-
-
-        return "200";
-    }
 
     //방 입장시 메세지 확인
     @PostMapping("/check")
