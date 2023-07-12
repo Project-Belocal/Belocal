@@ -30,11 +30,13 @@ window.addEventListener("load", () => {
 
             if(result) {
                 let chatRoomId = result.id;
+                let type = 0;
 
                 const notice = {
                     chatRoomId,
-                    travelerId,
-                    guideId
+                    senderId: travelerId,
+                    receiverId: guideId,
+                    type
                 };
 
                 let response = await fetch("/api/notices", {
@@ -45,7 +47,7 @@ window.addEventListener("load", () => {
                     body: JSON.stringify(notice)
                 })
 
-                console.log(response.json());
+                console.log(await response.json());
             }
 
         }) ();
