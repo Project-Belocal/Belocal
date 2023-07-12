@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/navbar.css">
-  <link rel="stylesheet" href="./css/wishlists/wishlist.css">
-  <script src="./js/theme-list/theme_list.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link rel="stylesheet" href="/css/navbar.css"> -->
+  <link rel="stylesheet" href="/css/wishlists/wishlist.css">
+  <script src="/js/theme-list/theme_list.js"></script>
 </head>
 
 <body>
   <header>
     <div class="header__prev-button">
-      <img src="./images/icon/left-arrow.svg">
+      <img src="/images/icon/left-arrow.svg">
     </div>
 
     <div class="header-contents">
-      <h1 class="header-contents__title">서대문구</h1>
-      <img src="./images/icon/edit.svg" alt="" class="header-contents__edit-btn">
+      <h1 class="header-contents__title" th:text="${wishlistGroup.title}">서대문구</h1>
+      <img src="/images/icon/edit.svg" alt="" class="header-contents__edit-btn">
     </div>
   </header>
 
@@ -29,13 +33,13 @@
       <header class="theme__header">
         <div class="theme__profile">
           <div class="theme__profile-pic">
-            <img src="./images/profile-pic.jpg">
+            <img src="/images/profile-pic.jpg">
           </div>
           <span class="theme__profile-nickname">Mr.Jang</span>
         </div>
 
         <div class="theme__header-icon">
-          <img src="./images/icon/reservation-ok.svg" alt="" class="res">
+          <img src="/images/icon/reservation-ok.svg" alt="" class="res">
           <span>예약가능</span>
         </div>
       </header>
@@ -44,28 +48,28 @@
         <div class="location__slider">
           <div class="location__images">
             <div class="location__image">
-              <img src="./images/location01.jpg" alt="">
+              <img src="/images/location01.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location02.jpg" alt="">
+              <img src="/images/location02.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location03.jpg" alt="">
+              <img src="/images/location03.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location04.jpg" alt="">
+              <img src="/images/location04.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location05.jpg" alt="">
+              <img src="/images/location05.jpg" alt="">
             </div>
           </div>
 
           <div class="location__nav-buttons">
             <div class="location__prev-button">
-              <img src="./images/icon/left-arrow.svg">
+              <img src="/images/icon/left-arrow.svg">
             </div>
             <div class="location__next-button">
-              <img src="./images/icon/right-arrow.svg">
+              <img src="/images/icon/right-arrow.svg">
             </div>
           </div>
         </div>
@@ -94,10 +98,10 @@
         </div>
         <div class="theme__icons">
           <a href="">
-            <img src="./images/icon/share.svg" alt="" class="share">
+            <img src="/images/icon/share.svg" alt="" class="share">
           </a>
           <a href="">
-            <img src="./images/icon/heart.svg" alt="" class="heart">
+            <img src="/images/icon/heart.svg" alt="" class="heart">
           </a>
         </div>
       </footer>
@@ -107,13 +111,13 @@
       <header class="theme__header">
         <div class="theme__profile">
           <div class="theme__profile-pic">
-            <img src="./images/profile-pic.jpg">
+            <img src="/images/profile-pic.jpg">
           </div>
           <span class="theme__profile-nickname">Mr.Jang</span>
         </div>
 
         <div class="theme__header-icon">
-          <img src="./images/icon/reservation-ok.svg" alt="" class="res">
+          <img src="/images/icon/reservation-ok.svg" alt="" class="res">
           <span>예약가능</span>
         </div>
       </header>
@@ -122,28 +126,28 @@
         <div class="location__slider">
           <div class="location__images">
             <div class="location__image">
-              <img src="./images/location01.jpg" alt="">
+              <img src="/images/location01.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location02.jpg" alt="">
+              <img src="/images/location02.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location03.jpg" alt="">
+              <img src="/images/location03.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location04.jpg" alt="">
+              <img src="/images/location04.jpg" alt="">
             </div>
             <div class="location__image">
-              <img src="./images/location05.jpg" alt="">
+              <img src="/images/location05.jpg" alt="">
             </div>
           </div>
 
           <div class="location__nav-buttons">
             <div class="location__prev-button">
-              <img src="./images/icon/left-arrow.svg">
+              <img src="/images/icon/left-arrow.svg">
             </div>
             <div class="location__next-button">
-              <img src="./images/icon/right-arrow.svg">
+              <img src="/images/icon/right-arrow.svg">
             </div>
           </div>
         </div>
@@ -172,10 +176,10 @@
         </div>
         <div class="theme__icons">
           <a href="">
-            <img src="./images/icon/share.svg" alt="" class="share">
+            <img src="/images/icon/share.svg" alt="" class="share">
           </a>
           <a href="">
-            <img src="./images/icon/heart.svg" alt="" class="heart">
+            <img src="/images/icon/heart.svg" alt="" class="heart">
           </a>
         </div>
       </footer>

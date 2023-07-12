@@ -31,21 +31,22 @@ public class FileServiceImpl implements FileService{
 
 
     @Override
-    public void fileSave(MultipartFile uploadFile,Integer memberId) throws IOException {
-        System.out.println("uploadFile = " + uploadFile.getOriginalFilename());
-        System.out.println("uploadFile = " + uploadFile.getContentType());
-        System.out.println("uploadFile = " + uploadFile.getSize());
-        System.out.println("uploadFile = " + uploadFile);
-        System.out.println("memberId = " + memberId);
+    public void profileSave(MultipartFile uploadFile,Integer memberId) throws IOException {
 
-        Storage storage = StorageOptions.getDefaultInstance().getService();
-        String uuid = UUID.randomUUID().toString();
+        System.out.println("uploadFile = " + uploadFile.isEmpty());
+        String uuid;
+        if (uploadFile.isEmpty()) {
+            uuid = "/images/icon/user.svg";
+        } else {
+            Storage storage = StorageOptions.getDefaultInstance().getService();
+            uuid = UUID.randomUUID().toString();
+            BlobId blobId = BlobId.of(bucketName, uuid);
+            BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
+                    .setContentType(uploadFile.getContentType())
+                    .build();
+            Blob blob = storage.create(blobInfo, uploadFile.getBytes());
+        }
 
-        BlobId blobId = BlobId.of(bucketName, uuid);
-        BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
-                .setContentType(uploadFile.getContentType())
-                .build();
-        Blob blob = storage.create(blobInfo, uploadFile.getBytes());
 
         //js에서 cloud로 값을보내고 js로 응답 -> 응답한 값을 서버로 전송 고려하기
 
@@ -60,7 +61,5 @@ public class FileServiceImpl implements FileService{
         memberRepository.updateProfileImg(profileImage);
 
     }
-
-
 
 }

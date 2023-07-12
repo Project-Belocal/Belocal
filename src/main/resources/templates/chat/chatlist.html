@@ -26,44 +26,65 @@
             <button class="message__tab focus" type="button">메시지</button>
             <button class="message__tab" type="button">알림</button>
         </div>
-        
+
 
         <!-- 컨텐츠 영역 -->
         <div class="message__list">
             <div class="message__wrap">
                 <!-- 탭1 메시지 페이지 -->
                 <div class="message__item hidden">
-<!--                    <div class="message__box">-->
-<!--                        <a class="message__chat-room"></a>-->
-<!--                        <div class="message__chat">-->
-<!--                            <div class="message__profile">-->
-<!--                                <img src="../images/profile-pic.jpg" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="message__text">-->
-<!--                                <div class="message__user-name">-->
-<!--                                    <span>유저이름임ㅋㅋ8910ㅋㅋㅋ</span>-->
-<!--                                </div>-->
-<!--                                <div class="message__content">-->
-<!--                                    <span>알수가없음 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋzzzzzzzzzzwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwㅇㅂㅈddddddddddddddddddddddddddddddddddddddddㅇㅂㅈㅇㅂㅈㅇㅂㅈㅇㅂㅈㅇㅂㅈㅇㅂㅈㅈㅂㅇㅂㅈㅇㅂㅈㅇㅂㅈㅇㅈㅂㅇㅈㅂㅂㅈㅇ</span>-->
-<!--                                </div>-->
-<!--                                <div class="message__date">-->
-<!--                                    <span>2022년 10월 1일</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="message__notification">-->
-<!--                                <p>8</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
+                    <div class="message__box" th:each="cl:${chatList}">
+                        <a class="message__chat-room" th:href="@{/chat/room(id=${cl.id})}"></a>
+                        <div class="message__chat">
+                            <div class="message__profile">
+                                <img src="../images/profile-pic.jpg" alt=""
+                                     th:if="${#authentication.principal.id == cl.guideId}"
+                                     th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${cl.travelerUuid}}"
+                                >
+                                <img src="../images/profile-pic.jpg" alt=""
+                                    th:if="${#authentication.principal.id == cl.travelerId}"
+                                    th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${cl.guideUuid}}"
+                                >
+                            </div>
+                            <div class="message__text">
+                                <div class="message__user-name">
+                                    <span th:text="${#authentication.principal.id == cl.travelerId
+                                    ? cl.guideNickname:cl.travelerNickname}"></span>
+                                </div>
+                                <div class="message__content">
+                                    <span th:text="${cl.message}"></span>
+                                </div>
+                                <div class="message__date">
+                                    <span th:text="${cl.regDate}"></span>
+                                </div>
+                            </div>
+                            <div class="message__notification" th:if="${cl.checkedCount > 0 and #authentication.principal.id != cl.sender}">
+                                <p th:text="${cl.checkedCount}"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 탭2 알림 페이지 -->
-                <div class="message__notice hidden">
-<!--                    <div class="message__notice-wrap">-->
-<!--                        <span>엄준식12세 님이 요청을 수락했습니다.</span>-->
-<!--                        <span>2023-05-12 17:30</span>-->
-<!--                    </div>-->
+                <div class="message__notice data hidden">
+                    <div class="message__notice-wrap">
+                        <span>엄준식12세님이 채팅요청을 거절했습니다.</span>
+                        <span>2023-05-12 17:30</span>
+                    </div>
+
+                    <div class="message__notice-wrap">
+                        <span>파카님의 채팅요청을 수락했습니다.</span>
+                        <span>2023-05-12 17:30</span>
+                    </div>
+
+                    <div class="message__notice-wrap">
+                        <span>랄로님이 채팅을 신청하였습니다.</span>
+                        <div class="action-wrap">
+                            <button class="accept-btn">수락</button>
+                            <button class="reject-btn">거절</button>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- 아무 내용도 없다면 나오는 내용  -->
@@ -84,6 +105,6 @@
 
     </section>
     <div th:replace="inc/navbar"></div>
-
+    <input class="member-id" type="hidden" th:value="${#authentication.principal.id}">
 </body>
 </html>

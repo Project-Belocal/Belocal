@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,17 @@ import kr.co.belocal.web.entity.PlaceView;
 import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.entity.Role;
 import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.entity.WishlistGroup;
+import kr.co.belocal.web.entity.WishlistGroupView;
 import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.PlaceImageService;
 import kr.co.belocal.web.service.PlaceService;
 import kr.co.belocal.web.service.ProfileImageService;
 import kr.co.belocal.web.service.RoleService;
 import kr.co.belocal.web.service.TravelThemeService;
+import kr.co.belocal.web.service.WishlistGroupService;
 import kr.co.belocal.web.service.WishlistService;
+import kr.co.belocal.web.service.security.MemberDetails;
 
 @Controller
 @RequestMapping("/theme")
@@ -42,8 +47,11 @@ public class TravelThemeController {
     @Autowired
     private MemberService memberService;
 
-    @Autowired 
+    @Autowired
     private WishlistService wishlistService;
+
+    @Autowired
+    private WishlistGroupService wishlistGroupService;
 
     @Autowired
     private ProfileImageService profileImageService;
@@ -57,7 +65,7 @@ public class TravelThemeController {
         List<TravelTheme> list = travelThemeService.getList();
         model.addAttribute("list", list);
         System.out.println(list);
-        return "theme/theme_list";
+        return "theme/theme-list";
     }
 
 
@@ -65,6 +73,7 @@ public class TravelThemeController {
     @GetMapping("theme-detail")
     public String detail(
         @RequestParam(name = "id", required = true) Integer travelThemeId,
+        @AuthenticationPrincipal MemberDetails member,        
         Model model
     ) {
         // 테마 상세 페이지에서 thymeleaf로 출력할 데이터 준비
@@ -80,19 +89,31 @@ public class TravelThemeController {
             placeImageLists1d.addAll(placeImageList);
         }
 
-        int memberId = travelTheme.getMemberId();
-        Member member = memberService.getById(memberId); 
-        int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId); 
-        ProfileImage profileImage = profileImageService.getByMemberId(memberId);
+        int uploadMemberId = travelTheme.getMemberId();
+        Member uploadMember = memberService.getById(uploadMemberId); 
+        int wishlistCount = wishlistService.getCountsByTravelTheme(travelThemeId);
         
-        Integer role = roleService.getByMemberId(memberId);
-        System.out.println(role);
+        ProfileImage profileImage = profileImageService.getByMemberId(uploadMemberId);
+
+        int isAlreadyOnWishlist = 0;
+        List<WishlistGroupView> wishlistGroupViewList = null;
+        if(member != null) {
+            int memberId = member.getId();
+            isAlreadyOnWishlist = wishlistGroupService.getStatus(travelThemeId, memberId);
+            wishlistGroupViewList = wishlistGroupService.getViewListByMemberId(memberId);
+        }
+             
+        // Role role = roleService.getByMemberId(memberId);
+        // System.out.println(role);
+        model.addAttribute("uploadMemberId", uploadMemberId);
         model.addAttribute("travelTheme", travelTheme);
         model.addAttribute("placeList", placeViewList);
-        model.addAttribute("placeImageLists2d", placeImageLists2d); 
+        model.addAttribute("placeImageLists2d", placeImageLists2d);
         model.addAttribute("placeImageLists1d", placeImageLists1d);
-        model.addAttribute("member", member);
+        model.addAttribute("member", uploadMember);
         model.addAttribute("wishlistCount", wishlistCount);
+        model.addAttribute("isAlreadyOnWishlist", isAlreadyOnWishlist);
+        model.addAttribute("wishlistGroupViewList", wishlistGroupViewList);
         model.addAttribute("profileImage", profileImage);
         return "theme/theme-detail";
     }
