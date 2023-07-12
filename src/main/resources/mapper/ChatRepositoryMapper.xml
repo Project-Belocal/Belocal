@@ -4,11 +4,6 @@
 
 <mapper namespace="kr.co.belocal.web.repository.ChatRepository">
 
-    <!--보낸 회원 id가 속한 모든 채팅방 조회-->
-    <select id="findAll" resultType="ChatRoomListView">
-        SELECT * FROM chat_room_list_view
-        WHERE traveler_id = #{memberId} OR guide_id = #{memberId};
-    </select>
 
     <!--채팅 로그 조회-->
     <select id="chatLogFindAll" resultType="ChatLogListView">
@@ -16,10 +11,8 @@
         WHERE id = #{id} ORDER BY reg_date ASC ;
     </select>
 
-    <select id="findChatRoomById" resultType="ChatRoom">
-        SELECT * FROM chat_room WHERE id = #{id}
-    </select>
 
+    <!--채팅로그 추가-->
     <insert id="addLog" parameterType="ChatLog">
         INSERT INTO chat_log
         (
@@ -34,7 +27,8 @@
             #{message}
         )
     </insert>
-    
+
+    <!--채팅 읽음 처리-->
     <update id="chatUpdate" parameterType="ChatLog">
         UPDATE chat_log
             <set>
@@ -43,11 +37,5 @@
         WHERE member_id = #{memberId} AND chat_room_id = #{chatRoomId}
     </update>
 
-    <update id="deletedRoom" parameterType="ChatRoom">
-        UPDATE chat_room
-            <set>
-                is_deleted = 1
-            </set>
-        WHERE id = #{chatRoomId}
-    </update>
+
 </mapper>
