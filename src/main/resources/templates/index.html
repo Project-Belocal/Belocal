@@ -23,6 +23,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <script src="/js/index/location.js" defer></script>
     <script src="/js/search-modal.js" defer></script>
+    <script src="/js/navbar.js" defer></script>
 
     <title>BeLocal Main</title>
 
@@ -38,7 +39,6 @@
         </div>
 
         <div class="header__search">
-            <!-- <img class="header__search-icon" src="./images/icon/search.svg" alt=""> -->
             <span class="material-symbols-outlined">
                 search
             </span>
@@ -46,9 +46,7 @@
             <button id="open">
                 <p>을지로</p>
             </button>
-            <!-- <button class="header__search-bar" type="input" value="을지로 노포">
-                open modal
-            </button> -->
+
         </div><!--header__search-->
     </div><!--header__wrap-->
 </header>
@@ -58,13 +56,13 @@
     <section class="category">
         <div class="category__title-box">
             <h2 class="category__title">Category</h2>
-            <a href="#" class="category__link">더보기 &gt;</a>
+            <a href="#" class="category__link"></a>
         </div>
     </section>
 
         <section class="category__items-box">
 
-            <button class="category__item" th:each="ctg : ${categoryList}">
+            <button class="category__item" th:each="ctg : ${ctgList}">
 
                 <a href="" th:href="@{/search-result(ctg=${ctg.id})}">
                 <div class="category-box">
@@ -415,57 +413,6 @@
 
                     <div class="theme__container">
 
-
-<!--                        &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; theme module start &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--                        <div class="theme-box-area">-->
-
-<!--                            <div class="theme-box-pic-area">-->
-<!--                                <img src="/images/index-city.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            <div class="profile-outter-box">-->
-<!--                                <div class="profile-pic-id-outter">-->
-<!--                                    <div class="profile-pic">-->
-<!--                                        <img src="/images/profile-pic.jpg" alt="">-->
-<!--                                    </div>-->
-<!--                                    <div class="profile-id-text">-->
-<!--                                        innerjoin123-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-<!--                                <div class="profile-text-area-outter">-->
-<!--                                    <div class="profile-text-title-area">-->
-<!--                                        <h2>을지로 노포 싹다 투어</h2>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="profile-text-contents-area">-->
-<!--                                        <p>을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구-->
-<!--                                            어쩌구 어쩌구 저쩌구 믿거나 말거나-->
-<!--                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구-->
-<!--                                            ㅁㅇㄴㄻㄴㅇㄻ-->
-<!--                                            ㄴㅇㄹ-->
-<!--                                            ㅁㄴㅇㄻㄴㅇㄹ\어쩌구 저쩌구 믿거나 말거나-->
-<!--                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구-->
-<!--                                            ㅁㅇㄴㄻㄴㅇㄻ-->
-<!--                                            ㄴㅇㄹ-->
-<!--                                            ㅁㄴㅇㄻㄴㅇㄹ-->
-<!--                                            ㅁㄴㅇㄻㄴㅇㄹ-->
-<!--                                            ㅁㄴㅇㄻㄴㅇㄹ-->
-<!--                                        </p>-->
-<!--                                    </div>-->
-
-
-<!--                                    <div class="profile-status-area">-->
-<!--                                              <span class="material-symbols-outlined">-->
-<!--                                                event_available-->
-<!--                                              </span>-->
-
-<!--                                        <div class="status-text">예약가능</div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; theme module end &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
 
 
 

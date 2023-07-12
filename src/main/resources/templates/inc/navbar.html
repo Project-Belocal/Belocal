@@ -52,5 +52,8 @@
 
         </div>
       </nav>
+
+      <input id="member-id" type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}">
+	    <input id="member-id" type="hidden" sec:authorize="isAnonymous()">
   </section>
 </html>

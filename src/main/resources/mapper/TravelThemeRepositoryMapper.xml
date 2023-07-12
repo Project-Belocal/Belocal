@@ -40,7 +40,14 @@
         SELECT *
         FROM
         travel_theme_view
-        WHERE title LIKE '%${query}%' OR description LIKE '%${query}%'
+        WHERE
+        title LIKE '%${query}%'
+        OR
+        description LIKE '%${query}%'
+        OR
+        name LIKE '%${query}%'
+        OR
+        lcName LIKE '%${query}%'
     </select>
     <select id="getListByCtgId" resultType="TravelThemeView">
         SELECT *
@@ -48,6 +55,7 @@
         travel_theme_view
         WHERE ctgId = #{ctgId}
     </select>
+
 
 
 

@@ -1,5 +1,8 @@
 package kr.co.belocal.web.controller.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import kr.co.belocal.web.repository.EmitterRepository;
 import kr.co.belocal.web.service.NoticeService;
 import kr.co.belocal.web.service.security.MemberDetails;
@@ -11,12 +14,17 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import kr.co.belocal.web.entity.Notice;
+import kr.co.belocal.web.service.NoticeService;
+
 
 @Slf4j
 @RestController
+@RequestMapping("/api/notices")
 @RequiredArgsConstructor
 public class NoticeController {
 
+    @Autowired
     private final NoticeService noticeService;
     private final EmitterRepository emitterRepository;
 
@@ -36,4 +44,9 @@ public class NoticeController {
 //        noticeService.notify(id,"data");
     }
 
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody Notice notice) {
+        int result = service.append(notice);
+        return new ResponseEntity<Object>(notice, HttpStatus.OK);
+    }
 }

@@ -8,5 +8,6 @@ import java.util.List;
 public interface CategoryService {
 
     List<Category> findAllCtg();
+    List<Category> getResultCtg();
 
 }
