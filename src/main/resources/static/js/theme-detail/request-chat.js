@@ -6,15 +6,49 @@ window.addEventListener("load", () => {
             return;
 
         e.preventDefault();
-        
-        const {travelThemeId, travelerId, guideId} = chatRequestBtn.dataset;
-        const chatRoom = {
-            travelThemeId,
-            travelerId,
-            guideId
-        };
 
-        fetch("/api/chats/")
+        (async () => {
+            const {travelThemeId, travelerId, guideId} = chatRequestBtn.dataset;
+            const chatRoom = {
+                travelThemeId,
+                travelerId,
+                guideId
+            };
+
+            let result = null;
+            {
+                let response = await fetch("/api/chatRooms", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(chatRoom)
+                })
+                
+                result = await response.json();
+            }
+
+            if(result) {
+                let chatRoomId = result.id;
+
+                const notice = {
+                    chatRoomId,
+                    travelerId,
+                    guideId
+                };
+
+                let response = await fetch("/api/notices", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(notice)
+                })
+
+                console.log(response.json());
+            }
+
+        }) ();
 
     })
 })
