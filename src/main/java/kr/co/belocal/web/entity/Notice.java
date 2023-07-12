@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Notice {
     private Integer id;
-    private Integer chatRoomId;
     private Integer senderId;
     private Integer receiverId;
+    private Integer chatRoomId;
     private Integer isRead;
-    private String  createdDate;
+    private Timestamp createdDate;
     private String content;
     private Integer type;
 }
