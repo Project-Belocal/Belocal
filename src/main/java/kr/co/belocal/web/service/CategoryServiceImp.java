@@ -19,4 +19,9 @@ public class CategoryServiceImp implements CategoryService {
     public List<Category> findAllCtg() {
         return categoryRepository.findAllCtg();
     }
+
+    @Override
+    public List<Category> getResultCtg() {
+        return categoryRepository.getResultCtg();
+    }
 }

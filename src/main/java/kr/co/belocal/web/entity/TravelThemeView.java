@@ -17,7 +17,7 @@ public class TravelThemeView {
     private Integer memberId;  //travel_theme
     private Timestamp regDate; //travel_theme
     private String nickname; //member
-    private String uuid; //place_image
+    private String uuid; //profile_image
     private String path; //place
     private Integer ctgId; //category
     private String name; //category

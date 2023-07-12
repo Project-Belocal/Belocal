@@ -12,4 +12,12 @@
     </select>
 
 
+    <select id="getResultCtg" resultType="Category">
+        SELECT *
+        FROM
+        category
+        ORDER BY id ASC
+    </select>
+
+
 </mapper>

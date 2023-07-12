@@ -28,8 +28,6 @@ tabs.forEach((tab) => {
 
 
 
-
-
 let offset = 6;
 let batchSize = 6;
 
@@ -39,18 +37,16 @@ window.addEventListener('scroll', function() {
     let windowHeight = document.documentElement.clientHeight;
     let themeList = document.querySelector(".theme-list");
 
-    let url = `http://localhost:8080/api/memberprofile?offset=${offset}`;
+    let url = `http://localhost:8080/memberprofile?offset=${offset}`;
 
 
     console.log("documentHeight: ", documentHeight);
     console.log("scrollTop: ", scrollTop);
     console.log("windowHeight: ", windowHeight);
 
-
     if(windowHeight + scrollTop == documentHeight) {
         // fetchData(offset);
         offset += batchSize;
-
         console.log("offset: ", offset);
 
 
@@ -58,10 +54,10 @@ window.addEventListener('scroll', function() {
         fetch(url)
             .then(response => response.json())
             .then(list => {
-                // console.log("list",list);
                 for (let theme of list) {
+                    console.log("theme",theme);
                     let travelTheme =
-                        `<section class="theme"">
+                        `<section class="theme">
                             <div class="theme-box-area">
                                     <div class="theme-box-pic-area">
                                         <img src="/images/index-city.jpg" alt="">

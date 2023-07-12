@@ -42,6 +42,7 @@ public class TravelThemeServiceImp implements TravelThemeService {
     }
     @Override
     public List<TravelThemeView> getListByCtgId(Integer ctgId){
+
         return repository.getListByCtgId(ctgId);
     }
 
