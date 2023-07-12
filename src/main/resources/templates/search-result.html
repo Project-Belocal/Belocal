@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/search/search-result.css">
+
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <title>search-result</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <script src="/js/search-result.js" defer></script>
+
 </head>
 <body>
 <!-- <button id="open">open modal</button>
@@ -16,141 +23,40 @@
             <div class="search-modal-content"> -->
 <!--============ header =====================-->
 <header>
-  <div class="search">
-    <div class="search__container ">
-      <input class="search-bar" type="button" value="을지로 노포, 망원동 카페" />
-      <!-- <img class="search-icon" src="/images/icon/search.svg" alt="" /> -->
+
+    <div class="search">
+        <form class="search-bar" />
+          <input type="text" id="search-input" name="s" placeholder="힙당동, 서촌맛집" />
+
+        <button class="search-button">
               <span class="material-symbols-outlined">
                   search
               </span>
-<!--      <button id="exit">cancle</button>-->
-      </input><!--search-bar-->
-    </div><!--search__container -->
+        </button>
+    </div>
 
-
-    <!-- <hr class="hr-solid"> -->
-  </div><!--search-area-->
 </header>
 
 
 <!--============ main 카테고리 8개=====================-->
-<div class="search__result--category">
-  <div class="search__result--category--title--container">
-    <h1>category</h1>
-  </div>
-
-
-  <div class="search__result--button--container">
-
-    <div class="search__result--buttons">
-      <button>
-                <span class="material-symbols-outlined">
-                    liquor
-                </span>
-      </button>
-      <p>liquor</p>
+<!-- category -->
+<section class="category">
+    <div class="category__title-box">
+        <h2 class="category__title">Category</h2>
+        <a href="#" class="category__link"></a>
     </div>
+</section>
 
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                library_music
-                            </span>
-      </button>
-      <p>music bar</p>
+<section class="category__items-box">
+    <div class="category__items-wrapper" th:each="ctg : ${getCtgId}" th:data-id="${ctg.id}">
+        <button class="category__item" th:data-id="${ctg.id}">
+            <span class="material-symbols-outlined" th:text="${ctg.icons}" th:data-id="${ctg.id}">
+                liquor
+            </span>
+            <p class="category__text" th:text="${ctg.name}" th:data-id="${ctg.id}">liquor</p>
+        </button>
     </div>
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                festival
-                            </span>
-      </button>
-      <p>festival</p>
-    </div>
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                theater_comedy
-                            </span>
-      </button>
-      <p>theater</p>
-    </div>
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                kebab_dining
-                            </span>
-      </button>
-      <p>street snack</p>
-    </div>
-
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                soup_kitchen
-                            </span>
-      </button>
-      <p>soul food</p>
-    </div>
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                castle
-                            </span>
-      </button>
-      <p>historic site</p>
-    </div>
-
-
-
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                set_meal
-                            </span>
-      </button>
-      <p>korean food</p>
-    </div>
-
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                icecream
-                            </span>
-      </button>
-      <p>desert</p>
-    </div>
-
-
-    <div class="search__result--buttons">
-      <button>
-                            <span class="material-symbols-outlined">
-                                local_see
-                            </span>
-      </button>
-      <p>local see</p>
-    </div>
-
-
-  </div>
-</div>
-
-
+</section><!--category__items-box-->
 
 
 <!--========= 검색어 입력시(엔터 후) theme 목록 ==========-->
@@ -173,74 +79,67 @@
 </div>
 
 
-    <section class="theme__container" th:each="stl : ${search}">
-
-      <!-------------- theme module start -------------->
-        <div class="theme-box-area">
-            <div class="theme-box-pic-area">
-                <img th:src="${stl.path}" src="/images/index-city.jpg" alt="">
-            </div>
-            <div class="profile-outter-box">
-                <div class="profile-pic-id-outter">
-                    <div class="profile-pic">
 
 
-                        <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${stl.uuid})}" src="/images/profile-pic.jpg" alt="">
-                    </div>
-                    <div class="profile-id-text" th:text="${stl.nickname}">
-                        innerjoin123
-                    </div>
+
+<section class="themeList-section">
+    <div class="theme-list">
+
+        <section class="theme" th:each="t:${search}">
+            <div class="theme-box-area">
+                <div class="theme-box-pic-area">
+                    <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
                 </div>
-                <div class="profile-text-area-outter">
-                    <div class="profile-text-title-area">
-                        <p th:text="${stl.title}">을지로 노포 싹다 투어</p>
+                <div class="profile-outter-box">
+                    <div class="profile-pic-id-outter">
+                        <div class="profile-pic">
+
+
+                            <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="">
+                        </div>
+                        <div class="profile-id-text" th:text="${t.nickname}">
+                            innerjoin123
+                        </div>
                     </div>
-                    <div class="profile-text-contents-area">
-                        <p th:text="${stl.description}">
-                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                            어쩌구 어쩌구 저쩌구 믿거나 말거나
-                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                        </p>
-                    </div>
-                    <div class="profile-status-area">
-                        <div th:if="${stl.isReserved}">
+                    <div class="profile-text-area-outter">
+                        <div class="profile-text-title-area">
+                            <p th:text="${t.title}"></p>
+                        </div>
+                        <div class="profile-text-contents-area">
+                            <p th:text="${t.description}">
+                                을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                            </p>
+                        </div>
+                        <div class="profile-status-area">
+                            <div th:if="${t.isReserved}">
                                             <span class="material-symbols-outlined">
                                                 event_available
                                             </span>
-                        </div>
+                            </div>
 
-                        <div th:if="!${stl.isReserved}">
+                            <div th:if="!${t.isReserved}">
                                             <span class="material-symbols-outlined">
                                                 event_busy
                                             </span>
-                        </div>
+                            </div>
 
-                        <div th:if="${stl.isReserved}">예약가능</div>
-                        <div th:if="!${stl.isReserved}">예약중</div>
+                            <div th:if="${t.isReserved}">예약가능</div>
+                            <div th:if="!${t.isReserved}">예약중</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-      <!-------------- theme module end -------------->
-    </section><!--theme-container-->
+        </section>
+
+    </div>
+</section>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 </body>
 </html>

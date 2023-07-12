@@ -5,63 +5,33 @@ body {
 
 }
 /*============ header =====================*/
-.search-modal{
-    position: absolute;
-    top: 0;
-    width: 390px;
-    height: 100%;
+header {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.hidden {
-    display: none;
-}
-.search-modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-    height: 100%;
-    top: 100px;
-    padding: var(--section-padding);
-    background-color: white;
 
-}
-.search-modal-overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
 
-}
 
 .search {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    width: 390px;
-    height: 80px;
-    background-color: white;
-
-}
-
-
-.search__container {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 390px;
     height: 80px;
-    gap: 10px;
     padding: var(--section-padding);
+    /*margin-bottom: var(--section-margin-bottom);*/
+    margin-bottom: 20px;
+
 }
+
+
 .search-bar {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    width: 280px;
+    width: 300px;
     height: 34px;
     background-color: white;
     border-radius: 14px;
@@ -71,24 +41,29 @@ body {
     color : var(--color-text-gray2);
     font-family: var(--font-family-kr);
     font-size: var(--font-size-medium12);
-    margin-right: 10px;
+    /*margin-right: 10px;*/
 }
-.search__container :nth-child(2) {
-    position: absolute;
-    margin-right: 280px;
-    width: 20px;
-    height: 20px;
-    color: var(--color-text-gray2);
+
+
+#search-input {
+    margin-left: 10px;
 }
-#exit {
+
+input:focus::-webkit-input-placeholder {color:transparent; }
+
+
+.search-button {
+    /*background-color: #182CE3;*/
     display: flex;
+    align-items: center;
     justify-content: center;
-    border: none;
-    background-color: white;
-    color : var(--color-text-gray);
-    font-family: var(--font-family-eng);
-    font-size: var(--font-size-medium12);
+    width: 40px;
+    height: 30px;
+    margin-left: 10px;
 }
+
+
+
 
 .hr-solid {
     border-width: 0.5px;
@@ -200,6 +175,7 @@ body {
 .theme {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     /* gap: 10px; */
     margin-bottom: var(--section-margin-bottom);
@@ -433,6 +409,79 @@ body {
 
 
 
+
+
+.category{
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 30px;
+    padding: var(--section-padding);
+    margin-bottom: var(--title-contents-gap);
+}
+
+.category__title-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--title-contents-gap);
+}
+
+.category__title{
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+}
+
+.category__link{
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+}
+
+
+
+/*----------- 카테고리 아이템 박스들 ---------*/
+/* 타이틀과 패딩 간격 맞추기 */
+.category__items-box {
+    display: flex;
+    max-width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: var(--section-margin-bottom);
+    padding: var(--section-padding);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /*background-color: black;*/
+}
+.category__items-box::-webkit-scrollbar{
+    display: none;
+}
+.category__items-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.category__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: none;
+}
+.category__item span{
+    font-size: 20px;
+    color: var(--color-text-gray);
+}
+.category__item p{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-regular);
+}
 
 
 
