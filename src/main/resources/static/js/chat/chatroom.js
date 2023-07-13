@@ -43,7 +43,7 @@ window.addEventListener("load",function(){
 
     exitBtn.onclick = function (){
         console.log("흠")
-        fetch("/api/chats/exit",{
+        fetch("/api/chatRooms/exit",{
             method:"POST",
             headers:{
                 "Content-Type":"application/JSON"

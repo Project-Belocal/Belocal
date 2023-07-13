@@ -36,7 +36,6 @@ public class ChatController {
     private ChatService chatService;
     @Autowired
     private ChatRoomService chatRoomService;
-
     @Autowired
     private MemberService memberService;
 

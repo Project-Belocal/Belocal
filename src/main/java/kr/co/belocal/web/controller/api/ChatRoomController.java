@@ -30,7 +30,15 @@ public class ChatRoomController {
         return new ResponseEntity<Object> (null, HttpStatus.BAD_REQUEST);
     }
 
+    //채팅방 나가기
+    @PostMapping("/exit")
+    public String chatExit(@RequestBody Map<String ,Object> request){
 
+        Integer chatRoomId = Integer.valueOf((String) request.get("chatRoomId"));
+        service.deletedRoom(chatRoomId);
+
+        return "200";
+    }
 
 
 }

@@ -1,12 +1,18 @@
 package kr.co.belocal.web.service;
 
+
+
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import kr.co.belocal.web.entity.Notice;
+import java.io.IOException;
 
+@Service
 public interface NoticeService {
 
-    int append(Notice notice);
+    SseEmitter subscribe(Integer memberId, String lastEventId) throws IOException;
+    void sendNotification(SseEmitter emitter, String eventId, String emitterId, Object data) throws IOException;
+//    int append(Notice notice);
 
 
 }
