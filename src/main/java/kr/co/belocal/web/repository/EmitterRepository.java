@@ -7,13 +7,13 @@ import java.util.Map;
 
 public interface EmitterRepository {
     //Emitter 저장
-    SseEmitter save(String emitterId, SseEmitter sseEmitter);
+    SseEmitter save(Integer emitterId, SseEmitter sseEmitter);
 
-    //이벤트 저장
-    void saveEventCache(String eventCacheId, Object event);
+//    //이벤트 저장
+//    void saveEventCache(String eventCacheId, Object event);
 
     //해당 회원과 관련된 모든 Emitter를 찾는다
-    Map<Integer, SseEmitter> findAllEmitterStartWithById(Integer memberId);
+//    Map<Integer, SseEmitter> findAllEmitterStartWithById(Integer memberId);
 
 
     //해당 회원과관련된 모든 이벤트를 찾는다

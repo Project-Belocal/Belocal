@@ -17,10 +17,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import kr.co.belocal.web.entity.Notice;
 import kr.co.belocal.web.service.NoticeService;
 
+import java.io.IOException;
+
 
 @Slf4j
 @RestController
-@RequestMapping("/api/notices")
 @RequiredArgsConstructor
 public class NoticeController {
 
@@ -32,10 +33,9 @@ public class NoticeController {
     // 클라이언트에서 구독을 하기 위한 subcribe
     @GetMapping(value = "/subscribe/{memberId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public SseEmitter subscribe(@PathVariable Integer memberId,
-                                @RequestHeader(value = "Last-Event-ID", required = false, defaultValue = "") String lastEventId)
-    {
+                                @RequestHeader(value = "Last-Event-ID", required = false, defaultValue = "") String lastEventId) throws IOException {
 
-        return emitterRepository.subscribe(memberId,lastEventId);
+        return noticeService.subscribe(memberId,lastEventId);
     }
 
     //서버에서 클라이언트로 알림 전달
@@ -44,9 +44,9 @@ public class NoticeController {
 //        noticeService.notify(id,"data");
     }
 
-    @PostMapping
-    public ResponseEntity<Object> add(@RequestBody Notice notice) {
-        int result = service.append(notice);
-        return new ResponseEntity<Object>(notice, HttpStatus.OK);
-    }
+//    @PostMapping
+//    public ResponseEntity<Object> add(@RequestBody Notice notice) {
+//        int result = noticeService.append(notice);
+//        return new ResponseEntity<Object>(notice, HttpStatus.OK);
+//    }
 }
