@@ -76,6 +76,13 @@ public class TravelThemeServiceImp implements TravelThemeService {
     }
 
 
+    @Override
+    public List<TravelThemeView> getAllViewByIds(List<Integer> travelThemeIdList) {
+       
+        return repository.findAllViewByIds(travelThemeIdList);
+    }
+
+
 }//class
 
 

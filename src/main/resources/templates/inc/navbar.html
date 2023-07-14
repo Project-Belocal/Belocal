@@ -5,7 +5,9 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 
+<!-- <link rel="stylesheet" href="/css/style.css"> -->
 <link rel="stylesheet" href="/css/navbar.css">
+<script src="/js/navbar.js" defer></script>
 
   <section th:fragment="navbar">
       <nav class="navbar">
@@ -28,10 +30,10 @@
             </div>
             <div class="navbar__text">내위치</div>
           </a>
-          <a
-                  href="/chat/list" type="button" class="navbar__btn">
-            <div>
+          <a href="/chat/list" type="button" class="navbar__btn chat-btn">
+            <div class="chat-icon">
               <img src="/images/icon/message.svg" alt="">
+              <span class="new-notification hidden"></span>
             </div>
             <div class="navbar__text">메시지</div>
           </a>

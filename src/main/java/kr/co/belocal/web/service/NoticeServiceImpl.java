@@ -35,10 +35,10 @@ public class NoticeServiceImpl implements NoticeService{
         map.put("event","EventStream Created. [memberId=" + memberId + "]");
 
 
-        sendNotification(emitter,
-                lastEventId,
-                String.valueOf(memberId),
-                map);
+        // sendNotification(emitter,
+        //         lastEventId,
+        //         String.valueOf(memberId),
+        //         map);
 
         return emitter;
     }

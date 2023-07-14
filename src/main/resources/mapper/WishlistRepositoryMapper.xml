@@ -9,6 +9,14 @@
         WHERE travel_theme_id = #{travelThemeId}
     </select>
 
+    <select id="findAllTravelThemeIdByGroupId" parameterType="int">
+        SELECT 
+            travel_theme_id
+        FROM wishlist
+        WHERE wishlist_group_id = #{wishlistGroupId}
+        ORDER BY reg_date DESC;
+    </select>
+
     <insert id="save" parameterType="Wishlist">
         INSERT INTO wishlist
         (

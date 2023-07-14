@@ -36,4 +36,6 @@ public interface TravelThemeService {
 
     int save(TravelTheme travelTheme);
 
+    List<TravelThemeView> getAllViewByIds(List<Integer> travelThemeIdList);
+
 }
