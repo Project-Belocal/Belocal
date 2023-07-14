@@ -17,4 +17,6 @@ public interface WishlistRepository {
     int delete(int travelThemeId, int memberId);
 
     int save(Wishlist wishlist);
+
+    List<Integer> findAllTravelThemeIdByGroupId(int wishlistGroupId);
 }

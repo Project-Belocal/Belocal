@@ -40,4 +40,6 @@ public interface TravelThemeRepository {
     // theme 삭제(delete) 하기
     int delete(TravelTheme travelTheme);
 
+    List<TravelThemeView> findAllViewByIds(List<Integer> travelThemeIdList);
+
 }
