@@ -22,13 +22,38 @@ public class SearchController {
 
     @GetMapping("")
     public ResponseEntity<List<TravelThemeView>> getListByCtgId(
-        @RequestParam(name="ctg") Integer ctgId
-    ){
-        List<TravelThemeView> travelThemeViewList = service.getListByCtgId(ctgId);
+            @RequestParam(name = "ctg") Integer ctgId
+//            @RequestParam(name = "q") String query
+    ) {
 
-        System.out.println("ctgId:"+ctgId);
+        List<TravelThemeView> travelThemeViewList = null;
+//        List<TravelThemeView> travelThemeViewListByQuery = null;
 
-        return  ResponseEntity.ok().body(travelThemeViewList);
+//        if(ctgId != null) {
+            travelThemeViewList = service.getListByCtgId(ctgId);
+//        } else if(query != null) {
+//            travelThemeViewList = service.getListByQuery(query);
+//        }
+
+        System.out.println("ctgId:" + ctgId);
+//        System.out.println("query:" + query);
+
+//        return ResponseEntity.ok().body(travelThemeViewList);
+        return ResponseEntity.ok().body(travelThemeViewList);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }//class

@@ -25,22 +25,15 @@ public class HomeController {
     private TravelThemeService travelThemeService;
 
     @GetMapping("/")
-    public String index(
-            @RequestParam(name="offset", defaultValue = "0")int offset,
-            Model model){
+    public String index(Model model){
         List<Category> categoryList = categoryService.findAllCtg();
-        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(offset);
+        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(0);
 
         model.addAttribute("ctgList", categoryList);
         model.addAttribute("travelThemeList", travelThemeList);
 
         return "index";
     }
-
-
-
-
-
 
 
 }//class

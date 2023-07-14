@@ -1,6 +1,8 @@
 /*====== 가로 스크롤 설정 영역 ======*/
 .theme {
     display: flex;
+    /*flex-direction: column;*/
+    /*align-items: center;*/
     width: 100%;
     /* gap: 10px; */
     margin-bottom: var(--section-margin-bottom);
@@ -27,10 +29,16 @@
 }
 
 
-
-
-.theme-list{
+.search__dynamic--theme{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.theme-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
     overflow-x: scroll;

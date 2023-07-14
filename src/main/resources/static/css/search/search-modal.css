@@ -23,6 +23,7 @@ body {
     align-items: center;
     align-content: center;
     width: 100%;
+    height: 1000px;
     top: 100px;
     padding: var(--section-padding);
     background-color: white;
@@ -277,7 +278,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    /* height: 1000px; */
+    height: 100%;
     margin-bottom: var(--section-margin-bottom);
 }
 /*theme 가로 스크롤 설정 영역 */

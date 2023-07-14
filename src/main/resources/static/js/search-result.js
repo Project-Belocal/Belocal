@@ -61,7 +61,15 @@ ctgBtns.onclick = (e) => {
                         </section>`
 
 
-                        themeList.insertAdjacentHTML("beforeend", travelTheme);
+                        themeList.insertAdjacentHTML("afterbegin", travelTheme);
                     }
                 })
             }
+
+
+
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('click', function() {
+    this.value = '';
+});

@@ -54,6 +54,7 @@
         FROM
         travel_theme_view
         WHERE ctgId = #{ctgId}
+        ORDER BY member_id
     </select>
 
 

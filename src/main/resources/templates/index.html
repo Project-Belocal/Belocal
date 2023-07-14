@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/index/footer.css">
     <link rel="stylesheet" href="/css/index/theme.css">
     <link rel="stylesheet" href="/css/search/search-modal.css">
+<!--    <link rel="stylesheet" href="/css/search/search-result.css">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
@@ -87,6 +88,8 @@
 <!--        그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 &ndash;&gt;-->
 
 
+
+<!-- ======== 영역 제목 부분 ======== -->
     <section class="travel-theme">
         <div class="travel-theme-title-box">
             <h2 class="travel-theme-title">Travel Theme</h2>
@@ -94,6 +97,9 @@
         </div>
     </section>
 
+
+
+<!-- ======== theme box 시작 ======== -->
     <section class="themeList-section">
         <div class="theme-list">
 
@@ -105,8 +111,6 @@
                     <div class="profile-outter-box">
                         <div class="profile-pic-id-outter">
                             <div class="profile-pic">
-
-
                                 <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="">
                             </div>
                             <div class="profile-id-text" th:text="${t.nickname}">
@@ -126,15 +130,15 @@
                             </div>
                             <div class="profile-status-area">
                                 <div th:if="${t.isReserved}">
-                                            <span class="material-symbols-outlined">
-                                                event_available
-                                            </span>
+                                        <span class="material-symbols-outlined">
+                                            event_available
+                                        </span>
                                 </div>
 
                                 <div th:if="!${t.isReserved}">
-                                            <span class="material-symbols-outlined">
-                                                event_busy
-                                            </span>
+                                        <span class="material-symbols-outlined">
+                                            event_busy
+                                        </span>
                                 </div>
 
                                 <div th:if="${t.isReserved}">예약가능</div>
@@ -291,18 +295,7 @@
 
             <!--============ header =====================-->
             <header>
-<!--                <div class="search">-->
-<!--                    <div class="search__container ">-->
-<!--                        <input class="search-bar" type="button" value="을지로 노포, 망원동 카페">-->
-<!--                            <span class="material-symbols-outlined">-->
-<!--                                    search-->
-<!--                            </span>-->
-<!--                        <button id="exit">취소</button>-->
-<!--                        </input>-->
-<!--                    </div>-->
-<!--                </div>-->
 
-<!--                <div class="search">-->
                 <div class="search">
                     <form class="search-bar" action="/search-result">
                         <button class="search-button">
@@ -312,7 +305,7 @@
                         </button>
                         <label class="search-input" for="search-input">
                         </label>
-                        <input type="text" id="search-input" name="s" placeholder="힙당동, 서촌맛집">
+                        <input type="text" id="search-input" name="s" th:value="${query}" >
                     </form>
                     <button id="exit">cancle</button>
                 </div>
@@ -406,16 +399,52 @@
             <!--========= 검색어 입력시(엔터전) theme 목록 ==========-->
 
             <div class="search__dynamic--theme">
-                <section class="theme">
-                    <div class="theme__title-box">
+                <section class="theme" th:each="t:${search}">
+                    <div class="theme-box-area">
+                        <div class="theme-box-pic-area">
+                            <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
+                        </div>
+                        <div class="profile-outter-box">
+                            <div class="profile-pic-id-outter">
+                                <div class="profile-pic">
+
+
+                                    <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="">
+                                </div>
+                                <div class="profile-id-text" th:text="${t.nickname}">
+                                    innerjoin123
+                                </div>
+                            </div>
+                            <div class="profile-text-area-outter">
+                                <div class="profile-text-title-area">
+                                    <p th:text="${t.title}"></p>
+                                </div>
+                                <div class="profile-text-contents-area">
+                                    <p th:text="${t.description}">
+                                        을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                        어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                        을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                    </p>
+                                </div>
+                                <div class="profile-status-area">
+                                    <div th:if="${t.isReserved}">
+                                            <span class="material-symbols-outlined">
+                                                event_available
+                                            </span>
+                                    </div>
+
+                                    <div th:if="!${t.isReserved}">
+                                            <span class="material-symbols-outlined">
+                                                event_busy
+                                            </span>
+                                    </div>
+
+                                    <div th:if="${t.isReserved}">예약가능</div>
+                                    <div th:if="!${t.isReserved}">예약중</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="theme__container">
-
-
-
-
-                    </div><!--theme-container-->
                 </section>
             </div>       <!-- theme End -->
         </div>

@@ -16,6 +16,9 @@ public class TravelThemeView {
     private Integer isReserved;  //travel_theme
     private Integer memberId;  //travel_theme
     private Timestamp regDate; //travel_theme
+    private String bookableDateStart; //travel_theme
+    private String bookableDateEnd; //travel_theme
+    private String wishlistRegDate;
     private String nickname; //member
     private String uuid; //profile_image
     private String path; //place
