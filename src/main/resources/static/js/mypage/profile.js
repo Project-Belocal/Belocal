@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
     const dealList = document.querySelector('.my__deal-list');
     const modalBg = document.querySelector('.modal-bg');
     const modalClose = document.querySelector('.modal__close');
-    const roleBtn = document.querySelector(".my__register-btn")
+    const roleBtn = document.querySelector(".local__btn")
     const memberId = document.querySelector(".member__id");
 
     const role = document.querySelector(".role__wrap");
@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
     let myTemp = `
                 <div sec:authorize="hasRole('GUIDE')">
                 <div class="my__register-btn ">
-                    <a href="/my-page/theme-register">theme 등록하러가기</a>
+                    <a href="/my/theme-register">theme 등록하러가기</a>
                 </div>
                 <div class="my__register-btn ">
                     <a href="#">Post 등록하러가기</a>

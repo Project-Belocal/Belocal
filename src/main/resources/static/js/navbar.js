@@ -28,7 +28,9 @@ window.addEventListener("load", () => {
 
         eventSource.addEventListener("sse", function(e) {
             console.log(e.data);
-            let data = JSON.parse(e.data);
+
+            let data = e.data;
+            // let data = JSON.parse(e.data);
 
             const currentPage = window.location.href;
             const chatBtn = document.querySelector(".chat-btn");

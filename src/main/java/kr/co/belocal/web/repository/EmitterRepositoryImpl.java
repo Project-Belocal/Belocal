@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -15,37 +16,54 @@ import java.util.stream.Collectors;
 public class EmitterRepositoryImpl implements EmitterRepository{
 
     private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
+    private final Map<String, Object> eventCache = new ConcurrentHashMap<>();
 
-
-    //Emitter 저장
     @Override
-    public SseEmitter save(Integer emitterId, SseEmitter sseEmitter) {
-        emitters.put(String.valueOf(emitterId), sseEmitter);
-        log.info("emitter {}",emitters);
-
+    public SseEmitter save(String emitterId, SseEmitter sseEmitter) {
+        emitters.put(emitterId, sseEmitter);
+        log.info("emitters {}",emitters);
         return sseEmitter;
     }
 
-
-    //해당 회원과 관련된 모든 Emitter를 찾는다
-//    @Override
-//    public Map<Integer, SseEmitter> findAllEmitterStartWithById(Integer memberId) {
-////        return emitters.entrySet().stream() //여러개의 Emitter가 존재할 수 있기떄문에 stream 사용
-////                .filter(entry -> entry.getKey().startsWith(String.valueOf(memberId)))
-////                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-//    }
-
-    //Emitter를 지운다
     @Override
-    public void deleteById(Integer memberId) {
-
+    public void saveEventCache(String eventCacheId, Object event) {
+        eventCache.put(eventCacheId, event);
     }
 
-    //해당 회원과 관련된 모든 Emitter를 지운다
     @Override
-    public void deleteAllEmitterStartWithId(Integer memberId) {
-
+    public Map<String, SseEmitter> findAllEmitterStartWithByEmail(String memberId) {
+        return emitters.entrySet().stream() //여러개의 Emitter가 존재할 수 있기떄문에 stream 사용
+                .filter(entry -> entry.getKey().startsWith(memberId))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
+    @Override
+    public Map<String, Object> findAllEventCacheStartWithByEmail(String memberId) {
+        return emitters.entrySet().stream()
+                .filter(entry -> entry.getKey().startsWith(memberId))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
 
+    @Override
+    public void deleteById(String id) {
+        emitters.remove(id);
+    }
+
+    @Override
+    public void deleteAllEmitterStartWithId(String memberId) {
+        emitters.forEach((key, emitter) -> {
+            if (key.startsWith(memberId)){
+                emitters.remove(key);
+            }
+        });
+    }
+
+    @Override
+    public void deleteAllEventCacheStartWithId(String memberId) {
+        emitters.forEach((key, emitter) -> {
+            if (key.startsWith(memberId)){
+                emitters.remove(key);
+            }
+        });
+    }
 }

@@ -204,9 +204,11 @@
 }
 
 .message__notice h5{
-    font-size: var(--font-size-medium1);
+    font-size: var(--font-size-medium12);
 }
+
 .message__notice span{
+    max-width: 154px;
     font-size: var(--font-size-small10);
 }
 
@@ -215,7 +217,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    flex-grow: 2;
+    width: 160px;
     gap: 12px;
 }
 

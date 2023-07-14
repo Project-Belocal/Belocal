@@ -58,6 +58,10 @@ public class ChatRoomServiceImp implements ChatRoomService {
         return list;
     }
 
+    @Override
+    public ChatRoom isAccepte(Integer chatRoomId) {
+        return repository.isAccept(chatRoomId);
+    }
 
 
 }

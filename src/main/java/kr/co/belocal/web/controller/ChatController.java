@@ -31,6 +31,9 @@ public class ChatController {
     private ChatRoomService chatRoomService;
 
     @Autowired
+    private NoticeService noticeService;
+
+    @Autowired
     private MemberService memberService;
     @Autowired
     private PlaceService placeService;
@@ -47,11 +50,14 @@ public class ChatController {
 
 
         List<ChatRoomListView> list = chatRoomService.findAll(member.getId());
+        List<NoticeView> noticeList = noticeService.getViewList(member.getId());
 
 //        log.info("list {}",list);
 
 
         model.addAttribute("chatList", list);
+        model.addAttribute("noticeList",noticeList);
+
 
 
         return "chat/chatlist";

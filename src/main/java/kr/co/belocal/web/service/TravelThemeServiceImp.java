@@ -30,10 +30,10 @@ public class TravelThemeServiceImp implements TravelThemeService {
 
 
 //====== main화면 기본 6개 나오는 부분 =================
-    @Override
-    public List<TravelThemeView> getListForMain(int offset) {
-        return repository.getListForMain(offset, 6);
-    }
+//    @Override
+//    public List<TravelThemeView> getListForMain(int offset) {
+//        return repository.getListForMain(offset, 6);
+//    }
 
 //====== search-modal : 검색용 =================
     @Override

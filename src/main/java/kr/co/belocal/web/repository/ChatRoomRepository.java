@@ -19,4 +19,7 @@ public interface ChatRoomRepository {
 
     //채팅방 목록 조회
     List<ChatRoomListView> findAll(Integer memberId);
+
+    //채팅방 수락
+    ChatRoom isAccept(Integer chatRoomId);
 }

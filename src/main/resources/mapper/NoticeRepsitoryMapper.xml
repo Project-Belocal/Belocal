@@ -18,4 +18,16 @@
             #{type}
         )
     </insert>
+
+    <select id="getNoticeListById" parameterType="Notice">
+        SELECT * FROM notice
+        WHERE receiver_id = #{receiverId}
+        ORDER BY created_date desc;
+    </select>
+
+    <select id="getViewList" parameterType="NoticeView">
+        SELECT * FROM notice_view WHERE receiver_id = #{receiverId}
+        and is_accepted = 0
+        order by created_date DESC
+    </select>
 </mapper>
