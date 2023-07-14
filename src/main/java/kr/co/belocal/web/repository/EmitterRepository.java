@@ -6,27 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 public interface EmitterRepository {
-    //Emitter 저장
-    SseEmitter save(Integer emitterId, SseEmitter sseEmitter);
+    SseEmitter save(String emitterId, SseEmitter sseEmitter); //Emitter 저장
 
-//    //이벤트 저장
-//    void saveEventCache(String eventCacheId, Object event);
+    void saveEventCache(String eventCacheId, Object event); //이벤트 저장
 
-    //해당 회원과 관련된 모든 Emitter를 찾는다
-//    Map<Integer, SseEmitter> findAllEmitterStartWithById(Integer memberId);
+    Map<String, SseEmitter> findAllEmitterStartWithByEmail(String memberId); //해당 회원과  관련된 모든 Emitter를 찾는다
 
+    Map<String, Object> findAllEventCacheStartWithByEmail(String memberId); //해당 회원과관련된 모든 이벤트를 찾는다
 
-    //해당 회원과관련된 모든 이벤트를 찾는다
-    //Map<Integer, Object> findAllEventCacheStartWithById(Integer memberId);
+    void deleteById(String id); //Emitter를 지운다
 
+    void deleteAllEmitterStartWithId(String memberId); //해당 회원과 관련된 모든 Emitter를 지운다
 
+    void deleteAllEventCacheStartWithId(String memberId); //해당 회원과 관련된 모든 이벤트를 지운다
 
-    //Emitter를 지운다
-    void deleteById(Integer memberId);
-
-    //해당 회원과 관련된 모든 Emitter를 지운다
-    void deleteAllEmitterStartWithId(Integer memberId);
-
-    //해당 회원과 관련된 모든 이벤트를 지운다
-//    void deleteAllEventCacheStartWithId(Integer memberId);
 }

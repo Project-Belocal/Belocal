@@ -18,4 +18,6 @@ public interface ChatRoomService {
 
     //채팅방 리스트 조회
     List<ChatRoomListView> findAll(Integer memberId) throws ParseException;
+
+    ChatRoom isAccepte(Integer chatRoomId);
 }
