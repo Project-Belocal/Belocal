@@ -29,7 +29,8 @@ window.addEventListener("load", () => {
         eventSource.addEventListener("sse", function(e) {
             console.log(e.data);
 
-            let data = JSON.parse(e.data);
+            let data = e.data;
+            // let data = JSON.parse(e.data);
 
             (async () => {
                 // 브라우저 알림

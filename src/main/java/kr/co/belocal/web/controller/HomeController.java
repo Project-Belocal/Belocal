@@ -29,10 +29,10 @@ public class HomeController {
             @RequestParam(name="offset", defaultValue = "0")int offset,
             Model model){
         List<Category> categoryList = categoryService.findAllCtg();
-        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(offset);
+//        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(offset);
 
         model.addAttribute("ctgList", categoryList);
-        model.addAttribute("travelThemeList", travelThemeList);
+//        model.addAttribute("travelThemeList", travelThemeList);
 
         return "index";
     }
