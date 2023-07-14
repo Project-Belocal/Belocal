@@ -2,6 +2,7 @@
 <html lang="en" 
 	xmlns:th="http://www.thymeleaf.org" 
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
 <head>
     <meta charset="UTF-8">
@@ -10,9 +11,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/theme-detail.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="/js/them-detail-modal.js" defer></script>
-    <script src="/js/theme-detail.js" defer></script>
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" /> -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- <script src="/js/them-detail-modal.js" defer></script> -->
+    <script src="/js/theme-detail/image-slider.js" defer></script>
+    <script src="/js/theme-detail/wishlist-modal.js" defer></script>
+    <script src="/js/theme-detail/request-chat.js" defer></script>
 </head>
 <body>
     
@@ -27,7 +33,7 @@
                 </button>
             </div>
 
-            <div class="theme__title--header--button--share">
+            <div class="theme__title--header--button--more">
                 <button>
                     <i class="material-symbols-outlined">
                         more_vert
@@ -65,34 +71,33 @@
 
         <div class="theme__contents--text--container">
 
-
             <div class="theme__contents--text--title">
-                <h1 th:text="${travelTheme.title}">종로 뒷골목 투어</h1>
+                <h1 th:text="${travelTheme.title}"></h1>
             </div>
-
 
             <div class="theme__contents--text--paragraph">
-                <p th:text="${travelTheme.description}">종로의 오래된 피맛골은 서울특별시의 주간선도로이자 서울특별시 한강 이북 지역의 핵심 횡축도로로, 서울특별시 종로구 세종대로사거리에서 흥인지문을 지나 동대문구 신설동역에 이르는 연장 4.2km, 너비 35~40m(왕복 6~8차선)의 도로이다.
-                    51번 서울특별시도의 일부이며, 전 구간이 6번 국도에 속한다. 성산대교북단 - 내부순환로 - 홍지문터널 - 정릉터널 - 하월곡JC - 북부간선도로가 국도대체우회도로 역할을 하고 있으나 어째서인지 기존 도로 그대로 지정되었다.
-                </p>
+                <p th:text="${travelTheme.description}"></p>
             </div>
 
-
             <div class="theme__cotents--text--status">
-                <button>
-                    <i class="material-symbols-outlined">
-                        heart_plus
-                    </i>
-                </button>
+                <a href="/login"
+                    sec:authorize="isAnonymous()">
+                    <i class="material-symbols-outlined not-logined">favorite</i>
+                </a>
+                
+                <a href="" sec:authorize="isAuthenticated()">
+                    <i class="material-symbols-outlined" 
+                        th:data-member-id="${#authentication.principal.id}"
+                        th:data-travel-theme-id="${travelTheme.id}"
+                        th:classappend="${isAlreadyOnWishlist == 1} ? 'heart-filled' : ''">
+                    favorite
+                    </i>  
+                </a>
                 <span th:text="${wishlistCount}"></span>
                 <!-- <span>지역: <span th:text="${travelTheme.}"></span></span> -->
             </div>
-
-
         </div>
     </section>
-
-
 
     <!--========= 갹각의 장소들 ============-->
     <section>
@@ -171,17 +176,71 @@
             </p>
         </div>
 
-        <div class="theme__detail--reservation--button--container">
+        <button type="button" 
+                class="theme__detail__chat-request"
+                sec:authorize="isAuthenticated()"
+                th:data-travel-theme-id="${travelTheme.id}"
+                th:data-traveler-id="${#authentication.principal.id}"
+                th:data-guide-id="${uploadMemberId}"
+                >
+            <a href="">
+                채팅요청
+            </a>
+        </button>
+
+        <button type="button" 
+                class="theme__detail__chat-request not-logined"
+                sec:authorize="isAnonymous()">
+            <a href="/login">
+                채팅요청
+            </a>
+        </button>
+        <!-- <div class="theme__detail--reservation--button--container">
             <button>
                 <div>채팅요청</div>
             </button>
 
+        </div> -->
+    </section>
+    
+    <section class="wishlist__modal hidden">
+        <!-- Modal content -->
+        <div class="wishlist__modal__content">
+            <div class="wishlist__modal__header">
+                <h1>위시리스트 등록</h1>
+                <a href="" class="wishlist__modal__close">
+                    <img src="/images/icon/x-black.svg" alt="">
+                </a>
+            </div>
+    
+            <div class="wishlist__modal__body">
+                <div class="wishlist__modal__input-container hidden">
+                    <label for="wishlistName">이름</label>
+                    <!-- input 영역 글자수 제한 설정 꼭 -->
+                    <input type="text" class="wishlist__modal__input" id="wishlistName">
+                    <div class="wishlist__modal__inputBtn">
+                        <button>추가</button>
+                    </div>
+                </div>
+
+                <div class="wishlist__modal__createBtn">
+                    <img src="/images/icon/add.svg">
+                    <span>새로운 위시리스트 만들기</span>
+                </div>
+
+                <div class="wishlist__modal__exist-list"
+                    th:each="wishlistGroup : ${wishlistGroupViewList}"
+                    th:data-wishlist-group-id="${wishlistGroup.id}"
+                >
+                    <img th:src="${wishlistGroup.path}">
+                    <span th:text="${wishlistGroup.title}">새로운 위시리스트 만들기</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- nav-bar -->
     <div th:replace="~{inc/navbar}"></div>
-
     <!-- nav-bar End-->
 
 </body>

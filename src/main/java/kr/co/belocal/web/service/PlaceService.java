@@ -11,4 +11,8 @@ public interface PlaceService {
     
     List<Place> getListByTravelThemeId(int travelThemeId);
     List<PlaceView> getViewListByTravelThemeId(int travelThemeId);
+
+
+    Place findById(Integer travelThemeId);
+
 }

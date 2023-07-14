@@ -10,6 +10,14 @@
         ORDER BY `order` ASC
     </select>
 
+    <select id="getPlaceImg" resultType="PlaceImage">
+        SELECT *
+        FROM place_image
+        WHERE place_id = #{placeId}
+        ORDER BY `order` ASC
+        LIMIT 1
+    </select>
+
     <insert id="save" parameterType="kr.co.belocal.web.entity.PlaceImage" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO place_image
         (

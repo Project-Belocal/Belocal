@@ -1,26 +1,23 @@
 package kr.co.belocal.web.controller;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+
 import java.util.UUID;
 
 import jakarta.servlet.http.HttpSession;
 import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.*;
-import kr.co.belocal.web.service.security.MemberDetails;
 import kr.co.belocal.web.service.security.MemberDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,20 +27,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
-
-import jakarta.servlet.http.HttpServletRequest;
 import kr.co.belocal.web.controller.request.UploadPlaceImageRequest;
-import kr.co.belocal.web.controller.request.UploadRequest;
 
 @Controller
 @RequestMapping("/my")
 public class MyPageController {
-    @Value("${spring.cloud.gcp.storage.bucket}") 
+    @Value("${spring.cloud.gcp.storage.bucket}")
     private String bucketName;
 
     private Storage storage;
@@ -72,9 +65,13 @@ public class MyPageController {
 
 
     @GetMapping
-    public String profile() {
+    public String profile(Model model) {
+
+
+
         return "/member/my/profile";
     }
+
 
     @GetMapping("/profile-edit")
     public String profileEdit(){
@@ -83,10 +80,14 @@ public class MyPageController {
 
 
     @PostMapping("/profile-edit/send")
-    public String profileEdit(Member member, @RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session) throws IOException {
+    public String profileEdit(Member member,
+                              @RequestParam("uploadFile") MultipartFile uploadFile,
+                              HttpSession session
+    ) throws IOException {
 
-        fileService.fileSave(uploadFile,member.getId());
-        memberService.editSave(member);
+
+        fileService.profileSave(uploadFile,member.getId()); //회원 이미지 저장
+        memberService.editSave(member); // 회원정보 수정
 
 
         //이미지를 업데이트 후 시큐리티 세션을 재등록 해주는 작업업
@@ -98,8 +99,14 @@ public class MyPageController {
         securityContext.setAuthentication(auth);
         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 
+
+
         return "redirect:/my";
     }
+
+
+
+
 
     @GetMapping("/theme-register")
     public String themeRegister() {
@@ -116,12 +123,12 @@ public class MyPageController {
     public ResponseEntity<String[]> uploadFile(
             @RequestPart(name="image") MultipartFile[] fileList
             ) throws IllegalStateException, IOException {
-        
+
         storage = StorageOptions.getDefaultInstance().getService();
 
         String[] filePathList = new String[fileList.length];
 
-    
+
         for(int i = 0; i < fileList.length; i++) {
             MultipartFile image = fileList[i];
 
@@ -133,7 +140,7 @@ public class MyPageController {
             filePathList[i] = "https://storage.googleapis.com/belocal-bucket/" + fileName;
         }
 
-   
+
         return ResponseEntity.ok().body(filePathList);
     }
 
@@ -162,7 +169,7 @@ public class MyPageController {
             for(int j = 0; j < list.size(); j++) 
                 placeImageService.append(list.get(j));
         }
-        
+
         // String url = "redirect:/theme/theme-detail";\
         
         String travelThemeId = String.valueOf(requestBody.travelThemeId());
@@ -170,4 +177,3 @@ public class MyPageController {
         return url;
     }
 }
-    

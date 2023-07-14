@@ -4,11 +4,38 @@
 
 <mapper namespace="kr.co.belocal.web.repository.ChatRepository">
 
-    <select id="findAll" resultType="ChatRoom">
-        SELECT * FROM chat_room WHERE
-            guide_id = #{memberId}
-        OR
-            traveler_id = #{memberId}
+
+    <!--채팅 로그 조회-->
+    <select id="chatLogFindAll" resultType="ChatLogListView">
+        SELECT * FROM chat_log_list_view
+        WHERE id = #{id} ORDER BY reg_date ASC ;
     </select>
+
+
+    <!--채팅로그 추가-->
+    <insert id="addLog" parameterType="ChatLog">
+        INSERT INTO chat_log
+        (
+            chat_room_id,
+            member_id,
+            message
+        )
+        VALUES
+        (
+            #{chatRoomId},
+            #{memberId},
+            #{message}
+        )
+    </insert>
+
+    <!--채팅 읽음 처리-->
+    <update id="chatUpdate" parameterType="ChatLog">
+        UPDATE chat_log
+            <set>
+                <if test="isChecked != null">is_checked = #{isChecked}</if>
+            </set>
+        WHERE member_id = #{memberId} AND chat_room_id = #{chatRoomId}
+    </update>
+
 
 </mapper>

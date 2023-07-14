@@ -3,6 +3,9 @@ package kr.co.belocal.web.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.MemberRoleView;
+import kr.co.belocal.web.entity.ProfileImage;
+import kr.co.belocal.web.entity.Role;
+import kr.co.belocal.web.exception.BusinessException;
 import kr.co.belocal.web.exception.ErrorCode;
 import kr.co.belocal.web.exception.NotFoundException;
 import kr.co.belocal.web.repository.AuthRepository;
@@ -111,12 +114,33 @@ public class AuthServiceImpl implements AuthService {
         return id;
     }
 
+    @Override
+    public Integer FindByRole(Integer memberId) {
+        return authRepository.findByRole(memberId);
+    }
+
     //회원가입시 권한 부여
     @Override
     public void addRole(int id) {
         authRepository.addRole(id);
     }
 
+    @Override
+    public void addGuideRole(Integer memberId) {
+        Role role = Role.builder()
+                .memberId(memberId)
+                .roleTypeId(3)
+                .build();
+
+
+        Integer result = authRepository.findByRole(memberId);
+        if (result!=null){
+            throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR);
+        }
+
+
+        authRepository.addGuideRole(role);
+    }
 
 
     //아이디 중복 확인
@@ -138,8 +162,19 @@ public class AuthServiceImpl implements AuthService {
     }
 
 
+    //회원가입시 기본이미지 추가
+    @Override
+    public void addDefaultImg(Integer memberId) {
+        ProfileImage profileImage = ProfileImage
+                .builder()
+                .memberId(memberId)
+                .name("null.jpg")
+                .path("belocal-bucket")
+                .uuid("user.svg")
+                .build();
 
-
+        authRepository.addDefaultImg(profileImage);
+    }
 
 
     // 임시 비밀번호 메서드

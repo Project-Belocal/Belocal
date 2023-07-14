@@ -2,13 +2,17 @@ package kr.co.belocal.web.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.service.AuthService;
+import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.sms.SmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +29,9 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private MemberService memberService;
 
     @Autowired
     private SmsService smsService;
@@ -54,7 +61,13 @@ public class AuthController {
 
     //로그인페이지
     @GetMapping("login")
-    public String login(){
+    public String login(HttpServletRequest request){
+        String uri = request.getHeader("Referer");
+        if(uri != null && !uri.contains("/login")) {
+            request.getSession().setAttribute("prevPage", uri);
+        }
+        // String returnUrl = request.getParameter("returnUrl");
+        // System.out.println(originalUrl);
         return "login/login";
     }
 
@@ -82,6 +95,7 @@ public class AuthController {
     @PostMapping("/sign-up")
     public String join(Member member,HttpSession session){
         authService.save(member);
+        authService.addDefaultImg(member.getId());
         authService.addRole(member.getId());
         return "redirect:/login";
     }
