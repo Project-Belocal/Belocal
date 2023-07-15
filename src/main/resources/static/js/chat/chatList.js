@@ -5,7 +5,11 @@ window.addEventListener("load", function() {
   // message__box와 message__notice-wrap 요소를 가져옵니다.
   const messageBox = document.querySelector('.message__box');
   const noticeWrap = document.querySelector('.message__notice-wrap');
+  const acceptBtn = document.querySelector(".accept-btn");
+  const rejectBtn = document.querySelector(".reject-btn");
 
+  const memberId = document.querySelector(".member-id");
+  let id = memberId.value;
 
   // 페이지 로드 시 처리
   if (messageBox) {
@@ -32,7 +36,8 @@ window.addEventListener("load", function() {
     tab2Button.classList.remove('focus');
   });
 
-  // tab2 버튼 클릭 시 처리
+  
+  // tab2 알림버튼 클릭 시 처리
   tab2Button.addEventListener('click', function() {
     if (noticeWrap) {
       document.querySelector('.message__notice').classList.remove('hidden');
@@ -47,10 +52,51 @@ window.addEventListener("load", function() {
 
     tab2Button.classList.add('focus');
     tab1Button.classList.remove('focus');
+
   });
 
+  let action = document.querySelector(".action-wrap");
+  let chatRoomId = action.getAttribute("data-chat-room-id");
+  let senderId = action.getAttribute("data-sender-id");
+
+  acceptBtn.onclick = function (e){
+    e.preventDefault();
 
 
+    fetch("/api/notices/request",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/JSON"
+      },
+      body:JSON.stringify({
+        status:"accept",
+        roomId:chatRoomId,
+        senderId
+      })
+    }).then(response=>response.status)
+        .then(data=>{
+          console.log(data);
+        })
+  }
+
+  rejectBtn.onclick = function (e){
+    e.preventDefault();
+
+    fetch("/api/notices/request",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/JSON"
+      },
+      body:JSON.stringify({
+        status:"reject",
+        roomId:chatRoomId,
+        senderId
+      })
+    }).then(response=>response.status)
+        .then(data=>{
+          console.log(data);
+        })
+  }
 
 
 });

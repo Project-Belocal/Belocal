@@ -66,7 +66,7 @@
                 </div>
 
                 <!-- 탭2 알림 페이지 -->
-                <div class="message__notice data hidden">
+                <div class="message__notice data hidden" >
                     <div class="message__notice-wrap">
                         <span>엄준식12세님이 채팅요청을 거절했습니다.</span>
                         <span>2023-05-12 17:30</span>
@@ -77,9 +77,12 @@
                         <span>2023-05-12 17:30</span>
                     </div>
 
-                    <div class="message__notice-wrap">
-                        <span>랄로님이 채팅을 신청하였습니다.</span>
-                        <div class="action-wrap">
+                    <div class="message__notice-wrap" th:each="nl:${noticeList}">
+                        <span th:text="${nl.nickname + '님이 채팅을 신청하였습니다.'}"></span>
+                        <div class="action-wrap"
+                             th:data-chat-room-id="${nl.chatRoomId}"
+                             th:data-sender-id="${nl.senderId}"
+                        >
                             <button class="accept-btn">수락</button>
                             <button class="reject-btn">거절</button>
                         </div>

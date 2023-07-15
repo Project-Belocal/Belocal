@@ -37,6 +37,15 @@
         WHERE id = #{chatRoomId}
     </update>
 
+    <!--채팅방 허가-->
+    <update id="isAccept" parameterType="ChatRoom">
+        UPDATE chat_room
+        <set>
+            is_accepted = 1
+        </set>
+        WHERE id = #{chatRoomId}
+    </update>
+
 
 
 </mapper>

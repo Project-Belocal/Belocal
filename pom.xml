@@ -181,6 +181,30 @@
 			<version>1.12.0</version>
 		</dependency>
 
+
+
+		<!--SSE 구현에 사용되는 캐시 라이브러리-->
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-core</artifactId>
+			<version>12.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-commons</artifactId>
+			<version>12.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-marshaller-protostuff</artifactId>
+			<version>12.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.marshalling</groupId>
+			<artifactId>jboss-marshalling-osgi</artifactId>
+			<version>2.0.10.Final</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.belocal.web.entity.TravelThemeView;
+import kr.co.belocal.web.entity.Wishlist;
 import kr.co.belocal.web.entity.WishlistGroup;
 import kr.co.belocal.web.entity.WishlistGroupView;
+import kr.co.belocal.web.service.TravelThemeService;
 import kr.co.belocal.web.service.WishlistGroupService;
+import kr.co.belocal.web.service.WishlistService;
 import kr.co.belocal.web.service.security.MemberDetails;
 
 @Controller
@@ -21,6 +25,12 @@ public class WishlistController {
 
     @Autowired
     private WishlistGroupService wishlistGroupService;
+
+    @Autowired
+    private WishlistService wishlistService;
+
+    @Autowired
+    private TravelThemeService travelThemeService;
 
     @GetMapping
     public String list(
@@ -43,6 +53,10 @@ public class WishlistController {
     ) {
         WishlistGroup wishlistGroup = wishlistGroupService.getById(wishlistGroupId);
         
+        List<Integer> travelThemeIdList = wishlistService.getAllTravelThemeIdByGroupId(wishlistGroupId);
+        List<TravelThemeView> travelThemeViewList = travelThemeService.getAllViewByIds(travelThemeIdList);
+
+        model.addAttribute("travelThemeViewList", travelThemeViewList);
         model.addAttribute("wishlistGroup", wishlistGroup);
         return "/wishlists/wish";
     }

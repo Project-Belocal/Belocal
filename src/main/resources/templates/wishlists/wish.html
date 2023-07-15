@@ -29,13 +29,13 @@
   </header>
 
   <main>
-    <section class="theme" id="theme1">
+    <section class="theme" th:each="travelTheme : ${travelThemeViewList}">
       <header class="theme__header">
         <div class="theme__profile">
           <div class="theme__profile-pic">
-            <img src="/images/profile-pic.jpg">
+            <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${travelTheme.uuid})}">
           </div>
-          <span class="theme__profile-nickname">Mr.Jang</span>
+          <span class="theme__profile-nickname" th:text="${travelTheme.nickname}">Mr.Jang</span>
         </div>
 
         <div class="theme__header-icon">
@@ -85,94 +85,16 @@
 
       <div class="theme__contents">
         <div class="theme__title">
-          <h2>"우더니와 떠나는 맛따라 멋따라 서울 탐방"</h2>
+          <h2 th:text="${travelTheme.title}">"우더니와 떠나는 맛따라 멋따라 서울 탐방"</h2>
         </div>
         <div class="theme__description">
-          <p>서울을 손에 넣고 싶나? 따라와 온 서울이 너의 것이니..</p>
+          <p th:text="${travelTheme.description}">서울을 손에 넣고 싶나? 따라와 온 서울이 너의 것이니..</p>
         </div>
       </div>
 
       <footer class="theme__info">
         <div class="theme__bookable-dates">
-          예약 가능 기간: 23년 5월 10일 ~ 23년 5월 17일
-        </div>
-        <div class="theme__icons">
-          <a href="">
-            <img src="/images/icon/share.svg" alt="" class="share">
-          </a>
-          <a href="">
-            <img src="/images/icon/heart.svg" alt="" class="heart">
-          </a>
-        </div>
-      </footer>
-    </section>
-
-    <section class="theme" id="theme2">
-      <header class="theme__header">
-        <div class="theme__profile">
-          <div class="theme__profile-pic">
-            <img src="/images/profile-pic.jpg">
-          </div>
-          <span class="theme__profile-nickname">Mr.Jang</span>
-        </div>
-
-        <div class="theme__header-icon">
-          <img src="/images/icon/reservation-ok.svg" alt="" class="res">
-          <span>예약가능</span>
-        </div>
-      </header>
-
-      <div class="location">
-        <div class="location__slider">
-          <div class="location__images">
-            <div class="location__image">
-              <img src="/images/location01.jpg" alt="">
-            </div>
-            <div class="location__image">
-              <img src="/images/location02.jpg" alt="">
-            </div>
-            <div class="location__image">
-              <img src="/images/location03.jpg" alt="">
-            </div>
-            <div class="location__image">
-              <img src="/images/location04.jpg" alt="">
-            </div>
-            <div class="location__image">
-              <img src="/images/location05.jpg" alt="">
-            </div>
-          </div>
-
-          <div class="location__nav-buttons">
-            <div class="location__prev-button">
-              <img src="/images/icon/left-arrow.svg">
-            </div>
-            <div class="location__next-button">
-              <img src="/images/icon/right-arrow.svg">
-            </div>
-          </div>
-        </div>
-
-        <div class="location__nav-dots">
-          <span class="location__dot active"></span>
-          <span class="location__dot"></span>
-          <span class="location__dot"></span>
-          <span class="location__dot"></span>
-          <span class="location__dot"></span>
-        </div>
-      </div>
-
-      <div class="theme__contents">
-        <div class="theme__title">
-          <h2>"우더니와 떠나는 맛따라 멋따라 서울 탐방"</h2>
-        </div>
-        <div class="theme__description">
-          <p>서울을 손에 넣고 싶나? 따라와 온 서울이 너의 것이니..</p>
-        </div>
-      </div>
-
-      <footer class="theme__info">
-        <div class="theme__bookable-dates">
-          예약 가능 기간: 23년 5월 10일 ~ 23년 5월 17일
+          예약 가능 기간: <span th:text="${travelTheme.bookableDateStart}"></span> ~ <span th:text="${travelTheme.bookableDateEnd}"></span>
         </div>
         <div class="theme__icons">
           <a href="">
@@ -185,6 +107,8 @@
       </footer>
     </section>
   </main>
+
+  <div th:replace="~{inc/navbar}"></div>
 </body>
 
 </html>
