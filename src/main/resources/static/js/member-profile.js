@@ -29,7 +29,6 @@ tabs.forEach((tab) => {
 
 
 let offset = 6;
-let batchSize = 6;
 
 window.addEventListener('scroll', function() {
     let documentHeight = document.documentElement.scrollHeight;
@@ -37,7 +36,7 @@ window.addEventListener('scroll', function() {
     let windowHeight = document.documentElement.clientHeight;
     let themeList = document.querySelector(".theme-list");
 
-    let url = `http://localhost:8080/memberprofile?offset=${offset}`;
+    let url = `http://localhost:8080/api/member-profile?offset=${offset}`;
 
 
     console.log("documentHeight: ", documentHeight);
@@ -45,12 +44,9 @@ window.addEventListener('scroll', function() {
     console.log("windowHeight: ", windowHeight);
 
     if(windowHeight + scrollTop == documentHeight) {
-        // fetchData(offset);
-        offset += batchSize;
         console.log("offset: ", offset);
 
 
-        // fetch(`api/memberprofile?offset=${offset}`)
         fetch(url)
             .then(response => response.json())
             .then(list => {
@@ -93,12 +89,16 @@ window.addEventListener('scroll', function() {
                                 </div>
                             </div>
                         </section>`
-
                     themeList.insertAdjacentHTML("beforeend", travelTheme);
+                    offset ++;
                 }
+
             })
+
         }
-    });
+});
+
+
 
 
 

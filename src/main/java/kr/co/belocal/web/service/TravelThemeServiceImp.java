@@ -41,19 +41,25 @@ public class TravelThemeServiceImp implements TravelThemeService {
         return repository.getListByModalInput(query, offset, size);
     }
 
-    @Override
-    public List<TravelThemeView> getListByQuery(String query){
-        return repository.getListByQuery(query);
-    }
 
+//====== search-result : 값 입력 & enter =================
     @Override
-    public List<TravelThemeView> getListByCtgId(Integer offset) {
-        return repository.getListByCtgId(offset);
+    public List<TravelThemeView> getListByQuery(String query, int offset, int size){
+        return repository.getListByQuery(query, offset, size);
     }
+//====== search-result : 카테고리 아이콘 클릭시  =================
 //    @Override
-//    public List<TravelThemeView> getListByCtgId(Integer ctgId){
-//        return repository.getListByCtgId(ctgId);
-
+//    public List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size) {
+//        return repository.getListByCtgId(ctgId, offset, size);
+//    }
+    @Override
+    public List<TravelThemeView> getListByCtgId(Integer ctgId) {
+        return repository.getListByCtgId(ctgId);
+    }
+    @Override
+    public List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size) {
+        return repository.getListByCtgIdIcons(ctgId, offset, size);
+    }
 
 
 

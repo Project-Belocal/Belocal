@@ -25,8 +25,9 @@ public class HomeController {
     private TravelThemeService travelThemeService;
 
     @GetMapping("/")
-    public String index(
-            Model model){
+    public String index(Model model){
+
+        //--- main 화면의 카테고리 아이콘들 보여주는 것
         List<Category> categoryList = categoryService.findAllCtg();
 
         //--- main 화면의 기본 6개 띄워주는 것

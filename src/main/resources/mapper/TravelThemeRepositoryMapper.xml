@@ -46,7 +46,7 @@
     </select>
 
 
-
+<!-- ====== search-result : 값 입력 & enter ================= -->
     <select id="getListByQuery" resultType="TravelThemeView">
         SELECT *
         FROM
@@ -59,7 +59,19 @@
         name LIKE '%${query}%'
         OR
         lcName LIKE '%${query}%'
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
     </select>
+
+<!--    <select id="getListByCtgId" resultType="TravelThemeView">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme_view-->
+<!--        WHERE ctgId = #{ctgId}-->
+<!--        ORDER BY member_id-->
+<!--        ORDER BY reg_date DESC-->
+<!--        limit #{offset}, #{size}-->
+<!--    </select>-->
 
     <select id="getListByCtgId" resultType="TravelThemeView">
         SELECT *
@@ -67,6 +79,15 @@
         travel_theme_view
         WHERE ctgId = #{ctgId}
         ORDER BY member_id
+    </select>
+
+    <select id="getListByCtgIdIcons" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE ctgId = #{ctgId}
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
     </select>
 
     <select id="findAllViewByIds" resultType="TravelThemeView">

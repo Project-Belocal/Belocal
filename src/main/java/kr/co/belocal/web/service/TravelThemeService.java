@@ -17,14 +17,17 @@ public interface TravelThemeService {
 
 //====== search-modal : 검색용 =================
     List<TravelThemeView> getListByModalInput(String query, int offset, int size);
-    List<TravelThemeView> getListByQuery(String query);
+
+//====== search-result : 값 입력 & enter =================
+    List<TravelThemeView> getListByQuery(String query, int offset, int size);
 
 
 //====== index : 기본 6개 =================
-    List<TravelThemeView> getListByCtgId(Integer offset);
+//    List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size);
+    List<TravelThemeView> getListByCtgId(Integer ctgId);
 
 
-//    List<TravelThemeView> getListByCtgId(Integer ctgId);
+    List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size);
 
 
 

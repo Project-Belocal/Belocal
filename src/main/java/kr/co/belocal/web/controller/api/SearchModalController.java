@@ -19,8 +19,7 @@ public class SearchModalController {
     @Autowired
     private TravelThemeService service;
 
-    @GetMapping("")//search-
-//    public ResponseEntity<List<TravelThemeView>> getListByCtgId(
+    @GetMapping("")
     public ResponseEntity<List<TravelThemeView>> getListByModalInput(
             @RequestParam(name = "q")
             String query,

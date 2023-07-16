@@ -19,16 +19,17 @@ public class SearchResultController {
     @Autowired
     private TravelThemeService service;
 
-    @GetMapping("") //--- search-result 페이지의 카테고리버튼 클릭시 작동하는 부분
-    public ResponseEntity<List<TravelThemeView>> getListByCtgId(
-            @RequestParam(name = "ctg") Integer ctgId
+    @GetMapping("") //--- search-result 페이지의 카테고리 아이콘 클릭시 작동하는 부분
+    public ResponseEntity<List<TravelThemeView>> getListByCtgIdIcons(
+            @RequestParam(name = "ctg") Integer ctgId,
+            @RequestParam(name="offset", defaultValue = "0") int offset
     ) {
 
+
+
         List<TravelThemeView> travelThemeViewList = null;
+        travelThemeViewList = service.getListByCtgIdIcons(ctgId, offset, 6);
 
-            travelThemeViewList = service.getListByCtgId(ctgId);
-
-        System.out.println("ctgId:" + ctgId);
 
         return ResponseEntity.ok().body(travelThemeViewList);
     }
