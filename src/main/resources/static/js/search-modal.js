@@ -36,7 +36,7 @@ const themeList = document.querySelector(".theme-list--search-modal");
 
 searchInput.addEventListener('keyup', function() {
 
-    let offset = 6;
+    let offset = 0;
     // let batchSize = 6;
     let query = searchInput.value;
 
@@ -118,18 +118,15 @@ searchInput.addEventListener('keyup', function() {
 
 
 
-
+let offset = 6;
 //========== search-modal : 스크롤 다운 시 6개 가져오는 부분 =========================
-
-
-
 window.addEventListener('scroll', function() {
     let documentHeight = document.documentElement.scrollHeight;
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
     // let themeList = document.querySelector(".theme-list");
-    let offset = 6;
-    let batchSize = 6;
+    // let offset = 0;
+    // let batchSize = 6;
 
 
     console.log("documentHeight: ", documentHeight);
@@ -138,7 +135,7 @@ window.addEventListener('scroll', function() {
 
     if(windowHeight + scrollTop == documentHeight) {
         // fetchData(offset);
-        offset += batchSize;
+        // offset += batchSize;
         console.log("offset: ", offset);
 
         let query = searchInput.value;
@@ -190,6 +187,8 @@ window.addEventListener('scroll', function() {
                         </section>`
 
                     themeList.insertAdjacentHTML("beforeend", travelTheme);
+                    offset ++;
+
                 }
             })
     }
