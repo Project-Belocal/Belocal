@@ -1,14 +1,19 @@
-/*====== 가로 스크롤 설정 영역 ======*/
+
+/*====== index 페이지 가로 스크롤 설정 ======*/
+/*.themeList-section--index{*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    margin-bottom: var(--section-margin-bottom);*/
+/*}*/
+
 .theme {
     display: flex;
-    /*flex-direction: column;*/
-    /*align-items: center;*/
+    align-items: center;
     width: 100%;
-    /* gap: 10px; */
     margin-bottom: var(--section-margin-bottom);
 }
 
-
+/*====== index 페이지 : 타이틀 영역 ======*/
 .travel-theme-title-box{
     display: flex;
     height: 22px;
@@ -35,23 +40,42 @@
     align-items: center;
 }
 
-.theme-list {
+
+/*====== theme-box-area =============================*/
+/*--------- index페이지: ------------*/
+.theme-list--index {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     align-items: center;
     width: 100%;
     height: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
-    gap: 12px;
+    gap: 14px;
     padding: 0 0 0 10px;
 }
+
+/*--------- search-modal: ------------*/
+/*--------- search-modal: ------------*/
+.theme-list--search-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    margin-bottom: var(--section-margin-bottom);
+}
+
+
+
+
+
 
 .theme-list::-webkit-scrollbar{
     display: none;
 }
 
-/*====== theme-box-area ===========*/
 
 .theme-box-area {
     /* margin: 0 auto; */

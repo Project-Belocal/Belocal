@@ -19,14 +19,18 @@ public class SearchModalController {
     @Autowired
     private TravelThemeService service;
 
-    @GetMapping("")
-    public ResponseEntity<List<TravelThemeView>> getListByCtgId(
-            @RequestParam(name = "q") String query
+    @GetMapping("")//search-
+//    public ResponseEntity<List<TravelThemeView>> getListByCtgId(
+    public ResponseEntity<List<TravelThemeView>> getListByModalInput(
+            @RequestParam(name = "q")
+            String query,
+            @RequestParam(name="offset", defaultValue = "0")
+            int offset
     ) {
 
         List<TravelThemeView> travelThemeViewListModal = null;
 
-            travelThemeViewListModal = service.getListByQuery(query);
+        travelThemeViewListModal = service.getListByModalInput(query, offset, 6);
 
         System.out.println("query:" + query);
 

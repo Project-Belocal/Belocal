@@ -113,20 +113,20 @@
                             </p>
                         </div>
                         <div class="profile-status-area">
-                            <div th:if="${t.isReserved}">
+                            <div th:if="${t.isReserved == 0}">
                                             <span class="material-symbols-outlined">
                                                 event_available
                                             </span>
                             </div>
 
-                            <div th:if="!${t.isReserved}">
+                            <div th:unless="${t.isReserved == 0}">
                                             <span class="material-symbols-outlined">
                                                 event_busy
                                             </span>
                             </div>
 
-                            <div th:if="${t.isReserved}">예약가능</div>
-                            <div th:if="!${t.isReserved}">예약중</div>
+                            <div th:if="${t.isReserved == 0}">예약가능</div>
+                            <div th:unless="!${t.isReserved == 0}">예약중</div>
                         </div>
                     </div>
                 </div>

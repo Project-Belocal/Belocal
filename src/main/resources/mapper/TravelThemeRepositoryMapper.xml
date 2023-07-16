@@ -29,6 +29,24 @@
     </select>
 
     <!-- ====== search-modal : 검색용 ================= -->
+    <select id="getListByModalInput" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE
+        title LIKE '%${query}%'
+        OR
+        description LIKE '%${query}%'
+        OR
+        name LIKE '%${query}%'
+        OR
+        lcName LIKE '%${query}%'
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
+
+
+
     <select id="getListByQuery" resultType="TravelThemeView">
         SELECT *
         FROM

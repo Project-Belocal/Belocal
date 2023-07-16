@@ -30,21 +30,30 @@ public class TravelThemeServiceImp implements TravelThemeService {
 
 
 //====== main화면 기본 6개 나오는 부분 =================
-//    @Override
-//    public List<TravelThemeView> getListForMain(int offset) {
-//        return repository.getListForMain(offset, 6);
-//    }
+    @Override
+    public List<TravelThemeView> getListForMain(int offset, int size) {
+        return repository.getListForMain(offset,  size);
+    }
 
 //====== search-modal : 검색용 =================
+    @Override
+    public List<TravelThemeView> getListByModalInput(String query, int offset, int size){
+        return repository.getListByModalInput(query, offset, size);
+    }
+
     @Override
     public List<TravelThemeView> getListByQuery(String query){
         return repository.getListByQuery(query);
     }
-    @Override
-    public List<TravelThemeView> getListByCtgId(Integer ctgId){
 
-        return repository.getListByCtgId(ctgId);
+    @Override
+    public List<TravelThemeView> getListByCtgId(Integer offset) {
+        return repository.getListByCtgId(offset);
     }
+//    @Override
+//    public List<TravelThemeView> getListByCtgId(Integer ctgId){
+//        return repository.getListByCtgId(ctgId);
+
 
 
 

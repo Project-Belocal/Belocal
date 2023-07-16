@@ -41,6 +41,7 @@ public class SearchController {
 
         model.addAttribute("search", searchThemeList);
 
+        //---- 검색한 기록 남는
         if(query != null) {
             model.addAttribute("query", query);
         }

@@ -1,14 +1,13 @@
+
+//===================  카테고리클릭시 theme box 가져오는 부분 =========================
+
 const ctgBtns = document.querySelector(".category__items-box")
-// const ctgBtns = document.querySelector(".category__item")
-// const themeList = document.querySelector(".theme-list");
 const themeList = document.querySelector(".themeList-section");
 
 ctgBtns.onclick = (e) => {
             e.preventDefault()
 
-
             let id = e.target.getAttribute("data-id");
-            // let id = 2;
 
             let url = `http://localhost:8080/api/search-result?ctg=${id}`;
 
