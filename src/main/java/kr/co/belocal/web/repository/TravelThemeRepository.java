@@ -16,6 +16,7 @@ public interface TravelThemeRepository {
 
 
 //====== search-modal : 검색용 =================
+    List<TravelThemeView> getListByModalInput(String query, int offset, int size);
     List<TravelThemeView> getListByQuery(String query);
     List<TravelThemeView> getListByCtgId(Integer ctgId);
 

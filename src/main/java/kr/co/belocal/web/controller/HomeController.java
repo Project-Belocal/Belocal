@@ -26,13 +26,14 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(
-            @RequestParam(name="offset", defaultValue = "0")int offset,
             Model model){
         List<Category> categoryList = categoryService.findAllCtg();
-//        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(offset);
+
+        //--- main 화면의 기본 6개 띄워주는 것
+        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(0, 6);
 
         model.addAttribute("ctgList", categoryList);
-//        model.addAttribute("travelThemeList", travelThemeList);
+        model.addAttribute("travelThemeList", travelThemeList);
 
         return "index";
     }

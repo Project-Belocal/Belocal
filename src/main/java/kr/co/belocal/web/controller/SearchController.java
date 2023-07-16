@@ -31,15 +31,20 @@ public class SearchController {
         List<TravelThemeView> searchThemeList = null;
         List<TravelThemeView> ctgThemeList = null;
 
-        if(query != null) {
+        if(query != null) { //쿼리가 있으면
             searchThemeList = travelThemeService.getListByQuery(query);
-        } else if(ctgId != null) {
+        } else if(ctgId != null) { //ctgId가 있으면
             searchThemeList = travelThemeService.getListByCtgId(ctgId);
         }
 
         List<Category> getCategoryList = categoryService.getResultCtg();
 
         model.addAttribute("search", searchThemeList);
+
+        //---- 검색한 기록 남는
+        if(query != null) {
+            model.addAttribute("query", query);
+        }
 
 
 

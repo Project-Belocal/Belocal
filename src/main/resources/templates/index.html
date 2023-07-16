@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="/css/index/header.css">
     <link rel="stylesheet" href="/css/index/category.css">
     <link rel="stylesheet" href="/css/index/location.css">
-    <link rel="stylesheet" href="/css/index/theme-index.css">
     <link rel="stylesheet" href="/css/index/posting.css">
     <link rel="stylesheet" href="/css/index/footer.css">
     <link rel="stylesheet" href="/css/index/theme.css">
     <link rel="stylesheet" href="/css/search/search-modal.css">
+<!--    <link rel="stylesheet" href="/css/search/search-result.css">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
@@ -30,24 +30,24 @@
 
 <body>
 
-<header>
-    <div class="header__wrap">
-        <div class="header__img">
-            <img src="./images/index-city.jpg" alt="">
-        </div>
+    <header>
+        <div class="header__wrap">
+            <div class="header__img">
+                <img src="./images/index-city.jpg" alt="">
+            </div>
 
-        <div class="header__search">
-            <span class="material-symbols-outlined">
-                search
-            </span>
+            <div class="header__search">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
 
-            <button id="open">
-                <p>을지로</p>
-            </button>
+                <button id="open">
+                    <p>을지로</p>
+                </button>
 
-        </div><!--header__search-->
-    </div><!--header__wrap-->
-</header>
+            </div><!--header__search-->
+        </div><!--header__wrap-->
+    </header>
 
 <main>
     <!-- category -->
@@ -60,17 +60,16 @@
 
         <section class="category__items-box">
 
-            <button class="category__item" th:each="ctg : ${ctgList}">
-
-                <a href="" th:href="@{/search-result(ctg=${ctg.id})}">
-                <div class="category-box">
-                    <span class="material-symbols-outlined" th:text="${ctg.icons}">
-                        liquor
-                    </span>
-                </div>
-                <p class="category__text" th:text="${ctg.name}">liquor</p>
-                </a>
-            </button>
+                <button class="category__item" th:each="ctg : ${ctgList}">
+                    <a href="" th:href="@{/search-result(ctg=${ctg.id})}" />
+                    <div class="category-box">
+                        <span class="material-symbols-outlined" th:text="${ctg.icons}">
+                            liquor
+                        </span>
+                    </div>
+                    <p class="category__text" th:text="${ctg.name}">liquor</p>
+                    </a>
+                </button>
 
         </section><!--category__items-box-->
     <!-- category End-->
@@ -86,6 +85,8 @@
 <!--        그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 &ndash;&gt;-->
 
 
+
+<!-- ======== 영역 제목 부분 ======== -->
     <section class="travel-theme">
         <div class="travel-theme-title-box">
             <h2 class="travel-theme-title">Travel Theme</h2>
@@ -93,8 +94,11 @@
         </div>
     </section>
 
-    <section class="themeList-section">
-        <div class="theme-list">
+
+
+<!-- ======== theme box 시작 ======== -->
+    <section class="themeList-section--index">
+        <div class="theme-list--index">
 
             <section class="theme" th:each="t:${travelThemeList}">
                 <div class="theme-box-area">
@@ -104,8 +108,6 @@
                     <div class="profile-outter-box">
                         <div class="profile-pic-id-outter">
                             <div class="profile-pic">
-
-
                                 <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="">
                             </div>
                             <div class="profile-id-text" th:text="${t.nickname}">
@@ -125,15 +127,15 @@
                             </div>
                             <div class="profile-status-area">
                                 <div th:if="${t.isReserved}">
-                                            <span class="material-symbols-outlined">
-                                                event_available
-                                            </span>
+                                        <span class="material-symbols-outlined">
+                                            event_available
+                                        </span>
                                 </div>
 
                                 <div th:if="!${t.isReserved}">
-                                            <span class="material-symbols-outlined">
-                                                event_busy
-                                            </span>
+                                        <span class="material-symbols-outlined">
+                                            event_busy
+                                        </span>
                                 </div>
 
                                 <div th:if="${t.isReserved}">예약가능</div>
@@ -282,7 +284,7 @@
 
 
 
-<!-- ================= 모달창 부분 ============================================================= -->
+<!-- ================= search-modal 영역 ============================================================= -->
 <div class="search-modal hidden">
     <div class="search-modal-overlay">
         <div class="search-modal-content">
@@ -290,18 +292,6 @@
 
             <!--============ header =====================-->
             <header>
-<!--                <div class="search">-->
-<!--                    <div class="search__container ">-->
-<!--                        <input class="search-bar" type="button" value="을지로 노포, 망원동 카페">-->
-<!--                            <span class="material-symbols-outlined">-->
-<!--                                    search-->
-<!--                            </span>-->
-<!--                        <button id="exit">취소</button>-->
-<!--                        </input>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div class="search">-->
                 <div class="search">
                     <form class="search-bar" action="/search-result">
                         <button class="search-button">
@@ -311,126 +301,154 @@
                         </button>
                         <label class="search-input" for="search-input">
                         </label>
-                        <input type="text" id="search-input" name="s" placeholder="힙당동, 서촌맛집">
+                        <input type="text" id="search-input" name="s" th:value="${query}" >
                     </form>
                     <button id="exit">cancle</button>
                 </div>
-
-
             </header>
 
 
             <!--============ main 키워드 부분=====================-->
             <div class="recommand__keyword">
-                <div class="recommand__keyword--title--container">
-                    <h1>추천 검색어</h1>
-                </div>
+                    <div class="recommand__keyword--title--container">
+                        <h1>추천 검색어</h1>
+                    </div>
 
                 <div class="recommand__keywords--container">
 
-                    <div class="recommand__keyword--container1">
+                        <div class="recommand__keyword--container1">
+                            <button class="recommand__keyword--btn">
+                                <p>을지로 노포</p>
+                            </button>
 
-                        <button class="recommand__keyword--btn">
-                            <p>을지로 노포</p>
-                        </button>
+                            <button class="recommand__keyword--btn">
+                                <p>용산 카페</p>
+                            </button>
 
-                        <button class="recommand__keyword--btn">
-                            <p>용산 카페</p>
-                        </button>
+                            <button class="recommand__keyword--btn">
+                                <p>종로 맛집</p>
+                            </button>
 
-                        <button class="recommand__keyword--btn">
-                            <p>종로 맛집</p>
-                        </button>
-
-                        <button class="recommand__keyword--btn">
-                            <p>강남구 축제</p>
-                        </button>
-
-                    </div>
+                            <button class="recommand__keyword--btn">
+                                <p>강남구 축제</p>
+                            </button>
+                        </div>
 
 
-                    <div class="recommand__keyword--container2">
+                        <div class="recommand__keyword--container2">
+                                <button class="recommand__keyword--btn">
+                                    <p>신촌 대학교 축제</p>
+                                </button>
 
-                        <button class="recommand__keyword--btn">
-                            <p>신촌 대학교 축제</p>
-                        </button>
+                                <button class="recommand__keyword--btn">
+                                    <p>루프탑 바</p>
+                                </button>
 
-                        <button class="recommand__keyword--btn">
-                            <p>루프탑 바</p>
-                        </button>
+                                <button class="recommand__keyword--btn">
+                                    <p>성수 갈비 골목</p>
+                                </button>
 
-                        <button class="recommand__keyword--btn">
-                            <p>성수 갈비 골목</p>
-                        </button>
+                                <button class="recommand__keyword--btn">
+                                    <p>녹사평 펍</p>
+                                </button>
+                        </div>
 
-                        <button class="recommand__keyword--btn">
-                            <p>녹사평 펍</p>
-                        </button>
-                    </div>
                 </div>
             </div>
 
 
-            <div class="hot__keyword">
-                <div class="hot__keyword--category--container">
-                    <h1>인기 검색어</h1>
-                    <div id="clock">기준</div>
-                </div>
-
-                <div class="hot__keyword--list--container">
-                    <div class="hot__keyword--list">
-                        <ol class="hot__keyword--list--ol">
-                            <div>
-                                <li>성수동</li>
-                                <li>용산 공원</li>
-                                <li>만선호프</li>
-                                <li>신촌 축제</li>
-                                <li>샤로수길</li>
+                    <div class="hot__keyword">
+                            <div class="hot__keyword--category--container">
+                                <h1>인기 검색어</h1>
+                                <div id="clock">기준</div>
                             </div>
 
-                            <div>
-                                <li>성수동</li>
-                                <li>용산 공원</li>
-                                <li>만선호프</li>
-                                <li>신촌 축제</li>
-                                <li>샤로수길</li>
-                            </div>
+                        <div class="hot__keyword--list--container">
+                                <div class="hot__keyword--list">
+                                        <ol class="hot__keyword--list--ol">
+                                                <div>
+                                                    <li>성수동</li>
+                                                    <li>용산 공원</li>
+                                                    <li>만선호프</li>
+                                                    <li>신촌 축제</li>
+                                                    <li>샤로수길</li>
+                                                </div>
 
-                        </ol>
+                                                <div>
+                                                    <li>성수동</li>
+                                                    <li>용산 공원</li>
+                                                    <li>만선호프</li>
+                                                    <li>신촌 축제</li>
+                                                    <li>샤로수길</li>
+                                                </div>
+                                        </ol>
+                                </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
 
             <!--========= 검색어 입력시(엔터전) theme 목록 ==========-->
+            <section class="themeList-section--index">
+                <div class="theme-list--search-modal">
 
-            <div class="search__dynamic--theme">
-                <section class="theme">
-                    <div class="theme__title-box">
+                        <section class="theme" th:each="t:${search}">
+
+                                <div class="theme-box-area">
+                                            <div class="theme-box-pic-area">
+                                                <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
+                                            </div>
+                                    <div class="profile-outter-box">
+
+                                            <div class="profile-pic-id-outter">
+                                                        <div class="profile-pic">
+                                                            <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="">
+                                                        </div>
+                                                        <div class="profile-id-text" th:text="${t.nickname}">
+                                                            innerjoin123
+                                                        </div>
+                                            </div>
+
+                                        <div class="profile-text-area-outter">
+                                                    <div class="profile-text-title-area">
+                                                        <p th:text="${t.title}"></p>
+                                                    </div>
+                                                    <div class="profile-text-contents-area">
+                                                        <p th:text="${t.description}">
+                                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+                                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
+                                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+                                                        </p>
+                                                    </div>
+                                            <div class="profile-status-area">
+                                                    <div th:if="${t.isReserved}">
+                                                            <span class="material-symbols-outlined">
+                                                                event_available
+                                                            </span>
+                                                    </div>
+
+                                                    <div th:if="!${t.isReserved}">
+                                                            <span class="material-symbols-outlined">
+                                                                event_busy
+                                                            </span>
+                                                    </div>
+
+                                                    <div th:if="${t.isReserved}">예약가능</div>
+                                                    <div th:if="!${t.isReserved}">예약중</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </section>
                     </div>
+            </section>
 
-                    <div class="theme__container">
-
-
-
-
-                    </div><!--theme-container-->
-                </section>
-            </div>       <!-- theme End -->
+            </div>
         </div>
     </div>
-</div>
 
 
 
 
-
-
-
-
-
-
-
+</body>
 
 <!-- footer -->
 <footer class="footer">
@@ -488,6 +506,6 @@
 <div th:replace="~{inc/navbar}"></div>
 
 <!-- nav-bar End-->
-</body>
+<!--</body>-->
 
 </html>
