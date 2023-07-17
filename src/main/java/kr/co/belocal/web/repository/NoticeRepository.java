@@ -15,4 +15,6 @@ public interface NoticeRepository {
     List<Notice> getNoticeListById(Integer receiverId);
 
     List<NoticeView> getViewList(Integer receiverId);
+
+    void delete(Integer chatRoomId);
 }
