@@ -22,4 +22,8 @@ public interface ChatRoomRepository {
 
     //채팅방 수락
     ChatRoom isAccept(Integer chatRoomId);
+
+    int findStatus(int memberId, Integer travelThemeId);
+
+    ChatRoom findByIds(int memberId, Integer travelThemeId);
 }
