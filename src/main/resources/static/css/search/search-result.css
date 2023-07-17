@@ -162,15 +162,15 @@ input:focus::-webkit-input-placeholder {color:transparent; }
 
 /*====== 검색어 입력시(엔터전) theme 목록 =====*/
 
-.search__dynamic--theme {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    /* height: 1000px; */
-    margin-bottom: var(--section-margin-bottom);
-}
+/*.search__dynamic--theme {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: flex-start;*/
+/*    align-items: flex-start;*/
+/*    width: 100%;*/
+/*    !* height: 1000px; *!*/
+/*    margin-bottom: var(--section-margin-bottom);*/
+/*}*/
 /*theme 가로 스크롤 설정 영역 */
 .theme {
     display: flex;

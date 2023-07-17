@@ -32,6 +32,15 @@ window.addEventListener("load", () => {
             let data = e.data;
             // let data = JSON.parse(e.data);
 
+            const currentPage = window.location.href;
+            const chatBtn = document.querySelector(".chat-btn");
+            const newNotificationIcon = chatBtn.querySelector(".new-notification");
+
+            if(newNotificationIcon.classList.contains("hidden"))
+                newNotificationIcon.classList.toggle("hidden", currentPage === chatBtn.href);
+
+            console.log(currentPage);
+            console.log(chatBtn.href);
             (async () => {
                 // 브라우저 알림
                 const showNotification = () => {

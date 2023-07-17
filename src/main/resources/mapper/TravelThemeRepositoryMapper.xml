@@ -2,16 +2,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
-
-
-
-
     <select id="findById" resultType="kr.co.belocal.web.entity.TravelTheme">
         SELECT *
         FROM travel_theme
         WHERE id = #{id};
     </select>
-
 
     <!-- ====== member-profile 페이지용 =========== -->
     <select id="findAll" resultType="kr.co.belocal.web.entity.TravelThemeView">
@@ -24,7 +19,6 @@
         limit #{offset}, #{size}
     </select>
 
-
     <!-- ====== main화면 기본 6개 나오는 부분 ================= -->
     <select id="getListForMain" resultType="kr.co.belocal.web.entity.TravelThemeView">
         SELECT *
@@ -34,8 +28,25 @@
         limit #{offset}, #{size}
     </select>
 
-
     <!-- ====== search-modal : 검색용 ================= -->
+    <select id="getListByModalInput" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE
+        title LIKE '%${query}%'
+        OR
+        description LIKE '%${query}%'
+        OR
+        name LIKE '%${query}%'
+        OR
+        lcName LIKE '%${query}%'
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
+
+
+<!-- ====== search-result : 값 입력 & enter ================= -->
     <select id="getListByQuery" resultType="TravelThemeView">
         SELECT *
         FROM
@@ -48,17 +59,57 @@
         name LIKE '%${query}%'
         OR
         lcName LIKE '%${query}%'
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
     </select>
+
+<!--    <select id="getListByCtgId" resultType="TravelThemeView">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme_view-->
+<!--        WHERE ctgId = #{ctgId}-->
+<!--        ORDER BY member_id-->
+<!--        ORDER BY reg_date DESC-->
+<!--        limit #{offset}, #{size}-->
+<!--    </select>-->
+
     <select id="getListByCtgId" resultType="TravelThemeView">
         SELECT *
         FROM
         travel_theme_view
         WHERE ctgId = #{ctgId}
+        ORDER BY member_id
     </select>
 
+    <select id="getListByCtgIdIcons" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE ctgId = #{ctgId}
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
 
-
-
+    <select id="findAllViewByIds" resultType="TravelThemeView">
+        SELECT
+            id,
+            title,
+            description,
+            is_reserved,
+            member_id,
+            bookable_date_start,
+            bookable_date_end,
+            nickname,
+            uuid
+        FROM
+        travel_theme_view
+        WHERE id IN
+            <foreach collection="list" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        GROUP BY id, title, `description`, is_reserved, member_id, bookable_date_start, bookable_date_end, nickname, uuid
+        ORDER BY wishlist_reg_date DESC;
+    </select>
 
     <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">
         INSERT
@@ -84,7 +135,6 @@
         #{contactPreferredTimeEnd}
         )
     </insert>
-
 
     <update id="update" parameterType="kr.co.belocal.web.entity.TravelTheme">
         UPDATE

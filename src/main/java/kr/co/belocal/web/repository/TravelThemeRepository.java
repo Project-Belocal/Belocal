@@ -16,8 +16,13 @@ public interface TravelThemeRepository {
 
 
 //====== search-modal : 검색용 =================
-    List<TravelThemeView> getListByQuery(String query);
+    List<TravelThemeView> getListByModalInput(String query, int offset, int size);
+
+//====== search-result : 값 입력 & enter =================
+    List<TravelThemeView> getListByQuery(String query, int offset, int size);
+//    List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size);
     List<TravelThemeView> getListByCtgId(Integer ctgId);
+    List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size);
 
 
 
@@ -39,5 +44,7 @@ public interface TravelThemeRepository {
 
     // theme 삭제(delete) 하기
     int delete(TravelTheme travelTheme);
+
+    List<TravelThemeView> findAllViewByIds(List<Integer> travelThemeIdList);
 
 }

@@ -35,6 +35,21 @@
     /* overflow: hidden; */
 }
 
+.chat-icon {
+    position: relative;
+}
+
+.new-notification {
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-point-blue);
+}
+
 .navbar__list img {
     width: 22px;
     height: 22px;
@@ -49,4 +64,8 @@
 /* 페이지 최하단에서 콘텐츠를 가리지 않게 하기 위해 main의 하단에 navbar size만큼의 margin 추가 */
 body {
     margin-bottom: 62px;
+}
+
+.hidden {
+    display: none;
 }

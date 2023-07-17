@@ -3,7 +3,6 @@ package kr.co.belocal.web.controller.api;
 
 import kr.co.belocal.web.entity.TravelThemeView;
 import kr.co.belocal.web.service.TravelThemeService;
-import org.springframework.aot.hint.annotation.RegisterReflectionForBinding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,20 +14,34 @@ import java.util.List;
 
 @RestController("apiSearchController")
 @RequestMapping("api/search-result")
-public class SearchController {
+public class SearchResultController {
 
     @Autowired
     private TravelThemeService service;
 
-    @GetMapping("")
-    public ResponseEntity<List<TravelThemeView>> getListByCtgId(
-        @RequestParam(name="ctg") Integer ctgId
-    ){
-        List<TravelThemeView> travelThemeViewList = service.getListByCtgId(ctgId);
+    @GetMapping("") //--- search-result 페이지의 카테고리 아이콘 클릭시 작동하는 부분
+    public ResponseEntity<List<TravelThemeView>> getListByCtgIdIcons(
+            @RequestParam(name = "ctg") Integer ctgId,
+            @RequestParam(name="offset", defaultValue = "0") int offset
+    ) {
 
-        System.out.println("ctgId:"+ctgId);
 
-        return  ResponseEntity.ok().body(travelThemeViewList);
+
+        List<TravelThemeView> travelThemeViewList = null;
+        travelThemeViewList = service.getListByCtgIdIcons(ctgId, offset, 6);
+
+
+        return ResponseEntity.ok().body(travelThemeViewList);
     }
+
+
+
+
+
+
+
+
+
+
 
 }//class
