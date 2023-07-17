@@ -112,15 +112,6 @@ public class TravelThemeController {
             chatRoomStatus = chatRoomService.getStatus(memberId, travelThemeId);
             chatRoom = chatRoomService.getByIds(memberId, travelThemeId);
         }
-        System.out.println("=================");
-        System.out.println("=================");
-        System.out.println("=================");
-        System.out.println("=================");
-        System.err.println(chatRoomStatus);
-        System.out.println("=================");
-        System.out.println("=================");
-        System.out.println("=================");
-        System.out.println("=================");
         
         // Role role = roleService.getByMemberId(memberId);
         // System.out.println(role);
