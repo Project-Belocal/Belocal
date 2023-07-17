@@ -25,13 +25,13 @@
     <!--========= theme__title ============-->
     <section class="theme__title--header--section">
         <div class="theme__title--header">
-            <div  class="theme__title--header--button--before">
+            <a class="theme__title--header--button--before" onclick="window.history.back()">
                 <button>
                     <i class="material-symbols-outlined">
                         navigate_before
                     </i>
                 </button>
-            </div>
+            </a>
 
             <div class="theme__title--header--button--more">
                 <button>
@@ -67,7 +67,21 @@
                     <img src="" alt="" th:src="${placeImage.path}">
                 </li>
             </ul>
+
+            <div class="theme__image-preview__nav-buttons">
+                <div class="theme__image-preview__prev-button">
+                  <img src="/images/icon/left-arrow.svg">
+                </div>
+                <div class="theme__image-preview__next-button">
+                  <img src="/images/icon/right-arrow.svg">
+                </div>
+            </div>
         </section>
+
+        <div class="theme__image-preview__nav-dots">
+            <span class="theme__image-preview__dot" th:each="placeImage : ${placeImageLists1d}"></span>
+        </div>
+
 
         <div class="theme__contents--text--container">
 
@@ -103,7 +117,7 @@
     <section>
         <div class="theme__each-place">
             <div class="theme__each-place--title">
-                <h2>각각의 장소들</h2>
+                <h2>각각의 장소들<hr></h2>
             </div>
 
             <div class="theme__each-place--container">
@@ -113,12 +127,12 @@
                     </div>
 
                     <div class="theme__each-place__attributes">
-                        <div class="theme__each-place__location" th:text="${place.location}">여의도 포장마차</div>
-                        <p class="theme__each-place__description" th:text="${place.description}">빌딩 숲 도심 한복판에서 즐기는 한국식 포차 즐기기
-                            여의도 직장인들의 술 문화 체험하기, 한국 아저씨 문화를 경험해보세요
-                            금융가 직원들의 회식 문화가 궁금하신가요?
-                        </p>
-                        <div class="theme__each-place__category" th:text="${place.category}"></div>
+                        <p class="theme__each-place__description" th:text="${place.description}"></p>
+                        
+                        <div class="theme__each-place__location-category">
+                            <div class="theme__each-place__location" th:text="${place.location}"></div>
+                            <div class="theme__each-place__category" th:text="${place.category}"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,12 +145,12 @@
     <section>
         <div class="host-info">
             <div class="host-info--title">
-                <h1>가이드정보</h1>
+                <h2>가이드정보<hr></h2>
+                
             </div>
 
-            <hr>
 
-            <div class="host-info--pic--id">
+            <a class="host-info--pic--id" th:href="@{/member-profile(i=${uploadMemberId})}">
                 <div class="host-info--pic">
                     <img src="/images/profile-pic.jpg" alt="" th:src="@{https://storage.googleapis.com/belocal-bucket/{profileImage}(profileImage=${profileImage.uuid})}">
                 </div>                                             
@@ -145,7 +159,7 @@
                     <h2 th:text="${member.nickname}">InnerJoin123</h2>
                     <span th:text="${member.userId}">falconpunch@gmail.com</span>
                 </div>
-            </div>
+            </a>
 
             <div class="host-info--self--text">
                 <p th:text="${member.selfIntroduction}">
@@ -158,41 +172,59 @@
     <!--========= 하단 채팅 요청 ============-->
     <section class="theme__detail--reservation--footer">
         <div class="theme__detail--reservation--text--box">
-            <div>
-                예약 가능 날짜
-                <br>
+            <div class="theme__detail__bookable-date">
+                <h2>예약 가능 날짜</h2>
                 <span th:text="${travelTheme.bookableDateStart}"></span>
                 <span>~</span>
                 <span th:text="${travelTheme.bookableDateEnd}"></span> 
             </div>
 
-            <p>
-                연락 가능 시간
-                <br>
+            <div class="theme__detail__preferred-contact-time">
+                <h2>연락 가능 시간</h2>
                 <span th:text="${travelTheme.contactPreferredTimeStart}"></span>
                 <span>~</span>
                 <span th:text="${travelTheme.contactPreferredTimeEnd}"></span> 
-
-            </p>
+            </div>
         </div>
-
-        <button type="button" 
-                class="theme__detail__chat-request"
-                sec:authorize="isAuthenticated()"
-                th:data-travel-theme-id="${travelTheme.id}"
-                th:data-traveler-id="${#authentication.principal.id}"
-                th:data-guide-id="${uploadMemberId}"
-                >
-            <a href="">
-                채팅요청
-            </a>
-        </button>
 
         <button type="button" 
                 class="theme__detail__chat-request not-logined"
                 sec:authorize="isAnonymous()">
             <a href="/login">
-                채팅요청
+                채팅 요청
+            </a>
+        </button>
+
+        <button type="button" 
+                class="theme__detail__chat-request default"
+                sec:authorize="isAuthenticated()"
+                th:data-travel-theme-id="${travelTheme.id}"
+                th:data-traveler-id="${#authentication.principal.id}"
+                th:data-guide-id="${uploadMemberId}"
+                th:if="${chatRoomStatus == 0}"
+        >
+            <a href="" class="font-white">
+                채팅 요청
+            </a>
+        </button>
+
+        <button type="button" 
+                class="theme__detail__chat-request already-sent"
+                sec:authorize="isAuthenticated()"
+                th:if="${chatRoomStatus == 1}"
+        >
+            <a href="" class="font-white">
+                요청 완료
+            </a>
+        </button>
+
+        <button type="button" 
+                class="theme__detail__chat-request accepted"
+                sec:authorize="isAuthenticated()"
+                th:if="${chatRoomStatus == 2}"
+        >
+            <a href="" class="font-blue" th:href="@{/chat/room(id=${chatRoom.id})}">
+                채팅방 이동
             </a>
         </button>
         <!-- <div class="theme__detail--reservation--button--container">
@@ -202,7 +234,6 @@
 
         </div> -->
     </section>
-    
     <section class="wishlist__modal hidden">
         <!-- Modal content -->
         <div class="wishlist__modal__content">

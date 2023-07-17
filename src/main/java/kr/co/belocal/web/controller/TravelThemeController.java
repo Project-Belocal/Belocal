@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.belocal.web.entity.ChatRoom;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.Place;
 import kr.co.belocal.web.entity.PlaceImage;
@@ -21,6 +22,7 @@ import kr.co.belocal.web.entity.Role;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.entity.WishlistGroup;
 import kr.co.belocal.web.entity.WishlistGroupView;
+import kr.co.belocal.web.service.ChatRoomService;
 import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.PlaceImageService;
 import kr.co.belocal.web.service.PlaceService;
@@ -55,6 +57,9 @@ public class TravelThemeController {
 
     @Autowired
     private ProfileImageService profileImageService;
+
+    @Autowired
+    private ChatRoomService chatRoomService;
 
     @Autowired
     private RoleService roleService;
@@ -97,12 +102,26 @@ public class TravelThemeController {
 
         int isAlreadyOnWishlist = 0;
         List<WishlistGroupView> wishlistGroupViewList = null;
+        Integer chatRoomStatus = null;
+        ChatRoom chatRoom = null;
+
         if(member != null) {
             int memberId = member.getId();
             isAlreadyOnWishlist = wishlistGroupService.getStatus(travelThemeId, memberId);
             wishlistGroupViewList = wishlistGroupService.getViewListByMemberId(memberId);
+            chatRoomStatus = chatRoomService.getStatus(memberId, travelThemeId);
+            chatRoom = chatRoomService.getByIds(memberId, travelThemeId);
         }
-             
+        System.out.println("=================");
+        System.out.println("=================");
+        System.out.println("=================");
+        System.out.println("=================");
+        System.err.println(chatRoomStatus);
+        System.out.println("=================");
+        System.out.println("=================");
+        System.out.println("=================");
+        System.out.println("=================");
+        
         // Role role = roleService.getByMemberId(memberId);
         // System.out.println(role);
         model.addAttribute("uploadMemberId", uploadMemberId);
@@ -115,6 +134,8 @@ public class TravelThemeController {
         model.addAttribute("isAlreadyOnWishlist", isAlreadyOnWishlist);
         model.addAttribute("wishlistGroupViewList", wishlistGroupViewList);
         model.addAttribute("profileImage", profileImage);
+        model.addAttribute("chatRoomStatus", chatRoomStatus);
+        model.addAttribute("chatRoom", chatRoom);
         return "theme/theme-detail";
     }
 }
