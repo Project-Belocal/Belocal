@@ -46,6 +46,28 @@
         SELECT * FROM chat_room WHERE id = #{id}
     </select>
 
+    <select id="findStatus" resultType="int">
+        SELECT
+            CASE
+                WHEN COUNT(*) = 0 THEN 0
+                WHEN SUM(is_accepted = 0) > 0 THEN 1
+                ELSE 2
+            END AS result
+        FROM
+            chat_room
+        WHERE
+            travel_theme_id = #{travelThemeId} AND traveler_id = #{memberId};
+    </select>
+    
+    <select id="findByIds" resultType="ChatRoom">
+        SELECT 
+            *
+        FROM
+            chat_room
+        WHERE
+            travel_theme_id = #{travelThemeId} AND traveler_id = #{memberId};
+    </select>
+
     <!--채팅방 나가기-->
     <update id="deletedRoom" parameterType="ChatRoom">
         UPDATE chat_room

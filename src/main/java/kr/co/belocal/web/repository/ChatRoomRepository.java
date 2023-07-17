@@ -33,4 +33,7 @@ public interface ChatRoomRepository {
     //채팅방 거절
     void isReject(Integer chatRoomId);
 
+    int findStatus(int memberId, Integer travelThemeId);
+
+    ChatRoom findByIds(int memberId, Integer travelThemeId);
 }

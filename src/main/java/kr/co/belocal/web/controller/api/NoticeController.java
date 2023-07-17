@@ -61,7 +61,12 @@ public class NoticeController {
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody Notice notice) {
         int result = noticeService.append(notice);
-        return new ResponseEntity<Object>(notice, HttpStatus.OK);
+
+        if(result == 1) 
+            return new ResponseEntity<Object>(notice, HttpStatus.OK);
+
+        
+        return new ResponseEntity<Object>(null, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/request")

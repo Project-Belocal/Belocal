@@ -2,6 +2,8 @@ package kr.co.belocal.web.service;
 
 import kr.co.belocal.web.entity.ChatLog;
 import kr.co.belocal.web.entity.ChatRoomListView;
+import kr.co.belocal.web.entity.TravelTheme;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,6 +75,18 @@ public class ChatRoomServiceImp implements ChatRoomService {
     @Override
     public void isReject(Integer chatRoomId) {
         repository.isReject(chatRoomId);
+    }
+
+
+    @Override
+    public int getStatus(int memberId, Integer travelThemeId) {
+        return repository.findStatus(memberId, travelThemeId);
+    }
+
+
+    @Override
+    public ChatRoom getByIds(int memberId, Integer travelThemeId) {
+        return repository.findByIds(memberId, travelThemeId);
     }
 
 
