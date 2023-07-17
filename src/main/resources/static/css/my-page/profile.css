@@ -203,6 +203,7 @@
 
 .my__deal-tap{
     margin-top: var(--section-margin-bottom);
+    margin-bottom: var(--section-margin-bottom);
 }
 
 .my__deal-list{
@@ -253,21 +254,55 @@
 }
 
 /*배너창*/
-.banner{
+/* ============= 배너 ============= */
+.slide__conatiner {
     position: relative;
-    margin-top: 42px;
-    margin-bottom: 42px;
-    height: 200px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    object-fit: cover;
+    height: 230px;
     overflow: hidden;
 }
 
-.banner img{
-    width: 100%;
+.slide__list {
     height: 100%;
+    overflow: hidden;
+
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    height: 100%;
+    font-size: 120px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease;
+
+}
+
+.slide a{
+    width: 390px;
+    height: 230px;
+}
+.slide img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+/* btn control */
+.slide__controler {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    z-index: 1;
+}
+
+.slide__controler button {
+    width: 40px;
+    height: 40px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid cornflowerblue;
 }
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
@@ -303,6 +338,7 @@
     animation-name: slideIn;
     animation-duration: 0.4s
 }
+
 
 /* close */
 .modal__close{
