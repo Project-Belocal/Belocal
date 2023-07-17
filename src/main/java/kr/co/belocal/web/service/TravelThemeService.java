@@ -13,11 +13,21 @@ public interface TravelThemeService {
     List<TravelThemeView> getListByMemberId(Integer id, int offset);
 
 //====== main화면 기본 6개 나오는 부분 =================
-//    List<TravelThemeView> getListForMain(int offset);
+    List<TravelThemeView> getListForMain(int offset, int size);
 
 //====== search-modal : 검색용 =================
-    List<TravelThemeView> getListByQuery(String query);
+    List<TravelThemeView> getListByModalInput(String query, int offset, int size);
+
+//====== search-result : 값 입력 & enter =================
+    List<TravelThemeView> getListByQuery(String query, int offset, int size);
+
+
+//====== index : 기본 6개 =================
+//    List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size);
     List<TravelThemeView> getListByCtgId(Integer ctgId);
+
+
+    List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size);
 
 
 

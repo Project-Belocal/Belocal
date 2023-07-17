@@ -30,7 +30,7 @@ public class MemberController {
 
     @GetMapping("member-profile")
     public String getMemberProfile(
-            @RequestParam(name = "i", required = false, defaultValue="1")Integer id,
+            @RequestParam(name = "i", required = false, defaultValue="2")Integer id,
             @RequestParam(name = "offset", defaultValue = "0") int offset, Model model){
 
         Member memberProfile = memberService.getById(id);

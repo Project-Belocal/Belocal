@@ -30,20 +30,35 @@ public class TravelThemeServiceImp implements TravelThemeService {
 
 
 //====== main화면 기본 6개 나오는 부분 =================
-//    @Override
-//    public List<TravelThemeView> getListForMain(int offset) {
-//        return repository.getListForMain(offset, 6);
-//    }
+    @Override
+    public List<TravelThemeView> getListForMain(int offset, int size) {
+        return repository.getListForMain(offset,  size);
+    }
 
 //====== search-modal : 검색용 =================
     @Override
-    public List<TravelThemeView> getListByQuery(String query){
-        return repository.getListByQuery(query);
+    public List<TravelThemeView> getListByModalInput(String query, int offset, int size){
+        return repository.getListByModalInput(query, offset, size);
+    }
+
+
+//====== search-result : 값 입력 & enter =================
+    @Override
+    public List<TravelThemeView> getListByQuery(String query, int offset, int size){
+        return repository.getListByQuery(query, offset, size);
+    }
+//====== search-result : 카테고리 아이콘 클릭시  =================
+//    @Override
+//    public List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size) {
+//        return repository.getListByCtgId(ctgId, offset, size);
+//    }
+    @Override
+    public List<TravelThemeView> getListByCtgId(Integer ctgId) {
+        return repository.getListByCtgId(ctgId);
     }
     @Override
-    public List<TravelThemeView> getListByCtgId(Integer ctgId){
-
-        return repository.getListByCtgId(ctgId);
+    public List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size) {
+        return repository.getListByCtgIdIcons(ctgId, offset, size);
     }
 
 
