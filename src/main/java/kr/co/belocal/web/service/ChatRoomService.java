@@ -1,8 +1,6 @@
 package kr.co.belocal.web.service;
 
-import kr.co.belocal.web.entity.ChatRoom;
-import kr.co.belocal.web.entity.ChatRoomListView;
-import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.entity.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -19,8 +17,15 @@ public interface ChatRoomService {
 
     //채팅방 리스트 조회
     List<ChatRoomListView> findAll(Integer memberId) throws ParseException;
+    //채팅방 입장시 메세지 생성
+    void addEnterMessage(ChatLog chatLog);
 
-    ChatRoom isAccepte(Integer chatRoomId);
+    //채팅수락
+    void isAccept(Integer chatRoomId);
+    //채팅거절
+    void isReject(Integer chatRoomId);
+    //채팅요청가져오기
+    List<chatRequestListView> requestList(Integer memberId);
 
     int getStatus(int memberId, Integer travelThemeId);
 

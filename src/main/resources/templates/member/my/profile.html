@@ -52,7 +52,7 @@
                 <ul class="my__tab-list">
                     <li class="my__tab-item">
                         <a class="my__tab-link" href="#">
-                            <span class="my__tab-count">1</span>
+                            <span class="my__tab-count" th:text="${themeCount}">1</span>
                             <span class="my__tab-menu">themes</span>
                         </a>
                     </li>
@@ -128,53 +128,27 @@
                     <img src="../images/icon/x-black.svg" alt="">
                 </button>
                 <!-- 모달 목록 -->
-                <div class="modal__item-list">
+
+                <div class="modal__item-list" th:each="rl:${reqList}">
                     <!-- 모달 내용 -->
-                    <a class="modal__item" href="#">
+                    <a class="modal__item" href="#" th:href="@{'/theme/theme-detail?id='+${rl.travelThemeId}}">
                         <!-- 유저 프로필 -->
                         <div class="modal__profile">
                             <div class="modal__profile-img">
-                                <img src="../images/profile-pic.jpg" alt="">
+                                <img  th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${rl.uuid}}"
+                                        src="../images/profile-pic.jpg" alt="">
                             </div>
                             <div class="modal__name">
-                                <span>유저아이디입nida</span>
+                                <span th:text="${rl.nickname}">유저아이디입nida</span>
                             </div>
                         </div>
                         <!-- 글정보 -->
                         <div class="modal__content">
                             <div class="modal__title">
-                                <h2>theme 제목 나옴</h2>
+                                <h2 th:text="${rl.title}">theme 제목 나옴</h2>
                             </div>
                             <div class="modal__text">
-                                <span>theme 내용 </span>
-                            </div>
-                            <div class="modal__book">
-                                <div class="modal__book-icon">
-                                    <img src="../images/icon/reservation-not.svg" alt="">
-                                </div>
-                                <div class="modal__book-state">
-                                    <span>예약가능</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="modal__item" href="#">
-                        <!-- 유저 프로필 -->
-                        <div class="modal__profile">
-                            <div class="modal__profile-img">
-                                <img src="../images/profile-pic.jpg" alt="">
-                            </div>
-                            <div class="modal__name">
-                                <span>유저아이디입nida</span>
-                            </div>
-                        </div>
-                        <!-- 글정보 -->
-                        <div class="modal__content">
-                            <div class="modal__title">
-                                <h2>theme 제목 나옴</h2>
-                            </div>
-                            <div class="modal__text">
-                                <span>theme 내용 </span>
+                                <span  th:text="${rl.description}">theme 내용 </span>
                             </div>
                             <div class="modal__book">
                                 <div class="modal__book-icon">
@@ -189,16 +163,38 @@
                 </div>
             </div>
         </div>
-</main>
-    <div class="banner">
-        <ul class="banner__wrap">
-            <li><img src="/images/newlecImg.png"></li>
-            <li><img src="/images/choco-cake.jpg"></li>
-            <li><img src="/images/index-city.jpg" ></li>
-            <li><img src="/images/location01.jpg" ></li>
-            <li><img src="/images/profile-pic.jpg" ></li>
-        </ul>
-</div>
+
+
+        <!--slide 영역-->
+        <div class="slide__conatiner">
+            <div class="slide__list">
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location01.jpg" alt="test">
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location02.jpg" alt="test">
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location03.jpg" alt="test">
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location04.jpg" alt="test">
+                    </a>
+                </div>
+            </div>
+            <div class="slide__controler hidden" >
+                <button class="btn__prev">prev</button>
+                <button class="btn__next">next</button>
+            </div>
+        </div>
+
     <footer>
         <div class="info__wrap">
             <div class="info__item">
@@ -215,10 +211,12 @@
             </div>
         </div>
     </footer>
+    <div th:replace="inc/navbar"></div>
+</main>
+
 
 
 <!-- nav-bar -->
-<div th:replace="inc/navbar"></div>
 <!-- nav-bar End-->
 <input
         class="member__id"

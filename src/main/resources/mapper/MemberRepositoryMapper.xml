@@ -69,4 +69,14 @@
         SELECT * FROM profile_image WHERE member_id = #{memberId}
     </select>
 
+
+    <update id="withdrawal" parameterType="Member">
+        UPDATE member
+        <set>
+            is_withdrawl = #{isWithdrawl}
+        </set>
+        WHERE id = #{id};
+    </update>
+
+
 </mapper>

@@ -33,6 +33,11 @@ public class NoticeServiceImpl implements NoticeService {
     public List<NoticeView> getViewList(Integer receiverId) {
         return noticeRepository.getViewList(receiverId);
     }
+
+    @Override
+    public void deleted(Integer chatRoomId) {
+        noticeRepository.delete(chatRoomId);
+    }
 }
 
 

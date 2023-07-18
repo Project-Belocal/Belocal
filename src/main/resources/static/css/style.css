@@ -92,7 +92,7 @@ h3 {
 
 p {
     font-size: var(--font-size-small10);
-    font-weight: var(--font-weight-light);
+    /*font-weight: var(--font-weight-light);*/
     color: var(--color-text-black);
     margin: 4px 0;
 }

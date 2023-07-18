@@ -134,13 +134,16 @@
             </div>
             <input type="hidden" name="id" th:value="${#authentication.principal.id}">
         </form>
-        <form action="" method="post">
-                <div class="edit__withdrawal">
-                    <button type="submit">
-                        <span>회원탈퇴</span>
-                    </button>
-                </div>
-        </form>
+
+        <div class="edit__withdrawal">
+            <button >
+                <span>회원탈퇴</span>
+            </button>
+        </div>
+
+        <div id="layer" class="layer">
+
+        </div>
 
     </div>
 

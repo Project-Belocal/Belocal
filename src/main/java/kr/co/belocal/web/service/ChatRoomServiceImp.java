@@ -1,12 +1,10 @@
 package kr.co.belocal.web.service;
 
-import kr.co.belocal.web.entity.ChatRoomListView;
-import kr.co.belocal.web.entity.TravelTheme;
+import kr.co.belocal.web.entity.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.belocal.web.entity.ChatRoom;
 import kr.co.belocal.web.repository.ChatRoomRepository;
 
 import java.text.ParseException;
@@ -61,8 +59,24 @@ public class ChatRoomServiceImp implements ChatRoomService {
     }
 
     @Override
-    public ChatRoom isAccepte(Integer chatRoomId) {
-        return repository.isAccept(chatRoomId);
+    public void addEnterMessage(ChatLog chatLog) {
+        repository.addEnterMessage(chatLog);
+    }
+
+
+    @Override
+    public void isAccept(Integer chatRoomId) {
+        repository.isAccept(chatRoomId);
+    }
+
+    @Override
+    public void isReject(Integer chatRoomId) {
+        repository.isReject(chatRoomId);
+    }
+
+    @Override
+    public List<chatRequestListView> requestList(Integer memberId) {
+        return repository.getRequestList(memberId);
     }
 
 

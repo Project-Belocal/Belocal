@@ -1,9 +1,12 @@
 package kr.co.belocal.web.controller.api;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.belocal.web.entity.ChatRoom;
+import kr.co.belocal.web.entity.ChatRoomListView;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.ProfileImage;
 import kr.co.belocal.web.service.AuthService;
+import kr.co.belocal.web.service.ChatRoomService;
 import kr.co.belocal.web.service.FileService;
 import kr.co.belocal.web.service.MemberService;
 import kr.co.belocal.web.service.security.MemberDetails;
@@ -17,6 +20,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -41,6 +46,8 @@ public class MyPageController {
     private MemberDetailsService memberDetailsService;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private ChatRoomService chatRoomService;
 
 
     @PostMapping("/duplicateNickname")
@@ -104,4 +111,18 @@ public class MyPageController {
 
         return "200";
     }
+
+
+    //회원탈퇴
+    @PostMapping("/withdrawal/{id}")
+    public String withdrawal(
+            @PathVariable("id") Integer id
+    ){
+        int status =  memberService.withdrawal(id);
+
+
+        return "200";
+    }
+
+
 }
