@@ -78,15 +78,15 @@
 
                 <!-- 탭2 알림 페이지 -->
                 <div class="message__notice data hidden" >
-                    <div class="message__notice-wrap">
-                        <span>엄준식12세님이 채팅요청을 거절했습니다.</span>
-                        <span>2023-05-12 17:30</span>
-                    </div>
+<!--                    <div class="message__notice-wrap">-->
+<!--                        <span>엄준식12세님이 채팅요청을 거절했습니다.</span>-->
+<!--                        <span>2023-05-12 17:30</span>-->
+<!--                    </div>-->
 
-                    <div class="message__notice-wrap">
-                        <span>파카님이 채팅요청을 수락했습니다.</span>
-                        <span>2023-05-12 17:30</span>
-                    </div>
+<!--                    <div class="message__notice-wrap">-->
+<!--                        <span>파카님이 채팅요청을 수락했습니다.</span>-->
+<!--                        <span>2023-05-12 17:30</span>-->
+<!--                    </div>-->
 
                     <div class="message__notice-wrap" th:each="nl:${noticeList}">
                         <span th:text="${nl.nickname + '님이 채팅을 신청하였습니다.'}"></span>

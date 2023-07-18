@@ -86,9 +86,13 @@
         WHERE id = #{chatRoomId}
     </update>
 
-    <delete id="isReject" >
+    <!--채팅방 거절-->
+    <delete id="isReject">
         delete from chat_room where id = #{id}
     </delete>
 
+    <select id="getRequestList" parameterType="chatRequestListView">
+        SELECT * FROM chat_request_list_view where traveler_id = #{travelerId};
+    </select>
 
 </mapper>

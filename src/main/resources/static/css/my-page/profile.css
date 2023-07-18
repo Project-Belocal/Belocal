@@ -1,9 +1,15 @@
-
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* header 전체 영역 */
 .my-page-header{
     display: flex;
     align-items: center;
+    width: 100%;
     max-width: 390px;
     height: 136px;
     gap: 12px;

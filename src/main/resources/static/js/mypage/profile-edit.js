@@ -1,5 +1,6 @@
 window.addEventListener("load",function (){
     const memberId = document.querySelector(".member__id");
+    const undoBtn = document.querySelector(".edit__undo");
 
     //닉네임 체크
     const inputNickname = document.querySelector(".nickname");
@@ -33,10 +34,18 @@ window.addEventListener("load",function (){
     const deletedImg = document.querySelector(".delete-btn");
     const defaultImagePath = '../images/icon/user.svg';
 
+    //회원탈퇴버튼
+    const withdrawalBtn = document.querySelector(".edit__withdrawal");
 
     let nicknameCheck = false;
     let currentPwCheck = false;
     let id = memberId.value;
+
+    //뒤로가기 버튼
+    undoBtn.onclick = function (){
+        history.back();
+    }
+
 
 
     //닉네임 중복 체크
@@ -303,4 +312,70 @@ window.addEventListener("load",function (){
         upFile.files = defaultImagePath;
     })
 
+
+    const withdrawModal = document.querySelector(".layer")
+
+    let modalTemp = `
+            <div class="layer_wrap dimmed ">
+                <div class="layer_common layer_alert">
+                    <h3 class="layer_title">정말로 계정을 삭제하시겠습니까?</h3>
+                    <strong class="layer_message">계정의 모든 정보는 영구 삭제 되어<br>복구할 수 없습니다.</strong>
+                    <div class="button_area">
+                        <button type="button" class="button_layer_cancel">취소</button>
+                        <button type="button" class="button_layer_confirm">확인</button>
+                    </div>
+                </div>
+            </div>
+    `
+
+    let complete = `
+                <div class="layer_wrap dimmed ">
+                <div class="layer_common layer_alert">
+                    <h3 class="layer_title">회원탈퇴가 완료되었습니다.</h3>
+                    <strong class="layer_message">그동안 BeLocal을 이용해 주셔서 감사합니다.</strong>
+                    <div class="button_area">
+                        <button type="button" class="button_layer_confirm complete">확인</button>
+                    </div>                    
+                </div>
+            </div>
+    `
+
+    //회원탈퇴
+    withdrawalBtn.onclick = function (){
+        withdrawModal.insertAdjacentHTML("afterbegin", modalTemp);
+
+        const cancelButton = document.querySelector(".button_layer_cancel")
+        const confirmButton = withdrawModal.querySelector(".button_layer_confirm");
+
+        confirmButton.addEventListener("click", handleWithdrawalConfirm);
+        cancelButton.addEventListener("click",handleWithdrawalCancel)
+
+    }
+
+    function handleWithdrawalConfirm(){
+
+        fetch(`/my/api/mys/withdrawal/${id}`,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/JSON"
+            }
+        })
+            .then(response=>response.status)
+            .then(data=>{
+                if (data===200){
+                    withdrawModal.innerHTML = "";
+                    withdrawModal.insertAdjacentHTML("afterbegin", complete)
+                    const completeBtn = document.querySelector(".complete");
+                    completeBtn.addEventListener('click',handleWithdrawalComplete)
+                }
+            });
+    }
+
+    function handleWithdrawalCancel(){
+        withdrawModal.innerHTML = "";
+    }
+
+    function handleWithdrawalComplete(){
+        window.location.href = "/logout";
+    }
 })

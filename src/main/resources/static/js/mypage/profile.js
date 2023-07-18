@@ -33,6 +33,40 @@ window.addEventListener('load', function () {
                     </div>`
 
     
+
+    
+    
+    
+    dealList.onclick = function (e) {
+
+        let clickedButton = e.target.closest('button');
+        if (!clickedButton)
+            return;
+
+        let isItem1 = clickedButton.classList.contains('item1');
+        let validItem = isItem1
+
+        if (!validItem) {
+            return;
+        }
+
+        if (isItem1) {
+
+            // 모달창에 요청사항 내용을 출력
+            modalBg.classList.toggle('hidden');
+        }
+    };
+
+    modalBg.onclick = function (e) {
+        if (e.target === modalBg) {
+            modalBg.classList.toggle('hidden');
+        }
+    };
+
+    modalClose.onclick = function () {
+        modalBg.classList.toggle('hidden');
+    };
+
     roleBtn.addEventListener("click",function (e){
         e.preventDefault();
 
@@ -52,38 +86,6 @@ window.addEventListener('load', function () {
                 }
             })
     })
-    
-    
-    
-    dealList.onclick = function (e) {
-        let clickedButton = e.target.closest('button');
-        if (!clickedButton)
-            return;
-
-        let isItem1 = clickedButton.classList.contains('item1');
-        let validItem = isItem1
-
-        if (!validItem) {
-            return;
-        }
-
-        if (isItem1) {
-            // 모달창에 요청사항 내용을 출력
-            modalBg.classList.toggle('hidden');
-        }
-    };
-
-    modalBg.onclick = function (e) {
-        if (e.target === modalBg) {
-            modalBg.classList.toggle('hidden');
-        }
-    };
-
-    modalClose.onclick = function () {
-        modalBg.classList.toggle('hidden');
-    };
-
-
 
 
 });

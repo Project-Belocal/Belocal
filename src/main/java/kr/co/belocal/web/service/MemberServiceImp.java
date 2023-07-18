@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -102,6 +101,16 @@ public class MemberServiceImp implements MemberService{
     @Override
     public ProfileImage getProfileImg(Integer memberId) {
         return memberRepository.getProfileImg(memberId);
+    }
+
+    @Override
+    public int withdrawal(Integer memberId) {
+        Member member = Member.builder()
+                .id(memberId)
+                .isWithdrawl(2)
+                .build();
+
+        return memberRepository.withdrawal(member);
     }
 
 }//class

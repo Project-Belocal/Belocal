@@ -3,6 +3,7 @@ package kr.co.belocal.web.repository;
 import kr.co.belocal.web.entity.ChatLog;
 import kr.co.belocal.web.entity.ChatRoom;
 import kr.co.belocal.web.entity.ChatRoomListView;
+import kr.co.belocal.web.entity.chatRequestListView;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -36,4 +37,8 @@ public interface ChatRoomRepository {
     int findStatus(int memberId, Integer travelThemeId);
 
     ChatRoom findByIds(int memberId, Integer travelThemeId);
+
+    List<chatRequestListView> getRequestList(Integer memberId);
+
+
 }

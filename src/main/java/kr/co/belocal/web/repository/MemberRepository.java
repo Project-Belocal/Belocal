@@ -15,4 +15,6 @@ public interface MemberRepository {
     void updateProfileImg(ProfileImage profileImage);
 
     ProfileImage getProfileImg(Integer memberId);
+
+    int withdrawal(Member member);
 }

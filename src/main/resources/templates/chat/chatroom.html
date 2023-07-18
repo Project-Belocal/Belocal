@@ -125,11 +125,11 @@
     <div id="messageArea" class="room__chat-wrap">
         <div th:each="log:${chatLog}">
             <div class="enter__notice" th:if="${log.memberId==91}">
-                <div th:if="${#authentication.principal.id == log.guideId}">
-                    <div th:text="${log.travelerNickname + log.message}"></div>
+                <div class="enter__userInfo" th:if="${#authentication.principal.id == log.guideId}">
+                    <span th:text="${log.travelerNickname + log.message}"></span>
                 </div>
-                <div th:if="${#authentication.principal.id == log.travelerId}">
-                    <div th:text="${log.guideNickname + log.message}"></div>
+                <div class="enter__userInfo" th:if="${#authentication.principal.id == log.travelerId}">
+                    <span th:text="${log.guideNickname + log.message}"></span>
                 </div>
             </div>
 
