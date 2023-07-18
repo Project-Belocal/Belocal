@@ -57,7 +57,7 @@
                                         <div th:text="${cl.travelerNickname + cl.message}"></div>
                                     </div>
                                     <div th:if="${#authentication.principal.id == cl.travelerId}">
-                                        <div th:text="${cl.guideNickname + log.message}"></div>
+                                        <div th:text="${cl.guideNickname + cl.message}"></div>
                                     </div>
                                 </div>
 
