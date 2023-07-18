@@ -24,8 +24,8 @@ public class TravelThemeServiceImp implements TravelThemeService {
 
 //====== member-profile 페이지 용 =================
     @Override
-    public List<TravelThemeView> getListByMemberId(Integer id, int offset) {
-        return repository.findAll(id, offset, 6);
+    public List<TravelThemeView> getListByMemberId(Integer id, int offset, int size) {
+        return repository.findAllByMemberId(id, offset, size);
     }
 
 
@@ -36,37 +36,34 @@ public class TravelThemeServiceImp implements TravelThemeService {
     }
 
 //====== search-modal : 검색용 =================
-    @Override
-    public List<TravelThemeView> getListByModalInput(String query, int offset, int size){
-        return repository.getListByModalInput(query, offset, size);
-    }
+//    @Override
+//    public List<TravelThemeView> getListByModalInput(String query, int offset, int size){
+//        return repository.getListByModalInput(query, offset, size);
+//    }
 
 
 //====== search-result : 값 입력 & enter =================
-    @Override
-    public List<TravelThemeView> getListByQuery(String query, int offset, int size){
-        return repository.getListByQuery(query, offset, size);
-    }
+
 //====== search-result : 카테고리 아이콘 클릭시  =================
 //    @Override
 //    public List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size) {
 //        return repository.getListByCtgId(ctgId, offset, size);
 //    }
+
+    ////====== api/ travelTemeController=================
     @Override
-    public List<TravelThemeView> getListByCtgId(Integer ctgId) {
-        return repository.getListByCtgId(ctgId);
+    public List<TravelThemeView> getListByQuery(String query, int offset, int size){
+        return repository.findAll(null, query, offset, size);
     }
     @Override
-    public List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size) {
-        return repository.getListByCtgIdIcons(ctgId, offset, size);
+    public List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size) {
+        return repository.findAll(ctgId,null, offset, size);
     }
-
-
-
     @Override
-    public List<TravelTheme> getList() {
-        return null;
+    public List<TravelThemeView> getList(int offset, int size) {
+        return repository.findAll(null, null, offset, size);
     }
+
 
 
 
