@@ -36,16 +36,18 @@ textarea {
   transform: translateY(-50%);
 }
 
-.header__prev-button.hidden {
-  display: none;
-}
-
 .header__prev-button img {
   width: 12px;
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(292deg) brightness(104%) contrast(103%);
 }
 
-.header__title {
+.header-contents {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-contents__title {
   font-size: 20px;
   font-weight: bold;
 }
