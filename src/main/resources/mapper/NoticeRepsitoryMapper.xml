@@ -30,4 +30,12 @@
         and is_accepted = 0
         order by created_date DESC
     </select>
+
+    <delete id="delete">
+        delete from notice where chat_room_id = #{chatRoomId}
+    </delete>
+
+    <select id="getCount" parameterType="Integer">
+        SELECT count(*) FROM notice where sender_id = #{senderId}
+    </select>
 </mapper>

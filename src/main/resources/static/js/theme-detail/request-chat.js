@@ -8,6 +8,9 @@ window.addEventListener("load", () => {
         if(chatRequestBtn.classList.contains("accepted"))
             return;
 
+        if(chatRequestBtn.querySelector("a").classList.contains("isMine"))
+            return;
+            
         e.preventDefault();
 
         if(chatRequestBtn.classList.contains("already-sent"))

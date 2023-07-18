@@ -14,11 +14,13 @@
 
 <body>
   <header>
-    <div class="header__prev-button hidden">
+    <a class="header__prev-button" href="/my">
       <img src="/images/icon/left-arrow.svg">
-    </div>
+    </a>
 
-    <h1 class="header__title">테마 등록하기</h1>
+    <div class="header-contents">
+      <h1 class="header-contents__title">테마 등록하기</h1>
+    </div>
   </header>
 
   <main>
@@ -205,6 +207,9 @@
       </div>
     </div>
   </section>
+
+  <div th:replace="~{inc/navbar}"></div>
+
 </body>
 
 </html>

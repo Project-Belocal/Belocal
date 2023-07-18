@@ -51,9 +51,20 @@
                                     <span th:text="${#authentication.principal.id == cl.travelerId
                                     ? cl.guideNickname:cl.travelerNickname}"></span>
                                 </div>
-                                <div class="message__content">
+
+                                <div class="message__content" th:if="${cl.sender==91}">
+                                    <div th:if="${#authentication.principal.id == cl.guideId}">
+                                        <div th:text="${cl.travelerNickname + cl.message}"></div>
+                                    </div>
+                                    <div th:if="${#authentication.principal.id == cl.travelerId}">
+                                        <div th:text="${cl.guideNickname + cl.message}"></div>
+                                    </div>
+                                </div>
+
+                                <div class="message__content" th:if="${cl.sender!=91}">
                                     <span th:text="${cl.message}"></span>
                                 </div>
+
                                 <div class="message__date">
                                     <span th:text="${cl.regDate}"></span>
                                 </div>
@@ -67,15 +78,15 @@
 
                 <!-- 탭2 알림 페이지 -->
                 <div class="message__notice data hidden" >
-                    <div class="message__notice-wrap">
-                        <span>엄준식12세님이 채팅요청을 거절했습니다.</span>
-                        <span>2023-05-12 17:30</span>
-                    </div>
+<!--                    <div class="message__notice-wrap">-->
+<!--                        <span>엄준식12세님이 채팅요청을 거절했습니다.</span>-->
+<!--                        <span>2023-05-12 17:30</span>-->
+<!--                    </div>-->
 
-                    <div class="message__notice-wrap">
-                        <span>파카님의 채팅요청을 수락했습니다.</span>
-                        <span>2023-05-12 17:30</span>
-                    </div>
+<!--                    <div class="message__notice-wrap">-->
+<!--                        <span>파카님이 채팅요청을 수락했습니다.</span>-->
+<!--                        <span>2023-05-12 17:30</span>-->
+<!--                    </div>-->
 
                     <div class="message__notice-wrap" th:each="nl:${noticeList}">
                         <span th:text="${nl.nickname + '님이 채팅을 신청하였습니다.'}"></span>

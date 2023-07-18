@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/index/footer.css">
     <link rel="stylesheet" href="/css/index/theme.css">
     <link rel="stylesheet" href="/css/search/search-modal.css">
-<!--    <link rel="stylesheet" href="/css/search/search-result.css">-->
+    <!--    <link rel="stylesheet" href="/css/search/search-result.css">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
@@ -31,24 +31,24 @@
 
 <body>
 
-    <header>
-        <div class="header__wrap">
-            <div class="header__img">
-                <img src="./images/index-city.jpg" alt="">
-            </div>
+<header>
+    <div class="header__wrap">
+        <div class="header__img">
+            <img src="./images/index-city.jpg" alt="">
+        </div>
 
-            <div class="header__search">
+        <div class="header__search">
                 <span class="material-symbols-outlined">
                     search
                 </span>
 
-                <button id="open">
-                    <p>을지로</p>
-                </button>
+            <button id="open">
+                <p>을지로</p>
+            </button>
 
-            </div><!--header__search-->
-        </div><!--header__wrap-->
-    </header>
+        </div><!--header__search-->
+    </div><!--header__wrap-->
+</header>
 
 <main>
     <!-- category -->
@@ -59,20 +59,20 @@
         </div>
     </section>
 
-        <section class="category__items-box">
+    <section class="category__items-box">
 
-                <button class="category__item" th:each="ctg : ${ctgList}">
-                    <a href="" th:href="@{/search-result(ctg=${ctg.id})}" />
-                    <div class="category-box">
+        <button class="category__item" th:each="ctg : ${ctgList}">
+            <a href="" th:href="@{/search-result(ctg=${ctg.id})}"/>
+            <div class="category-box">
                         <span class="material-symbols-outlined" th:text="${ctg.icons}">
                             liquor
                         </span>
-                    </div>
-                    <p class="category__text" th:text="${ctg.name}">liquor</p>
-                    </a>
-                </button>
+            </div>
+            <p class="category__text" th:text="${ctg.name}">liquor</p>
+            </a>
+        </button>
 
-        </section><!--category__items-box-->
+    </section><!--category__items-box-->
     <!-- category End-->
 
     <!-- theme -->
@@ -81,13 +81,12 @@
     <!-- TODO 3. text 일정 길이 이상이면 ...으로 변하게 수정 -->
     <!-- TODO 4. 하단 border 안 나오는 오류 수정 -->
 
-<!--        &lt;!&ndash; 바로 위 섹션과의 간격 밑 title-box와 container와의 간격 조절 해야됨 &ndash;&gt;-->
-<!--        &lt;!&ndash; profile-text-contents-area 영역 내 문장이 밑의 예약가능 부분과 겹쳐짐-->
-<!--        그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 &ndash;&gt;-->
+    <!--        &lt;!&ndash; 바로 위 섹션과의 간격 밑 title-box와 container와의 간격 조절 해야됨 &ndash;&gt;-->
+    <!--        &lt;!&ndash; profile-text-contents-area 영역 내 문장이 밑의 예약가능 부분과 겹쳐짐-->
+    <!--        그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 &ndash;&gt;-->
 
 
-
-<!-- ======== 영역 제목 부분 ======== -->
+    <!-- ======== 영역 제목 부분 ======== -->
     <section class="travel-theme">
         <div class="travel-theme-title-box">
             <h2 class="travel-theme-title">Travel Theme</h2>
@@ -96,8 +95,7 @@
     </section>
 
 
-
-<!-- ======== theme box 시작 ======== -->
+    <!-- ======== theme box 시작 ======== -->
     <section class="themeList-section--index">
         <div class="theme-list--index">
 
@@ -117,6 +115,7 @@
                         <a class="profile-pic-id-outter" th:href="@{/member-profile(i=${t.memberId})}">
                             <div class="profile-pic">
                                 <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="" th:value="${t.memberId}">
+
                             </div>
                             <div class="profile-id-text" th:text="${t.nickname}">
                                 innerjoin123
@@ -164,8 +163,6 @@
 
         </div>
     </section>
-
-
 
 
     <!-- location -->
@@ -298,8 +295,6 @@
 </main>
 
 
-
-
 <!-- ================= search-modal 영역 ============================================================= -->
 <div class="search-modal hidden">
     <div class="search-modal-overlay">
@@ -330,93 +325,64 @@
 
             <!--============ main 키워드 부분=====================-->
             <div class="recommand__keyword">
-                    <div class="recommand__keyword--title--container">
-                        <h1>추천 검색어</h1>
-                    </div>
+                <div class="recommand__keyword--title--container">
+                    <h1>추천 검색어</h1>
+                </div>
 
                 <div class="recommand__keywords--container">
 
-                        <div class="recommand__keyword--container1">
-                            <button class="recommand__keyword--btn">
-                                <p>을지로 노포</p>
-                            </button>
+                    <div class="recommand__keyword--container1">
+                        <button class="recommand__keyword--btn">
+                            <p>을지로 노포</p>
+                        </button>
 
-                            <button class="recommand__keyword--btn">
-                                <p>용산 카페</p>
-                            </button>
+                        <button class="recommand__keyword--btn">
+                            <p>용산 카페</p>
+                        </button>
 
-                            <button class="recommand__keyword--btn">
-                                <p>종로 맛집</p>
-                            </button>
+                        <button class="recommand__keyword--btn">
+                            <p>종로 맛집</p>
+                        </button>
 
-                            <button class="recommand__keyword--btn">
-                                <p>강남구 축제</p>
-                            </button>
-                        </div>
+                        <button class="recommand__keyword--btn">
+                            <p>강남구 축제</p>
+                        </button>
+                    </div>
 
 
-                        <div class="recommand__keyword--container2">
-                                <button class="recommand__keyword--btn">
-                                    <p>신촌 대학교 축제</p>
-                                </button>
+                    <div class="recommand__keyword--container2">
+                        <button class="recommand__keyword--btn">
+                            <p>신촌 대학교 축제</p>
+                        </button>
 
-                                <button class="recommand__keyword--btn">
-                                    <p>루프탑 바</p>
-                                </button>
+                        <button class="recommand__keyword--btn">
+                            <p>루프탑 바</p>
+                        </button>
 
-                                <button class="recommand__keyword--btn">
-                                    <p>성수 갈비 골목</p>
-                                </button>
+                        <button class="recommand__keyword--btn">
+                            <p>성수 갈비 골목</p>
+                        </button>
 
-                                <button class="recommand__keyword--btn">
-                                    <p>녹사평 펍</p>
-                                </button>
-                        </div>
+                        <button class="recommand__keyword--btn">
+                            <p>녹사평 펍</p>
+                        </button>
+                    </div>
 
                 </div>
             </div>
 
 
-<!--                    <div class="hot__keyword">-->
-<!--                            <div class="hot__keyword&#45;&#45;category&#45;&#45;container">-->
-<!--                                <h1>인기 검색어</h1>-->
-<!--                                <div id="clock">기준</div>-->
-<!--                            </div>-->
-
-<!--                        <div class="hot__keyword&#45;&#45;list&#45;&#45;container">-->
-<!--                                <div class="hot__keyword&#45;&#45;list">-->
-<!--                                        <ol class="hot__keyword&#45;&#45;list&#45;&#45;ol">-->
-<!--                                                <div>-->
-<!--                                                    <li>성수동</li>-->
-<!--                                                    <li>용산 공원</li>-->
-<!--                                                    <li>만선호프</li>-->
-<!--                                                    <li>신촌 축제</li>-->
-<!--                                                    <li>샤로수길</li>-->
-<!--                                                </div>-->
-
-<!--                                                <div>-->
-<!--                                                    <li>성수동</li>-->
-<!--                                                    <li>용산 공원</li>-->
-<!--                                                    <li>만선호프</li>-->
-<!--                                                    <li>신촌 축제</li>-->
-<!--                                                    <li>샤로수길</li>-->
-<!--                                                </div>-->
-<!--                                        </ol>-->
-<!--                                </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
 
             <!--========= 검색어 입력시(엔터전) theme 목록 ==========-->
             <section class="themeList-section--index">
                 <div class="theme-list--search-modal">
+
                 </div>
             </section>
 
-            </div>
         </div>
     </div>
-
-
+</div>
 
 
 </body>
@@ -451,19 +417,19 @@
             <a href="#">회사 세부정보</a>
         </div>
         <div class="footer__text">
-        <span>
-          (주)브레이브모바일은 통신판매중개자로서 통신판매의 당사자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.
-        </span>
+            <span>
+              (주)브레이브모바일은 통신판매중개자로서 통신판매의 당사자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.
+            </span>
         </div>
         <ul class="footer__guide">
             <li class="footer__text">
-                상호명:(주)브레이브모바일 · 대표이사:KIM ROBIN H · 개인정보책임관리자:김태우 · 주소:서울특별시 강남구 테헤란로 415, L7 강남타워 5층
+                상호명:BeLocal · 대표이사:WWJ · 개인정보책임관리자:김태우 · 주소:서울특별시 강남구 테헤란로 415, L7 강남타워 5층
             </li>
             <li class="footer__text">
                 사업자등록번호:120-88-22325 · 통신판매업신고증:제 2021-서울강남-00551 호 · 직업정보제공사업 신고번호:서울청 제 2019-21호
             </li>
             <li class="footer__text">
-                고객센터:1599-5319 · 이메일:support@soomgo.com
+                고객센터:1599-5319 · 이메일:belocal@gmail.com
             </li>
             <li class="footer__text">
                 Copyright ©Brave Mobile Inc. All Rights Reserved.
