@@ -26,7 +26,7 @@
 /* 타이틀과 패딩 간격 맞추기 */
 .category__items-box{
     display: grid;
-    grid-template-columns: repeat(4, 76px);
+    grid-template-columns: repeat(4, 86px);
     justify-content: space-between;
     gap: 14px;
     margin-bottom: var(--section-margin-bottom);
@@ -47,8 +47,8 @@
     justify-content: center;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
 }
 
 /*.category__img{*/
