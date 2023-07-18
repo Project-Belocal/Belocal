@@ -58,7 +58,8 @@ public class ChatController {
         model.addAttribute("chatList", list);
         model.addAttribute("noticeList",noticeList);
 
-        log.info("list{}",list);
+        log.info("chatList{}",list);
+        log.info("noticeList{}",noticeList);
 
         return "chat/chatlist";
     }
