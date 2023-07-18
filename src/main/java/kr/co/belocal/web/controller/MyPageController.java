@@ -68,7 +68,8 @@ public class MyPageController {
 
     @Autowired
     private ChatRoomService chatRoomService;
-
+    @Autowired
+    private NoticeService noticeService;
 
     @GetMapping
     public String profile(Model model,
@@ -77,7 +78,11 @@ public class MyPageController {
 
         List<chatRequestListView> list = chatRoomService.requestList(member.getId());
         Integer count = travelThemeService.getCountTheme(member.getId());
+
+        int reqCount = noticeService.getCount(member.getId());
+
         model.addAttribute("reqList",list);
+        model.addAttribute("reqCount",reqCount);
         model.addAttribute("themeCount",count);
 
         log.info("req{}",list);

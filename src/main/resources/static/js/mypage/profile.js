@@ -8,7 +8,12 @@ window.addEventListener('load', function () {
     const role = document.querySelector(".role__wrap");
     const info = document.querySelector(".my__info");
     const nicknameElement = document.querySelector(".my__name span");
+
+    const modal = document.querySelector('.modal');
+    const modalItemList = modal.querySelector('.modal__item-list');
+    const empty = document.querySelector(".empty");
     let nickname = nicknameElement.textContent;
+
 
 
 
@@ -54,6 +59,11 @@ window.addEventListener('load', function () {
 
             // 모달창에 요청사항 내용을 출력
             modalBg.classList.toggle('hidden');
+            if (!modalItemList) {
+                empty.classList.remove("hidden")
+                return;
+            }
+
         }
     };
 
@@ -86,6 +96,7 @@ window.addEventListener('load', function () {
                 }
             })
     })
+
 
 
 });

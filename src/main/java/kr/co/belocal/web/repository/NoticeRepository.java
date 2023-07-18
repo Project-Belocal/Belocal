@@ -17,4 +17,6 @@ public interface NoticeRepository {
     List<NoticeView> getViewList(Integer receiverId);
 
     void delete(Integer chatRoomId);
+
+    Integer getCount(Integer memberId);
 }

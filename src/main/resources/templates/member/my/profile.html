@@ -99,8 +99,8 @@
             <ul class="my__deal-list">
                 <li class="my__deal-item">
                     <button class="item1" type="button">
-                        <h3>요청</h3>
-                        <span>20</span>
+                        <h3>보낸 요청</h3>
+                        <span th:text="${reqCount}">20</span>
                         <img src="../images/icon/right-arrow.svg" alt="">
                     </button>
                 </li>
@@ -161,6 +161,19 @@
                         </div>
                     </a>
                 </div>
+
+                <!--아무 내용 없을때-->
+                <div class="empty hidden">
+                    <div class="empty-title">
+                        <span>보낸 요청이 없습니다.</span>
+                    </div>
+                    <div class="empty-text">
+                        <span>여행이나 체험을 예약을 신청한 경우, 요청 메시지가 여기에 표시됩니다.</span>
+                    </div>
+                    <div class="empty-link">
+                        <a href="">BeLocal 둘러보기</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -211,8 +224,8 @@
             </div>
         </div>
     </footer>
-    <div th:replace="inc/navbar"></div>
 </main>
+    <div th:replace="inc/navbar"></div>
 
 
 

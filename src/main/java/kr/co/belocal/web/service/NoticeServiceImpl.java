@@ -38,6 +38,11 @@ public class NoticeServiceImpl implements NoticeService {
     public void deleted(Integer chatRoomId) {
         noticeRepository.delete(chatRoomId);
     }
+
+    @Override
+    public Integer getCount(Integer memberId) {
+        return noticeRepository.getCount(memberId);
+    }
 }
 
 

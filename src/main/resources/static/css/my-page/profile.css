@@ -1,9 +1,9 @@
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+/*body{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
 
 /* header 전체 영역 */
 .my-page-header{
@@ -526,3 +526,41 @@ footer{
     100% {bottom:0px; opacity:1}
 }
 
+/**/
+
+.empty{
+    display: flex;
+    position:relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.empty-title{
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+    margin: 12px;
+}
+
+.empty-text{
+    width: 100%;
+    text-align: center;
+    /* margin: 12px; */
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-regular);
+}
+
+
+.empty-link{
+    margin: 12px;
+    padding: 12px 0;
+    border: 1px solid #000000;
+    border-radius: 12px;
+}
+
+.empty-link a{
+    padding: 12px 16px;
+}
