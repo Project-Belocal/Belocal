@@ -4,16 +4,17 @@ const ctgBtns = document.querySelector(".category__items-box")
 const themeList = document.querySelector(".themeList-section");
 
 ctgBtns.onclick = (e) => {
-            e.preventDefault()
+    e.preventDefault()
+    themeList.innerHTML = "";
+
+
 
             let id = e.target.getAttribute("data-id");
-
             let offset = 0;
+            let url = `/api/travel-themes?c=${id}&offset=${offset}`;
 
-            let url = `http://localhost:8080/api/search-result?ctg=${id}&offset=${offset}`;
-
-            console.log("id: " , id)
-            console.log(url)
+            console.log("id: " , id);
+            console.log(url);
 
             fetch(url)
                 .then(response => response.json())
@@ -22,46 +23,67 @@ ctgBtns.onclick = (e) => {
                     {
                         // console.log(list)
                         let travelTheme =
-                        `<section class="theme"">
+                            `<section class="theme"">
                             <div class="theme-box-area">
-                                    <div class="theme-box-pic-area">
+                                    <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
                                         <img src="/images/index-city.jpg" alt="">
-                                    </div>
+                                    </a>
                                 <div class="profile-outter-box">
-                                    <div class="profile-pic-id-outter">
+                                    <a class="profile-pic-id-outter" href="/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
 
                                             <img src="/images/profile-pic.jpg" alt="">
-                                          
+
                                         </div>
                                         <div class="profile-id-text">
                                            ${theme.nickname}
                                         </div>
-                                    </div>
-                                    <div class="profile-text-area-outter">
+                                    </a>
+                                    <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
-                                                <p>${theme.title}</p>
+                                                <h2>${theme.title}</h2>
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    ${theme.isReserved}
+                                            
+                                            
+                                 <div class="profile-status-area">
+                                                    ${theme.isReserved === 0
+                                                    ?  
+                                                    `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-ok">
+                                                                event_available
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 가능</div>
+                                                    `
+                                                    :
+                                                    `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-not">
+                                                                event_busy
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 불가</div>
+                                                    `
+                                                    }
                                                 </div>
-                                            </div>
-                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                    </a>
                                 </div>
                             </div>
                         </section>`
 
 
-                        themeList.insertAdjacentHTML("afterbegin", travelTheme);
+                        themeList.insertAdjacentHTML("beforeend", travelTheme);
+                        offset ++;
                     }
                 })
             }
@@ -70,24 +92,25 @@ ctgBtns.onclick = (e) => {
 
 
 
-const searchInput = document.getElementById('search-input');
+let searchInput = document.getElementById('search-input');
 
 // ------------ 검색창 클릭하면 글자 사라지게하는 것 -------------------------
 searchInput.addEventListener('click', function() {
     this.value = '';
 });
 
-
+// let offset = 6;
 let offset = 6;
 
 //===================  검색창에 Enter : 클릭시 theme box 가져오는 부분 =========================
 window.addEventListener('scroll', function() {
+    let searchInput = document.getElementById('search-input');
     let documentHeight = document.documentElement.scrollHeight;
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
     // let themeList = document.querySelector(".theme-list");
 
-
+    // let themeList = document.querySelector(".themeList-section");
 
     console.log("documentHeight: ", documentHeight);
     console.log("scrollTop: ", scrollTop);
@@ -99,10 +122,8 @@ window.addEventListener('scroll', function() {
         console.log("offset: ", offset);
 
         let query = searchInput.value;
-        let url = `http://localhost:8080/api?q=${query}&offset=${offset}`;
+        let url = `/api/travel-themes?q=${query}&offset=${offset}`;
 
-
-        // fetch(`api/memberprofile?offset=${offset}`)
         fetch(url)
             .then(response => response.json())
             .then(list => {
@@ -133,14 +154,32 @@ window.addEventListener('scroll', function() {
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    예약가능
+                                            
+                                          <div class="profile-status-area">
+                                                    ${theme.isReserved === 0
+                                                    ?  
+                                                    `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-ok">
+                                                                event_available
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 가능</div>
+                                                    `
+                                                    :
+                                                    `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-not">
+                                                                event_busy
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 불가</div>
+                                                    `
+                                                }
                                                 </div>
-                                            </div>
+                                            
+                                            
+                                            
                                     </div>
                                 </div>
                             </div>

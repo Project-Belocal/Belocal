@@ -23,18 +23,21 @@ public class SearchResultController {
 
     @GetMapping("search-result")
     public String search(
-            @RequestParam(name = "s", required = false) String query,
+            @RequestParam(name = "q", required = false) String query,
             @RequestParam(name = "ctg", required = false) Integer ctgId,
             @RequestParam(name = "offset", defaultValue = "0", required = false) int offset,
             Model model) {
 
         List<TravelThemeView> searchThemeList = null;
-        List<TravelThemeView> ctgThemeList = null;
+
+        int size = 6;
 
         if (query != null) { //쿼리가 있으면 (검색창에 검색어 입력 & enter)
             searchThemeList = travelThemeService.getListByQuery(query, offset, 6);
         } else if (ctgId != null) { //ctgId가 있으면 (카테고리 아이콘 클릭 시 작동)
-            searchThemeList = travelThemeService.getListByCtgIdIcons(ctgId, offset, 6);
+            searchThemeList = travelThemeService.getListByCtgId(ctgId, offset, 6);
+        } else {
+            searchThemeList = travelThemeService.getList(offset, size);
         }
 
         //---- 검색창에 검색어 입력 & enter 시 해당 결과(theme) 가져오는 기능

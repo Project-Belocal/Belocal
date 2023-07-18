@@ -22,6 +22,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <script src="/js/index/location.js" defer></script>
     <script src="/js/search-modal.js" defer></script>
+<!--    <script src="/js/member-profile.js" defer></script>-->
 
     <title>BeLocal Main</title>
 
@@ -89,7 +90,7 @@
     <section class="travel-theme">
         <div class="travel-theme-title-box">
             <h2 class="travel-theme-title">Travel Theme</h2>
-            <a href="#" class="travel-theme-link">더보기 &gt;</a>
+            <a th:href="@{/search-result}" class="travel-theme-link">더보기 &gt;</a>
         </div>
     </section>
 
@@ -100,22 +101,31 @@
 
             <section class="theme" th:each="t:${travelThemeList}">
                 <div class="theme-box-area">
-                    <div class="theme-box-pic-area">
-                        <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
-                    </div>
+
+                    <!--themebox 클릭 -> 이동-->
+                    <a class="theme-box-pic-area" th:href="@{/theme/theme-detail(id=${t.id})}">
+                            <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
+                    </a>
+
+
+
                     <div class="profile-outter-box">
-                        <div class="profile-pic-id-outter">
+
+                        <!--themebox 클릭 -> 이동-->
+                        <a class="profile-pic-id-outter" th:href="@{/member-profile(i=${t.memberId})}">
                             <div class="profile-pic">
-                                <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}"
-                                     src="/images/profile-pic.jpg" alt="">
+                                <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}" src="/images/profile-pic.jpg" alt="" th:value="${t.memberId}">
+
                             </div>
                             <div class="profile-id-text" th:text="${t.nickname}">
                                 innerjoin123
                             </div>
-                        </div>
-                        <div class="profile-text-area-outter">
+                        </a>
+
+                        <!--themebox 클릭 -> 이동-->
+                        <a class="profile-text-area-outter" th:href="@{/theme/theme-detail(id=${t.id})}">
                             <div class="profile-text-title-area">
-                                <p th:text="${t.title}">을지로 노포 싹다 투어</p>
+                                <h2 th:text="${t.title}">을지로 노포 싹다 투어</h2>
                             </div>
                             <div class="profile-text-contents-area">
                                 <p th:text="${t.description}">
@@ -124,23 +134,29 @@
                                     을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
                                 </p>
                             </div>
+
+
+
                             <div class="profile-status-area">
-                                <div th:if="${t.isReserved}">
-                                        <span class="material-symbols-outlined">
+                                <div th:if="${t.isReserved == 0}">
+                                        <i class="material-symbols-outlined res-ok">
                                             event_available
-                                        </span>
+                                        </i>
                                 </div>
 
-                                <div th:if="!${t.isReserved}">
-                                        <span class="material-symbols-outlined">
+                                <div th:unless="${t.isReserved == 0}">
+                                        <span class="material-symbols-outlined res-not">
                                             event_busy
                                         </span>
                                 </div>
 
-                                <div th:if="${t.isReserved}">예약가능</div>
-                                <div th:if="!${t.isReserved}">예약중</div>
+                                <div class="reserveText" th:if="${t.isReserved==0}">예약 가능</div>
+                                <div class="reserveText" th:unless="${t.isReserved==0}">예약 불가</div>
                             </div>
-                        </div>
+
+
+
+                        </a>
                     </div>
                 </div>
             </section>
@@ -296,9 +312,13 @@
                         </button>
                         <label class="search-input" for="search-input">
                         </label>
-                        <input type="text" id="search-input" name="s" th:value="${query}">
+                        <input type="text" id="search-input" name="q" th:value="${query}" >
                     </form>
-                    <button id="exit">cancle</button>
+                    <button id="exit">
+                        <i class="material-symbols-outlined closeBtn">
+                            close
+                        </i>
+                    </button>
                 </div>
             </header>
 
@@ -352,88 +372,11 @@
             </div>
 
 
-            <div class="hot__keyword">
-                <div class="hot__keyword--category--container">
-                    <h1>인기 검색어</h1>
-                    <div id="clock">기준</div>
-                </div>
-
-                <div class="hot__keyword--list--container">
-                    <div class="hot__keyword--list">
-                        <ol class="hot__keyword--list--ol">
-                            <div>
-                                <li>성수동</li>
-                                <li>용산 공원</li>
-                                <li>만선호프</li>
-                                <li>신촌 축제</li>
-                                <li>샤로수길</li>
-                            </div>
-
-                            <div>
-                                <li>성수동</li>
-                                <li>용산 공원</li>
-                                <li>만선호프</li>
-                                <li>신촌 축제</li>
-                                <li>샤로수길</li>
-                            </div>
-                        </ol>
-                    </div>
-                </div>
-            </div>
 
             <!--========= 검색어 입력시(엔터전) theme 목록 ==========-->
             <section class="themeList-section--index">
                 <div class="theme-list--search-modal">
 
-                    <section class="theme" th:each="t:${search}">
-
-                        <div class="theme-box-area">
-                            <div class="theme-box-pic-area">
-                                <img th:src="${t.path}" src="/images/index-city.jpg" alt="">
-                            </div>
-                            <div class="profile-outter-box">
-
-                                <div class="profile-pic-id-outter">
-                                    <div class="profile-pic">
-                                        <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}"
-                                             src="/images/profile-pic.jpg" alt="">
-                                    </div>
-                                    <div class="profile-id-text" th:text="${t.nickname}">
-                                        innerjoin123
-                                    </div>
-                                </div>
-
-                                <div class="profile-text-area-outter">
-                                    <div class="profile-text-title-area">
-                                        <p th:text="${t.title}"></p>
-                                    </div>
-                                    <div class="profile-text-contents-area">
-                                        <p th:text="${t.description}">
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
-                                            어쩌구 어쩌구 저쩌구 믿거나 말거나
-                                            을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
-                                        </p>
-                                    </div>
-                                    <div class="profile-status-area">
-                                        <div th:if="${t.isReserved}">
-                                                            <span class="material-symbols-outlined">
-                                                                event_available
-                                                            </span>
-                                        </div>
-
-                                        <div th:if="!${t.isReserved}">
-                                                            <span class="material-symbols-outlined">
-                                                                event_busy
-                                                            </span>
-                                        </div>
-
-                                        <div th:if="${t.isReserved}">예약가능</div>
-                                        <div th:if="!${t.isReserved}">예약중</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </section>
 

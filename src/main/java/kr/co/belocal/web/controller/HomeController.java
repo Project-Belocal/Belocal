@@ -31,18 +31,16 @@ public class HomeController {
         List<Category> categoryList = categoryService.findAllCtg();
 
         //--- main 화면의 기본 6개 띄워주는 것
-        List<TravelThemeView> travelThemeList = travelThemeService.getListForMain(0, 6);
+        List<TravelThemeView> travelThemeList = travelThemeService.getList(0, 6);
+
+        for(TravelThemeView t : travelThemeList) {
+            System.out.println(t);
+        }
 
         model.addAttribute("ctgList", categoryList);
         model.addAttribute("travelThemeList", travelThemeList);
 
         return "index";
     }
-
-
-
-
-
-
 
 }//class

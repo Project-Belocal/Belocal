@@ -131,6 +131,7 @@
                         
                         <div class="theme__each-place__location-category">
                             <div class="theme__each-place__location" th:text="${place.location}"></div>
+                            <span>/</span>
                             <div class="theme__each-place__category" th:text="${place.category}"></div>
                         </div>
                     </div>
@@ -139,16 +140,12 @@
         </div>
     </section>
 
-
-
     <!--========= 호스트 정보 ============-->
     <section>
         <div class="host-info">
             <div class="host-info--title">
                 <h2>가이드정보<hr></h2>
-                
             </div>
-
 
             <a class="host-info--pic--id" th:href="@{/member-profile(i=${uploadMemberId})}">
                 <div class="host-info--pic">
@@ -188,13 +185,13 @@
         </div>
 
         <button type="button" 
-                class="theme__detail__chat-request not-logined"
+                class="theme__detail__chat-request not-logined default"
                 sec:authorize="isAnonymous()">
-            <a href="/login">
+            <a href="/login" class="font-white">
                 채팅 요청
             </a>
         </button>
-
+        
         <button type="button" 
                 class="theme__detail__chat-request default"
                 sec:authorize="isAuthenticated()"
@@ -203,8 +200,12 @@
                 th:data-guide-id="${uploadMemberId}"
                 th:if="${chatRoomStatus == 0}"
         >
-            <a href="" class="font-white">
+            <a href="" class="font-white" th:if="${isMyTravelTheme == 0}">
                 채팅 요청
+            </a>
+
+            <a href="/" class="font-white isMine" th:if="${isMyTravelTheme == 1}">
+                테마 둘러보기
             </a>
         </button>
 

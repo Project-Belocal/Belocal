@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberRepository {
 
-    Member findById(Integer id);
+    Member findById(Integer memberIdd);
 //    Member findByIdMember(Integer id);
 
     Integer editSave(Member member);

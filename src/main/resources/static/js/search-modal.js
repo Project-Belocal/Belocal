@@ -39,8 +39,9 @@ searchInput.addEventListener('keyup', function() {
     let offset = 0;
     // let batchSize = 6;
     let query = searchInput.value;
+    console.log("query:",query);
 
-    let url = `http://localhost:8080/api?q=${query}&offset=${offset}`;
+    let url = `/api/travel-themes?q=${query}&offset=${offset}`;
 
 
 
@@ -52,15 +53,15 @@ searchInput.addEventListener('keyup', function() {
 
                 for (let theme of list)
                 {
-                    console.log("list:", list)
+                    console.log("theme: ", theme);
                     let travelTheme =
                         `<section class="theme"">
                             <div class="theme-box-area">
-                                    <div class="theme-box-pic-area">
+                                    <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
                                         <img src="/images/index-city.jpg" alt="">
-                                    </div>
+                                    </a>
                                 <div class="profile-outter-box">
-                                    <div class="profile-pic-id-outter">
+                                    <a class="profile-pic-id-outter" href="/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
 
                                             <img src="/images/profile-pic.jpg" alt="">
@@ -69,25 +70,40 @@ searchInput.addEventListener('keyup', function() {
                                         <div class="profile-id-text">
                                            ${theme.nickname}
                                         </div>
-                                    </div>
-                                    <div class="profile-text-area-outter">
+                                    </a>
+                                    <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
-                                                <p>${theme.title}</p>
+                                                <h2>${theme.title}</h2>
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    ${theme.isReserved}
+                                            
+                                            
+                                              <div class="profile-status-area">
+                                                    ${theme.isReserved === 0
+                                                    ?  `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-ok">
+                                                                event_available
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 가능</div>
+                                                        `
+                                                    : 
+                                                        `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-not">
+                                                                event_busy
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 불가</div>
+                                                        `
+                                                        }
                                                 </div>
-                                            </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </section>`
@@ -124,6 +140,8 @@ window.addEventListener('scroll', function() {
     let documentHeight = document.documentElement.scrollHeight;
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
+    let searchInput = document.getElementById('search-input');
+
     // let themeList = document.querySelector(".theme-list");
     // let offset = 0;
     // let batchSize = 6;
@@ -139,32 +157,30 @@ window.addEventListener('scroll', function() {
         console.log("offset: ", offset);
 
         let query = searchInput.value;
-        let url = `http://localhost:8080/api?q=${query}&offset=${offset}`;
+        let url = `/api/travel-themes?q=${query}&offset=${offset}`;
 
-
-        // fetch(`api/memberprofile?offset=${offset}`)
         fetch(url)
             .then(response => response.json())
             .then(list => {
                 for (let theme of list) {
                     console.log("theme",theme);
                     let travelTheme =
-                        `<section class="theme">
+                        `<section class="theme"">
                             <div class="theme-box-area">
-                                    <div class="theme-box-pic-area">
+                                    <a class="theme-box-pic-area" href="api/theme/theme-detail?id=${theme.id}">
                                         <img src="/images/index-city.jpg" alt="">
-                                    </div>
+                                    </a>
                                 <div class="profile-outter-box">
-                                    <div class="profile-pic-id-outter">
+                                    <a class="profile-pic-id-outter" href="api/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
 
-                                            <img src="/images/profile-pic.jpg" alt="">
+                                          
                                         </div>
                                         <div class="profile-id-text">
-                                            innerjoin123
+                                           ${theme.nickname}
                                         </div>
-                                    </div>
-                                    <div class="profile-text-area-outter">
+                                    </a>
+                                    <a class="profile-text-area-outter" href="api/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
                                                 <p>${theme.title}</p>
                                             </div>
@@ -173,18 +189,32 @@ window.addEventListener('scroll', function() {
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    예약가능
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
+                              <div class="profile-status-area">
+                                  ${theme.isReserved === 0
+                                    ? 
+                                        `
+                                           <div>
+                                               <span class="material-symbols-outlined res-ok">
+                                                   event_available
+                                               </span>
+                                           </div>
+                                            <div class="reserveText">예약 가능</div>
+                                         `
+                                    :
+                                        `
+                                           <div>
+                                               <span class="material-symbols-outlined res-not">
+                                                   event_busy
+                                               </span>
+                                           </div>
+                                            <div class="reserveText">예약 불가</div>
+                                            `
+                                            }
+                                     </div>
+                                </a>
                             </div>
-                        </section>`
+                        </div>
+                    </section>`
 
                     themeList.insertAdjacentHTML("beforeend", travelTheme);
                     offset ++;
