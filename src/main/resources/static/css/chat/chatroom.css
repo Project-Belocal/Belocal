@@ -375,7 +375,6 @@
 .room__report-title>button>img{
     width: 100%;
     height: 100%;
-    filter: invert(100%) sepia(96%) saturate(23%) hue-rotate(248deg) brightness(94%) contrast(100%);
 }
 
 

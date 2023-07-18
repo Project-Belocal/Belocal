@@ -42,7 +42,6 @@ window.addEventListener("load",function(){
 
 
     exitBtn.onclick = function (){
-        console.log("흠")
         fetch("/api/chatRooms/exit",{
             method:"POST",
             headers:{
