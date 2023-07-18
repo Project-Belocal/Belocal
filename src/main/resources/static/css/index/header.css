@@ -1,10 +1,10 @@
-header{
+header {
     display: flex;
     position: relative;
     flex-direction: column;
     /* max-width: 390px; */
     /* width: 390px; */
-    margin-bottom: 20px;
+    margin-bottom: var(--section-margin-bottom);
 }
 
 .header__wrap {
