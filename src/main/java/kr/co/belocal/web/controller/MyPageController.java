@@ -9,12 +9,15 @@ import java.util.UUID;
 import jakarta.servlet.http.HttpSession;
 import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.*;
+import kr.co.belocal.web.service.security.MemberDetails;
 import kr.co.belocal.web.service.security.MemberDetailsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,6 +36,7 @@ import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import kr.co.belocal.web.controller.request.UploadPlaceImageRequest;
 
+@Slf4j
 @Controller
 @RequestMapping("/my")
 public class MyPageController {
@@ -62,11 +66,26 @@ public class MyPageController {
     @Autowired
     private PlaceImageService placeImageService;
 
-
+    @Autowired
+    private ChatRoomService chatRoomService;
+    @Autowired
+    private NoticeService noticeService;
 
     @GetMapping
-    public String profile(Model model) {
+    public String profile(Model model,
+                          @AuthenticationPrincipal MemberDetails member) {
 
+
+        List<chatRequestListView> list = chatRoomService.requestList(member.getId());
+        Integer count = travelThemeService.getCountTheme(member.getId());
+
+        int reqCount = noticeService.getCount(member.getId());
+
+        model.addAttribute("reqList",list);
+        model.addAttribute("reqCount",reqCount);
+        model.addAttribute("themeCount",count);
+
+        log.info("req{}",list);
 
 
         return "/member/my/profile";
@@ -106,18 +125,12 @@ public class MyPageController {
 
 
 
-
-
     @GetMapping("/theme-register")
     public String themeRegister() {
         return "/member/theme-register";
     }
 
-    // @PostMapping("/upload")
-    // public String upload(@RequestBody UploadRequest uploadRequest) {
-    //     System.out.println(uploadRequest);
-    //     return "redirect:/";
-    // }
+
 
     @PostMapping("/upload-file") 
     public ResponseEntity<String[]> uploadFile(

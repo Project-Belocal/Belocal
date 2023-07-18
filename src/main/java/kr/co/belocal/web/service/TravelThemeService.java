@@ -4,6 +4,7 @@ import kr.co.belocal.web.entity.Category;
 import kr.co.belocal.web.entity.Member;
 import kr.co.belocal.web.entity.TravelTheme;
 import kr.co.belocal.web.entity.TravelThemeView;
+import org.springframework.data.relational.core.sql.In;
 
 import java.util.List;
 
@@ -47,5 +48,7 @@ public interface TravelThemeService {
     int save(TravelTheme travelTheme);
 
     List<TravelThemeView> getAllViewByIds(List<Integer> travelThemeIdList);
+
+    Integer getCountTheme(Integer memberId);
 
 }

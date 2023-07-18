@@ -1,8 +1,7 @@
 package kr.co.belocal.web.controller.api;
 
 import jakarta.servlet.http.HttpServletResponse;
-import kr.co.belocal.web.entity.Member;
-import kr.co.belocal.web.entity.NoticeView;
+import kr.co.belocal.web.entity.*;
 import kr.co.belocal.web.service.ChatRoomService;
 import kr.co.belocal.web.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import kr.co.belocal.web.entity.Notice;
 import kr.co.belocal.web.service.NoticeService;
 
 import java.io.IOException;
@@ -80,10 +78,23 @@ public class NoticeController {
         System.out.println("senderId = " + senderId);
         System.out.println("chatRoomId = " + chatRoomId);
 
+        ChatLog chatLog = ChatLog.builder()
+                .chatRoomId(chatRoomId)
+                .memberId(91)
+                .message("님이 입장하셨습니다.")
+                .isChecked(1)
+                .build();
+
+
+        System.out.println("chatLog = " + chatLog);
+
         if (data.equals("accept")){
-            chatRoomService.isAccepte(1);
+            chatRoomService.isAccept(chatRoomId);
+            chatRoomService.addEnterMessage(chatLog);
+
         }else {
-            System.out.println("data = " + data);
+            noticeService.deleted(chatRoomId);
+            chatRoomService.isReject(chatRoomId);
         }
 
 

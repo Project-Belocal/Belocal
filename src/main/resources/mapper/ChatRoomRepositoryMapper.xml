@@ -23,6 +23,24 @@
         WHERE traveler_id = #{memberId} OR guide_id = #{memberId};
     </select>
 
+    <!--입장시 채팅메세지 생성-->
+    <insert id="addEnterMessage" parameterType="ChatLog">
+        INSERT INTO  chat_log
+        (
+            chat_room_id,
+            member_id,
+            message,
+            is_checked
+        )
+        VALUE
+        (
+            #{chatRoomId},
+            #{memberId},
+            #{message},
+            #{isChecked}
+        );
+    </insert>
+
     <!--채팅방 하나 조회-->
     <select id="findChatRoomById" resultType="ChatRoom">
         SELECT * FROM chat_room WHERE id = #{id}
@@ -68,6 +86,13 @@
         WHERE id = #{chatRoomId}
     </update>
 
+    <!--채팅방 거절-->
+    <delete id="isReject">
+        delete from chat_room where id = #{id}
+    </delete>
 
+    <select id="getRequestList" parameterType="chatRequestListView">
+        SELECT * FROM chat_request_list_view where traveler_id = #{travelerId};
+    </select>
 
 </mapper>

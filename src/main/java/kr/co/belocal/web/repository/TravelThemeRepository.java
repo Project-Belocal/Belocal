@@ -47,4 +47,5 @@ public interface TravelThemeRepository {
 
     List<TravelThemeView> findAllViewByIds(List<Integer> travelThemeIdList);
 
+    Integer getCountTheme(Integer memberId);
 }

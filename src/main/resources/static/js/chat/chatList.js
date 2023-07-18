@@ -4,9 +4,10 @@ window.addEventListener("load", function() {
   const tab2Button = document.querySelectorAll('.message__tab')[1];
   // message__box와 message__notice-wrap 요소를 가져옵니다.
   const messageBox = document.querySelector('.message__box');
+
+  const notice = document.querySelector(".message__notice");
   const noticeWrap = document.querySelector('.message__notice-wrap');
-  const acceptBtn = document.querySelector(".accept-btn");
-  const rejectBtn = document.querySelector(".reject-btn");
+
 
   const memberId = document.querySelector(".member-id");
   let id = memberId.value;
@@ -36,7 +37,6 @@ window.addEventListener("load", function() {
     tab2Button.classList.remove('focus');
   });
 
-  
   // tab2 알림버튼 클릭 시 처리
   tab2Button.addEventListener('click', function() {
     if (noticeWrap) {
@@ -55,13 +55,48 @@ window.addEventListener("load", function() {
 
   });
 
-  let action = document.querySelector(".action-wrap");
-  let chatRoomId = action.getAttribute("data-chat-room-id");
-  let senderId = action.getAttribute("data-sender-id");
 
-  acceptBtn.onclick = function (e){
+  notice.addEventListener("click",function (e){
+
+    if (e.target.className.includes('reject-btn')){
+      reject(e);
+      let dom = e.target.closest(".message__notice-wrap")
+      dom.classList.add("hidden")
+    }
+    if (e.target.className.includes('accept-btn')){
+      accept(e);
+      let dom = e.target.closest(".message__notice-wrap")
+      dom.classList.add("hidden")
+    }
+
+  })
+
+  function reject(e){
+    let action = document.querySelector(".action-wrap");
+    let chatRoomId = action.getAttribute("data-chat-room-id");
+    let senderId = action.getAttribute("data-sender-id");
     e.preventDefault();
 
+    fetch("/api/notices/request", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify({
+        status: "reject",
+        roomId: chatRoomId,
+        senderId
+      })
+    }).then(response => response.status)
+        .then(data => {
+          console.log(data);
+        })
+  }
+  function accept(e){
+    let action = document.querySelector(".action-wrap");
+    let chatRoomId = action.getAttribute("data-chat-room-id");
+    let senderId = action.getAttribute("data-sender-id");
+    e.preventDefault();
 
     fetch("/api/notices/request",{
       method:"POST",
@@ -79,26 +114,25 @@ window.addEventListener("load", function() {
         })
   }
 
-  rejectBtn.onclick = function (e){
-    e.preventDefault();
 
-    fetch("/api/notices/request",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/JSON"
-      },
-      body:JSON.stringify({
-        status:"reject",
-        roomId:chatRoomId,
-        senderId
-      })
-    }).then(response=>response.status)
-        .then(data=>{
-          console.log(data);
-        })
-  }
-
-
+  // rejectBtn.onclick = function (e) {
+  //   e.preventDefault();
+  //
+  //   fetch("/api/notices/request", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/JSON"
+  //     },
+  //     body: JSON.stringify({
+  //       status: "reject",
+  //       roomId: chatRoomId,
+  //       senderId
+  //     })
+  //   }).then(response => response.status)
+  //       .then(data => {
+  //         console.log(data);
+  //       })
+  // }
 });
 
 // window.addEventListener("load",function (){
