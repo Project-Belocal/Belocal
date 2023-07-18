@@ -5,7 +5,13 @@ window.addEventListener("load", () => {
         if(chatRequestBtn.classList.contains("not-logined"))
             return;
 
+        if(chatRequestBtn.classList.contains("accepted"))
+            return;
+
         e.preventDefault();
+
+        if(chatRequestBtn.classList.contains("already-sent"))
+            return;
 
         (async () => {
             const {travelThemeId, travelerId, guideId} = chatRequestBtn.dataset;
@@ -47,7 +53,14 @@ window.addEventListener("load", () => {
                     body: JSON.stringify(notice)
                 })
 
-                console.log(await response.json());
+                result = await response.json();
+            }
+
+            if(result) {
+                chatRequestBtn.classList.add("already-sent");
+
+                let textArea = chatRequestBtn.querySelector("a");
+                textArea.innerHTML = "요청 완료";
             }
 
         }) ();

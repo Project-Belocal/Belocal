@@ -2,6 +2,7 @@ package kr.co.belocal.web.service;
 
 import kr.co.belocal.web.entity.ChatRoom;
 import kr.co.belocal.web.entity.ChatRoomListView;
+import kr.co.belocal.web.entity.TravelTheme;
 
 import java.text.ParseException;
 import java.util.List;
@@ -20,4 +21,8 @@ public interface ChatRoomService {
     List<ChatRoomListView> findAll(Integer memberId) throws ParseException;
 
     ChatRoom isAccepte(Integer chatRoomId);
+
+    int getStatus(int memberId, Integer travelThemeId);
+
+    ChatRoom getByIds(int memberId, Integer travelThemeId);
 }

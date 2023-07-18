@@ -148,17 +148,21 @@ window.addEventListener("load", () => {
 
     modalBody.onclick = function(e) {
 
-        if(!e.target.closest(".wishlist__modal__exist-list"))
+
+        if(!e.target.closest(".wishlist__modal__exist-list")) 
             return;
 
         let targetWishlistGroup;
+        let wishlistGroupId;
 
-        if(!e.target.classList.contains("wishlist__modal__exist-list"))
-            targetWishlistGroup = e.target.parentElement;
-        else
+        if(!e.target.classList.contains("wishlist__modal__exist-list")) {
+            targetWishlistGroup = e.target.parentNode;
+            wishlistGroupId = targetWishlistGroup.dataset.wishlistGroupId;
+        } else {
             targetWishlistGroup = e.target.dataset;
-        // console.log(wishlistBtn.dataset);
-        let {wishlistGroupId} = targetWishlistGroup.dataset;
+            wishlistGroupId = targetWishlistGroup.wishlistGroupId;
+        }
+
         let {travelThemeId} = wishlistBtn.dataset;
         
         const wishlist = {
