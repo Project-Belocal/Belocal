@@ -73,21 +73,36 @@ searchInput.addEventListener('keyup', function() {
                                     </a>
                                     <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
-                                                <p>${theme.title}</p>
+                                                <h2>${theme.title}</h2>
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    ${theme.isReserved}
+                                            
+                                            
+                                              <div class="profile-status-area">
+                                                    ${theme.isReserved === 0
+                                                    ?  `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-ok">
+                                                                event_available
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 가능</div>
+                                                        `
+                                                    : 
+                                                        `
+                                                        <div>
+                                                            <span class="material-symbols-outlined res-not">
+                                                                event_busy
+                                                            </span>
+                                                        </div>
+                                                        <div class="reserveText">예약 불가</div>
+                                                        `
+                                                        }
                                                 </div>
-                                            </div>
                                     </a>
                                 </div>
                             </div>
@@ -174,18 +189,32 @@ window.addEventListener('scroll', function() {
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    ${theme.isReserved}
-                                                </div>
-                                            </div>
-                                    </a>
-                                </div>
+                              <div class="profile-status-area">
+                                  ${theme.isReserved === 0
+                                    ? 
+                                        `
+                                           <div>
+                                               <span class="material-symbols-outlined res-ok">
+                                                   event_available
+                                               </span>
+                                           </div>
+                                            <div class="reserveText">예약 가능</div>
+                                         `
+                                    :
+                                        `
+                                           <div>
+                                               <span class="material-symbols-outlined res-not">
+                                                   event_busy
+                                               </span>
+                                           </div>
+                                            <div class="reserveText">예약 불가</div>
+                                            `
+                                            }
+                                     </div>
+                                </a>
                             </div>
-                        </section>`
+                        </div>
+                    </section>`
 
                     themeList.insertAdjacentHTML("beforeend", travelTheme);
                     offset ++;

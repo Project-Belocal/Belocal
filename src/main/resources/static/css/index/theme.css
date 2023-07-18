@@ -135,23 +135,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* align-self: center; */
-    /* align-content: center; */
     width: 100px;
     height: 100px;
     margin-bottom: 18px;
-    /* background-color: blue; */
     gap: 4px;
 }
 
 .profile-pic {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     width: 76px;
     height: 76px;
-    /* margin-left: px; */
-    /* background-color: red; */
     border-radius: 50%;
     overflow:auto;
 }
@@ -177,12 +171,8 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    /* margin-top: 18px; */
-    /* gap: 10px; */
     width: 208px;
     height: 120px;
-    /* background-color: blueviolet; */
-    
 }
 
 .profile-text-title-area {
@@ -190,16 +180,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    /* margin-bottom: 10px; */
     width: 200px;
     height: 30px;
-    /* background-color: red; */
-    /* overflow: ; */
     padding: var(--section-padding);
 }
 
 .profile-text-title-area h2 {
-    font-family: 'Noto Sans', sans-serif;
     font-size: var(--font-size-medium14);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-black);
@@ -210,19 +196,22 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    /* margin-bottom: 0px; */
     width: 208px;
     height: 48px;
-    /* background-color:blanchedalmond; */
     margin-bottom: 0px;
+    margin-top: 4px;
     padding: var(--section-padding);
 }
-
+.reserveText{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
 .profile-text-contents-area p {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    font-family: 'Noto Sans', sans-serif;
+    /*font-family: 'Noto Sans', sans-serif;*/
     font-size: 12px;
     font-weight: 400;
     margin: 0;
@@ -237,7 +226,6 @@
 
 .profile-status-area {
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
     align-content: center;
     align-items: center;
@@ -248,16 +236,17 @@
     gap: 2px;
     padding: var(--section-padding);
 }
+.res-ok{
+    filter: invert(17%) sepia(52%) saturate(5907%) hue-rotate(227deg) brightness(102%) contrast(92%);
+}
+.res-not {
+    filter: invert(18%) sepia(78%) saturate(4214%) hue-rotate(354deg) brightness(89%) contrast(105%);
+}
 
 .status-text {
-    font-family: 'Noto Sans', sans-serif;
     font-size: 12px;
     font-weight: 400;
     color:#182CE3;
 }
 
-.material-icons {
-    color: #182CE3; /* 원하는 색상 값으로 변경 */
-    transform: scale(0.8);
-  }
-  
+

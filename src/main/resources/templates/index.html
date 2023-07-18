@@ -125,8 +125,8 @@
 
                         <!--themebox 클릭 -> 이동-->
                         <a class="profile-text-area-outter" th:href="@{/theme/theme-detail(id=${t.id})}">
-                            <div class="profile-text-title-area"1>
-                                <p th:text="${t.title}">을지로 노포 싹다 투어</p>
+                            <div class="profile-text-title-area">
+                                <h2 th:text="${t.title}">을지로 노포 싹다 투어</h2>
                             </div>
                             <div class="profile-text-contents-area">
                                 <p th:text="${t.description}">
@@ -135,22 +135,28 @@
                                     을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
                                 </p>
                             </div>
+
+
+
                             <div class="profile-status-area">
-                                <div th:if="${t.isReserved}">
-                                        <span class="material-symbols-outlined">
+                                <div th:if="${t.isReserved == 0}">
+                                        <i class="material-symbols-outlined res-ok">
                                             event_available
-                                        </span>
+                                        </i>
                                 </div>
 
-                                <div th:if="!${t.isReserved}">
-                                        <span class="material-symbols-outlined">
+                                <div th:unless="${t.isReserved == 0}">
+                                        <span class="material-symbols-outlined res-not">
                                             event_busy
                                         </span>
                                 </div>
 
-                                <div th:if="${t.isReserved}">예약가능</div>
-                                <div th:if="!${t.isReserved}">예약중</div>
+                                <div class="reserveText" th:if="${t.isReserved==0}">예약 가능</div>
+                                <div class="reserveText" th:unless="${t.isReserved==0}">예약 불가</div>
                             </div>
+
+
+
                         </a>
                     </div>
                 </div>
@@ -313,7 +319,11 @@
                         </label>
                         <input type="text" id="search-input" name="q" th:value="${query}" >
                     </form>
-                    <button id="exit">cancle</button>
+                    <button id="exit">
+                        <i class="material-symbols-outlined closeBtn">
+                            close
+                        </i>
+                    </button>
                 </div>
             </header>
 

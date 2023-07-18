@@ -244,7 +244,8 @@
             title,
             description,
             is_reserved,
-            member_id
+            member_id,
+            id
         FROM
             travel_theme_view
         WHERE
@@ -256,7 +257,8 @@
             title,
             description,
             is_reserved,
-            member_id
+            member_id,
+            id
         ORDER BY
             reg_date DESC
         LIMIT

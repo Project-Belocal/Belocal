@@ -55,11 +55,11 @@ window.addEventListener('scroll', function() {
                     let travelTheme =
                         `<section class="theme">
                             <div class="theme-box-area">
-                                    <a class="theme-box-pic-area" href="api/theme/theme-detail?id=${theme.id}">
+                                    <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
                                         <img src="/images/index-city.jpg" alt="">
                                     </a>
                                 <div class="profile-outter-box">
-                                    <a class="profile-pic-id-outter" href="api/member-profile?i=${theme.memberId}">
+                                    <div class="profile-pic-id-outter">
                                         <div class="profile-pic">
     
                                             <img src="/images/profile-pic.jpg" alt="">
@@ -67,24 +67,42 @@ window.addEventListener('scroll', function() {
                                         <div class="profile-id-text">
                                             innerjoin123
                                         </div>
-                                    </a>
-                                    <a class="profile-text-area-outter" href="api/theme/theme-detail?id=${theme.id}">
+                                    </div>
+                                    <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
-                                                <p>${theme.title}</p>
+                                                <h2>${theme.title}</h2>
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
 
                                                 </p>
                                             </div>
-                                            <div class="profile-status-area">
-                                                <span class="material-symbols-outlined">
-                                                    event_available
-                                                </span>
-                                                <div class="status-text">
-                                                    예약가능
+                                            
+                                            
+                                      <div class="profile-status-area">
+                                            ${theme.isReserved === 0
+                                            ?
+                                            `
+                                                <div>
+                                                    <span class="material-symbols-outlined res-ok">
+                                                        event_available
+                                                    </span>
                                                 </div>
-                                            </div>
+                                                <div class="reserveText">예약 가능</div>
+                                            `
+                                            :
+                                            `
+                                                <div>
+                                                    <span class="material-symbols-outlined res-not">
+                                                        event_busy
+                                                    </span>
+                                                </div>
+                                                <div class="reserveText">예약 불가</div>
+                                            `
+                                            }
+                                        </div>
+                                            
+                                            
                                     </a>
                                 </div>
                             </div>
@@ -97,41 +115,6 @@ window.addEventListener('scroll', function() {
 
         }
 });
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-    // 클릭 이벤트를 profile-outter-box 요소에 추가
-    // let clickzone = document.querySelector('.profile-outter-box')
-    //     clickzone.addEventListener('click', function() {
-    //         // 현재 클릭한 요소의 th:value 값을 가져옴
-    //         const memberId = clickzone.getAttribute('th:value');
-    //         console.log("memberId:", memberId);
-    //         // 새로운 페이지로 이동
-    //         window.location.href = `http://localhost:8080/member-profile?i=${memberId}`;
-    //
-    //
-    // });
-// });
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     // 클릭 이벤트를 profile-outter-box 요소들에 추가
-//     const profileBoxes = document.querySelectorAll('.profile-outter-box');
-//     profileBoxes.forEach(function(profileBox) {
-//         profileBox.addEventListener('click', function() {
-//             // 현재 클릭한 요소의 th:value 값을 가져옴
-//             const memberId = this.getAttribute('th:value');
-//             console.log("memberId:", memberId);
-//
-//             // 새로운 페이지로 이동
-//             window.location.href = `http://localhost:8080/member-profile?i=${memberId}`;
-//
-//         });
-//     });
-// });
-
-
 
 
 

@@ -343,12 +343,15 @@ input:focus::-webkit-input-placeholder {color:transparent; }
 }
 
 .profile-text-title-area h2 {
-    font-family: 'Noto Sans', sans-serif;
     font-size: var(--font-size-medium14);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-black);
 }
-
+.profile-text-title-area p {
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
 .profile-text-contents-area {
     display: flex;
     flex-direction: column;
@@ -358,7 +361,13 @@ input:focus::-webkit-input-placeholder {color:transparent; }
     height: 48px;
     /* background-color:blanchedalmond; */
     margin-bottom: 0px;
+    margin-top: 4px;
     padding: var(--section-padding);
+}
+.reserveText{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
 }
 
 .profile-text-contents-area p {
@@ -400,13 +409,18 @@ input:focus::-webkit-input-placeholder {color:transparent; }
 }
 
 
-.profile-status-area :first-child {
-    color: #182CE3; /* 원하는 색상 값으로 변경 */
-    transform: scale(0.8);
+/*.profile-status-area :first-child {*/
+/*    color: #182CE3; !* 원하는 색상 값으로 변경 *!*/
+/*    transform: scale(0.8);*/
+/*}*/
+
+
+.res-ok{
+    filter: invert(17%) sepia(52%) saturate(5907%) hue-rotate(227deg) brightness(102%) contrast(92%);
 }
-
-
-
+.res-not {
+    filter: invert(18%) sepia(78%) saturate(4214%) hue-rotate(354deg) brightness(89%) contrast(105%);
+}
 
 
 
@@ -444,7 +458,7 @@ input:focus::-webkit-input-placeholder {color:transparent; }
 .category__items-box {
     display: flex;
     max-width: 100%;
-    height: 100px;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
     gap: 14px;
