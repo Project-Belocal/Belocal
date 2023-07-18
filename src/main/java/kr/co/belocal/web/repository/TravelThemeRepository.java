@@ -9,7 +9,14 @@ import java.util.List;
 public interface TravelThemeRepository {
 
 //====== member-profile 페이지용 ===========
-    List<TravelThemeView> findAll(Integer id, int offset, int size);
+    List<TravelThemeView> findAllByMemberId(Integer id, int offset, int size);
+
+
+
+
+//******** api/ travelThemeController *******************
+    List<TravelThemeView> findAll(Integer ctgId, String query, int offset, int size);
+
 
 //====== main화면 기본 6개 나오는 부분 =================
     List<TravelThemeView> getListForMain(int offset, int size);
@@ -18,11 +25,12 @@ public interface TravelThemeRepository {
 //====== search-modal : 검색용 =================
     List<TravelThemeView> getListByModalInput(String query, int offset, int size);
 
+
+
 //====== search-result : 값 입력 & enter =================
     List<TravelThemeView> getListByQuery(String query, int offset, int size);
 //    List<TravelThemeView> getListByCtgId(Integer ctgId, int offset, int size);
     List<TravelThemeView> getListByCtgId(Integer ctgId);
-    List<TravelThemeView> getListByCtgIdIcons(Integer ctgId, int offset, int size);
 
 
 

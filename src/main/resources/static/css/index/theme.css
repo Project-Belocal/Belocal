@@ -54,6 +54,9 @@
     gap: 14px;
     padding: 0 0 0 10px;
 }
+.theme-list--index::-webkit-scrollbar{
+    display: none;
+}
 
 /*--------- search-modal: ------------*/
 .theme-list--search-modal {

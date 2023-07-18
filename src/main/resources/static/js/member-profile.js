@@ -36,7 +36,7 @@ window.addEventListener('scroll', function() {
     let windowHeight = document.documentElement.clientHeight;
     let themeList = document.querySelector(".theme-list");
 
-    let url = `http://localhost:8080/api/member-profile?offset=${offset}`;
+    let url = `/api/travel-themes?offset=${offset}`;
 
 
     console.log("documentHeight: ", documentHeight);
@@ -55,11 +55,11 @@ window.addEventListener('scroll', function() {
                     let travelTheme =
                         `<section class="theme">
                             <div class="theme-box-area">
-                                    <div class="theme-box-pic-area">
+                                    <a class="theme-box-pic-area" href="api/theme/theme-detail?id=${theme.id}">
                                         <img src="/images/index-city.jpg" alt="">
-                                    </div>
+                                    </a>
                                 <div class="profile-outter-box">
-                                    <div class="profile-pic-id-outter">
+                                    <a class="profile-pic-id-outter" href="api/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
     
                                             <img src="/images/profile-pic.jpg" alt="">
@@ -67,8 +67,8 @@ window.addEventListener('scroll', function() {
                                         <div class="profile-id-text">
                                             innerjoin123
                                         </div>
-                                    </div>
-                                    <div class="profile-text-area-outter">
+                                    </a>
+                                    <a class="profile-text-area-outter" href="api/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
                                                 <p>${theme.title}</p>
                                             </div>
@@ -85,7 +85,7 @@ window.addEventListener('scroll', function() {
                                                     예약가능
                                                 </div>
                                             </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </section>`
@@ -98,6 +98,38 @@ window.addEventListener('scroll', function() {
         }
 });
 
+
+// document.addEventListener('DOMContentLoaded', function() {
+    // 클릭 이벤트를 profile-outter-box 요소에 추가
+    // let clickzone = document.querySelector('.profile-outter-box')
+    //     clickzone.addEventListener('click', function() {
+    //         // 현재 클릭한 요소의 th:value 값을 가져옴
+    //         const memberId = clickzone.getAttribute('th:value');
+    //         console.log("memberId:", memberId);
+    //         // 새로운 페이지로 이동
+    //         window.location.href = `http://localhost:8080/member-profile?i=${memberId}`;
+    //
+    //
+    // });
+// });
+
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     // 클릭 이벤트를 profile-outter-box 요소들에 추가
+//     const profileBoxes = document.querySelectorAll('.profile-outter-box');
+//     profileBoxes.forEach(function(profileBox) {
+//         profileBox.addEventListener('click', function() {
+//             // 현재 클릭한 요소의 th:value 값을 가져옴
+//             const memberId = this.getAttribute('th:value');
+//             console.log("memberId:", memberId);
+//
+//             // 새로운 페이지로 이동
+//             window.location.href = `http://localhost:8080/member-profile?i=${memberId}`;
+//
+//         });
+//     });
+// });
 
 
 

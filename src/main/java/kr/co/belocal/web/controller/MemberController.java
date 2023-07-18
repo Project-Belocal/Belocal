@@ -30,15 +30,20 @@ public class MemberController {
 
     @GetMapping("member-profile")
     public String getMemberProfile(
-            @RequestParam(name = "i", required = false, defaultValue="2")Integer id,
-            @RequestParam(name = "offset", defaultValue = "0") int offset, Model model){
+            @RequestParam(name = "i", required = false)Integer id,
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            Integer memberId,
+            Model model){
 
         Member memberProfile = memberService.getById(id);
-        List<TravelThemeView> travelThemeList = travelThemeService.getListByMemberId(id, offset);
+
+        int size = 6;
+        List<TravelThemeView> travelThemeList = travelThemeService.getListByMemberId(id, offset, size);
+
+        //-- member의 역할 표시해주는 기능(0:관리자, 1:일반회원, 2:가이드)
         Integer role = roleService.getByMemberId(id);
 
-//        List<Role> roleType = roleService.getRoleById(id);
-
+//        ProfileImage profileImage = profileImageService.getByMemberId(id);
         ProfileImage profileImage = profileImageService.getByMemberId(id);
 
 

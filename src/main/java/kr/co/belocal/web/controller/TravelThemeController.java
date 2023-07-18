@@ -59,14 +59,14 @@ public class TravelThemeController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/theme-list")
-    public String list(Model model) {
-
-        List<TravelTheme> list = travelThemeService.getList();
-        model.addAttribute("list", list);
-        System.out.println(list);
-        return "theme/theme-list";
-    }
+//    @GetMapping("/theme-list")
+//    public String list(Model model) {
+//
+//        List<TravelTheme> list = travelThemeService.getList(int offset, int size);
+//        model.addAttribute("list", list);
+//        System.out.println(list);
+//        return "theme/theme-list";
+//    }
 
 
     // 리다이렉트 두 번 일어나는듯..?

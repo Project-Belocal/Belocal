@@ -469,14 +469,16 @@ input:focus::-webkit-input-placeholder {color:transparent; }
 .category__item {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     width: 50px;
     height: 50px;
     background: none;
 }
 .category__item span{
-    font-size: 20px;
+    font-size: 24px;
     color: var(--color-text-gray);
+    margin-top: 4px;
 }
 .category__item p{
     font-size: var(--font-size-medium12);
