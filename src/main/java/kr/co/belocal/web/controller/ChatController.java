@@ -55,9 +55,6 @@ public class ChatController {
 
 
 
-
-
-
         model.addAttribute("chatList", list);
         model.addAttribute("noticeList",noticeList);
 

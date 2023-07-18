@@ -18,4 +18,6 @@ public interface NoticeService {
     List<NoticeView> getViewList(Integer receiverId);
 
     void deleted(Integer chatRoomId);
+
+    Integer getCount(Integer memberId);
 }
