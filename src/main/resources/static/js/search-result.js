@@ -11,7 +11,7 @@ ctgBtns.onclick = (e) => {
 
             let id = e.target.getAttribute("data-id");
             let offset = 0;
-            let url = `/api/travel-themes?c=${id}&offset=${offset}`;
+            let url = `/travel-themes?c=${id}&offset=${offset}`;
 
             console.log("id: " , id);
             console.log(url);
@@ -26,13 +26,13 @@ ctgBtns.onclick = (e) => {
                             `<section class="theme"">
                             <div class="theme-box-area">
                                     <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
-                                        <img src="/images/index-city.jpg" alt="">
+                                        <img src="${theme.path}" alt="">
                                     </a>
                                 <div class="profile-outter-box">
                                     <a class="profile-pic-id-outter" href="/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
 
-                                            <img src="/images/profile-pic.jpg" alt="">
+                                            <img src="https://storage.googleapis.com/belocal-bucket/${theme.uuid}" alt="" >
 
                                         </div>
                                         <div class="profile-id-text">
@@ -45,6 +45,7 @@ ctgBtns.onclick = (e) => {
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
+                                                ${theme.description}
 
                                                 </p>
                                             </div>
@@ -130,60 +131,58 @@ window.addEventListener('scroll', function() {
                 for (let theme of list) {
                     console.log("theme",theme);
                     let travelTheme =
-                        `<section class="theme">
+                        `<section class="theme"">
                             <div class="theme-box-area">
-                                    <div class="theme-box-pic-area">
-                                        <img src="/images/index-city.jpg" alt="">
-                                    </div>
+                                    <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
+                                        <img src="${theme.path}" alt="">
+                                    </a>
                                 <div class="profile-outter-box">
-                                    <div class="profile-pic-id-outter">
+                                    <a class="profile-pic-id-outter" href="/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
+                                            <img src="https://storage.googleapis.com/belocal-bucket/${theme.uuid}" alt="" >
 
-                                            <img src="/images/profile-pic.jpg" alt="">
+                                          
                                         </div>
                                         <div class="profile-id-text">
-                                            innerjoin123
+                                           ${theme.nickname}
                                         </div>
-                                    </div>
-                                    <div class="profile-text-area-outter">
+                                    </a>
+                                    <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
-                                                <p>${theme.title}</p>
+                                                <h2>${theme.title}</h2>
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
+                                                ${theme.description}
 
                                                 </p>
                                             </div>
-                                            
-                                          <div class="profile-status-area">
-                                                    ${theme.isReserved === 0
-                                                    ?  
-                                                    `
-                                                        <div>
-                                                            <span class="material-symbols-outlined res-ok">
-                                                                event_available
-                                                            </span>
-                                                        </div>
-                                                        <div class="reserveText">예약 가능</div>
-                                                    `
-                                                    :
-                                                    `
-                                                        <div>
-                                                            <span class="material-symbols-outlined res-not">
-                                                                event_busy
-                                                            </span>
-                                                        </div>
-                                                        <div class="reserveText">예약 불가</div>
-                                                    `
-                                                }
-                                                </div>
-                                            
-                                            
-                                            
-                                    </div>
-                                </div>
+                              <div class="profile-status-area">
+                                  ${theme.isReserved === 0
+                            ?
+                            `
+                                           <div>
+                                               <span class="material-symbols-outlined res-ok">
+                                                   event_available
+                                               </span>
+                                           </div>
+                                            <div class="reserveText">예약 가능</div>
+                                         `
+                            :
+                            `
+                                           <div>
+                                               <span class="material-symbols-outlined res-not">
+                                                   event_busy
+                                               </span>
+                                           </div>
+                                            <div class="reserveText">예약 불가</div>
+                                            `
+                        }
+                                     </div>
+                                </a>
                             </div>
-                        </section>`
+                        </div>
+                    </section>`
 
                     themeList.insertAdjacentHTML("beforeend", travelTheme);
                     offset ++;
