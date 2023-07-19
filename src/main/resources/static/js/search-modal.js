@@ -168,11 +168,11 @@ window.addEventListener('scroll', function() {
                     let travelTheme =
                         `<section class="theme"">
                             <div class="theme-box-area">
-                                    <a class="theme-box-pic-area" href="api/theme/theme-detail?id=${theme.id}">
+                                    <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
                                         <img src="${theme.path}" alt="">
                                     </a>
                                 <div class="profile-outter-box">
-                                    <a class="profile-pic-id-outter" href="api/member-profile?i=${theme.memberId}">
+                                    <a class="profile-pic-id-outter" href="/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
                                             <img src="https://storage.googleapis.com/belocal-bucket/${theme.uuid}" alt="" >
 
@@ -182,7 +182,7 @@ window.addEventListener('scroll', function() {
                                            ${theme.nickname}
                                         </div>
                                     </a>
-                                    <a class="profile-text-area-outter" href="api/theme/theme-detail?id=${theme.id}">
+                                    <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
                                             <div class="profile-text-title-area">
                                                 <h2>${theme.title}</h2>
                                             </div>
