@@ -30,6 +30,7 @@
 .my__profile-img img{
     width: 76px;
     height: 76px;
+    object-fit: cover;
 }
 
 /* 내정보 영역  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
