@@ -58,13 +58,13 @@ searchInput.addEventListener('keyup', function() {
                         `<section class="theme"">
                             <div class="theme-box-area">
                                     <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
-                                        <img src="/images/index-city.jpg" alt="">
+                                        <img src="${theme.path}" alt="">
                                     </a>
                                 <div class="profile-outter-box">
                                     <a class="profile-pic-id-outter" href="/member-profile?i=${theme.memberId}">
                                         <div class="profile-pic">
 
-                                            <img src="/images/profile-pic.jpg" alt="">
+                                            <img src="https://storage.googleapis.com/belocal-bucket/${theme.uuid}" alt="" >
 
                                         </div>
                                         <div class="profile-id-text">
