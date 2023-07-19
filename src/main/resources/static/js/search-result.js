@@ -109,22 +109,19 @@ window.addEventListener('scroll', function() {
     let documentHeight = document.documentElement.scrollHeight;
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
-    // let themeList = document.querySelector(".theme-list");
-
-    // let themeList = document.querySelector(".themeList-section");
-
-    console.log("documentHeight: ", documentHeight);
-    console.log("scrollTop: ", scrollTop);
-    console.log("windowHeight: ", windowHeight);
 
     if(windowHeight + scrollTop == documentHeight) {
-        // fetchData(offset);
-        // offset += batchSize;
-        console.log("offset: ", offset);
-
         let query = searchInput.value;
-        let url = `/api/travel-themes?q=${query}&offset=${offset}`;
+        const ctgId = document.querySelector(".ctg-id").value;
 
+        let url;
+        if(query !== "")
+            url = `/api/travel-themes?q=${query}&offset=${offset}`;
+        else if(ctgId !== "")
+            url = `/api/travel-themes?c=${ctgId}&offset=${offset}`;
+        else
+            url = `/api/travel-themes?offset=${offset}`;
+            
         fetch(url)
             .then(response => response.json())
             .then(list => {

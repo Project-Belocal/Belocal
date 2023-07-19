@@ -148,11 +148,15 @@
 </section>
 
 
+<div th:replace="~{inc/navbar}"></div>
 
-
+<input
+    class="ctg-id"
+    type="hidden"
+    th:value="${ctgId}"
+>
 
 
 </body>
-<div th:replace="~{inc/navbar}"></div>
 
 </html>
