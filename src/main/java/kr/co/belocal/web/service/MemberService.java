@@ -11,4 +11,6 @@ public interface MemberService {
     Integer editSave(Member member);
 
     ProfileImage getProfileImg(Integer memberId);
+
+    int withdrawal(Integer memberId);
 }

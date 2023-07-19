@@ -52,13 +52,14 @@ public class ChatController {
         List<ChatRoomListView> list = chatRoomService.findAll(member.getId());
         List<NoticeView> noticeList = noticeService.getViewList(member.getId());
 
-//        log.info("list {}",list);
+
 
 
         model.addAttribute("chatList", list);
         model.addAttribute("noticeList",noticeList);
 
-
+        log.info("chatList{}",list);
+        log.info("noticeList{}",noticeList);
 
         return "chat/chatlist";
     }
@@ -91,6 +92,7 @@ public class ChatController {
         PlaceImage placeImage = placeImageService.getFirstImageByPlaceId(place.getId());
 
 
+        log.info("chatLog{}",chatLog);
 
         model.addAttribute("theme",theme);
         model.addAttribute("place",place);

@@ -78,10 +78,19 @@ window.addEventListener("load", () => {
 
         firstPage.classList.toggle("hidden");
         secondPage.classList.toggle("hidden");
-        headerPrevBtn.classList.toggle("hidden");
+        // headerPrevBtn.classList.toggle("hidden");
     }
 
-    prevBtn.onclick = toggleRegistrationPages;
+    prevBtn.addEventListener("click", function(e) {
+        const firstPage = document.querySelector(".theme__registration-1st");
+        const secondPage = document.querySelector(".theme__registration-2nd");
+
+        if(firstPage.classList.contains("hidden")) {
+            e.preventDefault();
+            firstPage.classList.toggle("hidden");
+            secondPage.classList.toggle("hidden");
+        } 
+    });
     nextBtn.onclick = toggleRegistrationPages;
 
     deleteBtn.onclick = function (e) {

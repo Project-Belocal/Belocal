@@ -312,7 +312,10 @@
     </delete>
 
 
-
+<!--작성글 개수-->
+    <select id="getCountTheme" resultType="int">
+        SELECT count(*) FROM travel_theme where member_id = #{memberId};
+    </select>
 
 
 

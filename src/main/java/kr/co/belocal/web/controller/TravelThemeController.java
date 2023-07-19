@@ -105,12 +105,18 @@ public class TravelThemeController {
         Integer chatRoomStatus = null;
         ChatRoom chatRoom = null;
 
+        Integer isMyTravelTheme = null;
+
         if(member != null) {
             int memberId = member.getId();
             isAlreadyOnWishlist = wishlistGroupService.getStatus(travelThemeId, memberId);
             wishlistGroupViewList = wishlistGroupService.getViewListByMemberId(memberId);
             chatRoomStatus = chatRoomService.getStatus(memberId, travelThemeId);
             chatRoom = chatRoomService.getByIds(memberId, travelThemeId);
+            if(travelTheme.getMemberId() == memberId)
+                isMyTravelTheme = 1;
+            else
+                isMyTravelTheme = 0;
         }
         
         // Role role = roleService.getByMemberId(memberId);
@@ -127,6 +133,7 @@ public class TravelThemeController {
         model.addAttribute("profileImage", profileImage);
         model.addAttribute("chatRoomStatus", chatRoomStatus);
         model.addAttribute("chatRoom", chatRoom);
+        model.addAttribute("isMyTravelTheme", isMyTravelTheme);
         return "theme/theme-detail";
     }
 }

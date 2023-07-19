@@ -1,18 +1,25 @@
+.find{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .find__container{
-    padding-top: 52px;
+    max-width: 390px;
+    /*padding-top: 52px;*/
     position: relative;
 }
 
-.find__header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
+/*.find__header{*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    z-index: 1000;*/
+/*}*/
 
 .find__inner{
-    height: 52px;
     display: flex;
     padding: 12px 10px;
     height: 64px;

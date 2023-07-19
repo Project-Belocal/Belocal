@@ -1,3 +1,4 @@
+
 .room{
     display: flex;
     flex-direction: column;
@@ -133,6 +134,27 @@
     overflow-y: scroll;
 }
 
+/*입장시 메세지*/
+.enter__notice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0 12px 0;
+}
+
+.enter__userInfo{
+    display: flex;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: var(--color-text-lightgray);
+    opacity: 0.8;
+}
+.enter__userInfo span{
+    text-align: center;
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-regular);
+}
+
 .room__item{
     display: flex;
     margin-top: 0;
@@ -140,7 +162,6 @@
     justify-content: flex-start;
     padding: 12px 12px;
     width: 100%;
-
 }
 /* 메시지창 end */
 
