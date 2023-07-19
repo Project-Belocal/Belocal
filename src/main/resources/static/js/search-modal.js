@@ -43,8 +43,6 @@ searchInput.addEventListener('keyup', function() {
 
     let url = `/api/travel-themes?q=${query}&offset=${offset}`;
 
-
-
     fetch(url)
             .then(response => response.json())
             .then(list => {

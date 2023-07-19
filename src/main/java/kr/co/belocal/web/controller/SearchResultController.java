@@ -40,6 +40,10 @@ public class SearchResultController {
             searchThemeList = travelThemeService.getList(offset, size);
         }
 
+        for(TravelThemeView theme : searchThemeList) {
+            System.out.println(theme);
+        }
+
         //---- 검색창에 검색어 입력 & enter 시 해당 결과(theme) 가져오는 기능
         model.addAttribute("search", searchThemeList);
 
@@ -51,7 +55,7 @@ public class SearchResultController {
         //--- search-result 페이지 : (기본적으로 뜨는) 카테고리 아이콘 목록들
         List<Category> getCategoryList = categoryService.getResultCtg();
         model.addAttribute("getCtgId", getCategoryList);
-
+        model.addAttribute("ctgId", ctgId);
 
         return "/search-result";
     }//search
