@@ -39,12 +39,8 @@ window.addEventListener('scroll', function() {
     let url = `/api/travel-themes?offset=${offset}`;
 
 
-    console.log("documentHeight: ", documentHeight);
-    console.log("scrollTop: ", scrollTop);
-    console.log("windowHeight: ", windowHeight);
 
-    if(windowHeight + scrollTop == documentHeight) {
-        console.log("offset: ", offset);
+    if(windowHeight + scrollTop === documentHeight) {
 
 
         fetch(url)
@@ -63,9 +59,12 @@ window.addEventListener('scroll', function() {
                                         <div class="profile-pic">
     
                                             <img src="/images/profile-pic.jpg" alt="">
+                                            
                                         </div>
                                         <div class="profile-id-text">
+                                        
                                             innerjoin123
+                                            
                                         </div>
                                     </div>
                                     <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
