@@ -23,9 +23,8 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
 
         log.info("prevPage {}",prevPage);
 
-        if (prevPage=="http://localhost:8080/sign-up" || prevPage=="http://www.tobelocal.site//sign-up"){
-            response.sendRedirect("/login");
-
+        if (prevPage=="http://www.tobelocal.site/sign-up"){
+            response.sendRedirect("/");
         }
 
         if(prevPage != null) {

@@ -39,11 +39,11 @@
                             <div class="message__profile">
                                 <img src="../images/profile-pic.jpg" alt=""
                                      th:if="${#authentication.principal.id == cl.guideId}"
-                                     th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${cl.travelerUuid}}"
+                                     th:src="@{'https://storage.googleapis.com/belocal-bucket'+ ${cl.travelerUuid}}"
                                 >
                                 <img src="../images/profile-pic.jpg" alt=""
                                     th:if="${#authentication.principal.id == cl.travelerId}"
-                                    th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${cl.guideUuid}}"
+                                    th:src="@{'https://storage.googleapis.com/belocal-bucket'+ ${cl.guideUuid}}"
                                 >
                             </div>
                             <div class="message__text">
@@ -110,7 +110,7 @@
                         <span>여행이나 체험을 예약한 경우, 로컬이 보낸 메시지가 여기에 표시됩니다.</span>
                     </div>
                     <div class="message__empty-link">
-                        <a href="theme리스트로 이동">BeLocal 둘러보기</a>
+                        <a href="http://www.tobelocal.site/search-result">BeLocal 둘러보기</a>
                     </div>
                 </div>
             </div>
