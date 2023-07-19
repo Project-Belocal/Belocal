@@ -86,6 +86,8 @@ public class ChatController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedTime = currentTime.format(formatter);
 
+        System.out.println("formattedTime = " + formattedTime);
+
         ProfileImage img = memberService.getProfileImg(chat.getMemberId());
         String uuid = img.getUuid();
 
