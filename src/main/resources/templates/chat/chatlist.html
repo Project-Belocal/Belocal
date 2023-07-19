@@ -39,11 +39,11 @@
                             <div class="message__profile">
                                 <img src="../images/profile-pic.jpg" alt=""
                                      th:if="${#authentication.principal.id == cl.guideId}"
-                                     th:src="@{'https://storage.googleapis.com/belocal-bucket'+ ${cl.travelerUuid}}"
+                                     th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${cl.travelerUuid}}"
                                 >
                                 <img src="../images/profile-pic.jpg" alt=""
                                     th:if="${#authentication.principal.id == cl.travelerId}"
-                                    th:src="@{'https://storage.googleapis.com/belocal-bucket'+ ${cl.guideUuid}}"
+                                    th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${cl.guideUuid}}"
                                 >
                             </div>
                             <div class="message__text">
