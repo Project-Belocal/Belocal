@@ -7,8 +7,6 @@ ctgBtns.onclick = (e) => {
     e.preventDefault()
     themeList.innerHTML = "";
 
-
-
             let id = e.target.getAttribute("data-id");
             let offset = 0;
             let url = `/api/travel-themes?c=${id}&offset=${offset}`;
@@ -121,7 +119,7 @@ window.addEventListener('scroll', function() {
             url = `/api/travel-themes?c=${ctgId}&offset=${offset}`;
         else
             url = `/api/travel-themes?offset=${offset}`;
-            
+
         fetch(url)
             .then(response => response.json())
             .then(list => {

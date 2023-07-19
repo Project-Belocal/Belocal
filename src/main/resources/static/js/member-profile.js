@@ -35,12 +35,16 @@ window.addEventListener('scroll', function() {
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
     let themeList = document.querySelector(".theme-list");
+    const memberId = document.querySelector(".member-id").value;
+    // console.log(memberId);
+    let url = `/api/travel-themes?id=${memberId}&offset=${offset}`;
 
-    let url = `/api/travel-themes?offset=${offset}`;
+    // console.log("documentHeight: ", documentHeight);
+    // console.log("scrollTop: ", scrollTop);
+    // console.log("windowHeight: ", windowHeight);
 
-
-
-    if(windowHeight + scrollTop === documentHeight) {
+    if(windowHeight + scrollTop == documentHeight) {
+        console.log("offset: ", offset);
 
 
         fetch(url)
@@ -52,19 +56,16 @@ window.addEventListener('scroll', function() {
                         `<section class="theme">
                             <div class="theme-box-area">
                                     <a class="theme-box-pic-area" href="/theme/theme-detail?id=${theme.id}">
-                                        <img src="/images/index-city.jpg" alt="">
+                                        <img src="${theme.path}" alt="">
                                     </a>
                                 <div class="profile-outter-box">
                                     <div class="profile-pic-id-outter">
                                         <div class="profile-pic">
     
-                                            <img src="/images/profile-pic.jpg" alt="">
-                                            
+                                            <img src="https://storage.googleapis.com/belocal-bucket/${theme.uuid}" alt="">
                                         </div>
                                         <div class="profile-id-text">
-                                        
-                                            innerjoin123
-                                            
+                                            ${theme.nickname}
                                         </div>
                                     </div>
                                     <a class="profile-text-area-outter" href="/theme/theme-detail?id=${theme.id}">
@@ -73,7 +74,7 @@ window.addEventListener('scroll', function() {
                                             </div>
                                             <div class="profile-text-contents-area">
                                                 <p>
-
+                                                    ${theme.description}
                                                 </p>
                                             </div>
                                             

@@ -30,7 +30,7 @@ public class MemberController {
 
     @GetMapping("member-profile")
     public String getMemberProfile(
-            @RequestParam(name = "i", required = false)Integer id,
+            @RequestParam(name = "i", required = false) Integer id,
             @RequestParam(name = "offset", defaultValue = "0") int offset,
             Integer memberId,
             Model model){
@@ -51,7 +51,7 @@ public class MemberController {
         model.addAttribute("memberProfile", memberProfile);
         model.addAttribute("travelThemeList", travelThemeList);
         model.addAttribute("role", role);
-
+        model.addAttribute("memberId", id);
 //        model.addAttribute("roleType", roleType);
         model.addAttribute("profileImage", profileImage);
 
