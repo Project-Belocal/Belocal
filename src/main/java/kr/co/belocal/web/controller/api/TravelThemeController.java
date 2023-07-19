@@ -23,6 +23,7 @@ public class TravelThemeController {
     @GetMapping
     public ResponseEntity<List<TravelThemeView>> list
             (
+            @RequestParam(name = "id", required = false) Integer memberId,
             @RequestParam(name = "q", required = false) String query,
             @RequestParam(name = "c", required = false) Integer ctgId,
             @RequestParam(name = "offset") int offset
@@ -33,16 +34,20 @@ public class TravelThemeController {
 
         List<TravelThemeView> result = null;
 
-        if(query != null){
-           result=travelThemeService.getListByQuery(query, offset, size);
-        } else if (ctgId != null){
-            result=travelThemeService.getListByCtgId(ctgId, offset, size);
+        if(memberId != null) {
+            result = travelThemeService.getListByMemberId(memberId, offset, size);
+
+            for(TravelThemeView theme : result) 
+                System.out.println(theme);
         } else {
-            result=travelThemeService.getList(offset, size);
+            if(query != null){
+                result=travelThemeService.getListByQuery(query, offset, size);
+            } else if (ctgId != null){
+                result=travelThemeService.getListByCtgId(ctgId, offset, size);
+            } else {
+                result=travelThemeService.getList(offset, size);
+            }
         }
-
-
-
 
         return new ResponseEntity<List<TravelThemeView>>(result, HttpStatus.OK);
     }
