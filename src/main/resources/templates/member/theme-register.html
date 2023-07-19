@@ -209,7 +209,9 @@
   </section>
 
   <div th:replace="~{inc/navbar}"></div>
-
+  
+  <input id="input-member-id" type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}">
+	      
 </body>
 
 </html>

@@ -515,9 +515,12 @@ window.addEventListener("load", () => {
         const themeDescriptionData = themeInfo.querySelector(".theme__description").querySelector("textarea");
         const themeBookableDateDataList = themeInfo.querySelector(".theme__bookable-date").querySelectorAll("input");
         const themePreferredTimeDataList = themeInfo.querySelector(".theme__preferred-time").querySelectorAll("input");
-
+        const inputData = document.querySelector("#input-member-id");
+        const memberId = inputData.value;
+        // console.log(memberId);
+        // return;
         const theme = {
-            "memberId": null,
+            "memberId": memberId,
             "title": themeTitleData.value,
             "description": themeDescriptionData.value,
             "bookableDateStart": themeBookableDateDataList[0].value,
