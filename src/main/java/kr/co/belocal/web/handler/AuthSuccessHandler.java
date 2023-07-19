@@ -23,13 +23,15 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
 
         log.info("prevPage {}",prevPage);
 
-        if (prevPage=="http://www.tobelocal.site/sign-up"){
-            response.sendRedirect("/");
-        }
 
         if(prevPage != null) {
-            request.getSession().removeAttribute("prevPage");
-            response.sendRedirect(prevPage);
+            if (prevPage.equals("http://www.tobelocal.site/sign-up")){
+                request.getSession().removeAttribute("prevPage");
+                response.sendRedirect("/");
+            }else {
+                request.getSession().removeAttribute("prevPage");
+                response.sendRedirect(prevPage);
+            }
         } else {
             response.sendRedirect("/");
         }
