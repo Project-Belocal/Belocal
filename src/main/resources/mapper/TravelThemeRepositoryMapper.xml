@@ -25,11 +25,19 @@
             <if test="ctgId != null">
                 ctg_id = #{ctgId}
             </if>
+<!--            <if test="query != null">-->
+<!--                or title LIKE '%#{query}%'-->
+<!--                or description LIKE '%#{query}%'-->
+<!--                or name LIKE '%#{query}%'-->
+<!--                or lc_name LIKE '%#{query}%'-->
+<!--            </if>-->
             <if test="query != null">
-                or title LIKE '%${query}%'
-                or description LIKE '%${query}%'
-                or name LIKE '%${query}%'
-                or lc_name LIKE '%${query}%'
+                AND (
+                title LIKE CONCAT('%', #{query}, '%')
+                OR description LIKE CONCAT('%', #{query}, '%')
+                OR name LIKE CONCAT('%', #{query}, '%')
+                OR lc_name LIKE CONCAT('%', #{query}, '%')
+                )
             </if>
         </trim>
         GROUP BY

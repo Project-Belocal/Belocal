@@ -159,7 +159,7 @@ public class MyPageController {
 
     @PostMapping("/upload-theme")
     public ResponseEntity<Integer> uploadTravelTheme(@RequestBody TravelTheme travelTheme) {
-        travelTheme.setMemberId(1);
+        // travelTheme.setMemberId(1);
         int result = travelThemeService.save(travelTheme);
 
         return ResponseEntity.ok().body(travelTheme.getId());
