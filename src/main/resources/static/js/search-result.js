@@ -11,7 +11,7 @@ ctgBtns.onclick = (e) => {
 
             let id = e.target.getAttribute("data-id");
             let offset = 0;
-            let url = `/travel-themes?c=${id}&offset=${offset}`;
+            let url = `/api/travel-themes?c=${id}&offset=${offset}`;
 
             console.log("id: " , id);
             console.log(url);
