@@ -505,10 +505,10 @@ window.addEventListener("load", () => {
     }
 
     themeSaveBtn.onclick = async function () {
-        let placeImagePathList = await uploadInputImage();
-        
         const isComplete = checkCompleteTheme();
         if (!isComplete) return;
+        
+        let placeImagePathList = await uploadInputImage();
 
         const themeInfo = document.querySelector(".theme__info");
         const themeTitleData = themeInfo.querySelector(".theme__title").querySelector("textarea");

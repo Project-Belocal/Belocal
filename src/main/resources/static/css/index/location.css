@@ -1,8 +1,8 @@
-.location{
+.location {
     margin-bottom: var(--section-margin-bottom);
 }
 
-.location__title {
+.location__title-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -10,12 +10,12 @@
     margin-bottom: var(--title-contents-gap);
 }
 
-.location__title h1 {
+.location__title {
     font-size: var(--font-size-large18);
     font-weight: var(--font-weight-bold);
 }
 
-.location__title a {
+.location__title-container a {
     font-size: var(--font-size-medium12);
     color: var(--color-text-gray);
 }

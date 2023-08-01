@@ -1,0 +1,23 @@
+.icon {
+    display: inline-block; 
+    background-repeat: no-repeat;
+    background-position: center;
+    /* overflow: hidden; */
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+    /* 이미지가 요소의 크기에 비해 크더라도 가득 채우게 설정 */
+}
+
+.icon-search {
+    background-image: url(/images/icon/search.svg);
+}
+
+.icon-arrow-left {
+    background-image: url(/images/icon/left-arrow.svg);
+}
+
+.icon-arrow-right {
+    background-image: url(/images/icon/right-arrow.svg);
+}
