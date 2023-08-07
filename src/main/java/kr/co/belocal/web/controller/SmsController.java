@@ -25,9 +25,10 @@ public class SmsController {
 
     //번호전송
     @PostMapping("/sms/send")
-    public ResponseEntity<Void> sendSms(@RequestBody Map<String ,Object> toPhone) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException, IllegalAccessException {
+    public ResponseEntity<Void> sendSms(@RequestBody Map<String ,Object> phoneNumber) throws UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException, InvalidKeyException, JsonProcessingException, IllegalAccessException {
+        System.out.println("phoneNumber = " + phoneNumber);
 
-        String phoneNum = (String) toPhone.get("toPhone");
+        String phoneNum = (String) phoneNumber.get("phoneNumber");
 
         smsService.sendSms(phoneNum);
 

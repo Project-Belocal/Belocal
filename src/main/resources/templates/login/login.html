@@ -5,49 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/login/login.css">
     <script src="./js/login/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-
+<header>
     <!-- 뒤로가기 버튼 -->
     <div class="login__undo">
         <button>
             <img src="./images/icon/left-arrow.svg" alt="">
         </button>
     </div>
+</header>
 
-    <div class="login">
+
+<section class="login__container">
+    <div class="login__area">
 
         <!-- 로고 -->
         <div class="login__logo">
-            <img src="./images/logo-beLocal.svg" alt="">
-            <span>BeLocal</span>
+            <a href="/" class="logo__link">
+                <img src="./images/logo-beLocal.svg" alt="">
+                <span>BeLocal</span>
+            </a>
         </div>
-
         <!-- input 창 -->
         <form action="login" method="post">
-            <div class="login__id">
-                <div class="login__id-wrap">
-                    <img src="./images/icon/login-id.svg" alt="">
-                    <input class="login__input-id" type="text" name="userId" placeholder="아이디를 입력해주세요." autocomplete="off">
-                    <button class="hidden" type="button">
-                        <img src="" alt="">
-                    </button>
+            <div class="input-text">
+                <div class="input-text__content-wrapper">
+                    <label class="input-text__label" for="input-text__content-id">아이디</label>
+                    <input class="input-text__content " id="input-text__content-id"
+                           type="text"
+                           name="userId" placeholder="아이디를 입력해주세요." autocomplete="off">
+                </div>
+                <div class="input-text__content-wrapper">
+                    <label class="input-text__label" for="input-text__content-pw">비밀번호</label>
+                    <input class="input-text__content " id="input-text__content-pw" type="password" name="pw"
+                           placeholder="비밀번호는 8~16자 영문,숫자,특수기호" autocomplete="off">
                 </div>
             </div>
-            <div class="login__pw">
-                <div class="login__pw-wrap">
-                    <img src="./images/icon/login-pwd.svg" alt="">
-                    <input class="login__input-pw" type="password" name="pw" placeholder="비밀번호는 8~16자 영문,숫자,특수기호" autocomplete="off">
-                </div>
-            </div>
+
             <!-- 로그인/회원가입 버튼 -->
             <div class="login__btn-wrap">
                 <div class="login__btn">
-                    <button type="submit" >
+                    <button type="submit">
                         <span>sign-in</span>
                     </button>
                 </div>
@@ -56,9 +61,6 @@
                 </div>
             </div>
         </form>
-
-
-
 
         <!-- 계정 정보 관련 -->
         <div class="login__look">
@@ -85,27 +87,21 @@
 
         <!-- 구글 로그인 버튼 -->
         <div class="login__social">
-            <button class="login__google">
-                <img src="./images/icon/google-btn.svg" alt="">
+            <button class="login__google social-btn">
+                <img class="social__logo" src="./images/icon/google-btn.svg" alt="">
                 <span>Sign in with Google</span>
             </button>
-        </div>
-
-        <div class="login__social hidden">
-            <button class="login__kakao">
-                <img src="./images/icon/google-btn.svg" alt="">
+            <button class="login__kakao social-btn">
+                <img class="social__logo" src="./images/icon/google-btn.svg" alt="">
                 <span>Sign in with Kakao</span>
             </button>
         </div>
 
         <div class="login__error hidden">
+            <img src="./images/icon/error.svg">
             <span>아이디 및 비밀번호를 다시 확인해주세요.</span>
         </div>
-
-
-
     </div>
-
-
+</section>
 </body>
 </html>

@@ -1,21 +1,52 @@
 @import "reset.css";
 /*@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');*/
 /* 한글 */
-@font-face{
-    font-family: 'Noto Sans KR';
-    src: url('/Noto_Sans_KR/NotoSansKR-Regular.otf') format('opentype');
-    unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
-}
 
-/* inter */
-@font-face {
-    font-family: 'Inter';
-    src: url('/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
-    unicode-range:U+0041-005A, U+0061-007A;
+/* 기존의 font-face를 pretendard로 전환  https://github.com/orioncactus/pretendard */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css");
+* {
+    font-family: "Pretendard Variable"
 }
-
 
 :root {
+    /* root 재작업 */
+
+    /* Font weight */
+    --extra-bold: 800;
+    --bold: 700;
+    --semi-bold: 600;
+    --medium: 500;
+    --regular: 400;
+
+
+    /*color*/
+    --main-color:  #182CE3;
+
+
+    --white: #FFFFFF;
+    --black: #000;
+
+    --light-gray1: #E4E4E4;
+    --light-gray2: #D1D1D1;
+
+    --gray1: #a5a5a5;
+    --grey2: #8b8b8b;
+    --gray3: #737373;
+
+
+    --modal-white: #fbfbfd;
+    --error-red: #ff4f4f;
+    --success-green: #81d051;
+
+    /* font */
+    --font-rem : 0.5rem;
+    --font-rem1 : 1rem;
+    --font-rem2 : 1.5rem;
+    --font-rem3 : 2rem;
+    --font-rem4 : 2.5rem;
+    --font-rem5 : 3rem;
+
+    /*  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
     /*color*/
     --color-point-blue: #182CE3;
     --color-point-light-gray:#E4E4E4;
@@ -33,9 +64,7 @@
     --color-text-gray3: #a5a4a4;
     --color-text-lightgray: #E4E4E4;
 
-    /*font Family*/
-    --font-family-eng: 'Inter', sans-serif;
-    --font-family-kr: 'Noto Sans KR', sans-serif;
+
 
     /*Font Size*/
     --font-size-large32: 32px;
@@ -51,6 +80,7 @@
     --font-weight-regular: 400;
     --font-weight-light: 200;
 
+
     /*섹션 간격*/
     --header-margin-bottom: 20px;
     --section-margin-bottom: 50px;
@@ -63,73 +93,3 @@
     --navbar-height: 62px;
 }
 
-body{
-    font-family: 'Noto Sans KR','Inter',sans-serif;
-}
-
-
-/* Typography */
-h1 {
-    font-size: var(--font-size-large18);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-black);
-    /* margin: 16px 0px; */
-}
-
-h2 {
-    font-size: var(--font-size-medium14);
-    font-weight: var(--font-weight-regular);
-    color: var(--color-text-black);
-    /* margin: 8px 0; */
-}
-
-h3 {
-    font-size: var(--font-size-medium12);
-    font-weight: var(--font-weight-regular);
-    color: var(--color-text-gray);
-    margin: 8px 0;
-}
-
-p {
-    font-size: var(--font-size-small10);
-    /*font-weight: var(--font-weight-light);*/
-    color: var(--color-text-black);
-    margin: 4px 0;
-}
-
-* { 
-    box-sizing : border-box;
-    padding: 0;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: var(--color-text-black);
-}
-
-
-input,
-button {
-    outline: none;
-	border:none;
-}
-
-button {
-    cursor: pointer;
-    background-color: var(--color-point-white);
-}
-
-
-/* body {
-    width: 100vw;
-    height: 100vh;
-} */
-
-/* img {
-    width: 100%;
-}  */
-
-/* main {
-    width: 100%;
-} */

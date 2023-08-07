@@ -15,8 +15,6 @@ window.addEventListener('load', function () {
     let nickname = nicknameElement.textContent;
 
 
-
-
     let myTemp = `
                 <div sec:authorize="hasRole('GUIDE')">
                 <div class="my__register-btn ">
@@ -37,11 +35,7 @@ window.addEventListener('load', function () {
                         <span>local</span>
                     </div>`
 
-    
 
-    
-    
-    
     dealList.onclick = function (e) {
 
         let clickedButton = e.target.closest('button');
@@ -77,26 +71,25 @@ window.addEventListener('load', function () {
         modalBg.classList.toggle('hidden');
     };
 
-    roleBtn.addEventListener("click",function (e){
+    roleBtn.addEventListener("click", function (e) {
         e.preventDefault();
 
-        fetch("my/api/mys/addGuideRole",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/JSON"
+        fetch("my/api/mys/addGuideRole", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/JSON"
             },
-            body:JSON.stringify({
-                id:memberId.value,
+            body: JSON.stringify({
+                id: memberId.value,
             })
-        }).then(response=>response.json())
-            .then(data=>{
-                if (data===200){
+        }).then(response => response.json())
+            .then(data => {
+                if (data === 200) {
                     role.innerHTML = myTemp;
                     info.innerHTML = infoTemp;
                 }
             })
     })
-
 
 
 });

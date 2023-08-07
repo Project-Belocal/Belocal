@@ -37,26 +37,26 @@ public class AuthController {
     private SmsService smsService;
 
 
-    //아이디 중복 확인
-    @PostMapping("sign-up/checkId")
-    @ResponseBody
-    public int isIdDuplicate(@RequestParam("id") String id){
-
-        System.out.println("id = " + id);
-        if (id.equals(authService.isIdDuplicate(id)))
-            return 1;
-        return 0;
-    }
+//    //아이디 중복 확인
+//    @PostMapping("sign-up/checkId")
+//    @ResponseBody
+//    public int isIdDuplicate(@RequestParam("id") String id){
+//
+//        System.out.println("id = " + id);
+//        if (id.equals(authService.isIdDuplicate(id)))
+//            return 1;
+//        return 0;
+//    }
 
     //닉네임 중복 확인
-    @PostMapping("sign-up/checkNickname")
-    @ResponseBody
-    public int CheckNickname(@RequestParam("nickname") String nickname){
-
-        if (nickname.equals(authService.isNicknameDuplicate(nickname)))
-            return 1;
-        return 0;
-    }
+//    @PostMapping("sign-up/checkNickname")
+//    @ResponseBody
+//    public int CheckNickname(@RequestParam("nickname") String nickname){
+//
+//        if (nickname.equals(authService.isNicknameDuplicate(nickname)))
+//            return 1;
+//        return 0;
+//    }
 
 
     //로그인페이지
