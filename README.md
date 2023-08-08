@@ -16,6 +16,7 @@
   </tr>
   <tr>
     <td>장우전</td>
+    <td>adsf</td>
     <td>검색 결과</td>
   </tr>
   <tr>
