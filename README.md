@@ -14,4 +14,14 @@
     <th>팀원</th>
     <th>역할</th>
   </tr>
+  <tr>
+    <td>장우전</td>
+    <td>검색 결과</td>
+  </tr>
+  <tr>
+    
+  </tr>
+  <tr>
+    
+  </tr>
 </table>
