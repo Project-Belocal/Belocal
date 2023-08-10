@@ -59,7 +59,7 @@
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white">
 <img src="https://img.shields.io/badge/Thymleaf-005F0F?style=flat&logo=thymeleaf&logoColor=white">
 
-<img src="https://img.shields.io/badge/Java?style=flat&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/Spring__Boot3-6DB33F?style=flat&logo=springboot&logoColor=white">
+<img src="https://img.shields.io/badge/Spring__Boot3-6DB33F?style=flat&logo=springboot&logoColor=white">
 <img src="https://img.shields.io/badge/Spring__Security-6DB33F?style=flat&logo=springsecurity&logoColor=white">
 <img src="https://img.shields.io/badge/Web__Socket-010101?style=flat&logo=socketdotio&logoColor=white">
 
