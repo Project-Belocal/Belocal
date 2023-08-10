@@ -1,0 +1,41 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.belocal.web.repository.NoticeRepository">
+    <insert id="save" parameterType="Notice" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO notice
+        (
+            chat_room_id,
+            sender_id,
+            receiver_id,
+            type
+        )
+        VALUES
+        (
+            #{chatRoomId},
+            #{senderId},
+            #{receiverId},
+            #{type}
+        )
+    </insert>
+
+    <select id="getNoticeListById" parameterType="Notice">
+        SELECT * FROM notice
+        WHERE receiver_id = #{receiverId}
+        ORDER BY created_date desc;
+    </select>
+
+    <select id="getViewList" parameterType="NoticeView">
+        SELECT * FROM notice_view WHERE receiver_id = #{receiverId}
+        and is_accepted = 0
+        order by created_date DESC
+    </select>
+
+    <delete id="delete">
+        delete from notice where chat_room_id = #{chatRoomId}
+    </delete>
+
+    <select id="getCount" parameterType="Integer">
+        SELECT count(*) FROM notice where sender_id = #{senderId}
+    </select>
+</mapper>

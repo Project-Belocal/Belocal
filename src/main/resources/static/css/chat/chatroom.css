@@ -1,0 +1,454 @@
+
+.room{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 390px;
+    height: 844px;
+}
+
+/* header부분 */
+.room__title{
+    display: flex ;
+    flex-direction: row ;
+    align-items: center ;
+    padding-right: 14px ;
+    padding-left: 14px ;
+    position: relative ;
+    width: 100%;
+    height: 72px ;
+    border-bottom: 1px solid rgb(235, 235, 235) ;
+}
+
+/* 헤더 부분 divㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.room__undo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.room__detail{
+    display: flex;
+    /* height: 100%; */
+    padding-left: 10px;
+    justify-content: center;
+    flex-direction: column;
+    flex-grow: 2;
+    gap: 6px;
+}
+
+
+.room__menu{
+    display: flex;
+    /* height: 100%; */
+    margin-bottom: 4px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 0;
+}
+
+
+.room__undo img{
+    width: 32px;
+    height: 32px;
+}
+
+.room__menu img{
+    width: 32px;
+    height: 32px;
+}
+
+.room__user-name{
+    font-weight: var(--font-weight-regular);
+}
+
+.room__date{
+    font-size: var(--font-size-small10);
+}
+
+/* 헤더 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+
+
+
+/* theme 목록부분 */
+
+.room__theme{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 58px;
+    padding: var(--section-padding);
+    border-bottom: 1px solid #ebebeb;;
+}
+
+.room__theme-Img {
+    width: 72px;
+    height: 100%;
+}
+
+.room__theme-Img img{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.room__theme-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    flex-grow: 2;
+}
+
+.room__reservation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 54px;
+    height: 24px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
+
+.room__reservation span{
+    font-size: var(--font-size-small10);
+    font-weight: var(--font-weight-light);
+}
+
+
+
+/* theme 목록 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+
+/* 메시지창 */
+.room__chat-wrap{
+    width: 100%;
+    height: 650px;
+    overflow-y: scroll;
+}
+
+/*입장시 메세지*/
+.enter__notice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0 12px 0;
+}
+
+.enter__userInfo{
+    display: flex;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: var(--color-text-lightgray);
+    opacity: 0.8;
+}
+.enter__userInfo span{
+    text-align: center;
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-regular);
+}
+
+.room__item{
+    display: flex;
+    margin-top: 0;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 12px;
+    width: 100%;
+}
+/* 메시지창 end */
+
+/* 채팅내용 */
+.room__content{
+    display: flex;
+    position: relative;
+}
+
+.room__msg{
+    border-radius: var(--border-radius);
+    max-width: 220px;
+    padding: 8px;
+    text-align: left;
+    word-break: break-word;
+    font-size: var(--font-size-medium14);
+    box-shadow: var(--box-shadow);
+}
+
+.room__time{
+    display: flex;
+    margin: 0 0 4px 4px;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: var(--font-size-small10);
+}
+/* 채팅내용 end */
+
+
+.room__user-img{
+    display: flex;
+    margin:  8px 8px 0 0;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.room__user-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.my-msg{
+    justify-content: flex-end;
+}
+
+.my-msg span{
+    margin-right: 6px;
+    margin-bottom: 4px;
+}
+
+
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+/* 메시지 입력창 */
+.room__input{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+    padding: 12px 12px;
+    padding-top: 0;
+    background-color: #fff;
+}
+
+
+.room__input-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+
+
+.room__text{
+    display: flex;
+    flex-grow: 2;
+    border: none;
+    padding: 12px 8px;
+    outline: none;
+    max-height: 150px;
+    text-align: left;
+    overflow-y: hidden;
+    font-size: var(--font-size-medium14);
+}
+
+
+.room__input-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-point-white);
+    width: 42px;
+    height: 42px;
+
+}
+
+.room__input-btn img{
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+
+/* 모달창 뒷배경 */
+
+.room__modal-bg{
+    display: flex;
+    position: fixed;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* 버튼 모달창 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+
+.room__nav-wrap{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 200px;
+    height: 200px;
+    top: 60px;
+    left: 160px;
+    border-radius: var(--border-radius);
+    background-color: var(--color-point-white);
+    z-index: 2;
+    box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px;
+}
+
+
+.nav-btn{
+    border-radius: 12px 12px 0 0;
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid #ebebeb;
+}
+
+
+.nav-btn:nth-child(3){
+    border-radius: 0 0 12px 12px;
+    border-bottom: 0;
+}
+
+
+.nav-btn a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+
+
+
+/* 신고창 모달 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+.room__report{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 350px;
+    top: 100px;
+    left: 50px;
+    z-index: 2;
+    padding: 12px 12px;
+    gap: 12px;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    /* transform:translate(-10%,-10%) */
+}
+
+/* 신고 헤더 */
+.room__report-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--color-text-black);
+
+}
+
+.room__report-title>button{
+    width: 22px;
+    height: 22px;
+}
+.room__report-title>button>img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.room__report-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 신고 종류 목록 */
+.room__report-list{
+    display: flex;
+    width: 100%;
+    height: 32px;
+    padding-left: 4px;
+    border: 1px solid var(--color-text-gray2);
+    font-size: var(--font-size-small10);
+}
+
+.room__report-list:focus{
+    display: flex;
+    width: 100%;
+    padding-left: 4px;
+    height: 32px;
+    border: 1px solid var(--color-text-gray2);
+    outline: none;
+}
+
+select option[value=""][disabled] {
+    display: none;
+}
+
+/* 신고내용 영역 */
+.room__report-content{
+    width: 100%;
+    height: 210px;
+    padding: 6px;
+    resize: none;
+    border: 1px solid var(--color-text-gray2);
+    outline: none;
+    font-size: var(--font-size-medium12);
+}
+.room__report-content:focus{
+    width: 100%;
+    height: 210px;
+    padding: 6px;
+    resize: none;
+    border: 1px solid var(--color-text-gray2);
+    outline: none;
+}
+
+/* 신고버튼 */
+.room__report-send{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.room__report-send>button{
+    display: flex;
+    width: 55px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-text-gray2);
+    border-radius: 4px;
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+.hidden{
+    display: none;
+}
+
+.chat-message {
+    padding-left: 68px;
+    position: relative;
+}

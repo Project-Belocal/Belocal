@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/wishlists/wishlists.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <!-- <script src="/js/navbar.js" defer></script> -->
+</head>
+
+<body>
+  <header>
+    <h1>Wishlists</h1>
+  </header>
+
+  <main>
+    <section>
+      <ul class="wishlist">
+        <li th:each="wishlistGroup : ${wishlistGroupList}">
+          <a href="" class="wishlist__collection" th:href="@{/wishlists/{id}(id=${wishlistGroup.id})}">
+            <div class="wishlist__collection-description">
+              <img src="./images/index-city.jpg" alt="" class="wishlist__collection-img" th:src="${wishlistGroup.path}">
+              <span class="wishlist__collection-title" th:text="${wishlistGroup.title}">서대문구</span>
+            </div>
+            <img src="./images/icon/right-arrow.svg" alt="" class="wishlist_collection-btn">
+          </a>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+  <!-- nav-bar -->
+  <div th:replace="~{inc/navbar}"></div>
+  <!-- nav-bar End-->
+</body>
+
+</html>

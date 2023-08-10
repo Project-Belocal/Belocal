@@ -1,0 +1,150 @@
+
+/* placeholder 색상 및 글자 크기 */
+input::-webkit-input-placeholder {
+    color: var(--grey2);
+    font-size: var(--regular);
+}
+
+
+input:focus {
+    border-color: var(--light-gray2);
+}
+
+/* input 글자색 */
+input {
+    color: var(--gray3);
+}
+
+/* input영역 */
+.input-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+/* input 제목 */
+.input-text__label {
+    display: inline-flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-right: 0;
+    font-weight: var(--bold);
+    color: var(--gray3);
+    font-size: 16px;
+}
+
+/* input  */
+.input-text__content {
+    position: relative;
+    display: flex;
+    padding-left: 1.125rem;
+    border-radius: 0.3125rem;
+    height: fit-content;
+    padding: 14px 18px;
+    width: 100%;
+    border: 0.125rem solid #ebebeb;
+    transition: box-shadow 0.1s, border-color 0.1s;
+}
+
+/* input클릭시 focus */
+.input-text__content:focus {
+    border-color: var(--main-color);
+    box-shadow: 0px 0px 0.5px var(--main-color);
+}
+
+@media (min-width: 576px) {
+    .input-text__content {
+        padding: 14px 20px;
+    }
+}
+
+/* input,label,span 영역 */
+.input-text__content-wrapper {
+    margin-top: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* input error */
+.input-text__content-wrapper--error::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    /*background-image: url();*/
+    background-size: contain;
+    z-index: 1;
+    animation: alert 0.5s;
+}
+
+.input-text__content-wrapper--error .input-text__content {
+    border-color: var(--error-red);
+    box-shadow: 0px 0px 0.2px var(--error-red);
+}
+
+/* input 성공실패 메세지  */
+.input__message {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    font-size: 14px;
+    color: var(--error-red);
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+/* input 메세지 hidden풀기 */
+.input__message--appear {
+    opacity: 1;
+}
+
+.input-text__content-wrapper--correct::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    /* background-image: url(); */
+    background-size: contain;
+    z-index: 1;
+}
+
+.input-text__content-wrapper--correct .input-text__content {
+    border-color: var(--success-green);
+}
+
+.input-text__content-wrapper--correct + .input__message {
+    color: var(--success-green);
+}
+
+
+@keyframes alert {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateY(-2px);
+    }
+    35% {
+        transform: translateY(-2px) rotate(10deg);
+    }
+    55% {
+        transform: translateY(-2px) rotate(-10deg);
+    }
+    65% {
+        transform: translateY(-2px) rotate(10deg);
+    }
+    75% {
+        transform: translateY(-2px) rotate(-10deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+}

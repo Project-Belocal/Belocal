@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.belocal.web.repository.WishlistRepository">
+    <select id="countsByTravelTheme" resultType="int">
+        SELECT COUNT(wishlist_group_id)
+        FROM wishlist
+        WHERE travel_theme_id = #{travelThemeId}
+    </select>
+
+    <select id="findAllTravelThemeIdByGroupId" parameterType="int">
+        SELECT 
+            travel_theme_id
+        FROM wishlist
+        WHERE wishlist_group_id = #{wishlistGroupId}
+        ORDER BY reg_date DESC;
+    </select>
+
+    <insert id="save" parameterType="Wishlist">
+        INSERT INTO wishlist
+        (
+            travel_theme_id,
+            wishlist_group_id
+        )
+        VALUES
+        (
+            #{travelThemeId},
+            #{wishlistGroupId}
+        )
+    </insert>
+
+    <delete id="delete">
+        DELETE w FROM wishlist w
+        JOIN wishlist_group wg 
+        ON wg.id = w.wishlist_group_id
+        WHERE w.travel_theme_id = #{travelThemeId} AND wg.member_id = #{memberId}
+    </delete>
+</mapper>

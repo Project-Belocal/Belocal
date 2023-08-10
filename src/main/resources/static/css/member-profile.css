@@ -1,0 +1,516 @@
+body {
+    margin: 0 auto;
+    width: 390px;
+    /* height: 100%; */
+}
+
+
+.member-profile {
+    /*margin: 0 auto;*/
+    /*width: 390px;*/
+    /*height: 100%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 390px;
+    height: auto;
+}
+
+
+/* ============== user-profile 상단 영역 ========= */
+.user-profile__container {
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    width: 390px;
+    height: 120px;
+    /* background-color: bisque; */
+    padding: var(--section-padding);
+    /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.06);  */
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(135, 133, 133, 0.744);
+}
+.user-profile__profile-zone {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 82px;
+    /* background-color: aqua; */
+}
+
+
+
+.user-profile__profile-pic {
+    position:relative;
+    overflow: hidden;  
+    /* margin-right: 10px; */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+.user-profile__profile-pic img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.user-profile--text--container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+
+.user-profile__first--text--line {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+    height: 30px;
+    /* background-color: azure; */
+    margin-top: 6px;
+}
+
+
+
+.user-profile__id {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    height: 30px;
+    margin-right: 4px;
+    /* background-color: blueviolet; */
+}
+.user-profile__id h1{
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-large16);
+    color: var(--color-text-black);
+    font-weight: var(--font-weight-semibold);
+}
+
+.user-profile__icon-local {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 74px;
+    height: 30px;
+
+}
+
+.user-profile__icon-local img {
+    width: 16px;
+    height: 16px;
+    color: var(--color-point-blue);
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium14);
+    color: var(--color-point-blue);
+}
+
+
+
+.user-profile__icon-local span {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-point-blue);
+    width: 50px;
+    height: 18px;
+    margin-left: 2px;
+    line-height: 18px;
+
+ }
+
+
+
+
+.user-profile__icon-local p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium14);
+    color: var(--color-point-blue);
+    font-weight: var(--font-weight-semibold);
+}
+
+
+
+
+.user-profile__first--text--line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}   
+.user-profile__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 30px;
+    background: none;
+    border-radius: 14px;
+    border: 1px solid #182CE3;
+}
+.user-profile__button p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium14);
+    color: var(--color-point-blue);
+    font-weight: var(--font-weight-semibold);
+}
+
+.user-profile__email {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 280px;
+    height: 30px;
+    /* background-color: yellow; */
+}
+.user-profile__email p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-regular);
+}
+
+
+.user-profile__themes-post-followers--container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    /* background-color: chartreuse; */
+    padding-left: 66px;
+    margin-bottom: 12px;
+}
+
+.user-profile__themes-post-followers--container p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+    font-weight: var(--font-weight-regular);
+}
+.hr--container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+.hr--container hr {
+    width: 290px;
+    border-width: 0.8px;
+    border-style: solid;
+    color: var(--color-text-gray2);
+}
+
+.user-profile--comment--container {
+    width: 280px;
+    display: flex;
+    /*justify-content: flex-start;*/
+    align-items: center;
+    margin-left: 90px;
+    margin-bottom: 10px;
+}
+.user-profile--comment--container p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium14);
+    color: var(--color-text-black);
+    font-weight: var(--font-weight-regular);
+}
+
+
+
+
+/*=== user-profile theme / post 상태 변경 영역 =====*/
+.user-profile--status {
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 1000px;
+    /* background-color: antiquewhite; */
+}
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 900px;
+}
+
+.tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    max-width: 390px;
+    height: auto;
+    /* margin-bottom: 10px; */
+}
+ul {
+    list-style: none;
+}
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 390px;
+    margin-bottom: 20px;
+}
+.nav-tabs li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 30px;
+    /*background-color: none;*/
+    cursor: pointer;
+    transition: all .3s ease 0s;
+    border-radius: 14px;
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium12);
+    /* color: var(--color-text-black); */
+    font-weight: var(--font-weight-regular);
+}
+.nav-tabs .tab.is-active {
+    background-color: #182CE3;
+    color: white;
+}
+.tab-panel {
+    width: 100%;
+    /*width: 390px;*/
+    /*height: 1000px;*/
+    height: auto;
+    display: none;
+}
+.tab-panel.is-active {
+    display: block;
+}
+
+
+
+#tab-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+#tab-post h1 {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-large16);
+    font-weight: var(--font-weight-bold);
+}
+#tab-post p {
+    font-family: var(--font-family-eng);
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-regular);
+}
+
+
+
+
+
+
+
+
+
+/*--------- theme 부분 ---------------------------------------*/
+/*====== 가로 스크롤 설정 영역 ======*/
+.theme-list {
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    /* gap: 10px; */
+    margin-bottom: var(--section-margin-bottom);
+}
+
+.theme {
+    width: 390px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    gap: 30px;
+}
+
+.theme::-webkit-scrollbar{
+    display: none;
+}
+
+/*====== theme-box-area ===========*/
+
+.theme-box-area {
+    /* margin: 0 auto; */
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    align-content: center;
+    width: 320px;
+    height: 400px;
+    background-color: white;
+    border-radius: 14px;
+    /* object-fit: cover; */
+    /* overflow: auto; */
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    
+}
+
+.theme-box-pic-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content: center;
+    box-sizing: border-box;
+    width: 320px;
+    height: 280px;
+    background-color: gray;
+    border-radius: 14px 14px 0 0;
+    /* box-sizing: border-box; */
+    /* object-fit: fill; */
+    overflow: auto;
+    margin-bottom: -10px;
+}
+
+.theme-box-pic-area img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-outter-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 120px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    /* background-color: aqua; */
+    gap: 8px;
+    padding: var(--section-padding);
+}
+.profile-pic-id-outter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 18px;
+    gap: 4px;
+}
+
+.profile-pic {
+    display: flex;
+    align-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    overflow:auto;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-id-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222222;
+
+}
+
+.profile-text-area-outter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 208px;
+    height: 120px;
+}
+
+.profile-text-title-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+    height: 30px;
+    padding: var(--section-padding);
+}
+
+.profile-text-title-area h2 {
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+.profile-text-title-area p {
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+
+.profile-text-contents-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 208px;
+    height: 48px;
+    margin-bottom: 0px;
+    margin-top: 4px;
+    padding: var(--section-padding);
+}
+
+.reserveText{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+.profile-text-contents-area p {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*font-family: 'Noto Sans', sans-serif;*/
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    color: #717171;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+}
+
+.profile-status-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    margin-top: 18px;
+    /* background-color: chartreuse; */
+    gap: 2px;
+    padding: var(--section-padding);
+}
+.res-ok{
+    filter: invert(17%) sepia(52%) saturate(5907%) hue-rotate(227deg) brightness(102%) contrast(92%);
+}
+.res-not {
+    filter: invert(18%) sepia(78%) saturate(4214%) hue-rotate(354deg) brightness(89%) contrast(105%);
+}
+
+.status-text {
+    font-size: 12px;
+    font-weight: 400;
+    color:#182CE3;
+}
