@@ -30,23 +30,10 @@
   </tr>
   
   <tr>
-    <td align="center">장우전(팀장)</td>
-    <td align="center">임재협</td>
-    <td align="center">윤원빈</td>
+    <td align="center"><a href="https://github.com/woojeonjang">장우전(팀장)</a></td>
+    <td align="center"><a href="https://github.com/imjaehy0b">임재협</a></td>
+    <td align="center"><a href="https://github.com/durdleRain">윤원빈</a></td>
   </tr>
-  
-  <tr>
-    <td align="center">역할</td>
-    <td align="center">역할</td>
-    <td align="center">역할</td>
-  </tr>
-  
-  <tr>
-    <td align="center">내용</td>
-    <td align="center">내용</td>
-    <td align="center">내용</td>
-  </tr>
-
 </table>
 
 
@@ -54,30 +41,26 @@
 - ### [ERD 바로가기](https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW)
 - ### [Figma 바로가기]()
 
-## 📌 개발환경
+## 📌 사용 기술
+### Environment
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white"> <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> 
 
-<img src="https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white">
-<img src="https://img.shields.io/badge/Thymleaf-005F0F?style=flat&logo=thymeleaf&logoColor=white">
+### Development
+<img src="https://img.shields.io/badge/Spring Boot3-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=OpenJDK&logoColor=white"/> <img src="https://img.shields.io/badge/Thymleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white"> <img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge"> <img src="https://img.shields.io/badge/lombok-C70D2C?style=for-the-badge">
 
-<img src="https://img.shields.io/badge/Spring__Boot3-6DB33F?style=flat&logo=springboot&logoColor=white">
-<img src="https://img.shields.io/badge/Spring__Security-6DB33F?style=flat&logo=springsecurity&logoColor=white">
-<img src="https://img.shields.io/badge/Web__Socket-010101?style=flat&logo=socketdotio&logoColor=white">
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> 
 
-### ㅡㅡㅡㅡ
+<img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"> <img src="https://img.shields.io/badge/Web Socket-010101?style=for-the-badge&logo=socketdotio&logoColor=white"> <img src="https://img.shields.io/badge/stomp-010101?style=for-the-badge&logo=stomp&logoColor=white"> 
 
-<img src="https://img.shields.io/badge/Maria__DB-003545?style=flat&logo=mariadb&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white">
-<img src="https://img.shields.io/badge/MyBatis-010101?style=flat">
+### Build
+<img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white">
 
-### ㅡㅡㅡㅡ
+### Deploy
+<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/Ubuntu20.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
 
-<img src="https://img.shields.io/badge/Ubuntu20.04-E95420?style=flat&logo=ubuntu&logoColor=white"> <img src="https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apachemaven&logoColor=white">
-<img src="https://img.shields.io/badge/Apache__Tomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=black">
+### Database
+<img src="https://img.shields.io/badge/Maria DB-003545?style=for-the-badge&logo=mariadb&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
 
-### ㅡㅡㅡㅡ
-<img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white">
-<img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white">
-
-### ㅡㅡㅡㅡ
-
+### Tools
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 
