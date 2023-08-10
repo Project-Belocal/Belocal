@@ -49,17 +49,12 @@
 
 </table>
 
-ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-
-
 
 ## 📝 구상 및 설계
 - ### [ERD 바로가기](https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW)
 - ### [Figma 바로가기]()
 
 ## 📌 개발환경
-
-### ㅡㅡㅡㅡ
 
 <img src="https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white">
