@@ -10,11 +10,53 @@
 - 23.04.17 ~ 23.07.19
 
 ## 🧑‍💻 팀원 소개
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/woojeonjang">
+        <img src="https://user-images.githubusercontent.com/126253517/258985533-43b66f55-1005-4f38-b95b-7f0f00e09c17.png" width="200">
+      </a>
+    </td>
+        <td align="center">
+      <a href="#">
+        <img src="" width="200">
+      </a>
+    </td>
+        <td align="center">
+      <a href="#">
+        <img src="https://user-images.githubusercontent.com/126253517/258991080-a05cf26e-b1b9-433b-9f1e-f722b2557666.png" width="200">
+      </a>
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center">장우전(팀장)</td>
+    <td align="center">임재협</td>
+    <td align="center">윤원빈</td>
+  </tr>
+  
+  <tr>
+    <td align="center">역할</td>
+    <td align="center">역할</td>
+    <td align="center">역할</td>
+  </tr>
+  
+  <tr>
+    <td align="center">내용</td>
+    <td align="center">내용</td>
+    <td align="center">내용</td>
+  </tr>
+
+</table>
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
 <table>
   <tr>
     <th>팀원</th>
     <th>역할</th>
   </tr>
+  
   <tr>
     <td align="center">
       <a href="https://github.com/woojeonjang">
