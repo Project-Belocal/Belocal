@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.belocal.web.repository.PlaceImageRepository">
+
+    <select id="findAll" resultType="PlaceImage">
+        SELECT *
+        FROM place_image
+        WHERE place_id = #{placeId}
+        ORDER BY `order` ASC
+    </select>
+
+    <select id="getPlaceImg" resultType="PlaceImage">
+        SELECT *
+        FROM place_image
+        WHERE place_id = #{placeId}
+        ORDER BY `order` ASC
+        LIMIT 1
+    </select>
+
+    <insert id="save" parameterType="kr.co.belocal.web.entity.PlaceImage" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO place_image
+        (
+            place_id,
+            path,
+            `order`
+        )
+        VALUES
+        (
+            #{placeId},
+            #{path},
+            #{order}
+        )
+    </insert>
+
+</mapper>

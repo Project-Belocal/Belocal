@@ -1,0 +1,508 @@
+body {
+    margin: 0 auto;
+    width: 390px;
+    height: 2200px;
+
+}
+/*============ header =====================*/
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 390px;
+    height: 80px;
+    padding: var(--section-padding);
+    /*margin-bottom: var(--section-margin-bottom);*/
+    margin-bottom: 20px;
+
+}
+
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 34px;
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0px 8px 20px rgba(80, 97, 255, 0.1);
+    border: none;
+    text-indent: 50px;
+    color : var(--color-text-gray2);
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium12);
+    /*margin-right: 10px;*/
+}
+
+
+#search-input {
+    margin-left: 10px;
+}
+
+input:focus::-webkit-input-placeholder {color:transparent; }
+
+
+.search-button {
+    /*background-color: #182CE3;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+
+
+
+.hr-solid {
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: var(--color-text-gray2);
+}
+
+
+/*============ main 카테고리 8개 =====================*/
+/*---카테고리명---*/
+.search__result--category {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    /* height: 200px; */
+    margin-top: 20px;
+    /* background-color: bisque; */
+    margin-bottom: var(--section-margin-bottom);
+
+}
+.search__result--category h1 {
+    color : var(--color-text-gray);
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium14);
+}
+.search__result--category--title--container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: 30px;
+    padding: var(--section-padding);
+}
+
+/*---키워드 박스들 8개--*/
+.search__result--button--container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    height: 200px;
+    /* background-color: beige; */
+    flex-wrap: wrap;
+    padding: var(--section-padding);
+
+}
+.search__result--buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 20%;
+
+}
+.search__result--buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+
+}
+.search__result--buttons p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: auto;
+    /* background-color: lightcoral; */
+    color : var(--color-text-gray);
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium12);
+    margin: 0;
+    margin-top: 4px;
+}
+.search__result--buttons :nth-child(1) {
+    font-size: 34px;
+    color: var(--color-text-gray2);
+}
+
+
+
+
+
+
+
+/*====== 검색어 입력시(엔터전) theme 목록 =====*/
+
+/*.search__dynamic--theme {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: flex-start;*/
+/*    align-items: flex-start;*/
+/*    width: 100%;*/
+/*    !* height: 1000px; *!*/
+/*    margin-bottom: var(--section-margin-bottom);*/
+/*}*/
+/*theme 가로 스크롤 설정 영역 */
+.theme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* gap: 10px; */
+    margin-bottom: var(--section-margin-bottom);
+}
+.theme__title-box {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+
+    padding: var(--section-padding);
+    margin-bottom: var(--title-contents-gap);
+    width: 100%;
+    height: 30px;
+    /* background-color: lightblue; */
+    /* color : var(--color-text-gray);
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-large16); */
+}
+
+
+.search__theme--total {
+    color : var(--color-text-gray);
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium12);
+    margin-right: 220px;
+}
+.search__theme--sort {
+    color : var(--color-text-gray);
+    font-family: var(--font-family-kr);
+    font-size: var(--font-size-medium12);
+}
+
+.filer-icon-button i{
+    font-size: 20px;
+    color: var(--color-text-gray);
+
+}
+
+
+
+.theme__title{
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+}
+
+.theme__container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* overflow-x: scroll;
+    overflow-y: hidden; */
+    gap: 20px;
+}
+
+.theme__container::-webkit-scrollbar{
+    display: none;
+}
+
+/* theme-box-area */
+
+.theme-box-area {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    align-content: center;
+    width: 320px;
+    height: 400px;
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1px;
+
+}
+
+.theme-box-pic-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content: center;
+    box-sizing: border-box;
+    width: 320px;
+    height: 280px;
+    background-color: gray;
+    border-radius: 14px 14px 0 0;
+    overflow: auto;
+    margin-bottom: -10px;
+}
+
+.theme-box-pic-area img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-outter-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 120px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    gap: 8px;
+    padding: var(--section-padding);
+}
+.profile-pic-id-outter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 18px;
+    /* background-color: blue; */
+    gap: 4px;
+}
+
+.profile-pic {
+    display: flex;
+    align-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    overflow:auto;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-id-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222222;
+
+}
+
+.profile-text-area-outter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 208px;
+    height: 120px;
+    /* background-color: blueviolet; */
+
+}
+
+.profile-text-title-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* margin-bottom: 10px; */
+    width: 200px;
+    height: 30px;
+    /* background-color: red; */
+    /* overflow: ; */
+    padding: var(--section-padding);
+}
+
+.profile-text-title-area h2 {
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+.profile-text-title-area p {
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+.profile-text-contents-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 208px;
+    height: 48px;
+    /* background-color:blanchedalmond; */
+    margin-bottom: 0px;
+    margin-top: 4px;
+    padding: var(--section-padding);
+}
+.reserveText{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-black);
+}
+
+.profile-text-contents-area p {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    color: #717171;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+}
+
+.profile-status-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    margin-top: 18px;
+    /* background-color: chartreuse; */
+    gap: 2px;
+    padding: var(--section-padding);
+}
+
+.status-text {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color:#182CE3;
+}
+
+
+/*.profile-status-area :first-child {*/
+/*    color: #182CE3; !* 원하는 색상 값으로 변경 *!*/
+/*    transform: scale(0.8);*/
+/*}*/
+
+
+.res-ok{
+    filter: invert(17%) sepia(52%) saturate(5907%) hue-rotate(227deg) brightness(102%) contrast(92%);
+}
+.res-not {
+    filter: invert(18%) sepia(78%) saturate(4214%) hue-rotate(354deg) brightness(89%) contrast(105%);
+}
+
+
+
+
+.category{
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 30px;
+    padding: var(--section-padding);
+    margin-bottom: var(--title-contents-gap);
+}
+
+.category__title-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--title-contents-gap);
+}
+
+.category__title{
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+}
+
+.category__link{
+    font-size: var(--font-size-medium12);
+    color: var(--color-text-gray);
+}
+
+
+
+/*----------- 카테고리 아이템 박스들 ---------*/
+/* 타이틀과 패딩 간격 맞추기 */
+.category__items-box {
+    display: flex;
+    max-width: 100%;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: var(--section-margin-bottom);
+    padding: var(--section-padding);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /*background-color: black;*/
+}
+.category__items-box::-webkit-scrollbar{
+    display: none;
+}
+.category__items-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.category__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: none;
+}
+.category__item span{
+    font-size: 24px;
+    color: var(--color-text-gray);
+    margin-top: 4px;
+}
+.category__item p{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-regular);
+}
+
+
+
+
+
+
+
+

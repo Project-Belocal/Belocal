@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/sign-up/sign-up.css">
+    <script src="../js/sign-up/sign-up.js" defer></script>
+    <title>Document</title>
+</head>
+<!-- TODO 뒤로가기 버튼,로고 위치 전체 페이지에서 고정-->
+<!-- TODO 입력칸 너비 수정 -->
+<!-- TODO 개인정보 동의사항 구현 -->
+
+<body>
+<!-- 뒤로가기 버튼 -->
+<header>
+    <div class="sign-up__undo">
+        <button>
+            <img src="../images/icon/left-arrow.svg" alt="">
+        </button>
+    </div>
+</header>
+
+<section class="sign__container">
+    <!-- 로고  -->
+    <div class="sign-up__logo">
+        <img src="../images/logo-beLocal.svg" alt="">
+        <span>BeLocal</span>
+    </div>
+
+    <!-- 회원가입 정보 입력 영역 -->
+
+    <!-- 아이디 -->
+    <div class="input-text">
+        <label class="input-text__label" for="input-text__content-id">아이디</label>
+        <div class="input-text__content-wrapper">
+            <input class="input-text__content" id="input-text__content-id" type="text" name="userId"
+                   placeholder="아이디를 입력해주세요." autocomplete="off">
+        </div>
+        <span class="input__message">내용</span>
+    </div>
+
+    <!-- 이름 -->
+    <div class="input-text">
+        <label class="input-text__label" for="input-text__content-name">이름</label>
+        <div class="input-text__content-wrapper">
+            <input class="input-text__content" id="input-text__content-name" type="text" name="name"
+                   placeholder="이름을 입력해주세요." autocomplete="off">
+        </div>
+        <span class="input__message">내용</span>
+    </div>
+
+    <!-- 닉네임 -->
+    <div class="input-text">
+        <label class="input-text__label" for="input-text__content-nickname">닉네임</label>
+        <div class="input-text__content-wrapper">
+            <input class="input-text__content" id="input-text__content-nickname" type="text" name="nickname"
+                   placeholder="닉네임은 한글, 영문, 숫자만 가능하며 2-8자리 가능합니다." autocomplete="off">
+        </div>
+        <span class="input__message">내용</span>
+    </div>
+
+    <!-- 비밀번호 -->
+    <div class="input-text">
+        <label class="input-text__label" for="input-text__content-pw">비밀번호</label>
+        <div class="input-text__content-wrapper">
+            <input class="input-text__content" id="input-text__content-pw" type="password" name="pw"
+                   placeholder="영문, 숫자, 특수문자를 조합11자 이상." autocomplete="off">
+        </div>
+        <span class="input__message">내용</span>
+    </div>
+
+    <!-- 비밀번호 재확인 -->
+    <div class="input-text">
+        <label class="input-text__label" for="input-text__content-recheck">비밀번호 재확인</label>
+        <div class="input-text__content-wrapper">
+            <input class="input-text__content" id="input-text__content-recheck" type="password" name="recheck"
+                   placeholder="비밀번호를 다시 입력해주세요." autocomplete="off">
+        </div>
+        <span class="input__message">내용</span>
+    </div>
+
+
+    <!-- 전화번호 확인 -->
+    <div class="input-text">
+        <label class="input-text__label" for="input-text__content-phoneNum">휴대폰 인증번호</label>
+        <div class="input-text__content-wrapper input-phone">
+            <input class="input-text__content phoneNum" id="input-text__content-phoneNum" name="phoneNum"
+                   maxlength="11" type="tel" placeholder="휴대폰 번호 11자리를 입력해주세요." autocomplete="off">
+            <button class="auth-btn ">
+                <span>인증번호 받기</span>
+            </button>
+        </div>
+
+        <div class="input-text__content-wrapper input-phone">
+            <input class="input-text__content auth-num" id="input-text__content-auth-num" type="text" name="authNum"
+                   placeholder="인증번호를 입력해주세요." autocomplete="off">
+            <span class="verification-timer hidden">03:00</span>
+        </div>
+        <span class="input__message phoneMsg">내용</span>
+        <button class="auth-check-btn">
+            <span>인증번호 확인</span>
+        </button>
+    </div>
+
+
+    <!-- 이용약관 동의 -->
+        <div class="sign-up__terms">
+            <input type="checkbox" name="blind" required>
+            <span>[필수] 만 14세 이상이며 모두 동의합니다.</span>
+            <button class="sign-up__terms-btn" type="button">
+                <span class="terms-more">[더 보기]</span>
+            </button>
+        </div>
+
+    <!-- 가입 버튼 -->
+    <button type="submit" class="sign-up__btn off" disabled>가입하기</button>
+
+
+</section>
+
+</body>
+</html>

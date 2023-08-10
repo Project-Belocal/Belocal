@@ -1,0 +1,50 @@
+header {
+    margin-top: 30px;
+    padding: var(--section-padding);
+    margin-bottom: var(--section-margin-bottom);
+}
+
+header h1 {
+    font-size: 30px;
+    font-family: var(--font-family-eng);
+}
+
+.wishlist {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    padding: var(--section-padding);
+}
+
+.wishlist__collection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    border: 1px solid #D1D1D1;
+    border-radius: 14px;
+    padding: 0 10px;
+}
+
+.wishlist__collection-description {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.wishlist__collection-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.wishlist__collection-title {
+    font-size: var(--font-size-large16);
+    font-weight: 600;
+    font-family: var(--font-family-kor);
+}
+
+.wishlist_collection-btn {
+    width: 12px;
+    filter: invert(50%) sepia(7%) saturate(6%) hue-rotate(8deg) brightness(87%) contrast(89%);
+}
