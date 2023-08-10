@@ -51,42 +51,7 @@
 
 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-<table>
-  <tr>
-    <th>팀원</th>
-    <th>역할</th>
-  </tr>
-  
-  <tr>
-    <td align="center">
-      <a href="https://github.com/woojeonjang">
-        <img src="https://user-images.githubusercontent.com/126253517/258985533-43b66f55-1005-4f38-b95b-7f0f00e09c17.png" width="120">
-      </a>
-    </td>
-    <td rowspan="2">검색 결과</td>
-  </tr>
-  <tr>
-    <td align="center">장우전(팀장)</td>
-  </tr>
-  <tr>
-    <td align="center">미모티콘</td>
-    <td rowspan="2">검색 결과</td>
-  </tr>
-  <tr>
-    <td align="center">임재협</td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/woojeonjang">
-        <img src="https://user-images.githubusercontent.com/126253517/258991080-a05cf26e-b1b9-433b-9f1e-f722b2557666.png" width="120">
-      </a>
-    </td>
-    <td rowspan="2">검색 결과</td>
-  </tr>
-  <tr>
-    <td align="center">윤원빈</td>
-  </tr>
-</table>
+
 
 ## 📝 구상 및 설계
 - ### [ERD 바로가기](https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW)
