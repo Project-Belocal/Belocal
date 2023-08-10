@@ -25,12 +25,18 @@ public class SmsCertification {
 
 
     //사용자가 입력한 휴대폰 번호와 인증번호를 저장하고 TTL을 180초로 설정
-    public void createSmsCertification(String phone, String certificationNumber) {
+    public Integer createSmsCertification(String phone, String certificationNumber) {
         System.out.println("phone = " + phone);
         System.out.println("certificationNumber = " + certificationNumber);
 
         stringRedisTemplate.opsForValue()
                 .set(PREFIX + phone, certificationNumber, Duration.ofSeconds(LIMIT_TIME));
+
+        if (phone!=null && certificationNumber!=null){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 
     //Redis에서 휴대폰번호(KEY)에 해당하는 인증번호를 리턴

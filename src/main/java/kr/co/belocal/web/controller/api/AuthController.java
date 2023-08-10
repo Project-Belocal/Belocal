@@ -39,14 +39,12 @@ public class AuthController {
   public ResponseEntity<?> validateNickname(@RequestBody Map<String, Object> req){
     String nickname = (String) req.get("userNickname");
 
-
     String result = authService.isNicknameDuplicate(nickname);
 
     if (result!=null)
       return ResponseEntity.status(HttpStatus.CONFLICT).build();
     return ResponseEntity.status(HttpStatus.OK).build();
   }
-
 
 
 

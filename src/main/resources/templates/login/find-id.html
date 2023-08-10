@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/login/find-id.css">
     <script src="../js/login/find-id.js" defer></script>
     <title>Document</title>
@@ -22,7 +24,6 @@
             <div class="find__content-wrap">
                 <div class="find__content">
                     <h2 class="find__title">아이디 찾기</h2>
-                    <form action="/login/find-id/check" method="POST">
                         <div class="find__area ">
                             <!-- 번호 찾기 입력창 -->
                                 <div class="find__notice">
@@ -32,19 +33,20 @@
                                         아이디의 일부를 알려드립니다.
                                     </p>
                                 </div>
-                                <div class="find__input-box" >
-                                    <h3>휴대폰 번호</h3>
-                                    <div class="find__input-item">
-                                        <input class="input__id" type="tel" placeholder="가입하신 휴대폰 번호">
-                                    </div>
+                            <div class="input-text">
+                                <label class="input-text__label" for="input-text__content-find">아이디 찾기</label>
+                                <div class="input-text__content-wrapper">
+                                    <input class="input-text__content" id="input-text__content-find" type="text" name="nickname"
+                                           placeholder="가입하신 휴대폰 번호." autocomplete="off">
                                 </div>
+                                <span class="input__message">내용</span>
+                            </div>
                                 <div class="find__btn-box">
                                     <div class="find__btn-item">
                                         <button class="find__id-btn" type="button">아이디 확인하기</button>
                                     </div>
                                 </div>
                         </div>
-                    </form>
                     <!-- 번호 확인후 표시 -->
                     <div class="find__user-info hidden">
                         <dl>

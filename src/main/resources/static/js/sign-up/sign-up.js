@@ -139,14 +139,20 @@ window.addEventListener("load", function () {
         }
     })
 
+
+
     //휴대폰 인증
     const phoneNum = document.querySelector(".phoneNum") //휴대폰번호 입력
     const authNum = document.querySelector(".auth-num") //인증번호 입력
 
-    const sendAuthNum = document.querySelector(".auth-btn")    //인증받기 버튼
-    const authCheckBtn = document.querySelector(".auth-check-btn") //인증 확인 버튼
-    const timer = document.querySelector(".verification-timer") //타이머
+    const phoneNumWrapper = phoneNum.parentElement
+    const authNumWrapper = authNum.parentElement
 
+    const sendAuthNumBtn = document.querySelector(".auth-btn")    //인증 번호 받기 버튼
+    const authCheckBtn = document.querySelector(".auth-check-btn") //인증 확인 버튼
+    const time = document.querySelector(".verification-timer") //타이머
+
+    const message = document.querySelector(".phoneMsg")//메세지 내용
 
     phoneNum.addEventListener("input", function () {
         const inputValue = phoneNum.value;
@@ -154,15 +160,8 @@ window.addEventListener("load", function () {
         let regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/
     })
 
-    sendAuthNum.onclick = function () {
-        // 유효시간 설정
-        let sec = 180;
 
-        startTimer(sec, time)
 
-        let tel = phoneNum.value;
-        sendSms(tel)
-    }
     const sendSms = async (phoneNumber) => {
         const response = await fetch("/sms/send", {
             method: "POST",
@@ -172,13 +171,29 @@ window.addEventListener("load", function () {
             body: JSON.stringify({
                 phoneNumber
             })
-        })
-        if (response.ok) {
-            console.log("통과")
-        } else {
-            console.log("에러")
-        }
+        }).then(response=>response.status)
+            .then(data=>{
+                if (data===200){
+                    phoneNumWrapper.classList.add("input-text__content-wrapper--correct")
+                    message.classList.remove("input__message--appear")
+                }else if (data===409){
+                    //번호 중복
+                    phoneNumWrapper.classList.add("input-text__content-wrapper--error")
+                    message.innerHTML = "이미 가입된 번호 입니다."
+                    message.classList.add("input__message--appear")
+                }else {
+                    //입력값 에러
+                    phoneNumWrapper.classList.add("input-text__content-wrapper--error")
+                    message.innerHTML = "잘못된 입력 입니다."
+                    message.classList.add("input__message--appear")
+                }
+
+            })
+
     }
+
+    let timer = null;
+    let isRunning = false;
 
     function startTimer(count, time) {
         let minutes, seconds;
@@ -192,10 +207,73 @@ window.addEventListener("load", function () {
 
             if (--count < 0) {
                 clearInterval(timer);
-                time.textContent = "시간초과";
+                time.textContent = "시간 초과";
+                time.style.color = "#ff4f4f"
+                authNumWrapper.classList.add("input-text__content-wrapper--error")
+                message.innerHTML = "인증번호를 다시 요청해주세요."
+                message.classList.add("input__message--appear")
             }
         }, 1000);
         isRunning = true;
+    }
+
+
+    sendAuthNumBtn.onclick = function () {
+        time.classList.remove("hidden")
+        authNumWrapper.classList.remove("input-text__content-wrapper--error")
+        message.classList.remove("input__message--appear")
+        time.style.color = "black"
+
+        // 유효시간 설정
+        let sec = 180;
+
+        startTimer(sec, time)
+
+        let tel = phoneNum.value;
+        sendSms(tel)
+    }
+
+    authCheckBtn.onclick = function (){
+        let auth = authNum.value;
+        let tel = phoneNum.value;
+
+        sendVerification(auth,tel);
+    }
+
+    //문자인증
+    const sendVerification = async (verificationNum,phoneNumber) =>{
+        clearInterval(timer); // 타이머 멈추기
+        const response = await fetch("/sms/verification",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                verificationNum,
+                phoneNumber
+            })
+        }).then(response=>response.status)
+            .then(data=>{
+                if (data===200){
+                    //인증성공
+                    time.classList.add("hidden")
+                    authNumWrapper.classList.add("input-text__content-wrapper--correct")
+                    message.classList.add("input__message--appear")
+                    message.innerHTML = "입력하신 번호로 인증번호가 발송되었습니다.."
+
+                    phoneNum.readOnly = true
+                    authNum.readOnly = true
+                    authCheckBtn.classList.add("off")
+                    authCheckBtn.disabled = true
+                }else {
+                    //인증실패
+                    time.classList.remove("hidden")
+                    authNumWrapper.classList.add("input-text__content-wrapper--error")
+                    message.classList.add("input__message--appear")
+                    message.innerHTML = "인증에 실패 했습니다. 다시 시도해주세요"
+                }
+        })
+
     }
 
 })

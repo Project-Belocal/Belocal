@@ -30,16 +30,21 @@ public class SmsController {
 
         String phoneNum = (String) phoneNumber.get("phoneNumber");
 
-        smsService.sendSms(phoneNum);
-
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        Integer result =smsService.sendSms(phoneNum);
+        System.out.println("result = " + result);
+        if (result==409){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } else if (result == 0) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 
     @PostMapping("/sms/verification")
     public ResponseEntity<Void> checkSMS(@RequestBody Map<String ,Object> requestData) {
 
-        String phoneNum = (String) requestData.get("toPhone");
+        String phoneNum = (String) requestData.get("phoneNumber");
         String  verification = (String) requestData.get("verificationNum");
 
         boolean response = smsService.verifySms(phoneNum,verification);
@@ -47,7 +52,7 @@ public class SmsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 

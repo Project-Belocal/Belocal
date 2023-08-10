@@ -4,20 +4,12 @@
     align-items: center;
 }
 
-
 .find__container{
     max-width: 390px;
     /*padding-top: 52px;*/
     position: relative;
 }
 
-/*.find__header{*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    right: 0;*/
-/*    z-index: 1000;*/
-/*}*/
 
 .find__inner{
     display: flex;

@@ -94,13 +94,18 @@ public class SmsService {
     }
 
     //인증번호 전송
-    public void sendSms(String phoneNumber) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
+    public Integer sendSms(String phoneNumber) throws JsonProcessingException, RestClientException, URISyntaxException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        Integer result = null;
         String  duplicatePhone = authService.isPhoneNumDuplicate(phoneNumber);
-        if (duplicatePhone!=null) {
-            throw new PhoneNumberDuplicateException(phoneNumber);
-        } else if (duplicatePhone == null) {
+        try {
+            if (duplicatePhone!=null) {
+                throw new PhoneNumberDuplicateException(phoneNumber);
+            }
+        } catch (PhoneNumberDuplicateException e) {
+            return e.getErrorCode().getStatus();
+        }
 
-
+        {
             //난수 생성
             String smsConfirmNum = createSmsKey();
             //현재시간
@@ -154,8 +159,9 @@ public class SmsService {
             }
 
 
-            smsCertification.createSmsCertification(phoneNumber, smsConfirmNum);
+            result = smsCertification.createSmsCertification(phoneNumber, smsConfirmNum);
         }
+        return result;
     }
 
 
