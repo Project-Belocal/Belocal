@@ -50,19 +50,33 @@
 - ### [ERD 바로가기](https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW)
 - ### [Figma 바로가기]()
 
-## 📌 주요 기능
+## 📌 개발환경
+## 개발 환경
 
+### ㅡㅡㅡㅡ
 
-## 📌 ㅡㅡㅡㅡㅡㅡㅡ
- <br/>
-  
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white">
+<img src="https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white">
+<img src="https://img.shields.io/badge/Thymleaf-005F0F?style=flat&logo=thymeleaf&logoColor=white">
 
+<img src="https://img.shields.io/badge/Java?style=flat&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/Spring__Boot3-6DB33F?style=flat&logo=springboot&logoColor=white">
+<img src="https://img.shields.io/badge/Spring__Security-6DB33F?style=flat&logo=springsecurity&logoColor=white">
+<img src="https://img.shields.io/badge/Web__Socket-010101?style=flat&logo=socketdotio&logoColor=white">
 
-<img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"> <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white"> 
+### ㅡㅡㅡㅡ
 
+<img src="https://img.shields.io/badge/Maria__DB-003545?style=flat&logo=mariadb&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white">
+<img src="https://img.shields.io/badge/MyBatis-010101?style=flat">
 
-####  :clipboard: Tools
+### ㅡㅡㅡㅡ
 
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"> <img src="https://img.shields.io/badge/intellij idea-000000?style=for-the-badge&logo=intellij idea&logoColor=white"> <img src="https://img.shields.io/badge/VSC-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white">
+<img src="https://img.shields.io/badge/Ubuntu20.04-E95420?style=flat&logo=ubuntu&logoColor=white"> <img src="https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apachemaven&logoColor=white">
+<img src="https://img.shields.io/badge/Apache__Tomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=black">
+
+### ㅡㅡㅡㅡ
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white">
+
+### ㅡㅡㅡㅡ
+
 
