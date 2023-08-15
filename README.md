@@ -1,13 +1,25 @@
 ![banner-mobile](https://user-images.githubusercontent.com/126253517/259001162-11075420-9e28-45be-94fd-0c29b491299c.png)
 # BeLocal
-> 여행을 떠나 관광 명소를 다니며 무언가 아쉬움을 느꼈던 적이 있나요?
-> 
-> 현지 사람들과 어울리며 그들이 자주 가는 공간을 탐방하고 싶다는 생각을 한 적 있나요?
-> 
-> BeLocal은 이러한 갈증을 해소하기 위한 작은 오아시스입니다. 
+> 새로운 여행, 색다른 만남을 위한 작은 오아시스  
+<br>
 
-## 📆 개발 기간
-- 23.04.17 ~ 23.07.19
+## 🖥️ 프로젝트 소개 
+작업 기간: 23.04 ~ 23.07
+- BeLocal은 여행객과 가이드를 이어주는 매칭 플랫폼입니다.
+- 특히 관광지를 탐방하기보단 현지 사람들과 어울리며 그들의 문화를 체험하고 싶어하는 여행객을 위한 서비스입니다.
+- 또한 누구나 가이드가 될 수 있습니다. 여행객에게 본인이 좋아하는 장소들을 소개하며 문화를 교류하고자 하는 선의면 충분합니다.
+<br>
+
+## 🌟 주요 기능
+### 1️⃣ 회원 가입
+
+### 2️⃣ 여행 테마 등록 
+
+### 3️⃣ 검색
+
+기타 등등...
+
+<br>
 
 ## 🧑‍💻 팀원 소개
 <table align="center">
@@ -19,7 +31,7 @@
     </td>
         <td align="center">
       <a href="#">
-        <img src="" width="200">
+        <img src="https://user-images.githubusercontent.com/126253517/260689694-f8f9b8dc-0ce6-4aec-b7ba-69a166b51a9d.png" width="200">
       </a>
     </td>
         <td align="center">
@@ -35,11 +47,35 @@
     <td align="center"><a href="https://github.com/durdleRain">윤원빈</a></td>
   </tr>
 </table>
-
+<br>
 
 ## 📝 구상 및 설계
-- ### [ERD 바로가기](https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW)
-- ### [Figma 바로가기]()
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://user-images.githubusercontent.com/126253517/260712081-e9bd8c59-03aa-4103-a432-e4dffdbbbed1.png" width="200">
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://user-images.githubusercontent.com/126253517/260713493-80d362cb-f454-4905-a4c8-c89bb020ec39.png" width="200">
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://user-images.githubusercontent.com/126253517/260712940-358284c5-0941-4898-ba25-ebd426a51143.png" width="200">
+      </a>
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center"><a href="https://www.figma.com/file/2iJVyumsCqjmE53syNNwBf/Untitled?type=design&mode=design&t=yYKz5NwBUkXHwpEx-1">피그마 컴포넌트</a></td>
+    <td align="center"><a href="https://www.figma.com/file/8QE5BXfXKXDuzc4PKxKmoK/Design?type=design&node-id=0-1&mode=design&t=DG9AdLocSjubg1bQ-0">피그마 와이어프레임</a></td>
+     <td align="center"><a href="https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW">ERD</a></td>
+  </tr>
+</table>
+<br>
 
 ## 📌 사용 기술
 ### Environment
