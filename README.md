@@ -46,7 +46,22 @@
     <td align="center"><a href="https://github.com/imjaehy0b">임재협</a></td>
     <td align="center"><a href="https://github.com/durdleRain">윤원빈</a></td>
   </tr>
+  
+  <tr>
+    <td align="center">게시글 검색, 회원 게시글 조회</td>
+    <td align="center">로그인/회원가입, 아이디/비밀번호 찾기, 회원 정보 수정, 채팅기능</td>
+    <td align="center">게시글 등록/관리, 위시리스트 관리, 이미지 파일 관리</td>
+  </tr>
 </table>
+
+<table align="center">
+ <tr>
+    <td align="center">
+      공통작업: figma 디자인, ERD 설계, 아이디어, 메인페이지 html/css, 우분투 배포 서버 구축,도메인 설정
+    </td>
+  </tr>  
+</table>
+
 <br>
 
 ## 📝 구상 및 설계
