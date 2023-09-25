@@ -48,9 +48,9 @@
   </tr>
   
   <tr>
-    <td align="center">게시글 검색, 회원 게시글 조회<br/>공통작업: figma 디자인, ERD 설계, 아이디어, 메인페이지 html/css, 우분투 배포 서버 구축,도메인 설정</td>
-    <td align="center">로그인/회원가입, 아이디/비밀번호 찾기, 회원 정보 수정, 채팅기능<br/>공통작업: figma 디자인, ERD 설계, 아이디어, 메인페이지 html/css, 우분투 배포 서버 구축,도메인 설정</td>
-    <td align="center">게시글 등록/관리, 위시리스트 관리<br/>공통작업: figma 디자인, ERD 설계, 아이디어, 메인페이지 html/css, 우분투 배포 서버 구축,도메인 설정</td>
+    <td align="center">게시글 검색, 회원 게시글 조회<br/>공통작업: figma 디자인, ERD 설계, 우분투 배포 서버 구축,도메인 설정</td>
+    <td align="center">로그인/회원가입, 아이디/비밀번호 찾기, 회원 정보 수정, 채팅기능<br/>공통작업: figma 디자인, ERD 설계, 우분투 배포 서버 구축,도메인 설정</td>
+    <td align="center">게시글 등록/관리, 위시리스트 관리<br/>공통작업: figma 디자인, ERD 설계, 우분투 배포 서버 구축,도메인 설정</td>
   </tr>
 </table>
 
