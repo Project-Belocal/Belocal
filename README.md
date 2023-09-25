@@ -50,7 +50,7 @@
   <tr>
     <td align="center">게시글 검색, 회원 게시글 조회</td>
     <td align="center">로그인/회원가입, 아이디/비밀번호 찾기, 회원 정보 수정, 채팅기능</td>
-    <td align="center">게시글 등록/관리, 위시리스트 관리, 이미지 파일 관리</td>
+    <td align="center">게시글 등록/관리, 위시리스트 관리</td>
   </tr>
 </table>
 
