@@ -80,7 +80,7 @@
   <tr>
     <td align="center"><a href="https://www.figma.com/file/2iJVyumsCqjmE53syNNwBf/Untitled?type=design&mode=design&t=yYKz5NwBUkXHwpEx-1">피그마 컴포넌트</a></td>
     <td align="center"><a href="https://www.figma.com/file/8QE5BXfXKXDuzc4PKxKmoK/Design?type=design&node-id=0-1&mode=design&t=DG9AdLocSjubg1bQ-0">피그마 와이어프레임</a></td>
-     <td align="center"><a href="https://www.erdcloud.com/d/3gAWy3Q2yHE7pHBaW">ERD</a></td>
+     <td align="center"><a href="https://www.erdcloud.com/d/aKkTd4oG9A6L9qiSc">ERD</a></td>
   </tr>
 </table>
 <br>
