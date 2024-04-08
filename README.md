@@ -49,7 +49,7 @@
   </tr>
   
   <tr>
-    <td align="center">게시글 검색<br/>회원 게시글 조회<br/>각 맡은 파트별 front작업<br/><br/>figma 디자인<br/>ERD 설계<br/>도메인 설정</td>
+    <td align="center">게시글 검색<br/>회원 게시글 조회<br/>각 맡은 파트별 front작업<br/><br/>figma 디자인<br/>ERD 설계<br/>
     <td align="center">로그인/회원가입<br/>아이디/비밀번호 찾기<br/>회원 정보 수정<br/>휴대폰 인증<br/>파일저장,삭제<br/>채팅방 조회,관리 및 채팅 기능<br/>각 맡은 파트별 front작업<br/><br/>figma 디자인 서브<br/>ERD 설계<br/>우분투 배포 서버 구축<br/>도메인 설정</td>
     <td align="center">게시글 등록/관리<br/>위시리스트 관리<br/>파일저장,삭제<br/>각 맡은 파트별 front작업<br/><br/>figma 디자인 서브<br/>ERD 설계<br/>
   </tr>
