@@ -43,7 +43,7 @@
   </tr>
   
   <tr>
-    <td align="center"><a href="https://github.com/woojeonjang">장우전(팀장)</a></td>
+    <td align="center"><a href="https://github.com/woojeonjang">장우전</a></td>
     <td align="center"><a href="https://github.com/imjaehy0b">임재협</a></td>
     <td align="center"><a href="https://github.com/durdleRain">윤원빈</a></td>
   </tr>
