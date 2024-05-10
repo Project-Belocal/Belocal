@@ -1,0 +1,71 @@
+.navbar {
+    max-width: 390px;
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    width: 100%; 
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.navbar__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* flex-grow: 1; */
+    /* margin: 0 auto; */   
+    width: 100%;
+}
+
+.navbar__btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    /* background-color: transparent; */
+    /* text-align: center; */
+    text-decoration: none;
+    width: 78px;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+.chat-icon {
+    position: relative;
+}
+
+.new-notification {
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-point-blue);
+}
+
+.navbar__list img {
+    width: 22px;
+    height: 22px;
+    filter: invert(49%) sepia(0%) saturate(0%) hue-rotate(195deg) brightness(91%) contrast(88%);
+}
+
+.navbar__text {
+    font-size: var(--font-size-small10);
+    color: var(--color-text-gray);
+}
+
+/* 페이지 최하단에서 콘텐츠를 가리지 않게 하기 위해 main의 하단에 navbar size만큼의 margin 추가 */
+body {
+    margin-bottom: 62px;
+}
+
+.hidden {
+    display: none;
+}

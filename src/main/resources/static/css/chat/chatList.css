@@ -1,0 +1,292 @@
+.message{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /*height: 844px;*/
+}
+
+.message__header{
+    padding:48px 20px 24px 24px
+}
+
+.message__title h2{
+    font-size: var(--font-size-large32);
+    font-weight: var(--font-weight-bold);
+}
+
+
+/* 메시지, 알림 탭키 CSS */
+
+.message__tabs{
+    width: 100%;
+    height: 57px;
+    padding: 0 24px;
+}
+
+
+.message__tabs::after {
+    content: "";
+    margin: -4px 0px 0px;
+    display: block;
+    border-bottom: 1px solid rgb(221, 221, 221) ;
+}
+
+
+.message__tab{
+    margin: 4px 4px 4px -8px;
+    padding: 16px 8px;
+    width: 58px;
+    height: 52px;
+    align-items: center;
+    background-color: var(--color-point-white);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-gray2);
+}
+
+
+.focus{
+    color: var(--color-text-black);
+}
+
+
+.focus::after{    
+    content: "" ;
+    display: block ;
+    padding-top: 16px ;
+    margin-bottom: -16px ;
+    border-width: 0px 0px 4px ;
+    border-style: solid ;
+    border-color: var(--color-point-blue);
+}
+
+/* 메시지, 알림 탭키 CSS ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+
+/* 메시지 창 */
+
+.message__list{
+    max-width: 390px;
+    height: 100%;
+}
+
+
+.message__item{
+    display: flex ;
+    flex-direction: column ;
+    align-items: stretch ;
+
+
+}
+
+.message__box{
+    display: flex;
+    width: 100%;
+    height: 120px;
+    padding: 24px 12px; 
+    margin: 12px 0;
+    position: relative;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
+
+.message__chat-room{
+    position: absolute ;
+    z-index: 1 ;
+    inset: 0px 2px ;
+    border: none ;
+    display: block ;
+    margin: 0px ;
+    padding: 0px ;
+    text-align: inherit ;
+    text-decoration: none ;
+}
+
+.message__chat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message__profile img{
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+}
+
+.message__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 230px;
+    padding: 12px;
+    gap: 4px;
+}
+
+.message__text div{
+    margin: 2px;
+}
+
+.message__user-name{
+    font-size: var(--font-size-medium12);
+    font-weight: var(--font-weight-bold);
+}
+
+.message__content{
+    font-size: var(--font-size-small10);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    width: 200px;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 3.6em;
+}
+
+.message__date{
+    font-size: var(--font-size-small10);
+}
+
+
+.message__notification{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    background-color: var(--color-point-blue);
+    border-radius: 50%;
+}
+
+
+.message__notification p{
+    color: var(--color-point-white);
+}
+
+
+.message__wrap{
+    position: relative;
+    -webkit-box-flex: 1 ;
+    flex-grow: 1 ;
+    overflow: hidden auto ;
+    padding: var(--section-padding);
+    width: 100%;
+    height: 610px ;
+}
+
+/* 메시지 창 ㅡㅡㅡㅡㅡㅡㅡ*/
+
+
+/* 알림 창 */
+
+.message__notice{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* justify-content: space-between; */
+    gap: 12px;
+    align-items: center;
+    padding: 16px 12px;
+}
+
+.message__notice-wrap{
+    display: flex;
+    width: 100%;
+    height: 66px;
+    padding: 12px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
+
+.message__notice h5{
+    font-size: var(--font-size-medium12);
+}
+
+.message__notice span{
+    max-width: 154px;
+    font-size: var(--font-size-small10);
+}
+
+/*채팅 요청 수락,거절*/
+.action-wrap{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 160px;
+    gap: 12px;
+}
+
+.accept-btn{
+    width: 36%;
+    height: 22px;
+    border-radius: 4px;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-point-white);
+    background-color: var(--color-point-blue);
+}
+
+.reject-btn{
+    width: 36%;
+    height: 22px;
+    border-radius: 4px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-black);
+    background-color: var(--color-text-lightgray);
+}
+
+
+
+
+
+
+
+
+/* 메시지가 없을때 나오는 화면 CSS */
+
+.message__empty{
+    display: flex;
+    position:relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.message__empty-title{
+    font-size: var(--font-size-large18);
+    font-weight: var(--font-weight-bold);
+    margin: 12px;
+}
+
+.message__empty-text{
+    width: 100%;
+    text-align: center;
+    /* margin: 12px; */
+    font-size: var(--font-size-medium14);
+    font-weight: var(--font-weight-regular);
+}
+
+
+.message__empty-link{
+    margin: 12px;
+    padding: 12px 0;
+    border: 1px solid #000000;
+    border-radius: 12px;
+}
+
+.message__empty-link a{
+    padding: 12px 16px;
+}
+
+
+
+.hidden{
+    display: none;
+}

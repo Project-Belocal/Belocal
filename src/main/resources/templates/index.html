@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/icon.css">
+	<link rel="stylesheet" href="/css/index/header.css">
+	<link rel="stylesheet" href="/css/index/category.css">
+	<link rel="stylesheet" href="/css/index/location.css">
+	<link rel="stylesheet" href="/css/index/posting.css">
+	<link rel="stylesheet" href="/css/index/footer.css">
+	<link rel="stylesheet" href="/css/index/theme.css">
+	<link rel="stylesheet" href="/css/search/search-modal.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<script src="/js/index/location.js" defer></script>
+	<script src="/js/search-modal.js" defer></script>
+
+	<title>BeLocal Main</title>
+</head>
+
+<body>
+	<header>
+		<div class="header__wrap">
+			<div class="header__img">
+				<img src="/images/index-city.jpg" alt="서울 전경">
+			</div>
+
+			<div class="header__search">
+				<span class="icon icon-search"></span>
+				<button id="open">
+					<span>을지로</span>
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="category">
+			<div class="category__title-wrapper">
+				<h2 class="category__title">Category</h2>
+			</div>
+
+			<div class="category__item-container">
+				<button type="button" class="category__item" th:each="ctg : ${ctgList}">
+					<a th:href="@{/search-result(ctg=${ctg.id})}">
+						<div class="category__icon-wrapper">
+							<img class="category__icon" th:src="@{/images/icon/category/}+${ctg.icons}+@{.svg}" alt="">
+						</div>
+						<span class="category__name" th:text="${ctg.name}">liquor</span>
+					</a>
+				</button>
+			</div>
+		</section>
+
+
+		<!-- theme -->
+		<!-- TODO 1. class명 bem 방식으로 수정 -->
+		<!-- TODO 2. 전체 사이즈 재조정 (너무 크다고 생각 됨) -->
+		<!-- TODO 3. text 일정 길이 이상이면 ...으로 변하게 수정 -->
+		<!-- TODO 4. 하단 border 안 나오는 오류 수정 -->
+
+		<!--        &lt;!&ndash; 바로 위 섹션과의 간격 밑 title-box와 container와의 간격 조절 해야됨 &ndash;&gt;-->
+		<!--        &lt;!&ndash; profile-text-contents-area 영역 내 문장이 밑의 예약가능 부분과 겹쳐짐-->
+		<!--        그래서 그에 따라 크기가 커지거나 문장의 길이 일정 수준 이상이면 ...으로 생략할 예정 &ndash;&gt;-->
+
+
+		<!-- ======== 영역 제목 부분 ======== -->
+		<section class="travel-theme">
+			<div class="travel-theme-title-box">
+				<h2 class="travel-theme-title">Travel Theme</h2>
+				<a th:href="@{/search-result}" class="travel-theme-link">더보기 &gt;</a>
+			</div>
+		</section>
+
+
+		<!-- ======== theme box 시작 ======== -->
+		<section class="themeList-section--index">
+			<div class="theme-list--index">
+
+				<section class="theme" th:each="t:${travelThemeList}">
+					<div class="theme-box-area">
+
+						<!--themebox 클릭 -> 이동-->
+						<a class="theme-box-pic-area" th:href="@{/theme/theme-detail(id=${t.id})}">
+							<img th:src="${t.path}" src="/images/index-city.jpg" alt="">
+						</a>
+
+
+
+						<div class="profile-outter-box">
+
+							<!--themebox 클릭 -> 이동-->
+							<a class="profile-pic-id-outter" th:href="@{/member-profile(i=${t.memberId})}">
+								<div class="profile-pic">
+									<img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${t.uuid})}"
+										src="/images/profile-pic.jpg" alt="" th:value="${t.memberId}">
+
+								</div>
+								<div class="profile-id-text" th:text="${t.nickname}">
+									innerjoin123
+								</div>
+							</a>
+
+							<!--themebox 클릭 -> 이동-->
+							<a class="profile-text-area-outter" th:href="@{/theme/theme-detail(id=${t.id})}">
+								<div class="profile-text-title-area">
+									<h2 th:text="${t.title}">을지로 노포 싹다 투어</h2>
+								</div>
+								<div class="profile-text-contents-area">
+									<p th:text="${t.description}">
+										을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구 저쩌구
+										어쩌구 어쩌구 저쩌구 믿거나 말거나
+										을지로에서 즐기는 어쩌구 저쩌구 뭐 어쩌구
+									</p>
+								</div>
+
+
+
+								<div class="profile-status-area">
+									<div th:if="${t.isReserved == 0}">
+										<i class="material-symbols-outlined res-ok">
+											event_available
+										</i>
+									</div>
+
+									<div th:unless="${t.isReserved == 0}">
+										<span class="material-symbols-outlined res-not">
+											event_busy
+										</span>
+									</div>
+
+									<div class="reserveText" th:if="${t.isReserved==0}">예약 가능</div>
+									<div class="reserveText" th:unless="${t.isReserved==0}">예약 불가</div>
+								</div>
+
+
+
+							</a>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</section>
+
+
+		<!-- location -->
+		<!-- TODO 1. draggable image slider로 수정 -->
+		<!-- TODO 2. 이미지 어둡게 하고 그 위에 정보 나타내기 -->
+		<!-- TODO 3. 메인 색상 활용 -->
+		<section class="location">
+			<div class="location__title-container">
+				<h2 class="location__title">Location</h2>
+				<a href="">더보기 &gt;</a>
+			</div>
+
+			<div class="location__slider">
+				<div class="location__images">
+					<div class="location__image">
+						<img src="./images/location01.jpg" alt="">
+					</div>
+					<div class="location__image">
+						<img src="./images/location02.jpg" alt="">
+					</div>
+					<div class="location__image">
+						<img src="./images/location03.jpg" alt="">
+					</div>
+					<div class="location__image">
+						<img src="./images/location04.jpg" alt="">
+					</div>
+					<div class="location__image">
+						<img src="./images/location05.jpg" alt="">
+					</div>
+				</div>
+
+				<div class="location__nav-buttons">
+					<span class="icon icon-arrow-left location__prev-button"></span>
+					<span class="icon icon-arrow-right location__next-button"></span>
+				</div>
+				<div class="location__nav-dots">
+					<span class="location__dot active"></span>
+					<span class="location__dot"></span>
+					<span class="location__dot"></span>
+					<span class="location__dot"></span>
+					<span class="location__dot"></span>
+				</div>
+			</div>
+		</section>
+		<!-- location End -->
+
+		<!-- posting -->
+		<!-- TODO 1. Theme처럼 카드 좌측에 붙여놓을지 아니면 간격 둘지 결정하기 -->
+		<section class="posting">
+			<!-- posting 제목 영역 -->
+			<div class="posting__title-box">
+				<div class="posting__title">Posting</div>
+				<a href="#" class="posting__link">더보기 &gt;</a>
+			</div>
+
+			<!-- posting 영역 -->
+			<div class="posting__container">
+				<!-- posting 목록 -->
+				<div class="posting__list">
+					<!-- posting  -->
+					<div class="posting__feed">
+						<a class="posting__feed-link" href="#">
+							<!-- 등록이미지 -->
+							<img src="./images/location02.jpg" loading="lazy" alt="">
+							<!-- 프로필 이미지 -->
+							<div class="posting__profile-img">
+								<img src="./images/profile-pic.jpg" alt="">
+							</div>
+							<!-- 유저 닉네임 -->
+							<p class="posting__user-nickname">한재검</p>
+						</a>
+					</div>
+
+
+					<div class="posting__feed">
+						<a class="posting__feed-link" href="#">
+							<img src="./images/location02.jpg" alt="">
+							<div class="posting__profile-img">
+								<img src="./images/profile-pic.jpg" alt="">
+							</div>
+							<p class="posting__user-nickname">카카카카카카케케캬</p>
+						</a>
+					</div>
+					<div class="posting__feed">
+						<a class="posting__feed-link" href="#">
+							<img src="./images/location02.jpg" alt="">
+							<div class="posting__profile-img">
+								<img src="./images/profile-pic.jpg" alt="">
+							</div>
+							<p class="posting__user-nickname">엄준식12세</p>
+						</a>
+					</div>
+					<div class="posting__feed">
+						<a class="posting__feed-link" href="#">
+							<img src="./images/location02.jpg" alt="">
+							<div class="posting__profile-img">
+								<img src="./images/profile-pic.jpg" alt="">
+							</div>
+							<p class="posting__user-nickname">엄준식12세</p>
+						</a>
+					</div>
+					<div class="posting__feed">
+						<a class="posting__feed-link" href="#">
+							<img src="./images/location02.jpg" alt="">
+							<div class="posting__profile-img">
+								<img src="./images/profile-pic.jpg" alt="">
+							</div>
+							<p class="posting__user-nickname">엄준식12세</p>
+						</a>
+					</div>
+					<div class="posting__feed">
+						<a class="posting__feed-link" href="#">
+							<img src="./images/location02.jpg" alt="">
+							<div class="posting__profile-img">
+								<img src="./images/profile-pic.jpg" alt="">
+							</div>
+							<p class="posting__user-nickname">엄준식12세</p>
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+		</section>
+		<!-- posting End-->
+	</main>
+
+
+	<!-- ================= search-modal 영역 ============================================================= -->
+	<div class="search-modal hidden">
+		<div class="search-modal-overlay">
+			<div class="search-modal-content">
+
+
+				<!--============ header =====================-->
+				<div class="search-modal-header">
+					<div class="search">
+						<form class="search-bar" action="/search-result">
+							<button class="search-button">
+								<span class="material-symbols-outlined">
+									search
+								</span>
+							</button>
+							<label class="search-input" for="search-input">
+							</label>
+							<input type="text" id="search-input" name="q" th:value="${query}">
+						</form>
+						<button id="exit">
+							<i class="material-symbols-outlined closeBtn">
+								close
+							</i>
+						</button>
+					</div>
+				</div>
+
+
+				<!--============ main 키워드 부분=====================-->
+				<div class="recommand__keyword">
+					<div class="recommand__keyword--title--container">
+						<h1>추천 검색어</h1>
+					</div>
+
+					<div class="recommand__keywords--container">
+
+						<div class="recommand__keyword--container1">
+							<button class="recommand__keyword--btn">
+								<p>을지로 노포</p>
+							</button>
+
+							<button class="recommand__keyword--btn">
+								<p>용산 카페</p>
+							</button>
+
+							<button class="recommand__keyword--btn">
+								<p>종로 맛집</p>
+							</button>
+
+							<button class="recommand__keyword--btn">
+								<p>강남구 축제</p>
+							</button>
+						</div>
+
+
+						<div class="recommand__keyword--container2">
+							<button class="recommand__keyword--btn">
+								<p>신촌 대학교 축제</p>
+							</button>
+
+							<button class="recommand__keyword--btn">
+								<p>루프탑 바</p>
+							</button>
+
+							<button class="recommand__keyword--btn">
+								<p>성수 갈비 골목</p>
+							</button>
+
+							<button class="recommand__keyword--btn">
+								<p>녹사평 펍</p>
+							</button>
+						</div>
+
+					</div>
+				</div>
+
+
+
+				<!--========= 검색어 입력시(엔터전) theme 목록 ==========-->
+				<section class="themeList-section--index">
+					<div class="theme-list--search-modal">
+
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+<!-- footer -->
+<footer class="footer">
+	<div class="footer__text">
+		<h3>1588-1588</h3>
+		<p>durdlerain@gamil.com</p>
+	</div>
+
+	<div class="footer__menu">
+		<div class="footer__items">
+			<a href="#">이용약관</a>
+		</div>
+		<div class="footer__items">
+			<a href="#">고객센터</a>
+		</div>
+		<div class="footer__items">
+			<a href="#">안전정책</a>
+		</div>
+		<div class="footer__items items-color">
+			<a href="#">BeLocal<br />소개</a>
+		</div>
+	</div>
+
+	<div class="footer__content">
+		<div class="footer__list">
+			<a href="#">개인정보처리방침</a>
+			<a href="#">위치기반 서비스 이용약관</a>
+			<a href="#">사업자 정보확인</a>
+			<a href="#">회사 세부정보</a>
+		</div>
+		<div class="footer__text">
+			<span>
+				(주)브레이브모바일은 통신판매중개자로서 통신판매의 당사자가 아니며 개별 판매자가 제공하는 서비스에 대한 이행, 계약사항 등과 관련한 의무와 책임은 거래당사자에게 있습니다.
+			</span>
+		</div>
+		<ul class="footer__guide">
+			<li class="footer__text">
+				상호명:BeLocal · 대표이사:WWJ · 개인정보책임관리자:김태우 · 주소:서울특별시 강남구 테헤란로 415, L7 강남타워 5층
+			</li>
+			<li class="footer__text">
+				사업자등록번호:120-88-22325 · 통신판매업신고증:제 2021-서울강남-00551 호 · 직업정보제공사업 신고번호:서울청 제 2019-21호
+			</li>
+			<li class="footer__text">
+				고객센터:1599-5319 · 이메일:belocal@gmail.com
+			</li>
+			<li class="footer__text">
+				Copyright ©Brave Mobile Inc. All Rights Reserved.
+			</li>
+		</ul>
+	</div>
+</footer>
+<!-- footer End-->
+
+<!-- nav-bar -->
+<div th:replace="~{inc/navbar}"></div>
+
+<!-- nav-bar End-->
+<!--</body>-->
+
+</html>

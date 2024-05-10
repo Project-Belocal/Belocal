@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/theme-register.css">
+  <script src="/js/theme-register.js" defer></script>
+  <!-- <script src="/js/theme-save-async.js" defer></script> -->
+</head>
+
+<body>
+  <header>
+    <a class="header__prev-button" href="/my">
+      <img src="/images/icon/left-arrow.svg">
+    </a>
+
+    <div class="header-contents">
+      <h1 class="header-contents__title">테마 등록하기</h1>
+    </div>
+  </header>
+
+  <main>
+    <!-- <form action="/my/upload" method="post" id="travelThemeForm"> -->
+
+    <section class="theme__registration-1st">
+      <section class="registration-instruction">
+        <h2>테마를 구성하는 장소들을 등록해보세요</h2>
+        <p>멋진 사진으로 장소를 더욱 흥미롭게 만들 수 있어요!</p>
+      </section>
+
+      <section class="place__registration">
+        <ul class="place__container">
+        </ul>
+
+        <button href="" class="place__registration-btn">
+          <img src="/images/icon/add.svg" alt="">
+        </button>
+
+        <div class="place__message hidden">장소는 한 개 이상 등록되어야 합니다</div>
+      </section>
+
+
+      <div class="registration__next-btn">
+        <button>다음</button>
+      </div>
+    </section>
+
+    <section class="theme__registration-2nd hidden">
+      <section class="registration-instruction">
+        <h1>테마에 대한 설명을 작성해주세요</h1>
+      </section>
+
+      <section class="theme__image-preview__container">
+        <ul class="theme__image-preview slider">
+
+        </ul>
+      </section>
+
+      <section class="theme__info">
+        <div class="theme__title">
+          <div class="theme__title__header">
+            <h2>제목</h2>
+            <div class="hidden">제목을 작성해주세요</div>
+          </div>
+          <textarea maxlength="50"></textarea>
+        </div>
+
+        <div class="theme__description">
+          <div class="theme__description__header">
+            <h2>설명</h2>
+            <div class="hidden">설명을 작성해주세요</div>
+          </div>
+          <textarea maxlength="200"></textarea>
+        </div>
+
+        <div class="theme__bookable-date">
+          <div class="theme__bookable-date__header">
+            <h2>예약 가능 날짜</h2>
+            <div class="hidden">날짜를 선택해주세요</div>
+          </div>
+          <input type="date" required>
+          <span>~</span>
+          <input type="date" required>
+        </div>
+
+        <div class="theme__preferred-time">
+          <div class="theme__preferred-time__header">
+            <h2>연락 선호 시간</h2>
+            <div class="hidden">시간을 선택해주세요</div>
+          </div>
+          <input type="time">
+          <span>~</span>
+          <input type="time">
+        </div>
+      </section>
+
+      <div class="theme__save">
+        <!-- <input type="hidden" name="uploadData" id="uploadDataInput"> -->
+        <button class="theme__save-btn">
+          <div>저장하기</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- </form> -->
+  </main>
+
+  <section class="modal">
+    <!-- Modal content -->
+    <div class="modal__content">
+      <div class="modal__header">
+        <h1>장소 등록하기</h1>
+        <a href="" class="modal__close">
+          <img src="/images/icon/x-black.svg" alt="">
+        </a>
+      </div>
+
+      <div class="modal__body">
+        <div class="modal__place-img">
+          <div class="modal__place-img__header">
+            <h2>사진</h2>
+            <div class="hidden">사진을 등록해주세요</div>
+          </div>
+          <div class="modal__image-preview__container">
+            <ul class="modal__image-preview slider">
+            </ul>
+
+            <button class="modal__delete-btn hidden">
+              <img src="/images/icon/delete.svg" alt="">
+            </button> 
+          </div>
+          
+          <input type="file" class="modal__upload-btn" accept="image/*" required multiple style="display: none;">
+          <div class="modal__image-upload">
+            <img src="/images/icon/add.svg" alt="">
+          </div>
+        </div>
+
+        <div class="modal__place-category">
+          <div class="modal__place-category__header">
+            <h2>카테고리</h2>
+            <div class="hidden">카테고리를 선택해주세요</div>
+          </div>
+
+          <select name="category">
+            <option value="">------------</option>
+            <option value="1">식당</option>
+            <option value="2">술집</option>
+            <option value="3">카페</option>
+            <option value="4">전시</option>
+            <option value="5">쇼핑</option>
+            <option value="6">문화예술</option>
+            <option value="7">액티비티</option>
+            <option value="8">축제</option>
+            <option value="9">종교</option>
+            <option value="10">자연</option>
+          </select>
+        </div>
+
+        <div class="modal__place-location">
+          <div class="modal__place-location__header">
+            <h2>위치</h2>
+            <div class="hidden">위치를 선택해주세요</div>
+          </div>
+
+          <select name="location">
+            <option value="">------------</option>
+            <option value="1">강남구</option>
+            <option value="2">강동구</option>
+            <option value="3">강서구</option>
+            <option value="4">관악구</option>
+            <option value="5">광진구</option>
+            <option value="6">금천구</option>
+            <option value="7">노원구</option>
+            <option value="8">도봉구</option>
+            <option value="9">동작구</option>
+            <option value="10">마포구</option>
+            <option value="11">서대문구</option>
+            <option value="12">성동구</option>
+            <option value="13">성북구</option>
+            <option value="14">송파구</option>
+            <option value="15">영등포구</option>
+            <option value="16">용산구</option>
+            <option value="17">은평구</option>
+            <option value="18">중구</option>
+            <option value="19">중랑구</option>
+          </select>
+        </div>
+
+        <div class="modal__place-description">
+          <div class="modal__place-description__header">
+            <h2>설명</h2>
+            <div class="hidden">설명을 작성해주세요</div>
+          </div>
+          <textarea maxlength="100"></textarea>
+        </div>
+
+        <div class="modal__save">
+          <button class="modal__save-btn">
+            <div>저장하기</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div th:replace="~{inc/navbar}"></div>
+  
+  <input id="input-member-id" type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}">
+	      
+</body>
+
+</html>

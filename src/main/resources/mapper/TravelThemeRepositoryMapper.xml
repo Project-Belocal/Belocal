@@ -1,0 +1,354 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.belocal.web.repository.TravelThemeRepository">
+    <select id="findById" resultType="kr.co.belocal.web.entity.TravelTheme">
+        SELECT *
+        FROM travel_theme
+        WHERE id = #{id};
+    </select>
+
+    <!-- ====== api / travelThemeController =========== -->
+    <select id="findAll" resultType="TravelThemeView">
+        SELECT
+            id,
+            title,
+            description,
+            is_reserved,
+            member_id,
+            nickname,
+            uuid,
+            path
+        FROM
+            travel_theme_view
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="ctgId != null">
+                ctg_id = #{ctgId}
+            </if>
+<!--            <if test="query != null">-->
+<!--                or title LIKE '%#{query}%'-->
+<!--                or description LIKE '%#{query}%'-->
+<!--                or name LIKE '%#{query}%'-->
+<!--                or lc_name LIKE '%#{query}%'-->
+<!--            </if>-->
+            <if test="query != null">
+                AND (
+                title LIKE CONCAT('%', #{query}, '%')
+                OR description LIKE CONCAT('%', #{query}, '%')
+                OR name LIKE CONCAT('%', #{query}, '%')
+                OR lc_name LIKE CONCAT('%', #{query}, '%')
+                )
+            </if>
+        </trim>
+        GROUP BY
+            id,
+            title,
+            description,
+            is_reserved,
+            member_id,
+            nickname,
+            uuid,
+            path
+        ORDER BY
+            reg_date DESC
+        LIMIT
+            #{offset}, #{size}
+    </select>
+
+    <!-- ====== main화면 기본 6개 나오는 부분 ================= -->
+    <select id="getListForMain" resultType="kr.co.belocal.web.entity.TravelThemeView">
+        SELECT
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        FROM
+        travel_theme_view
+        GROUP BY
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+
+    </select>
+
+    <!-- ====== search-modal : 검색용 ================= -->
+    <select id="getListByModalInput" resultType="TravelThemeView">
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme_view-->
+<!--        WHERE-->
+<!--        title LIKE '%${query}%'-->
+<!--        OR-->
+<!--        description LIKE '%${query}%'-->
+<!--        OR-->
+<!--        name LIKE '%${query}%'-->
+<!--        OR-->
+<!--        lcName LIKE '%${query}%'-->
+<!--        ORDER BY reg_date DESC-->
+<!--        limit #{offset}, #{size}-->
+
+        SELECT
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        FROM
+        travel_theme_view
+        WHERE
+        title LIKE '%${query}%'
+        OR
+        description LIKE '%${query}%'
+        OR
+        name LIKE '%${query}%'
+        OR
+        lcName LIKE '%${query}%'
+        GROUP BY
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
+
+
+<!-- ====== search-result : 값 입력 & enter ================= -->
+    <select id="getListByQuery" resultType="TravelThemeView">
+<!--        SELECT-->
+<!--        FROM-->
+<!--        travel_theme_view-->
+<!--        WHERE-->
+<!--        title LIKE '%${query}%'-->
+<!--        OR-->
+<!--        description LIKE '%${query}%'-->
+<!--        OR-->
+<!--        name LIKE '%${query}%'-->
+<!--        OR-->
+<!--        lcName LIKE '%${query}%'-->
+<!--        ORDER BY reg_date DESC-->
+<!--        limit #{offset}, #{size}-->
+
+        SELECT
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        FROM
+        travel_theme_view
+        WHERE
+        title LIKE '%${query}%'
+        OR
+        description LIKE '%${query}%'
+        OR
+        name LIKE '%${query}%'
+        OR
+        lcName LIKE '%${query}%'
+        GROUP BY
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
+
+<!--    <select id="getListByCtgId" resultType="TravelThemeView">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme_view-->
+<!--        WHERE ctgId = #{ctgId}-->
+<!--        ORDER BY member_id-->
+<!--        ORDER BY reg_date DESC-->
+<!--        limit #{offset}, #{size}-->
+<!--    </select>-->
+
+    <select id="getListByCtgId" resultType="TravelThemeView">
+        SELECT *
+        FROM
+        travel_theme_view
+        WHERE ctgId = #{ctgId}
+        ORDER BY member_id
+    </select>
+
+    <select id="getListByCtgIdIcons" resultType="TravelThemeView">
+<!--        SELECT *-->
+<!--        FROM-->
+<!--        travel_theme_view-->
+<!--        WHERE ctgId = #{ctgId}-->
+<!--        ORDER BY reg_date DESC-->
+<!--        limit #{offset}, #{size}-->
+
+        SELECT
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        FROM
+        travel_theme_view
+        WHERE
+        ctgId = #{ctgId}
+        GROUP BY
+        path,
+        uuid,
+        nickname,
+        title,
+        description,
+        is_reserved,
+        member_id
+        ORDER BY reg_date DESC
+        limit #{offset}, #{size}
+    </select>
+
+    <select id="findAllViewByIds" resultType="TravelThemeView">
+        SELECT
+            id,
+            title,
+            description,
+            is_reserved,
+            member_id,
+            bookable_date_start,
+            bookable_date_end,
+            nickname,
+            uuid
+        FROM
+        travel_theme_view
+        WHERE id IN
+            <foreach collection="list" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        GROUP BY id, title, `description`, is_reserved, member_id, bookable_date_start, bookable_date_end, nickname, uuid
+        ORDER BY wishlist_reg_date DESC;
+    </select>
+
+    <select id= "findAllByMemberId" resultType="TravelThemeView">
+        SELECT
+            path,
+            uuid,
+            nickname,
+            title,
+            description,
+            is_reserved,
+            member_id,
+            id
+        FROM
+            travel_theme_view
+        WHERE
+            member_id = #{id}
+        GROUP BY
+            path,
+            uuid,
+            nickname,
+            title,
+            description,
+            is_reserved,
+            member_id,
+            id
+        ORDER BY
+            reg_date DESC
+        LIMIT
+            #{offset}, #{size}
+    </select>
+
+
+    <insert id="save" parameterType="kr.co.belocal.web.entity.TravelTheme" useGeneratedKeys="true" keyProperty="id">
+        INSERT
+        INTO
+        travel_theme
+        (
+         member_id,
+         title,
+         description,
+         bookable_date_start,
+         bookable_date_end,
+         contact_preferred_time_start,
+         contact_preferred_time_end
+        )
+        VALUES
+        (
+        #{memberId},
+        #{title},
+        #{description},
+        #{bookableDateStart},
+        #{bookableDateEnd},
+        #{contactPreferredTimeStart},
+        #{contactPreferredTimeEnd}
+        )
+    </insert>
+
+    <update id="update" parameterType="kr.co.belocal.web.entity.TravelTheme">
+        UPDATE
+        travel_theme
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="region != null">region = #{region},</if>
+        </set>
+        WHERE id = #{id};
+    </update>
+
+
+    <delete id="delete" parameterType="kr.co.belocal.web.entity.TravelTheme">
+        DELETE
+        FROM
+        travel_theme
+        WHERE
+        id = #{id};
+    </delete>
+
+
+<!--작성글 개수-->
+    <select id="getCountTheme" resultType="int">
+        SELECT count(*) FROM travel_theme where member_id = #{memberId};
+    </select>
+
+
+
+    <!--
+'travel_theme 페이지' member Table에서 member_id로 가져올 것들
+1. title
+2. description
+3. is_reserved
+4. member_id
+-->
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

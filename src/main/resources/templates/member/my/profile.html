@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <link rel="stylesheet" href="../css/my-page/profile.css">
+    <script src="../js/mypage/profile.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="my-page-header">
+        <!-- 유저 이미지 -->
+        <div class="my__profile-img">
+            <img src="../images/icon/user.svg" alt=""
+                 th:src="${#authentication.principal.profileImg}">
+        </div>
+        <!-- 유저 정보 내용 -->
+        <div class="my__profile-content">
+            <!-- 유저  정보 영역 -->
+            <div class="my__info-wrap">
+                <div class="my__info">
+                    <!-- 유저 이름 -->
+                    <div class="my__name">
+                        <span th:text="${#authentication.principal.nickname}"></span>
+                    </div>
+                    <!-- 로컬 유무 -->
+                    <div class="my__local"
+                         sec:authorize="hasRole('GUIDE')">
+                        <img src="../images/logo-beLocal.svg" alt="">
+                        <span>local</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 프로필 수정 및 내 게시물 -->
+            <div class="my__link">
+                <div class="my__link-btn">
+                    <a href="my/profile-edit">프로필 수정</a>
+                </div>
+                <div class="my__link-btn">
+                    <a href="#">내 게시물</a>
+                </div>
+            </div>
+            <!-- 게시글 등록 숫자 -->
+            <div class="my__post-tab">
+                <ul class="my__tab-list">
+                    <li class="my__tab-item">
+                        <a class="my__tab-link" href="#">
+                            <span class="my__tab-count" th:text="${themeCount}">1</span>
+                            <span class="my__tab-menu">themes</span>
+                        </a>
+                    </li>
+                    <li class="my__tab-item">
+                        <a class="my__tab-link" href="#">
+                            <span class="my__tab-count">0</span>
+                            <span class="my__tab-menu">post</span>
+                        </a>
+                    </li>
+                    <li class="my__tab-item">
+                        <a class="my__tab-link" href="#">
+                            <span class="my__tab-count">0</span>
+                            <span class="my__tab-menu">followers</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="my-page-main">
+
+        <div class="role__wrap">
+            <div sec:authorize="hasRole('GUIDE')">
+                <div class="my__register-btn ">
+                    <a href="/my/theme-register">theme 등록하러가기</a>
+                </div>
+                <div class="my__register-btn ">
+                    <a href="#">Post 등록하러가기</a>
+                </div>
+            </div>
+            <div class="my__register-btn local__btn" sec:authorize="!hasRole('GUIDE')">
+                <a href="">
+                    <img src="./images/logo-beLocal.svg" alt="">
+                    <h2>Be Local !</h2>
+                    <span>로컬이 되어보세요</span>
+                </a>
+            </div>
+        </div>
+
+
+
+        <!-- 요청,예약,완료 버튼 -->
+        <div class="my__deal-tap">
+            <ul class="my__deal-list">
+                <li class="my__deal-item">
+                    <button class="item1" type="button">
+                        <h3>보낸 요청</h3>
+                        <span th:text="${reqCount}">20</span>
+                        <img src="../images/icon/right-arrow.svg" alt="">
+                    </button>
+                </li>
+<!--                <li class="my__deal-item">-->
+<!--                    <button class="item2" type="button">-->
+<!--                        <h3>예약</h3>-->
+<!--                        <span>1</span>-->
+<!--                        <img src="../images/icon/right-arrow.svg" alt="">-->
+<!--                    </button>-->
+<!--                </li>-->
+<!--                <li class="my__deal-item">-->
+<!--                    <button class="item3" type="button">-->
+<!--                        <h3>완료</h3>-->
+<!--                        <span>3</span>-->
+<!--                        <img src="../images/icon/right-arrow.svg" alt="">-->
+<!--                    </button>-->
+<!--                </li>-->
+            </ul>
+        </div>
+        <!-- 모달창 영역 -->
+        <div class="modal-bg hidden">
+            <div class="modal">
+                <!-- 모달 클릭바 -->
+                <button class="modal__close" type="button">
+                    <img src="../images/icon/x-black.svg" alt="">
+                </button>
+                <!-- 모달 목록 -->
+
+                <div class="modal__item-list" th:each="rl:${reqList}">
+                    <!-- 모달 내용 -->
+                    <a class="modal__item" href="#" th:href="@{'/theme/theme-detail?id='+${rl.travelThemeId}}">
+                        <!-- 유저 프로필 -->
+                        <div class="modal__profile">
+                            <div class="modal__profile-img">
+                                <img  th:src="@{'https://storage.googleapis.com/belocal-bucket/'+ ${rl.uuid}}"
+                                        src="../images/profile-pic.jpg" alt="">
+                            </div>
+                            <div class="modal__name">
+                                <span th:text="${rl.nickname}">유저아이디입nida</span>
+                            </div>
+                        </div>
+                        <!-- 글정보 -->
+                        <div class="modal__content">
+                            <div class="modal__title">
+                                <h2 th:text="${rl.title}">theme 제목 나옴</h2>
+                            </div>
+                            <div class="modal__text">
+                                <span  th:text="${rl.description}">theme 내용 </span>
+                            </div>
+                            <div class="modal__book">
+                                <div class="modal__book-icon">
+                                    <img src="../images/icon/reservation-not.svg" alt="">
+                                </div>
+                                <div class="modal__book-state">
+                                    <span>예약가능</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!--아무 내용 없을때-->
+                <div class="empty hidden">
+                    <div class="empty-title">
+                        <span>보낸 요청이 없습니다.</span>
+                    </div>
+                    <div class="empty-text">
+                        <span>여행이나 체험을 예약을 신청한 경우, 요청 메시지가 여기에 표시됩니다.</span>
+                    </div>
+                    <div class="empty-link">
+                        <a href="">BeLocal 둘러보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--slide 영역-->
+        <div class="slide__conatiner">
+            <div class="slide__list">
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location01.jpg" alt="test">
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location02.jpg" alt="test">
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location03.jpg" alt="test">
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="/images/location04.jpg" alt="test">
+                    </a>
+                </div>
+            </div>
+            <div class="slide__controler hidden" >
+                <button class="btn__prev">prev</button>
+                <button class="btn__next">next</button>
+            </div>
+        </div>
+
+    <footer>
+        <div class="info__wrap">
+            <div class="info__item">
+                <a href="/logout" class="info__link">로그아웃</a>
+                <a href="#" class="info__link bulkhead">PC버전</a>
+            </div>
+            <div class="info__item">
+                <a href="#" class="info__link" >이용약관</a>
+                <a href="#" class="info__link bulkhead" ><strong>개인정보처리방침</strong></a>
+                <a href="#" class="info__link bulkhead" >고객센터</a>
+            </div>
+            <div class="info__item">
+                <a href="https://www.tobelocal.site" class="logo__local">BeLocal</a>
+            </div>
+        </div>
+    </footer>
+</main>
+    <div th:replace="inc/navbar"></div>
+
+
+
+<!-- nav-bar -->
+<!-- nav-bar End-->
+<input
+        class="member__id"
+        type="hidden"
+        th:value="${#authentication.principal.id}">
+</body>
+</html>

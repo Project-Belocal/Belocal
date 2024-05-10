@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link rel="stylesheet" href="/css/navbar.css"> -->
+  <link rel="stylesheet" href="/css/wishlists/wishlist.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="/js/wishlist/theme-list.js"></script>
+</head>
+
+<body>
+  <header>
+    <a class="header__prev-button" href="/wishlists">
+      <img src="/images/icon/left-arrow.svg">
+    </a>
+
+    <div class="header-contents">
+      <h1 class="header-contents__title" th:text="${wishlistGroup.title}">서대문구</h1>
+      <img src="/images/icon/edit.svg" alt="" class="header-contents__edit-btn">
+    </div>
+  </header>
+
+  <main th:if="travelThemeMap != null">
+    <section class="theme" th:each="travelTheme : ${travelThemeMap}">
+      <header class="theme__header">
+        <a class="theme__profile" th:href="@{/member-profile(i=${travelTheme.key.memberId})}">
+          <div class="theme__profile-pic">
+            <img th:src="@{https://storage.googleapis.com/belocal-bucket/{uuid}(uuid=${travelTheme.key.uuid})}">
+          </div>
+          <span class="theme__profile-nickname" th:text="${travelTheme.key.nickname}">Mr.Jang</span>
+        </a>
+
+        <div class="theme__header-icon" th:if="${travelTheme.key.isReserved == 0}">
+          <img src="/images/icon/reservation-ok.svg" alt="" class="res-ok">
+          <span>예약 가능</span>
+        </div>
+        
+        <div class="theme__header-icon" th:unless="${travelTheme.key.isReserved == 0}">
+          <img src="/images/icon/reservation-not.svg" alt="" class="res-not">
+          <span>예약 불가</span>
+        </div>
+      </header>
+
+      <div>
+        <div class="theme__image-preview__container">
+          <ul class="theme__image-preview">
+            <li class="theme__image" th:each="placeImage : ${travelTheme.value}">
+              <img src="/images/location01.jpg" alt="" th:src="${placeImage.path}">
+            </li>
+          </ul>
+
+          <div class="theme__image-preview__nav-buttons">
+            <div class="theme__image-preview__prev-button">
+              <img src="/images/icon/left-arrow.svg">
+            </div>
+            <div class="theme__image-preview__next-button">
+              <img src="/images/icon/right-arrow.svg">
+            </div>
+          </div>
+        </div>
+
+        <div class="theme__image-preview__nav-dots">
+          <span class="theme__image-preview__dot" th:each="placeImage : ${travelTheme.value}"></span>
+        </div>
+      </div>
+
+      <a class="theme__contents" th:href="@{/theme/theme-detail(id=${travelTheme.key.id})}">
+        <div class="theme__title">
+          <h2 th:text="${travelTheme.key.title}">"우더니와 떠나는 맛따라 멋따라 서울 탐방"</h2>
+        </div>
+        <div class="theme__description">
+          <p th:text="${travelTheme.key.description}">서울을 손에 넣고 싶나? 따라와 온 서울이 너의 것이니..</p>
+        </div>
+      </a>
+
+      <footer class="theme__info">
+        <div class="theme__bookable-dates">
+          예약 가능 기간: <span th:text="${travelTheme.key.bookableDateStart}"></span> ~ <span th:text="${travelTheme.key.bookableDateEnd}"></span>
+        </div>
+        <div class="theme__icons">
+          <a href="">
+            <img src="/images/icon/share.svg" alt="" class="share">
+          </a>
+
+          <a href="">
+            <i class="material-symbols-outlined heart-filled"
+                th:data-member-id="${#authentication.principal.id}"
+                th:data-travel-theme-id="${travelTheme.key.id}">
+              favorite
+            </i>
+          </a>
+          </div>
+      </footer>
+    </section>
+  </main>
+
+  <div th:replace="~{inc/navbar}"></div>
+</body>
+
+</html>

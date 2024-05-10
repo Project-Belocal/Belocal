@@ -1,0 +1,98 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.belocal.web.repository.ChatRoomRepository">
+    <insert id="save" parameterType="ChatRoom" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO chat_room
+        (
+            travel_theme_id,
+            traveler_id,
+            guide_id
+        )
+        VALUES
+        (
+            #{travelThemeId},
+            #{travelerId},
+            #{guideId}
+        )
+    </insert>
+
+    <!--보낸 회원 id가 속한 모든 채팅방 조회-->
+    <select id="findAll" resultType="ChatRoomListView">
+        SELECT * FROM chat_room_list_view
+        WHERE traveler_id = #{memberId} OR guide_id = #{memberId};
+    </select>
+
+    <!--입장시 채팅메세지 생성-->
+    <insert id="addEnterMessage" parameterType="ChatLog">
+        INSERT INTO  chat_log
+        (
+            chat_room_id,
+            member_id,
+            message,
+            is_checked
+        )
+        VALUE
+        (
+            #{chatRoomId},
+            #{memberId},
+            #{message},
+            #{isChecked}
+        );
+    </insert>
+
+    <!--채팅방 하나 조회-->
+    <select id="findChatRoomById" resultType="ChatRoom">
+        SELECT * FROM chat_room WHERE id = #{id}
+    </select>
+
+    <select id="findStatus" resultType="int">
+        SELECT
+            CASE
+                WHEN COUNT(*) = 0 THEN 0
+                WHEN SUM(is_accepted = 0) > 0 THEN 1
+                ELSE 2
+            END AS result
+        FROM
+            chat_room
+        WHERE
+            travel_theme_id = #{travelThemeId} AND traveler_id = #{memberId};
+    </select>
+    
+    <select id="findByIds" resultType="ChatRoom">
+        SELECT 
+            *
+        FROM
+            chat_room
+        WHERE
+            travel_theme_id = #{travelThemeId} AND traveler_id = #{memberId};
+    </select>
+
+    <!--채팅방 나가기-->
+    <update id="deletedRoom" parameterType="ChatRoom">
+        UPDATE chat_room
+        <set>
+            is_deleted = 1
+        </set>
+        WHERE id = #{chatRoomId}
+    </update>
+
+    <!--채팅방 허가-->
+    <update id="isAccept" parameterType="ChatRoom">
+        UPDATE chat_room
+        <set>
+            is_accepted = 1
+        </set>
+        WHERE id = #{chatRoomId}
+    </update>
+
+    <!--채팅방 거절-->
+    <delete id="isReject">
+        delete from chat_room where id = #{id}
+    </delete>
+
+    <select id="getRequestList" parameterType="chatRequestListView">
+        SELECT * FROM chat_request_list_view where traveler_id = #{travelerId};
+    </select>
+
+</mapper>
